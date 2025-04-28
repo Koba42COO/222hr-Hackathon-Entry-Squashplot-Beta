@@ -1,0 +1,2 @@
+# squashplot
+chia plot precompression
