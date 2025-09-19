@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🧠 SquashPlot - Advanced Chia Compression Technology
 
 <div align="center">
@@ -507,3 +508,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ---
 
 *For the latest updates, star this repository and join our Discord community!*"
+=======
+# squashplot
+chia plot precompression
+>>>>>>> 8e7d59fa569ee7a8809dd8b436801731ddabeae9
