@@ -235,6 +235,61 @@ python setup.py
 
 ---
 
+## 💻 **Usage Examples**
+
+### **Plotting (Similar to Mad Max)**
+```bash
+# Basic plotting
+python squashplot.py -t /tmp/plot1 -d /plots -f <farmer_key> -p <pool_key>
+
+# Advanced plotting with secondary temp directory
+python squashplot.py -t /tmp/plot1 -2 /tmp/plot2 -d /plots -f <farmer_key> -p <pool_key> -n 2 -r 8
+
+# Plotting with compression (similar to BladeBit)
+python squashplot.py -t /tmp/plot1 -d /plots -f <farmer_key> -p <pool_key> --compress 3
+
+# Pool farming
+python squashplot.py -t /tmp/plot1 -d /plots -f <farmer_key> -p <pool_key> -c <pool_contract>
+```
+
+### **Compression Mode**
+```bash
+# Compress existing plot files
+python squashplot.py --mode compress --input plot.dat --output plot.squash --compress 4
+
+# Batch compression
+python squashplot.py --mode compress --input plots/ --output compressed/ --compress 3
+```
+
+### **Web Interface**
+```bash
+# Start web dashboard
+python main.py --web
+
+# Access at: http://localhost:8080
+```
+
+### **Performance Testing**
+```bash
+# Run benchmarks
+python squashplot_benchmark.py
+
+# Validate compression
+python compression_validator.py
+```
+
+### **Chia Keys Setup**
+```bash
+# Get your Chia keys (required for plotting)
+chia keys show
+
+# Example output:
+# Farmer public key (m): [your_farmer_key]
+# Pool public key (m): [your_pool_key]
+```
+
+---
+
 ## 🎯 **Use Cases**
 
 ### **For Chia Farmers**
