@@ -1,0 +1,165 @@
+{
+  "timestamp": "2025-08-28T20:04:46.908570",
+  "fermat_results": [
+    {
+      "direct_error": 0.272,
+      "wallace_error": 0.30326387344682765,
+      "impossibility_score": 0.33359026079151044,
+      "is_impossible": true,
+      "confidence": 1.0
+    },
+    {
+      "direct_error": 0.453125,
+      "wallace_error": 0.5257082427133405,
+      "impossibility_score": 0.5782790669846746,
+      "is_impossible": true,
+      "confidence": 1.0
+    },
+    {
+      "direct_error": 0.0625,
+      "wallace_error": 0.0895836233316447,
+      "impossibility_score": 0.10750034799797363,
+      "is_impossible": false,
+      "confidence": 0.5375017399898682
+    },
+    {
+      "direct_error": 0.0,
+      "wallace_error": 0.0,
+      "impossibility_score": 0.0,
+      "is_impossible": false,
+      "confidence": 0.0
+    }
+  ],
+  "beal_results": [
+    {
+      "wallace_error": 0.4953389831832135,
+      "gcd": 1,
+      "has_common_factor": false,
+      "is_valid": true,
+      "confidence": 0.981355932732854
+    },
+    {
+      "wallace_error": 0.19048592549739538,
+      "gcd": 1,
+      "has_common_factor": false,
+      "is_valid": false,
+      "confidence": 0.2380562980104185
+    },
+    {
+      "wallace_error": 0.6130894766356942,
+      "gcd": 3,
+      "has_common_factor": true,
+      "is_valid": false,
+      "confidence": 1.0
+    },
+    {
+      "wallace_error": 0.15581447999044984,
+      "gcd": 6,
+      "has_common_factor": true,
+      "is_valid": true,
+      "confidence": 0.37674208003820064
+    }
+  ],
+  "erdos_results": [
+    {
+      "has_solution": true,
+      "best_solution": {
+        "x": 2,
+        "y": 5,
+        "z": 10,
+        "sum": 0.7999999999999999,
+        "wallace_error": 15.798354589157173
+      },
+      "total_solutions": 1,
+      "wallace_error": 15.798354589157173,
+      "confidence": 0.0
+    },
+    {
+      "has_solution": true,
+      "best_solution": {
+        "x": 4,
+        "y": 4,
+        "z": 14,
+        "sum": 0.5714285714285714,
+        "wallace_error": 40.14774504809283
+      },
+      "total_solutions": 2,
+      "wallace_error": 40.14774504809283,
+      "confidence": 0.0
+    },
+    {
+      "has_solution": true,
+      "best_solution": {
+        "x": 7,
+        "y": 7,
+        "z": 13,
+        "sum": 0.3626373626373626,
+        "wallace_error": -26.57068645048265
+      },
+      "total_solutions": 11,
+      "wallace_error": -26.57068645048265,
+      "confidence": 0.0
+    },
+    {
+      "has_solution": true,
+      "best_solution": {
+        "x": 8,
+        "y": 10,
+        "z": 12,
+        "sum": 0.30833333333333335,
+        "wallace_error": -16.211972666826846
+      },
+      "total_solutions": 23,
+      "wallace_error": -16.211972666826846,
+      "confidence": 0.0
+    },
+    {
+      "has_solution": true,
+      "best_solution": {
+        "x": 11,
+        "y": 13,
+        "z": 15,
+        "sum": 0.23449883449883452,
+        "wallace_error": -10.586216857215344
+      },
+      "total_solutions": 66,
+      "wallace_error": -10.586216857215344,
+      "confidence": 0.0
+    },
+    {
+      "has_solution": true,
+      "best_solution": {
+        "x": 13,
+        "y": 14,
+        "z": 16,
+        "sum": 0.21085164835164835,
+        "wallace_error": -9.26683275962729
+      },
+      "total_solutions": 130,
+      "wallace_error": -9.26683275962729,
+      "confidence": 0.0
+    }
+  ],
+  "catalan_results": [
+    {
+      "lhs": -1.0,
+      "wallace_error": 1.8083625192229773,
+      "is_valid": true,
+      "confidence": 0.0
+    },
+    {
+      "lhs": 1.0,
+      "wallace_error": 0.19163748077702272,
+      "is_valid": true,
+      "confidence": 0.6167250384459546
+    }
+  ],
+  "success_rates": {
+    "fermat": 1.0,
+    "beal": 0.5,
+    "erdos_straus": 1.0,
+    "catalan": 1.0,
+    "overall": 0.875
+  },
+  "optimization_status": "FINAL_OPTIMIZED_WALLACE_TRANSFORM"
+}
