@@ -76,7 +76,7 @@ class PlotterConfig:
 
 
 class PlotterBackend:
-    """Backend integration for Mad Max and BladeBit plotters"""
+    """Backend integration for Mad Max, BladeBit, and Dr. Plotter"""
 
     def __init__(self):
         self.logger = self._setup_logging()
@@ -144,6 +144,39 @@ class PlotterBackend:
 
         return result
 
+    def execute_drplotter(self, config: PlotterConfig):
+        """Execute Dr. Plotter with given configuration"""
+        cmd = [
+            "dr_plotter",
+            "--tmp", config.tmp_dir,
+            "--final", config.final_dir,
+            "--farmer", config.farmer_key,
+            "--pool", config.pool_key,
+            "--threads", str(config.threads),
+            "--buckets", str(config.buckets),
+            "--count", str(config.count),
+            "--k", str(config.k_size)
+        ]
+
+        if config.tmp_dir2:
+            cmd.extend(["--tmp2", config.tmp_dir2])
+
+        if config.contract:
+            cmd.extend(["--contract", config.contract])
+
+        if config.compression > 0:
+            cmd.extend(["--compress", str(config.compression)])
+
+        self.logger.info(f"🔬 Executing Dr. Plotter: {' '.join(cmd)}")
+        result = subprocess.run(cmd, capture_output=True, text=True)
+
+        if result.returncode == 0:
+            self.logger.info("✅ Dr. Plotter plotting completed successfully")
+        else:
+            self.logger.error(f"❌ Dr. Plotter plotting failed: {result.stderr}")
+
+        return result
+
     def get_bladebit_compression_info(self):
         """Return BladeBit compression level information"""
         return {
@@ -185,6 +218,12 @@ class PlotterBackend:
                         "description": "CUDA mode requires GPU and 16GB+ RAM"
                     }
                 }
+            },
+            "drplotter": {
+                "temp1_space": 220,  # GB
+                "temp2_space": 110,  # GB
+                "ram_minimum": 4,    # GB
+                "description": "Dr. Plotter requires temp1 (220GB) and temp2 (110GB) directories with advanced optimization"
             }
         }
 
@@ -192,6 +231,8 @@ class PlotterBackend:
             return requirements["madmax"]
         elif plotter == "bladebit" and mode:
             return requirements["bladebit"]["modes"].get(mode, {})
+        elif plotter == "drplotter":
+            return requirements["drplotter"]
         else:
             return {}
 

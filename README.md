@@ -25,7 +25,7 @@
 - **GPU Acceleration**: CUDA support for F2 optimization
 - **Multi-Threading**: Parallel processing for maximum efficiency
 - **Resource Management**: Intelligent CPU, memory, and storage allocation
-- **Mad Max/BladeBit Integration**: Compatible with existing plotters
+- **Multi-Plotter Integration**: Compatible with Mad Max, BladeBit, and Dr. Plotter
 
 ### 🎯 **Farming Management**
 - **Pool Integration**: Connect to Chia pools
@@ -96,6 +96,9 @@ python squashplot.py --batch --input-dir /plots --output-dir /compressed --level
 
 # GPU acceleration
 python squashplot.py --gpu --input plot.plot --output compressed.plot --level 7
+
+# Dr. Plotter integration
+python squashplot.py --plotter drplotter --tmp /tmp --final /plots --farmer-key YOUR_KEY
 ```
 
 ### API Endpoints
@@ -125,10 +128,20 @@ curl http://localhost:5000/api/compression-levels
 - **Market Data**: Real-time Chia network information
 - **Analytics Engine**: Performance monitoring and insights
 
+### Plotter Integrations
+SquashPlot supports multiple plotting tools for maximum flexibility:
+
+- **Mad Max**: Fast plotting with excellent performance
+- **BladeBit**: GPU-accelerated plotting with compression support
+- **Dr. Plotter**: Advanced plotting with built-in optimization features
+
+The system automatically detects available plotters and selects the optimal one based on your configuration and system capabilities.
+
 ### Technology Stack
 - **Backend**: Python 3.9+, Flask, SQLAlchemy
 - **Frontend**: HTML5, CSS3, JavaScript, Chart.js
 - **Compression**: Zstandard, Brotli, LZ4, zlib, bz2, lzma
+- **Plotters**: Mad Max, BladeBit, Dr. Plotter integration
 - **Data**: JSON, SQLite, CSV export
 - **APIs**: RESTful endpoints, real-time updates
 
