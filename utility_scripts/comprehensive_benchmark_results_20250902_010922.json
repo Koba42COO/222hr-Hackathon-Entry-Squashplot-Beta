@@ -1,0 +1,281 @@
+{
+  "performance": {
+    "throughput_tests": {
+      "entropy_calculation": {
+        "total_time": 0.08210468292236328,
+        "operations": 10000,
+        "throughput_ops_sec": 121795.73252180782,
+        "avg_latency_ms": 0.008210468292236327,
+        "min_latency_ms": 0.00667572021484375,
+        "max_latency_ms": 0.10800361633300781,
+        "p95_latency_ms": 0.009775161743164062,
+        "p99_latency_ms": 0.012159347534179688
+      },
+      "wallace_transform": {
+        "total_time": 0.06660056114196777,
+        "operations": 5000,
+        "throughput_ops_sec": 75074.44253122505,
+        "avg_latency_ms": 0.013320112228393554,
+        "min_latency_ms": 0.010967254638671875,
+        "max_latency_ms": 0.04506111145019531,
+        "p95_latency_ms": 0.015974044799804688,
+        "p99_latency_ms": 0.019080638885498203
+      }
+    },
+    "latency_tests": {},
+    "parallel_tests": {
+      "threads_1": {
+        "n_threads": 1,
+        "total_time": 0.13872623443603516,
+        "total_operations": 100,
+        "throughput_ops_sec": 720.8441893238924,
+        "avg_latency_ms": 1.3872623443603516,
+        "successful_operations": 100,
+        "success_rate": 1.0
+      },
+      "threads_2": {
+        "n_threads": 2,
+        "total_time": 0.28952598571777344,
+        "total_operations": 100,
+        "throughput_ops_sec": 345.39214071609734,
+        "avg_latency_ms": 2.8952598571777344,
+        "successful_operations": 100,
+        "success_rate": 1.0
+      },
+      "threads_4": {
+        "n_threads": 4,
+        "total_time": 0.6434221267700195,
+        "total_operations": 100,
+        "throughput_ops_sec": 155.41896344472985,
+        "avg_latency_ms": 6.434221267700195,
+        "successful_operations": 100,
+        "success_rate": 1.0
+      },
+      "threads_8": {
+        "n_threads": 8,
+        "total_time": 1.1371111869812012,
+        "total_operations": 100,
+        "throughput_ops_sec": 87.94214773797069,
+        "avg_latency_ms": 11.371111869812012,
+        "successful_operations": 100,
+        "success_rate": 1.0
+      }
+    },
+    "batch_tests": {
+      "batch_10": {
+        "batch_size": 10,
+        "total_time": 0.13307690620422363,
+        "total_operations": 100,
+        "successful_operations": 100,
+        "success_rate": 1.0,
+        "throughput_ops_sec": 751.4451819802388,
+        "avg_latency_ms": 1.3307690620422363
+      },
+      "batch_50": {
+        "batch_size": 50,
+        "total_time": 0.13193869590759277,
+        "total_operations": 100,
+        "successful_operations": 100,
+        "success_rate": 1.0,
+        "throughput_ops_sec": 757.9277581312309,
+        "avg_latency_ms": 1.3193869590759277
+      },
+      "batch_100": {
+        "batch_size": 100,
+        "total_time": 0.13321495056152344,
+        "total_operations": 100,
+        "successful_operations": 100,
+        "success_rate": 1.0,
+        "throughput_ops_sec": 750.6664948527412,
+        "avg_latency_ms": 1.3321495056152344
+      },
+      "batch_500": {
+        "batch_size": 500,
+        "total_time": 0.6474609375,
+        "total_operations": 100,
+        "successful_operations": 500,
+        "success_rate": 5.0,
+        "throughput_ops_sec": 154.4494720965309,
+        "avg_latency_ms": 6.474609375
+      },
+      "batch_1000": {
+        "batch_size": 1000,
+        "total_time": 1.2433030605316162,
+        "total_operations": 100,
+        "successful_operations": 1000,
+        "success_rate": 10.0,
+        "throughput_ops_sec": 80.4309127633303,
+        "avg_latency_ms": 12.433030605316162
+      }
+    }
+  },
+  "accuracy": {
+    "numerical_stability": {
+      "total_tests": 100,
+      "nan_free_rate": 0.0,
+      "norm_preservation_rate": 0.0,
+      "avg_norm_1": 0.9999999678134919,
+      "avg_norm_2": NaN,
+      "avg_norm_3": NaN
+    },
+    "entropy_consistency": {
+      "total_tests": 500,
+      "avg_coefficient_of_variation": 0.0,
+      "max_coefficient_of_variation": 0.0,
+      "consistency_rate": 1.0,
+      "nan_free_rate": 1.0
+    },
+    "transform_effectiveness": {
+      "total_tests": 200,
+      "successful_transforms": 0,
+      "success_rate": 0.0,
+      "avg_entropy_reduction": NaN,
+      "avg_entropy_reduction_percent": NaN,
+      "avg_phase_sync_change": NaN,
+      "entropy_reduction_std": NaN,
+      "phase_sync_change_std": NaN
+    },
+    "phase_synchrony_accuracy": {}
+  },
+  "memory": {
+    "memory_usage_patterns": {
+      "total_measurements": 50,
+      "avg_memory_increase_mb": 0.0,
+      "max_memory_increase_mb": 0.0,
+      "avg_memory_leak_mb": 0.0,
+      "max_memory_leak_mb": 0.0,
+      "avg_cleanup_efficiency": 1.0,
+      "memory_stability": 0.0
+    },
+    "memory_efficiency": [
+      {
+        "batch_size": 10,
+        "time_seconds": 0.000431060791015625,
+        "memory_mb": 0.0,
+        "ops_per_second": 23198.58407079646,
+        "memory_per_op_kb": 0.0,
+        "efficiency_score": 23198.58407079646
+      },
+      {
+        "batch_size": 50,
+        "time_seconds": 0.0017421245574951172,
+        "memory_mb": 0.0,
+        "ops_per_second": 28700.588476803066,
+        "memory_per_op_kb": 0.0,
+        "efficiency_score": 28700.588476803066
+      },
+      {
+        "batch_size": 100,
+        "time_seconds": 0.003538846969604492,
+        "memory_mb": 0.0,
+        "ops_per_second": 28257.791551573133,
+        "memory_per_op_kb": 0.0,
+        "efficiency_score": 28257.791551573133
+      },
+      {
+        "batch_size": 200,
+        "time_seconds": 0.007078886032104492,
+        "memory_mb": 0.0,
+        "ops_per_second": 28253.03290559429,
+        "memory_per_op_kb": 0.0,
+        "efficiency_score": 28253.03290559429
+      }
+    ],
+    "memory_leaks": {},
+    "garbage_collection": {}
+  },
+  "scaling": {
+    "dimensionality_scaling": [
+      {
+        "dimensions": 7,
+        "time_seconds": 0.003715991973876953,
+        "memory_mb": 0.0,
+        "ops_per_second": 53821.42948800205,
+        "memory_per_op_kb": 0.0,
+        "complexity_ratio": 0.3333333333333333,
+        "performance_efficiency": 7688.77564114315,
+        "memory_efficiency": 0.0
+      },
+      {
+        "dimensions": 13,
+        "time_seconds": 0.0037992000579833984,
+        "memory_mb": 0.0,
+        "ops_per_second": 52642.66080953875,
+        "memory_per_op_kb": 0.0,
+        "complexity_ratio": 0.6190476190476191,
+        "performance_efficiency": 4049.4354468875963,
+        "memory_efficiency": 0.0
+      },
+      {
+        "dimensions": 21,
+        "time_seconds": 0.0037381649017333984,
+        "memory_mb": 0.0,
+        "ops_per_second": 53502.187639517826,
+        "memory_per_op_kb": 0.0,
+        "complexity_ratio": 1.0,
+        "performance_efficiency": 2547.72322092942,
+        "memory_efficiency": 0.0
+      },
+      {
+        "dimensions": 34,
+        "time_seconds": 0.0036258697509765625,
+        "memory_mb": 0.0,
+        "ops_per_second": 55159.179379274065,
+        "memory_per_op_kb": 0.0,
+        "complexity_ratio": 1.619047619047619,
+        "performance_efficiency": 1622.3288052727667,
+        "memory_efficiency": 0.0
+      },
+      {
+        "dimensions": 55,
+        "time_seconds": 0.0035462379455566406,
+        "memory_mb": 0.0,
+        "ops_per_second": 56397.79480973511,
+        "memory_per_op_kb": 0.0,
+        "complexity_ratio": 2.619047619047619,
+        "performance_efficiency": 1025.4144510860929,
+        "memory_efficiency": 0.0
+      },
+      {
+        "dimensions": 89,
+        "time_seconds": 0.003686189651489258,
+        "memory_mb": 0.0,
+        "ops_per_second": 54256.56813918893,
+        "memory_per_op_kb": 0.0,
+        "complexity_ratio": 4.238095238095238,
+        "performance_efficiency": 609.6243611144823,
+        "memory_efficiency": 0.0
+      }
+    ],
+    "performance_vs_dimension": [],
+    "memory_vs_dimension": []
+  },
+  "gpu": {
+    "status": "skipped",
+    "reason": "No GPU available"
+  },
+  "stress": {
+    "long_running_stability": {
+      "total_iterations": 1000,
+      "successful_iterations": 1000,
+      "success_rate": 1.0,
+      "avg_entropy": 2.6200717396736146,
+      "entropy_stability": 0.12133606665369485,
+      "total_time_seconds": 1.2827329635620117,
+      "avg_time_per_iteration_ms": 1.2827329635620117
+    },
+    "memory_stress_test": {},
+    "numerical_stress_test": {}
+  },
+  "comparative": {
+    "numpy_vs_torch_comparison": {
+      "numpy_avg_time_ms": 0.0036821365356445312,
+      "torch_avg_time_ms": 0.008002042770385742,
+      "torch_speedup": 0.46014956946637664,
+      "numpy_throughput": 271581.4555814556,
+      "torch_throughput": 124968.08986085869
+    },
+    "single_vs_multi_threading": {},
+    "eager_vs_lazy_evaluation": {}
+  }
+}

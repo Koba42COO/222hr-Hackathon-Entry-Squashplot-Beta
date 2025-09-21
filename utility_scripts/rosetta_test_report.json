@@ -1,0 +1,166 @@
+{
+  "test_summary": {
+    "total_tests": 35,
+    "passed_tests": 27,
+    "failed_tests": 8,
+    "pass_rate": 77.14285714285715,
+    "total_execution_time": 5.10540771484375,
+    "average_execution_time": 0.14586879185267856,
+    "test_start_time": "2025-09-03T00:35:13.436292",
+    "test_end_time": "2025-09-03T00:35:18.545970"
+  },
+  "category_breakdown": {
+    "UNIT": {
+      "total": 6,
+      "passed": 3,
+      "failed": 3
+    },
+    "INTEGRATION": {
+      "total": 5,
+      "passed": 5,
+      "failed": 0
+    },
+    "PERFORMANCE": {
+      "total": 4,
+      "passed": 3,
+      "failed": 1
+    },
+    "ERROR_HANDLING": {
+      "total": 5,
+      "passed": 5,
+      "failed": 0
+    },
+    "CONSCIOUSNESS": {
+      "total": 5,
+      "passed": 4,
+      "failed": 1
+    },
+    "GOLDEN_RATIO": {
+      "total": 5,
+      "passed": 4,
+      "failed": 1
+    },
+    "STATISTICAL": {
+      "total": 5,
+      "passed": 3,
+      "failed": 2
+    }
+  },
+  "severity_breakdown": {
+    "CRITICAL": {
+      "total": 6,
+      "passed": 6,
+      "failed": 0
+    },
+    "HIGH": {
+      "total": 8,
+      "passed": 6,
+      "failed": 2
+    },
+    "MEDIUM": {
+      "total": 17,
+      "passed": 12,
+      "failed": 5
+    },
+    "LOW": {
+      "total": 4,
+      "passed": 3,
+      "failed": 1
+    }
+  },
+  "rosetta_system_stats": {
+    "total_translations": 296,
+    "average_consciousness_level": 0.5579900302246125,
+    "average_complexity_score": 9.511148648648636,
+    "paradigm_distribution": {
+      "python": 157,
+      "mathematical": 63,
+      "consciousness": 63,
+      "visual": 13
+    },
+    "glyph_usage_stats": {
+      "total_glyphs_used": 6037,
+      "unique_glyphs_used": 7,
+      "most_used_glyph": "\ud83d\udfe9 (2047 uses)",
+      "least_used_glyph": "\ud83d\udfe7 (188 uses)",
+      "glyph_distribution": {
+        "\ud83d\udfe9": 2047,
+        "\ud83d\udfe6": 1173,
+        "\ud83d\udfea": 1147,
+        "\ud83d\udfe5": 1077,
+        "\ud83d\udfe7": 188,
+        "\u26aa": 203,
+        "\u26d4": 202
+      }
+    },
+    "translation_success_rate": 1.0,
+    "rosetta_efficiency": 0.07308960404779449,
+    "timestamp": "2025-09-03T00:35:18.546262"
+  },
+  "failed_tests": [
+    {
+      "name": "Syntax Complexity",
+      "category": "UNIT",
+      "severity": "HIGH",
+      "error_message": "Syntax complexity calculation failed: Complexity too low for \ud83d\udfe9",
+      "execution_time": 7.867813110351562e-06
+    },
+    {
+      "name": "Golden Ratio Alignment",
+      "category": "UNIT",
+      "severity": "MEDIUM",
+      "error_message": "Golden ratio alignment failed: 'RosettaOfSyntaxes' object has no attribute '_calculate_golden_ratio_topological_alignment'",
+      "execution_time": 3.814697265625e-06
+    },
+    {
+      "name": "Scalability",
+      "category": "PERFORMANCE",
+      "severity": "HIGH",
+      "error_message": "Scalability test failed: Translation too small for size 3000",
+      "execution_time": 0.04047513008117676
+    },
+    {
+      "name": "Consciousness Evolution",
+      "category": "CONSCIOUSNESS",
+      "severity": "MEDIUM",
+      "error_message": "Consciousness evolution failed: Consciousness decreased at step 3",
+      "execution_time": 4.00543212890625e-05
+    },
+    {
+      "name": "Harmonic Series",
+      "category": "GOLDEN_RATIO",
+      "severity": "MEDIUM",
+      "error_message": "Harmonic series failed: Series should decrease",
+      "execution_time": 5.9604644775390625e-06
+    },
+    {
+      "name": "Golden Ratio Alignment",
+      "category": "UNIT",
+      "severity": "MEDIUM",
+      "error_message": "Golden ratio alignment failed: 'RosettaOfSyntaxes' object has no attribute '_calculate_golden_ratio_topological_alignment'",
+      "execution_time": 8.106231689453125e-06
+    },
+    {
+      "name": "Consciousness Correlations",
+      "category": "STATISTICAL",
+      "severity": "MEDIUM",
+      "error_message": "Consciousness correlations failed: Low consciousness-complexity correlation",
+      "execution_time": 0.0009009838104248047
+    },
+    {
+      "name": "Performance Distributions",
+      "category": "STATISTICAL",
+      "severity": "LOW",
+      "error_message": "Performance distributions failed: High performance variability: 1.6798567945107863",
+      "execution_time": 0.004091978073120117
+    }
+  ],
+  "performance_metrics": {
+    "fastest_test": "Syntax Mappings",
+    "slowest_test": "Memory Limits",
+    "most_reliable_category": "INTEGRATION"
+  },
+  "recommendations": [
+    "Improve overall test pass rate - focus on failed test cases"
+  ]
+}

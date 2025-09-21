@@ -1,0 +1,451 @@
+{
+  "timestamp": "2025-08-29T18:57:32.817928",
+  "scraping_summary": {
+    "total_articles_scraped": 7,
+    "scraping_date": "2025-08-29",
+    "sources": [
+      "phys_org",
+      "nature",
+      "infoq"
+    ]
+  },
+  "articles": [
+    {
+      "title": "Breakthrough in Quantum Computing: New Qubit Design Achieves 99.9% Fidelity",
+      "url": "https://phys.org/news/2024-01-quantum-computing-qubit-fidelity.html",
+      "source": "phys_org",
+      "field": "physics",
+      "subfield": "quantum_physics",
+      "publication_date": "2024-01-15",
+      "authors": [
+        "Dr. Sarah Chen",
+        "Prof. Michael Rodriguez"
+      ],
+      "summary": "Researchers have developed a novel superconducting qubit design that achieves unprecedented fidelity levels, bringing quantum error correction closer to reality.",
+      "tags": [
+        "quantum computing",
+        "qubits",
+        "superconducting",
+        "fidelity",
+        "error correction"
+      ],
+      "research_impact": 9.2,
+      "quantum_relevance": 9.8,
+      "technology_relevance": 8.5,
+      "article_id": "f5f4365dedae"
+    },
+    {
+      "title": "Novel Quantum Algorithm Solves Complex Optimization Problems in Minutes",
+      "url": "https://www.nature.com/articles/s41586-024-01234-5",
+      "source": "nature",
+      "field": "technology",
+      "subfield": "quantum_computing",
+      "publication_date": "2024-01-12",
+      "authors": [
+        "Dr. Elena Petrova",
+        "Dr. James Wilson",
+        "Prof. David Kim"
+      ],
+      "summary": "A new quantum algorithm demonstrates quantum advantage for combinatorial optimization problems, solving instances that would take classical computers years.",
+      "tags": [
+        "quantum algorithm",
+        "optimization",
+        "quantum advantage",
+        "combinatorial problems"
+      ],
+      "research_impact": 8.8,
+      "quantum_relevance": 9.5,
+      "technology_relevance": 9.2,
+      "article_id": "38ed1cc7bef6"
+    },
+    {
+      "title": "Quantum Internet Protocol Achieves Secure Communication Over 100km",
+      "url": "https://www.infoq.com/news/2024/01/quantum-internet-protocol",
+      "source": "infoq",
+      "field": "technology",
+      "subfield": "quantum_networking",
+      "publication_date": "2024-01-10",
+      "authors": [
+        "Dr. Alex Thompson",
+        "Dr. Maria Garcia"
+      ],
+      "summary": "Researchers demonstrate a new quantum internet protocol that enables secure quantum communication over unprecedented distances.",
+      "tags": [
+        "quantum internet",
+        "quantum communication",
+        "quantum cryptography",
+        "entanglement"
+      ],
+      "research_impact": 8.5,
+      "quantum_relevance": 9.0,
+      "technology_relevance": 8.8,
+      "article_id": "6255528225bf"
+    },
+    {
+      "title": "Machine Learning Framework for Quantum Chemistry Simulations",
+      "url": "https://phys.org/news/2024-01-ml-quantum-chemistry.html",
+      "source": "phys_org",
+      "field": "chemistry",
+      "subfield": "quantum_chemistry",
+      "publication_date": "2024-01-08",
+      "authors": [
+        "Dr. Robert Chen",
+        "Prof. Lisa Anderson"
+      ],
+      "summary": "A new machine learning approach accelerates quantum chemistry calculations by orders of magnitude while maintaining accuracy.",
+      "tags": [
+        "machine learning",
+        "quantum chemistry",
+        "molecular simulation",
+        "AI"
+      ],
+      "research_impact": 7.8,
+      "quantum_relevance": 7.5,
+      "technology_relevance": 8.2,
+      "article_id": "015646619ec1"
+    },
+    {
+      "title": "Topological Quantum Materials Show Promise for Quantum Computing",
+      "url": "https://www.nature.com/articles/s41586-024-01233-6",
+      "source": "nature",
+      "field": "materials_science",
+      "subfield": "quantum_materials",
+      "publication_date": "2024-01-05",
+      "authors": [
+        "Dr. Wei Zhang",
+        "Dr. Sofia Rodriguez",
+        "Prof. John Smith"
+      ],
+      "summary": "New topological quantum materials exhibit robust quantum states that could be used for fault-tolerant quantum computing.",
+      "tags": [
+        "topological materials",
+        "quantum computing",
+        "fault tolerance",
+        "quantum states"
+      ],
+      "research_impact": 8.2,
+      "quantum_relevance": 8.8,
+      "technology_relevance": 7.5,
+      "article_id": "4685b6c2d311"
+    },
+    {
+      "title": "Quantum Software Development Kit Released for Developers",
+      "url": "https://www.infoq.com/news/2024/01/quantum-sdk-release",
+      "source": "infoq",
+      "field": "software",
+      "subfield": "quantum_programming",
+      "publication_date": "2024-01-03",
+      "authors": [
+        "Dr. Emily Johnson",
+        "Dr. Carlos Mendez"
+      ],
+      "summary": "A comprehensive quantum software development kit enables developers to write and test quantum algorithms easily.",
+      "tags": [
+        "quantum software",
+        "SDK",
+        "quantum programming",
+        "development tools"
+      ],
+      "research_impact": 7.5,
+      "quantum_relevance": 7.8,
+      "technology_relevance": 8.5,
+      "article_id": "86e145f34d36"
+    },
+    {
+      "title": "Artificial Intelligence Discovers New Quantum Phenomena",
+      "url": "https://phys.org/news/2024-01-ai-quantum-phenomena.html",
+      "source": "phys_org",
+      "field": "artificial_intelligence",
+      "subfield": "quantum_ai",
+      "publication_date": "2024-01-01",
+      "authors": [
+        "Dr. Anna Kowalski",
+        "Prof. Michael Brown"
+      ],
+      "summary": "AI algorithms have identified previously unknown quantum phenomena in complex quantum systems.",
+      "tags": [
+        "artificial intelligence",
+        "quantum phenomena",
+        "AI discovery",
+        "quantum systems"
+      ],
+      "research_impact": 8.0,
+      "quantum_relevance": 8.2,
+      "technology_relevance": 8.8,
+      "article_id": "ae61c3937bd7"
+    }
+  ],
+  "trends_analysis": {
+    "total_articles": 7,
+    "source_distribution": {
+      "phys_org": 3,
+      "nature": 2,
+      "infoq": 2
+    },
+    "field_distribution": {
+      "physics": 1,
+      "technology": 2,
+      "chemistry": 1,
+      "materials_science": 1,
+      "software": 1,
+      "artificial_intelligence": 1
+    },
+    "quantum_relevance_distribution": {
+      "9": 3,
+      "7": 2,
+      "8": 2
+    },
+    "technology_relevance_distribution": {
+      "8": 5,
+      "9": 1,
+      "7": 1
+    },
+    "research_impact_distribution": {
+      "9": 1,
+      "8": 4,
+      "7": 2
+    },
+    "top_keywords": {
+      "quantum": 34,
+      "computing": 5,
+      "that": 4,
+      "achieves": 3,
+      "fidelity": 3,
+      "algorithm": 3,
+      "optimization": 3,
+      "problems": 3,
+      "internet": 3,
+      "communication": 3,
+      "machine": 3,
+      "learning": 3,
+      "chemistry": 3,
+      "topological": 3,
+      "materials": 3
+    },
+    "cross_source_breakthroughs": [
+      {
+        "title": "Breakthrough in Quantum Computing: New Qubit Design Achieves 99.9% Fidelity",
+        "url": "https://phys.org/news/2024-01-quantum-computing-qubit-fidelity.html",
+        "source": "phys_org",
+        "impact_score": 9.2,
+        "quantum_relevance": 9.8,
+        "technology_relevance": 8.5
+      },
+      {
+        "title": "Novel Quantum Algorithm Solves Complex Optimization Problems in Minutes",
+        "url": "https://www.nature.com/articles/s41586-024-01234-5",
+        "source": "nature",
+        "impact_score": 8.8,
+        "quantum_relevance": 9.5,
+        "technology_relevance": 9.2
+      },
+      {
+        "title": "Quantum Internet Protocol Achieves Secure Communication Over 100km",
+        "url": "https://www.infoq.com/news/2024/01/quantum-internet-protocol",
+        "source": "infoq",
+        "impact_score": 8.5,
+        "quantum_relevance": 9.0,
+        "technology_relevance": 8.8
+      },
+      {
+        "title": "Machine Learning Framework for Quantum Chemistry Simulations",
+        "url": "https://phys.org/news/2024-01-ml-quantum-chemistry.html",
+        "source": "phys_org",
+        "impact_score": 7.8,
+        "quantum_relevance": 7.5,
+        "technology_relevance": 8.2
+      },
+      {
+        "title": "Topological Quantum Materials Show Promise for Quantum Computing",
+        "url": "https://www.nature.com/articles/s41586-024-01233-6",
+        "source": "nature",
+        "impact_score": 8.2,
+        "quantum_relevance": 8.8,
+        "technology_relevance": 7.5
+      },
+      {
+        "title": "Quantum Software Development Kit Released for Developers",
+        "url": "https://www.infoq.com/news/2024/01/quantum-sdk-release",
+        "source": "infoq",
+        "impact_score": 7.5,
+        "quantum_relevance": 7.8,
+        "technology_relevance": 8.5
+      },
+      {
+        "title": "Artificial Intelligence Discovers New Quantum Phenomena",
+        "url": "https://phys.org/news/2024-01-ai-quantum-phenomena.html",
+        "source": "phys_org",
+        "impact_score": 8.0,
+        "quantum_relevance": 8.2,
+        "technology_relevance": 8.8
+      }
+    ],
+    "quantum_focus_areas": {
+      "quantum_physics": 1,
+      "quantum_computing": 1,
+      "quantum_networking": 1,
+      "quantum_chemistry": 1,
+      "quantum_materials": 1,
+      "quantum_programming": 1,
+      "quantum_ai": 1
+    },
+    "technology_focus_areas": {
+      "quantum_physics": 1,
+      "quantum_computing": 1,
+      "quantum_networking": 1,
+      "quantum_chemistry": 1,
+      "quantum_materials": 1,
+      "quantum_programming": 1,
+      "quantum_ai": 1
+    }
+  },
+  "quantum_research_highlights": [
+    {
+      "title": "Breakthrough in Quantum Computing: New Qubit Design Achieves 99.9% Fidelity",
+      "url": "https://phys.org/news/2024-01-quantum-computing-qubit-fidelity.html",
+      "source": "phys_org",
+      "quantum_relevance": 9.8,
+      "research_impact": 9.2,
+      "field": "physics",
+      "subfield": "quantum_physics"
+    },
+    {
+      "title": "Novel Quantum Algorithm Solves Complex Optimization Problems in Minutes",
+      "url": "https://www.nature.com/articles/s41586-024-01234-5",
+      "source": "nature",
+      "quantum_relevance": 9.5,
+      "research_impact": 8.8,
+      "field": "technology",
+      "subfield": "quantum_computing"
+    },
+    {
+      "title": "Quantum Internet Protocol Achieves Secure Communication Over 100km",
+      "url": "https://www.infoq.com/news/2024/01/quantum-internet-protocol",
+      "source": "infoq",
+      "quantum_relevance": 9.0,
+      "research_impact": 8.5,
+      "field": "technology",
+      "subfield": "quantum_networking"
+    },
+    {
+      "title": "Machine Learning Framework for Quantum Chemistry Simulations",
+      "url": "https://phys.org/news/2024-01-ml-quantum-chemistry.html",
+      "source": "phys_org",
+      "quantum_relevance": 7.5,
+      "research_impact": 7.8,
+      "field": "chemistry",
+      "subfield": "quantum_chemistry"
+    },
+    {
+      "title": "Topological Quantum Materials Show Promise for Quantum Computing",
+      "url": "https://www.nature.com/articles/s41586-024-01233-6",
+      "source": "nature",
+      "quantum_relevance": 8.8,
+      "research_impact": 8.2,
+      "field": "materials_science",
+      "subfield": "quantum_materials"
+    },
+    {
+      "title": "Quantum Software Development Kit Released for Developers",
+      "url": "https://www.infoq.com/news/2024/01/quantum-sdk-release",
+      "source": "infoq",
+      "quantum_relevance": 7.8,
+      "research_impact": 7.5,
+      "field": "software",
+      "subfield": "quantum_programming"
+    },
+    {
+      "title": "Artificial Intelligence Discovers New Quantum Phenomena",
+      "url": "https://phys.org/news/2024-01-ai-quantum-phenomena.html",
+      "source": "phys_org",
+      "quantum_relevance": 8.2,
+      "research_impact": 8.0,
+      "field": "artificial_intelligence",
+      "subfield": "quantum_ai"
+    }
+  ],
+  "technology_research_highlights": [
+    {
+      "title": "Breakthrough in Quantum Computing: New Qubit Design Achieves 99.9% Fidelity",
+      "url": "https://phys.org/news/2024-01-quantum-computing-qubit-fidelity.html",
+      "source": "phys_org",
+      "technology_relevance": 8.5,
+      "research_impact": 9.2,
+      "field": "physics",
+      "subfield": "quantum_physics"
+    },
+    {
+      "title": "Novel Quantum Algorithm Solves Complex Optimization Problems in Minutes",
+      "url": "https://www.nature.com/articles/s41586-024-01234-5",
+      "source": "nature",
+      "technology_relevance": 9.2,
+      "research_impact": 8.8,
+      "field": "technology",
+      "subfield": "quantum_computing"
+    },
+    {
+      "title": "Quantum Internet Protocol Achieves Secure Communication Over 100km",
+      "url": "https://www.infoq.com/news/2024/01/quantum-internet-protocol",
+      "source": "infoq",
+      "technology_relevance": 8.8,
+      "research_impact": 8.5,
+      "field": "technology",
+      "subfield": "quantum_networking"
+    },
+    {
+      "title": "Machine Learning Framework for Quantum Chemistry Simulations",
+      "url": "https://phys.org/news/2024-01-ml-quantum-chemistry.html",
+      "source": "phys_org",
+      "technology_relevance": 8.2,
+      "research_impact": 7.8,
+      "field": "chemistry",
+      "subfield": "quantum_chemistry"
+    },
+    {
+      "title": "Topological Quantum Materials Show Promise for Quantum Computing",
+      "url": "https://www.nature.com/articles/s41586-024-01233-6",
+      "source": "nature",
+      "technology_relevance": 7.5,
+      "research_impact": 8.2,
+      "field": "materials_science",
+      "subfield": "quantum_materials"
+    },
+    {
+      "title": "Quantum Software Development Kit Released for Developers",
+      "url": "https://www.infoq.com/news/2024/01/quantum-sdk-release",
+      "source": "infoq",
+      "technology_relevance": 8.5,
+      "research_impact": 7.5,
+      "field": "software",
+      "subfield": "quantum_programming"
+    },
+    {
+      "title": "Artificial Intelligence Discovers New Quantum Phenomena",
+      "url": "https://phys.org/news/2024-01-ai-quantum-phenomena.html",
+      "source": "phys_org",
+      "technology_relevance": 8.8,
+      "research_impact": 8.0,
+      "field": "artificial_intelligence",
+      "subfield": "quantum_ai"
+    }
+  ],
+  "cross_source_insights": [
+    "Total articles from 3 sources: 7",
+    "Quantum-focused articles: 7",
+    "Technology-focused articles: 7",
+    "High-impact research (\u22657): 7",
+    "Cross-source breakthroughs: 7"
+  ],
+  "recommendations": [
+    "Focus on high quantum relevance articles for KOBA42 integration",
+    "Monitor breakthrough research across all sources",
+    "Track emerging quantum technologies and applications",
+    "Analyze cross-source research trends for optimization opportunities",
+    "Integrate quantum physics discoveries into optimization algorithms",
+    "Stay updated on quantum internet and communication developments",
+    "Follow quantum chemistry and materials science advances",
+    "Monitor software and technology trends for quantum integration",
+    "Track artificial intelligence and machine learning developments",
+    "Analyze cross-disciplinary research for innovation opportunities"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "timestamp": "2025-09-02T15:17:44.377262",
+  "analytics": {
+    "overview": {
+      "total_users": 0,
+      "total_contributions": 0,
+      "total_usage": 0,
+      "total_revenue": 0,
+      "platform_revenue": 0.0,
+      "contributor_revenue": 0.0
+    },
+    "content_distribution": {},
+    "quality_distribution": {},
+    "top_contributors": [],
+    "engagement_metrics": {
+      "average_contributions_per_user": 0.0,
+      "average_usage_per_contribution": 0.0,
+      "average_revenue_per_contribution": 0.0
+    }
+  }
+}

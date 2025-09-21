@@ -1,0 +1,378 @@
+{
+  "n8n_workflows": {
+    "academic_research_workflow": {
+      "name": "Academic Research Discovery",
+      "description": "Automated discovery of new academic subjects from research papers and conferences",
+      "workflow_id": "academic-research-workflow",
+      "nodes": [
+        {
+          "name": "ArXiv Scraper",
+          "type": "n8n-nodes-base.httpRequest",
+          "parameters": {
+            "url": "https://arxiv.org/search/?query=artificial+intelligence&sortBy=submittedDate&sortOrder=descending",
+            "method": "GET",
+            "responseFormat": "json"
+          }
+        },
+        {
+          "name": "Nature Scraper",
+          "type": "n8n-nodes-base.httpRequest",
+          "parameters": {
+            "url": "https://www.nature.com/search?q=emerging+technologies&order=date_desc",
+            "method": "GET"
+          }
+        },
+        {
+          "name": "Science Magazine",
+          "type": "n8n-nodes-base.httpRequest",
+          "parameters": {
+            "url": "https://www.science.org/search?q=cutting+edge+research&sort=date",
+            "method": "GET"
+          }
+        },
+        {
+          "name": "Subject Extractor",
+          "type": "n8n-nodes-base.function",
+          "parameters": {
+            "functionCode": `
+              const papers = $node['ArXiv Scraper'].json.data || [];
+              const nature = $node['Nature Scraper'].json.data || [];
+              const science = $node['Science Magazine'].json.data || [];
+
+              const allContent = [...papers, ...nature, ...science];
+
+              const subjects = [];
+              const keywords = [
+                'machine learning', 'artificial intelligence', 'quantum computing',
+                'neuroscience', 'biotechnology', 'cryptography', 'blockchain',
+                'autonomous systems', 'robotics', 'cybersecurity'
+              ];
+
+              for (const item of allContent) {
+                const title = item.title || '';
+                const abstract = item.abstract || '';
+
+                for (const keyword of keywords) {
+                  if (title.toLowerCase().includes(keyword) ||
+                      abstract.toLowerCase().includes(keyword)) {
+                    subjects.push({
+                      name: title.toLowerCase().replace(/[^a-z0-9]/g, '_'),
+                      category: keyword,
+                      difficulty: 'expert',
+                      description: abstract.substring(0, 200),
+                      sources: ['arxiv', 'nature', 'science'],
+                      relevance_score: 0.9,
+                      discovery_source: 'academic_research'
+                    });
+                    break;
+                  }
+                }
+              }
+
+              return { subjects: subjects };
+            `
+          }
+        },
+        {
+          "name": "Moebius API",
+          "type": "n8n-nodes-base.httpRequest",
+          "parameters": {
+            "url": "http://localhost:8000/api/discovery/add_subjects",
+            "method": "POST",
+            "body": "={{ $node['Subject Extractor'].json }}",
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          }
+        }
+      ],
+      "connections": {
+        "ArXiv Scraper": ["Subject Extractor"],
+        "Nature Scraper": ["Subject Extractor"],
+        "Science Magazine": ["Subject Extractor"],
+        "Subject Extractor": ["Moebius API"]
+      },
+      "schedule": "0 */6 * * *",
+      "active": true
+    },
+
+    "tech_trends_workflow": {
+      "name": "Technology Trends Discovery",
+      "description": "Discover trending technologies from social media and tech news",
+      "workflow_id": "tech-trends-workflow",
+      "nodes": [
+        {
+          "name": "Twitter Search",
+          "type": "n8n-nodes-base.twitter",
+          "parameters": {
+            "operation": "search",
+            "query": "#AI #MachineLearning #EmergingTech -filter:replies",
+            "limit": 100
+          }
+        },
+        {
+          "name": "Reddit Scraper",
+          "type": "n8n-nodes-base.httpRequest",
+          "parameters": {
+            "url": "https://www.reddit.com/r/MachineLearning/hot.json?limit=25",
+            "method": "GET"
+          }
+        },
+        {
+          "name": "HackerNews",
+          "type": "n8n-nodes-base.httpRequest",
+          "parameters": {
+            "url": "https://hacker-news.firebaseio.com/v0/topstories.json",
+            "method": "GET"
+          }
+        },
+        {
+          "name": "Trend Analyzer",
+          "type": "n8n-nodes-base.function",
+          "parameters": {
+            "functionCode": `
+              const twitter = $node['Twitter Search'].json.data || [];
+              const reddit = $node['Reddit Scraper'].json.data || [];
+              const hn = $node['HackerNews'].json.data || [];
+
+              const trends = {};
+              const allItems = [...twitter, ...reddit.data.children || [], ...hn];
+
+              for (const item of allItems) {
+                const text = item.text || item.title || item.selftext || '';
+                const hashtags = text.match(/#\\w+/g) || [];
+
+                for (const hashtag of hashtags) {
+                  const cleanTag = hashtag.toLowerCase().replace('#', '');
+                  trends[cleanTag] = (trends[cleanTag] || 0) + 1;
+                }
+              }
+
+              const topTrends = Object.entries(trends)
+                .sort(([,a], [,b]) => b - a)
+                .slice(0, 10)
+                .map(([trend, count]) => ({
+                  name: trend,
+                  category: 'emerging_technology',
+                  difficulty: 'advanced',
+                  description: \`Trending technology: \${trend}\`,
+                  sources: ['twitter', 'reddit', 'hackernews'],
+                  trend_score: count / 100,
+                  relevance_score: 0.85
+                }));
+
+              return { trends: topTrends };
+            `
+          }
+        },
+        {
+          "name": "Moebius API",
+          "type": "n8n-nodes-base.httpRequest",
+          "parameters": {
+            "url": "http://localhost:8000/api/discovery/add_trends",
+            "method": "POST",
+            "body": "={{ $node['Trend Analyzer'].json }}",
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          }
+        }
+      ],
+      "connections": {
+        "Twitter Search": ["Trend Analyzer"],
+        "Reddit Scraper": ["Trend Analyzer"],
+        "HackerNews": ["Trend Analyzer"],
+        "Trend Analyzer": ["Moebius API"]
+      },
+      "schedule": "0 */2 * * *",
+      "active": true
+    },
+
+    "github_trends_workflow": {
+      "name": "GitHub Repository Analysis",
+      "description": "Analyze trending GitHub repositories for emerging technologies",
+      "workflow_id": "github-trends-workflow",
+      "nodes": [
+        {
+          "name": "GitHub Trending",
+          "type": "n8n-nodes-base.httpRequest",
+          "parameters": {
+            "url": "https://api.github.com/search/repositories?q=stars:>1000&sort=stars&order=desc&per_page=50",
+            "method": "GET",
+            "headers": {
+              "Authorization": "Bearer {{ $env.GITHUB_TOKEN }}",
+              "Accept": "application/vnd.github.v3+json"
+            }
+          }
+        },
+        {
+          "name": "Repository Analyzer",
+          "type": "n8n-nodes-base.function",
+          "parameters": {
+            "functionCode": `
+              const repos = $node['GitHub Trending'].json.items || [];
+
+              const techSubjects = [];
+              const techKeywords = {
+                'machine-learning': 'machine_learning',
+                'deep-learning': 'deep_learning',
+                'neural-network': 'neural_networks',
+                'quantum': 'quantum_computing',
+                'cryptography': 'cryptography',
+                'blockchain': 'blockchain',
+                'autonomous': 'robotics',
+                'cybersecurity': 'cybersecurity',
+                'rust': 'systems_programming',
+                'go-lang': 'distributed_systems'
+              };
+
+              for (const repo of repos) {
+                const name = repo.name.toLowerCase();
+                const description = repo.description || '';
+                const language = repo.language?.toLowerCase() || '';
+
+                for (const [keyword, category] of Object.entries(techKeywords)) {
+                  if (name.includes(keyword) || description.includes(keyword) || language === keyword) {
+                    techSubjects.push({
+                      name: repo.name.replace(/[^a-zA-Z0-9]/g, '_'),
+                      category: category,
+                      difficulty: repo.stargazers_count > 50000 ? 'expert' : 'advanced',
+                      description: description.substring(0, 200),
+                      sources: [repo.html_url],
+                      github_stars: repo.stargazers_count,
+                      relevance_score: Math.min(repo.stargazers_count / 100000, 0.95),
+                      language: language
+                    });
+                    break;
+                  }
+                }
+              }
+
+              return { repositories: techSubjects };
+            `
+          }
+        },
+        {
+          "name": "Moebius API",
+          "type": "n8n-nodes-base.httpRequest",
+          "parameters": {
+            "url": "http://localhost:8000/api/discovery/add_repositories",
+            "method": "POST",
+            "body": "={{ $node['Repository Analyzer'].json }}",
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          }
+        }
+      ],
+      "connections": {
+        "GitHub Trending": ["Repository Analyzer"],
+        "Repository Analyzer": ["Moebius API"]
+      },
+      "schedule": "0 */4 * * *",
+      "active": true
+    },
+
+    "research_papers_workflow": {
+      "name": "Research Papers Discovery",
+      "description": "Discover new research papers and extract novel subjects",
+      "workflow_id": "research-papers-workflow",
+      "nodes": [
+        {
+          "name": "Semantic Scholar",
+          "type": "n8n-nodes-base.httpRequest",
+          "parameters": {
+            "url": "https://api.semanticscholar.org/graph/v1/paper/search?query=artificial+intelligence&limit=50&fields=title,abstract,year,citationCount",
+            "method": "GET"
+          }
+        },
+        {
+          "name": "Paper Analyzer",
+          "type": "n8n-nodes-base.function",
+          "parameters": {
+            "functionCode": `
+              const papers = $node['Semantic Scholar'].json.data || [];
+
+              const subjects = [];
+              const novelTopics = [
+                'federated learning', 'neuromorphic computing', 'quantum ml',
+                'causal inference', 'adversarial robustness', 'continual learning',
+                'meta-learning', 'neural architecture search', 'automated ml'
+              ];
+
+              for (const paper of papers) {
+                const title = paper.title || '';
+                const abstract = paper.abstract || '';
+
+                for (const topic of novelTopics) {
+                  if (title.toLowerCase().includes(topic) ||
+                      abstract.toLowerCase().includes(topic)) {
+                    subjects.push({
+                      name: title.toLowerCase().replace(/[^a-zA-Z0-9]/g, '_'),
+                      category: 'research_' + topic.replace(' ', '_'),
+                      difficulty: 'expert',
+                      description: abstract.substring(0, 250),
+                      sources: ['semantic_scholar', 'arxiv'],
+                      citations: paper.citationCount || 0,
+                      relevance_score: Math.min((paper.citationCount || 0) / 1000, 0.95),
+                      year: paper.year
+                    });
+                    break;
+                  }
+                }
+              }
+
+              return { papers: subjects };
+            `
+          }
+        },
+        {
+          "name": "Moebius API",
+          "type": "n8n-nodes-base.httpRequest",
+          "parameters": {
+            "url": "http://localhost:8000/api/discovery/add_papers",
+            "method": "POST",
+            "body": "={{ $node['Paper Analyzer'].json }}",
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          }
+        }
+      ],
+      "connections": {
+        "Semantic Scholar": ["Paper Analyzer"],
+        "Paper Analyzer": ["Moebius API"]
+      },
+      "schedule": "0 0 * * *",
+      "active": true
+    }
+  },
+
+  "api_endpoints": {
+    "add_subjects": "/api/discovery/add_subjects",
+    "add_trends": "/api/discovery/add_trends",
+    "add_repositories": "/api/discovery/add_repositories",
+    "add_papers": "/api/discovery/add_papers",
+    "get_status": "/api/discovery/status",
+    "get_subjects": "/api/discovery/subjects"
+  },
+
+  "configuration": {
+    "n8n_base_url": "http://localhost:5678",
+    "moebius_api_url": "http://localhost:8000",
+    "github_token_required": true,
+    "twitter_credentials_required": false,
+    "rate_limits": {
+      "arxiv": 100,
+      "github": 5000,
+      "twitter": 300,
+      "reddit": 600
+    },
+    "crawl_intervals": {
+      "academic": 360,
+      "trends": 120,
+      "github": 240,
+      "research": 1440
+    }
+  }
+}

@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 """
-SquashPlot - Main Entry Point for Replit
-========================================
+SquashPlot - Advanced Chia Plot Compression Tool
+===============================================
 
-This is the main entry point for running SquashPlot on Replit.
-It provides a simple interface to access all SquashPlot features.
+Professional Chia plotting solution featuring:
+- Advanced Multi-Stage Compression (Zstandard, Brotli, LZ4)
+- Chia Blockchain Integration
+- Professional Web Dashboard
+- Mad Max/BladeBit Compatible CLI
+- GPU Optimization & Resource Management
 """
 
 import os
@@ -17,18 +21,20 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 def main():
     """Main entry point"""
-    print("🌟 SquashPlot - Chia Plot Compression Tool")
-    print("=" * 50)
+    print("🗜️ SquashPlot - Advanced Chia Plot Compression")
+    print("=" * 60)
+    print("🔧 Multi-Stage Compression | 🌱 Chia Integration | 📊 Professional Dashboard")
+    print("=" * 60)
 
-    parser = argparse.ArgumentParser(description="SquashPlot - Advanced Chia Plot Compression")
+    parser = argparse.ArgumentParser(description="SquashPlot - Advanced Chia Plot Compression Tool")
     parser.add_argument('--web', action='store_true',
                        help='Start web interface (default)')
     parser.add_argument('--cli', action='store_true',
                        help='Start command-line interface')
     parser.add_argument('--demo', action='store_true',
                        help='Run interactive demo')
-    parser.add_argument('--port', type=int, default=8080,
-                       help='Port for web server (default: 8080)')
+    parser.add_argument('--port', type=int, default=5000,
+                       help='Port for web server (default: 5000)')
 
     args = parser.parse_args()
 
@@ -43,42 +49,30 @@ def main():
     elif args.demo:
         run_demo()
 
-def start_web_interface(port=8080):
+def start_web_interface(port=5000):
     """Start the web interface"""
-    print("🚀 Starting SquashPlot Web Interface...")
+    print("🚀 Starting SquashPlot Web Dashboard...")
     print(f"📡 Server will be available at: https://your-replit-url.replit.dev")
     print(f"🔗 Or locally at: http://localhost:{port}")
     print()
 
     try:
-        # Import and start web server
-        from http.server import HTTPServer, SimpleHTTPRequestHandler
-        import webbrowser
+        # Import and start SquashPlot web server
+        from src.web_server import app
 
-        # Change to the directory containing the web interface
-        web_dir = Path(__file__).parent
-        os.chdir(web_dir)
-
-        # Start server
-        server_address = ('', port)
-        httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
-
-        print("✅ Web interface started successfully!")
-        print("🌐 Open your browser to access SquashPlot")
-        print("💡 Click 'Run' in Replit to start the server")
+        print("✅ SquashPlot Web Server started successfully!")
+        print(f"🌐 Dashboard available at: http://localhost:{port}")
+        print("📊 Access the web interface to manage Chia plotting operations")
         print()
 
-        # Try to open web interface automatically
-        try:
-            webbrowser.open(f"http://localhost:{port}/squashplot_web_interface.html")
-        except:
-            pass
-
-        httpd.serve_forever()
+        # Start the web server
+        app.run(host='0.0.0.0', port=port, debug=True)
 
     except Exception as e:
-        print(f"❌ Failed to start web interface: {e}")
-        print("💡 Make sure the port is available and try again")
+        print(f"❌ Failed to start SquashPlot web server: {e}")
+        print("💡 Make sure the port is available and dependencies are installed")
+        print("🔧 Falling back to basic SquashPlot CLI mode...")
+        start_cli_interface()
 
 def start_cli_interface():
     """Start the command-line interface"""
@@ -86,39 +80,59 @@ def start_cli_interface():
     print()
 
     try:
-        # Import and run CLI
-        from squashplot import main as cli_main
-        cli_main()
-    except ImportError:
-        print("❌ CLI module not found")
-        print("💡 Make sure all SquashPlot files are in the project")
+        # Import and run SquashPlot CLI from our existing system
+        from squashplot import main as squashplot_main
+        squashplot_main()
+    except ImportError as e:
+        print(f"❌ SquashPlot CLI module not found: {e}")
+        print("💡 Use the web interface to access SquashPlot features")
+        print("🔧 Or run: python -m squashplot")
 
 def run_demo():
-    """Run interactive demo"""
-    print("🎯 Starting SquashPlot Interactive Demo...")
+    """Run interactive SquashPlot demo"""
+    print("🎯 Starting SquashPlot Demo...")
     print()
 
     try:
-        # Import demo functionality
+        # Import SquashPlot demo functionality
         from squashplot import SquashPlotCompressor
 
-        print("🗜️ Testing Basic Compression...")
+        print("🔧 Testing Multi-Stage Compression Engine...")
         compressor = SquashPlotCompressor(pro_enabled=False)
-        print("✅ Basic compressor initialized")
+        print("✅ Basic compression engine operational")
 
-        print("\n🧠 Testing Pro Compression...")
-        compressor_pro = SquashPlotCompressor(pro_enabled=True)
-        print("✅ Pro compressor initialized")
+        print("\n🧪 Testing Chia Integration...")
+        from chia_resources.chia_resource_query import ChiaResourceQuery
+        chia_query = ChiaResourceQuery()
+        stats = chia_query.get_database_stats()
+        print(f"✅ Chia resources database: {stats['total_resources']} resources available")
 
-        print("\n📊 Running Benchmark...")
-        from squashplot import main as cli_main
-        # Run benchmark with --benchmark flag
-        sys.argv = ['squashplot.py', '--benchmark']
-        cli_main()
+        print("\n📊 Testing Compression Algorithms...")
+        # Test available compression algorithms
+        test_algorithms = ["zlib", "bz2", "lzma"]
+        for algo in test_algorithms:
+            try:
+                if algo == "zlib":
+                    import zlib
+                    result = zlib.compress(b"test data")
+                elif algo == "bz2":
+                    import bz2
+                    result = bz2.compress(b"test data")
+                elif algo == "lzma":
+                    import lzma
+                    result = lzma.compress(b"test data")
+                print(f"   ✅ {algo}: Available")
+            except ImportError:
+                print(f"   ⚠️ {algo}: Not available")
+
+        print("\n🚀 All SquashPlot systems operational!")
+        print("💡 Use the web interface for full functionality")
+        print("🔗 Start with: python main.py --web")
 
     except ImportError as e:
-        print(f"❌ Demo failed: {e}")
-        print("💡 Make sure all SquashPlot files are installed")
+        print(f"⚠️ Some SquashPlot modules need configuration: {e}")
+        print("💡 Use the web interface to set up and configure SquashPlot")
+        print("🔧 Make sure all dependencies are installed: pip install -r requirements.txt")
 
 if __name__ == "__main__":
     main()

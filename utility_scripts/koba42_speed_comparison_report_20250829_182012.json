@@ -1,0 +1,160 @@
+{
+  "timestamp": "2025-08-29T18:18:48.150676",
+  "matrix_sizes": [
+    64,
+    128,
+    256
+  ],
+  "traditional_results": [
+    {
+      "matrix_size": 64,
+      "approach": "traditional",
+      "matrix_generation_time": 8.320808410644531e-05,
+      "matrix_processing_time": 0.0015990734100341797,
+      "ml_training_time": 0.7496860027313232,
+      "total_time": 0.7612941265106201,
+      "final_loss": 6.5478057861328125,
+      "final_accuracy": 0.9009397029876709,
+      "convergence_rate": 0.8923806256937159,
+      "memory_usage": 356.734375,
+      "cpu_utilization": 0.0,
+      "condition_number": 338.51261452388826,
+      "determinant": -3.9748258453239044e+43,
+      "trace": 14.598058235486711
+    },
+    {
+      "matrix_size": 128,
+      "approach": "traditional",
+      "matrix_generation_time": 0.00022101402282714844,
+      "matrix_processing_time": 0.012336015701293945,
+      "ml_training_time": 0.31376194953918457,
+      "total_time": 0.3311619758605957,
+      "final_loss": 15.625044822692871,
+      "final_accuracy": 0.8921339511871338,
+      "convergence_rate": 0.8789359949801143,
+      "memory_usage": 370.90625,
+      "cpu_utilization": 87.5,
+      "condition_number": 2659.6954893135317,
+      "determinant": -1.5034409998239867e+105,
+      "trace": -7.739262422305383
+    },
+    {
+      "matrix_size": 256,
+      "approach": "traditional",
+      "matrix_generation_time": 0.0007669925689697266,
+      "matrix_processing_time": 0.06907391548156738,
+      "ml_training_time": 0.31688976287841797,
+      "total_time": 0.40465784072875977,
+      "final_loss": 24.17514419555664,
+      "final_accuracy": 0.9051709771156311,
+      "convergence_rate": 0.9008379852428224,
+      "memory_usage": 375.046875,
+      "cpu_utilization": 84.6,
+      "condition_number": 398.55244665966734,
+      "determinant": -3.772098282177422e+253,
+      "trace": 10.933758035985138
+    }
+  ],
+  "koba42_results": [
+    {
+      "matrix_size": 64,
+      "approach": "koba42_advanced",
+      "matrix_generation_time": 0.0007510185241699219,
+      "matrix_processing_time": 0.0007259845733642578,
+      "ml_training_time": 0.17090606689453125,
+      "total_time": 0.17366981506347656,
+      "final_loss": 2.3004958629608154,
+      "final_accuracy": 0.9529040455818176,
+      "convergence_rate": 0.9513031475646736,
+      "memory_usage": 360.484375,
+      "cpu_utilization": 26.6,
+      "condition_number": 421.2969040471988,
+      "determinant": -9.855947093991973e+49,
+      "trace": -75.51741572421217,
+      "intentful_score": 11.701899984518317,
+      "transformed_eigenvals_mean": 2.9267145584342975
+    },
+    {
+      "matrix_size": 128,
+      "approach": "koba42_advanced",
+      "matrix_generation_time": 0.0029098987579345703,
+      "matrix_processing_time": 0.006698131561279297,
+      "ml_training_time": 0.3731539249420166,
+      "total_time": 0.38529086112976074,
+      "final_loss": 5.165581703186035,
+      "final_accuracy": 0.9655805230140686,
+      "convergence_rate": 0.9650248514779575,
+      "memory_usage": 373.640625,
+      "cpu_utilization": 78.9,
+      "condition_number": 421.8810381850655,
+      "determinant": -2.2983115934466557e+121,
+      "trace": -29.39389146102096,
+      "intentful_score": 14.84061179830719,
+      "transformed_eigenvals_mean": 3.8702400787845743
+    },
+    {
+      "matrix_size": 256,
+      "approach": "koba42_advanced",
+      "matrix_generation_time": 0.011667966842651367,
+      "matrix_processing_time": 0.045468807220458984,
+      "ml_training_time": 0.3827948570251465,
+      "total_time": 0.4436469078063965,
+      "final_loss": 8.99211311340332,
+      "final_accuracy": 0.9641631841659546,
+      "convergence_rate": 0.9635316953880746,
+      "memory_usage": 377.796875,
+      "cpu_utilization": 74.9,
+      "condition_number": 909.693385034374,
+      "determinant": 7.896081647357828e+278,
+      "trace": -13.045183463645778,
+      "intentful_score": 18.348475767448345,
+      "transformed_eigenvals_mean": 4.787584393410704
+    }
+  ],
+  "speedup_analysis": [
+    {
+      "matrix_size": 64,
+      "speedup_factor": 4.383571930633806,
+      "efficiency_ratio": 67.38016033610248,
+      "memory_efficiency": 0.9895973299813619,
+      "accuracy_improvement": 0.05196434259414673,
+      "convergence_improvement": 0.0589225218709577,
+      "traditional_time": 0.7612941265106201,
+      "koba42_time": 0.17366981506347656,
+      "time_savings_percent": 77.1875535334169
+    },
+    {
+      "matrix_size": 128,
+      "speedup_factor": 0.8595116294467853,
+      "efficiency_ratio": 38.5179439626238,
+      "memory_efficiency": 0.9926818048760089,
+      "accuracy_improvement": 0.07344657182693481,
+      "convergence_improvement": 0.08608885649784315,
+      "traditional_time": 0.3311619758605957,
+      "koba42_time": 0.38529086112976074,
+      "time_savings_percent": -16.34513899988049
+    },
+    {
+      "matrix_size": 256,
+      "speedup_factor": 0.9121168965869335,
+      "efficiency_ratio": 41.35828616088418,
+      "memory_efficiency": 0.9927209562016626,
+      "accuracy_improvement": 0.058992207050323486,
+      "convergence_improvement": 0.06269371014525216,
+      "traditional_time": 0.40465784072875977,
+      "koba42_time": 0.4436469078063965,
+      "time_savings_percent": -9.635070213249842
+    }
+  ],
+  "efficiency_analysis": [],
+  "summary": {
+    "average_speedup_factor": 2.051733485555842,
+    "max_speedup_factor": 4.383571930633806,
+    "average_efficiency_ratio": 49.08546348653682,
+    "average_accuracy_improvement": 0.06146770715713501,
+    "average_time_savings_percent": 17.069114773428858,
+    "total_tests": 3,
+    "speedup_consistency": 1.6489986312891907,
+    "efficiency_consistency": 12.988169888118327
+  }
+}

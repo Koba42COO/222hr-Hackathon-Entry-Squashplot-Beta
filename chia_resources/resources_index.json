@@ -1,0 +1,49 @@
+{
+  "categories": [
+    "metadata",
+    "resources",
+    "apis",
+    "github_repos",
+    "documentation",
+    "community",
+    "errors",
+    "docs",
+    "github"
+  ],
+  "total_resources": 12,
+  "last_updated": "2025-09-20T12:03:04.787130",
+  "resource_summary": {
+    "docs": {
+      "count": 5,
+      "resources": [
+        "chia_main_docs",
+        "chialisp_docs",
+        "dev_guides",
+        "rpc_reference",
+        "cli_reference"
+      ]
+    },
+    "apis": {
+      "count": 4,
+      "resources": [
+        "spacescan_api",
+        "mintgarden_api",
+        "dexie_api",
+        "xch_network_dev"
+      ]
+    },
+    "github": {
+      "count": 1,
+      "resources": [
+        "chia_network_org"
+      ]
+    },
+    "community": {
+      "count": 2,
+      "resources": [
+        "discord",
+        "spacescan"
+      ]
+    }
+  }
+}

@@ -1,0 +1,4145 @@
+{
+  "metadata": {
+    "created": "2025-09-20T12:02:46.704443",
+    "last_updated": "2025-09-20T12:03:04.787130",
+    "total_resources": 12,
+    "categories": [
+      "docs",
+      "apis",
+      "github",
+      "community"
+    ]
+  },
+  "resources": {},
+  "apis": {
+    "spacescan_api": {
+      "url": "https://docs.spacescan.io/api/address/xch_balance/",
+      "type": "api_documentation",
+      "title": "Get XCH Balance | Spacescan.io Docs",
+      "description": "This endpoint allows you to fetch the XCH balance for a given address.",
+      "endpoints": [],
+      "parameters": [
+        {
+          "name": "address",
+          "type": "string",
+          "required": false,
+          "description": "Yes"
+        },
+        {
+          "name": "include_dust",
+          "type": "boolean",
+          "required": false,
+          "description": "No"
+        },
+        {
+          "name": "start_block",
+          "type": "number",
+          "required": false,
+          "description": "No*"
+        },
+        {
+          "name": "end_block",
+          "type": "number",
+          "required": false,
+          "description": "No*"
+        },
+        {
+          "name": "start_timestamp",
+          "type": "number",
+          "required": false,
+          "description": "No*"
+        },
+        {
+          "name": "end_timestamp",
+          "type": "number",
+          "required": false,
+          "description": "No*"
+        }
+      ],
+      "examples": [
+        {
+          "type": "http_request",
+          "content": "GET https://api.spacescan.io/address/xch-balance/{address}",
+          "language": "json"
+        },
+        {
+          "type": "http_request",
+          "content": "GET https://api-testnet11.spacescan.io/address/xch-balance/{address}",
+          "language": "json"
+        },
+        {
+          "type": "http_request",
+          "content": "curl -X GET \"https://pro-api.spacescan.io/address/xch-balance/{address}\" \\     -H \"x-api-key: YOUR_API_KEY\"",
+          "language": "bash"
+        },
+        {
+          "type": "http_request",
+          "content": "# Basic requestcurl -X GET \"https://api.spacescan.io/address/xch-balance/xch1raq84pknzte375kze2z3lapscwet5g3q9qqkse8cmnmp5yr40zcsntdcm9\"# With timestamp filter (both start and end required)curl -X GET \"https://api.spacescan.io/address/xch-balance/xch1raq84pknzte375kze2z3lapscwet5g3q9qqkse8cmnmp5yr40zcsntdcm9?start_timestamp=1756203572&end_timestamp=1756309813\"# With block filter (both start and end required)curl -X GET \"https://api.spacescan.io/address/xch-balance/xch1raq84pknzte375kze2z3lapscwet5g3q9qqkse8cmnmp5yr40zcsntdcm9?start_block=7508362&end_block=7495133\"",
+          "language": "bash"
+        },
+        {
+          "type": "http_request",
+          "content": "curl -X GET \"https://api-testnet11.spacescan.io/address/xch-balance/xch1a6cd558gqsz2hch5pt0l8mx7zhavf32q5lyde09zjtqcmkelr9ns59k0j8\"",
+          "language": "bash"
+        },
+        {
+          "type": "http_request",
+          "content": "import requestsaddress = \"xch1raq84pknzte375kze2z3lapscwet5g3q9qqkse8cmnmp5yr40zcsntdcm9\"# Basic requesturl = f\"https://api.spacescan.io/address/xch-balance/{address}\"response = requests.get(url)data = response.json()print(data)# With timestamp filter (both start and end required)url_with_timestamp = f\"https://api.spacescan.io/address/xch-balance/{address}?start_timestamp=1756203572&end_timestamp=1756309813\"response = requests.get(url_with_timestamp)data = response.json()print(data)# With block filter (both start and end required)url_with_blocks = f\"https://api.spacescan.io/address/xch-balance/{address}?start_block=7508362&end_block=7495133\"response = requests.get(url_with_blocks)data = response.json()print(data)",
+          "language": "json"
+        },
+        {
+          "type": "http_request",
+          "content": "import requestsaddress = \"xch1a6cd558gqsz2hch5pt0l8mx7zhavf32q5lyde09zjtqcmkelr9ns59k0j8\"url = f\"https://api-testnet11.spacescan.io/address/xch-balance/{address}\"response = requests.get(url)data = response.json()print(data)",
+          "language": "json"
+        },
+        {
+          "type": "http_request",
+          "content": "const address = \"xch1raq84pknzte375kze2z3lapscwet5g3q9qqkse8cmnmp5yr40zcsntdcm9\";// Basic requestconst url = `https://api.spacescan.io/address/xch-balance/${address}`;fetch(url)  .then(response => response.json())  .then(data => console.log(data))  .catch(error => console.error('Error:', error));// With timestamp filter (both start and end required)const urlWithTimestamp = `https://api.spacescan.io/address/xch-balance/${address}?start_timestamp=1756203572&end_timestamp=1756309813`;fetch(urlWithTimestamp)  .then(response => response.json())  .then(data => console.log(data))  .catch(error => console.error('Error:', error));// With block filter (both start and end required)const urlWithBlocks = `https://api.spacescan.io/address/xch-balance/${address}?start_block=7508362&end_block=7495133`;fetch(urlWithBlocks)  .then(response => response.json())  .then(data => console.log(data))  .catch(error => console.error('Error:', error));",
+          "language": "json"
+        },
+        {
+          "type": "http_request",
+          "content": "const address = \"xch1a6cd558gqsz2hch5pt0l8mx7zhavf32q5lyde09zjtqcmkelr9ns59k0j8\";const url = `https://api-testnet11.spacescan.io/address/xch-balance/${address}`;fetch(url)  .then(response => response.json())  .then(data => console.log(data))  .catch(error => console.error('Error:', error));",
+          "language": "json"
+        }
+      ],
+      "authentication": {
+        "methods": [],
+        "requirements": [
+          "Use pro-api.spacescan.io with your API key in the x-api-key header. See our API Plans for details."
+        ],
+        "examples": []
+      },
+      "rate_limits": {
+        "limits": [],
+        "policies": [
+          "Use api.spacescan.io for free tier access. See our API Plans for rate limits and features."
+        ]
+      },
+      "last_updated": "2025-09-20T12:02:54.126013"
+    },
+    "mintgarden_api": {
+      "url": "https://api.mintgarden.io/docs",
+      "type": "api_documentation",
+      "title": "MintGarden API - ReDoc",
+      "description": "No description available",
+      "endpoints": [],
+      "parameters": [],
+      "examples": [],
+      "authentication": {
+        "methods": [],
+        "requirements": [],
+        "examples": []
+      },
+      "rate_limits": {
+        "limits": [],
+        "policies": []
+      },
+      "last_updated": "2025-09-20T12:02:55.580763"
+    },
+    "dexie_api": {
+      "url": "https://dexie.space/api",
+      "type": "api_documentation",
+      "title": "dexie - Chia Offers (Chia DEX)",
+      "description": "Aggregator for Chia Offers. Trade Tokens and NFTs.",
+      "endpoints": [],
+      "parameters": [],
+      "examples": [],
+      "authentication": {
+        "methods": [],
+        "requirements": [],
+        "examples": []
+      },
+      "rate_limits": {
+        "limits": [],
+        "policies": []
+      },
+      "last_updated": "2025-09-20T12:02:57.145689"
+    },
+    "xch_network_dev": {
+      "url": "https://xch.network/developers/",
+      "type": "api_documentation",
+      "title": "Developers – XCH.network",
+      "description": "Docs, tools, and services to get you building your ideaon the most decentralized and secure blockchain.",
+      "endpoints": [],
+      "parameters": [],
+      "examples": [],
+      "authentication": {
+        "methods": [],
+        "requirements": [],
+        "examples": []
+      },
+      "rate_limits": {
+        "limits": [],
+        "policies": []
+      },
+      "last_updated": "2025-09-20T12:02:58.930652"
+    }
+  },
+  "github_repos": {},
+  "documentation": {},
+  "community": {
+    "discord": {
+      "url": "https://discord.com/invite/chia",
+      "type": "community_resource",
+      "title": "Chia Network",
+      "description": "Delivers software for enterprises to tokenize, custody, and trade any asset with auditable authenticity and provenance. | 4935 members",
+      "features": [],
+      "links": [],
+      "last_updated": "2025-09-20T12:03:02.225050"
+    },
+    "spacescan": {
+      "url": "https://www.spacescan.io/",
+      "type": "community_resource",
+      "title": "Chia Blockchain Explorer - (XCH Explorer)",
+      "description": "Spacescan is Chia explorer. Explore XCH, NFT, Token, DID, CAT, price, netspace, mempool, address, block in Chia Blockchain (XCH)",
+      "features": [],
+      "links": [
+        {
+          "text": "Feedback",
+          "url": "https://spacescan.featurebase.app/",
+          "type": "external_link"
+        },
+        {
+          "text": "API Docs",
+          "url": "https://docs.spacescan.io/api/address/xch_balance",
+          "type": "external_link"
+        },
+        {
+          "text": "API Docs",
+          "url": "https://docs.spacescan.io/api/address/xch_balance",
+          "type": "external_link"
+        },
+        {
+          "text": "",
+          "url": "https://twitter.com/spacescan_io",
+          "type": "external_link"
+        },
+        {
+          "text": "",
+          "url": "https://discord.com/invite/Bb4sj3Bg9P",
+          "type": "external_link"
+        },
+        {
+          "text": "Blog",
+          "url": "https://docs.spacescan.io/blog",
+          "type": "external_link"
+        },
+        {
+          "text": "API’s",
+          "url": "https://www.spacescan.io/apis",
+          "type": "external_link"
+        },
+        {
+          "text": "API Documentation",
+          "url": "https://docs.spacescan.io/api/address/xch_balance",
+          "type": "external_link"
+        },
+        {
+          "text": "Guide",
+          "url": "https://docs.spacescan.io/docs/intro",
+          "type": "external_link"
+        }
+      ],
+      "last_updated": "2025-09-20T12:03:03.785119"
+    }
+  },
+  "errors": [],
+  "docs": {
+    "chia_main_docs": {
+      "url": "https://docs.chia.net/",
+      "type": "documentation",
+      "title": "Chia Documentation",
+      "description": "The source of truth for Chia documentation. Start here to learn more about Chia.",
+      "sections": [
+        {
+          "level": 1,
+          "title": "Chia Documentation",
+          "id": "",
+          "content": "The source of truth for Chia documentation. Start here to learn more about Chia."
+        },
+        {
+          "level": 3,
+          "title": "Chia Docs",
+          "id": "",
+          "content": "Documentation regarding the Chia blockchain, consensus, and protocols."
+        },
+        {
+          "level": 3,
+          "title": "Chialisp",
+          "id": "",
+          "content": "Documentation and tutorials for Chialisp, our new Turing complete on-chain smart transaction programming language and development environment."
+        },
+        {
+          "level": 3,
+          "title": "Chia Academy",
+          "id": "",
+          "content": "Learn about the Chia Blockchain, its consensus, primitives, on-chain language, and more!"
+        },
+        {
+          "level": 3,
+          "title": "Chia Discord Server",
+          "id": "",
+          "content": "Chia Official discord server, join for support and to interact with the community."
+        },
+        {
+          "level": 3,
+          "title": "Chia X Account",
+          "id": "",
+          "content": "Chia Official X account, follow for the latest updates and to interact with the community."
+        }
+      ],
+      "navigation": [
+        {
+          "text": "Chia Docs",
+          "href": "/",
+          "full_url": "https://docs.chia.net/"
+        },
+        {
+          "text": "Docs",
+          "href": "/chia-blockchain/introduction/",
+          "full_url": "https://docs.chia.net/chia-blockchain/introduction/"
+        },
+        {
+          "text": "Dev Guides",
+          "href": "/dev-guides-home/",
+          "full_url": "https://docs.chia.net/dev-guides-home/"
+        },
+        {
+          "text": "Chia Academy",
+          "href": "/academy-home/",
+          "full_url": "https://docs.chia.net/academy-home/"
+        },
+        {
+          "text": "English",
+          "href": "#",
+          "full_url": "https://docs.chia.net"
+        },
+        {
+          "text": "English",
+          "href": "/",
+          "full_url": "https://docs.chia.net/"
+        },
+        {
+          "text": "简体中文",
+          "href": "/zh-Hans/",
+          "full_url": "https://docs.chia.net/zh-Hans/"
+        },
+        {
+          "text": "Chialisp",
+          "href": "https://chialisp.com",
+          "full_url": "https://chialisp.com"
+        },
+        {
+          "text": "Chia Network",
+          "href": "https://chia.net",
+          "full_url": "https://chia.net"
+        },
+        {
+          "text": "GitHub",
+          "href": "https://github.com/Chia-Network/chia-blockchain",
+          "full_url": "https://github.com/Chia-Network/chia-blockchain"
+        },
+        {
+          "text": "English",
+          "href": "/",
+          "full_url": "https://docs.chia.net/"
+        },
+        {
+          "text": "简体中文",
+          "href": "/zh-Hans/",
+          "full_url": "https://docs.chia.net/zh-Hans/"
+        }
+      ],
+      "code_examples": [],
+      "api_endpoints": [],
+      "last_updated": "2025-09-20T12:02:47.246150",
+      "scraped_content": {
+        "headings": [
+          "Chia Documentation",
+          "Chia Docs",
+          "Chialisp",
+          "Chia Academy",
+          "Chia Discord Server",
+          "Chia X Account"
+        ],
+        "paragraphs": [
+          "The source of truth for Chia documentation. Start here to learn more about Chia.",
+          "Documentation regarding the Chia blockchain, consensus, and protocols.",
+          "Documentation and tutorials for Chialisp, our new Turing complete on-chain smart transaction programming language and development environment.",
+          "Learn about the Chia Blockchain, its consensus, primitives, on-chain language, and more!",
+          "Chia Official discord server, join for support and to interact with the community.",
+          "Chia Official X account, follow for the latest updates and to interact with the community."
+        ],
+        "links": [
+          {
+            "text": "Skip to main content",
+            "href": "#__docusaurus_skipToContent_fallback"
+          },
+          {
+            "text": "Chia Docs",
+            "href": "/"
+          },
+          {
+            "text": "Docs",
+            "href": "/chia-blockchain/introduction/"
+          },
+          {
+            "text": "Dev Guides",
+            "href": "/dev-guides-home/"
+          },
+          {
+            "text": "Chia Academy",
+            "href": "/academy-home/"
+          },
+          {
+            "text": "English",
+            "href": "#"
+          },
+          {
+            "text": "English",
+            "href": "/"
+          },
+          {
+            "text": "简体中文",
+            "href": "/zh-Hans/"
+          },
+          {
+            "text": "Chialisp",
+            "href": "https://chialisp.com"
+          },
+          {
+            "text": "Chia Network",
+            "href": "https://chia.net"
+          },
+          {
+            "text": "GitHub",
+            "href": "https://github.com/Chia-Network/chia-blockchain"
+          },
+          {
+            "text": "Get Started",
+            "href": "/chia-blockchain/introduction/"
+          },
+          {
+            "text": "",
+            "href": "/chia-blockchain/introduction/"
+          },
+          {
+            "text": "Chia Docs",
+            "href": "/chia-blockchain/introduction/"
+          },
+          {
+            "text": "",
+            "href": "https://chialisp.com"
+          },
+          {
+            "text": "Chialisp",
+            "href": "https://chialisp.com"
+          },
+          {
+            "text": "",
+            "href": "https://docs.chia.net/academy-home/"
+          },
+          {
+            "text": "Chia Academy",
+            "href": "https://docs.chia.net/academy-home/"
+          },
+          {
+            "text": "",
+            "href": "https://discord.gg/chia"
+          },
+          {
+            "text": "Chia Discord Server",
+            "href": "https://discord.gg/chia"
+          },
+          {
+            "text": "",
+            "href": "https://x.com/chia_project"
+          },
+          {
+            "text": "Chia X Account",
+            "href": "https://x.com/chia_project"
+          },
+          {
+            "text": "White Paper",
+            "href": "https://chia.net/approach"
+          },
+          {
+            "text": "Green Paper",
+            "href": "https://chia.net/greenpaper"
+          },
+          {
+            "text": "Consensus 1.1",
+            "href": "https://docs.chia.net/consensus-intro"
+          },
+          {
+            "text": "Chialisp",
+            "href": "https://chialisp.com"
+          },
+          {
+            "text": "Chia Academy",
+            "href": "https://docs.chia.net/academy-home/"
+          },
+          {
+            "text": "Developer Guides",
+            "href": "https://docs.chia.net/guides/crash-course/introduction"
+          },
+          {
+            "text": "About",
+            "href": "https://chia.net/about"
+          },
+          {
+            "text": "Blog",
+            "href": "https://chia.net/blog"
+          },
+          {
+            "text": "Contact",
+            "href": "https://chia.net/contact"
+          },
+          {
+            "text": "Apache License, Version 2.0",
+            "href": "https://github.com/Chia-Network/chia-docs/blob/main/LICENSE"
+          },
+          {
+            "text": "Terms",
+            "href": "https://chia.net/terms"
+          }
+        ]
+      }
+    },
+    "chialisp_docs": {
+      "url": "https://chialisp.com/",
+      "type": "documentation",
+      "title": "About Chialisp | Chialisp",
+      "description": "Chialisp is a pure and functional language with a focus on security and auditability. Chialisp is commonly used on the Chia blockchain to lock funds in smart coins until spent and released by their owner. This enables behavior similar to that of smart contracts.",
+      "sections": [
+        {
+          "level": 1,
+          "title": "About Chialisp",
+          "id": "",
+          "content": ""
+        },
+        {
+          "level": 2,
+          "title": "Design Decisions​",
+          "id": "design-decisions",
+          "content": "There are many reasons to choose Lisp as the basis for this language, even though it is over 60 years old."
+        },
+        {
+          "level": 2,
+          "title": "Getting Started​",
+          "id": "getting-started",
+          "content": "If you'd like to get started learning and using Chialisp, you can start with the Intro to Chialisp guide. Throughout this series, you will write programs in the language, create smart coins on the Chia blockchain, and spend them on the command-line."
+        }
+      ],
+      "navigation": [
+        {
+          "text": "Chialisp",
+          "href": "/",
+          "full_url": "https://docs.chia.net/"
+        },
+        {
+          "text": "Chia Docs",
+          "href": "https://docs.chia.net",
+          "full_url": "https://docs.chia.net"
+        },
+        {
+          "text": "Chia Academy",
+          "href": "https://docs.chia.net/academy-home/",
+          "full_url": "https://docs.chia.net/academy-home/"
+        },
+        {
+          "text": "Chia.net",
+          "href": "https://chia.net",
+          "full_url": "https://chia.net"
+        },
+        {
+          "text": "GitHub",
+          "href": "https://github.com/Chia-Network/",
+          "full_url": "https://github.com/Chia-Network/"
+        },
+        {
+          "text": "Introduction",
+          "href": "/",
+          "full_url": "https://docs.chia.net/"
+        },
+        {
+          "text": "Chialisp Primer",
+          "href": "/chialisp-primer/",
+          "full_url": "https://docs.chia.net/chialisp-primer/"
+        },
+        {
+          "text": "Chialisp Concepts",
+          "href": "/chialisp-concepts/",
+          "full_url": "https://docs.chia.net/chialisp-concepts/"
+        },
+        {
+          "text": "Commands",
+          "href": "/commands/",
+          "full_url": "https://docs.chia.net/commands/"
+        },
+        {
+          "text": "Syntax",
+          "href": "/syntax/",
+          "full_url": "https://docs.chia.net/syntax/"
+        },
+        {
+          "text": "Modern Chialisp",
+          "href": "/modern-chialisp/",
+          "full_url": "https://docs.chia.net/modern-chialisp/"
+        },
+        {
+          "text": "Operators",
+          "href": "/operators/",
+          "full_url": "https://docs.chia.net/operators/"
+        },
+        {
+          "text": "Examples",
+          "href": "/examples/",
+          "full_url": "https://docs.chia.net/examples/"
+        },
+        {
+          "text": "Costs",
+          "href": "/costs/",
+          "full_url": "https://docs.chia.net/costs/"
+        },
+        {
+          "text": "Conditions",
+          "href": "/conditions/",
+          "full_url": "https://docs.chia.net/conditions/"
+        },
+        {
+          "text": "Optimization",
+          "href": "/optimization/",
+          "full_url": "https://docs.chia.net/optimization/"
+        },
+        {
+          "text": "Common Issues",
+          "href": "/common_issues/",
+          "full_url": "https://docs.chia.net/common_issues/"
+        },
+        {
+          "text": "Debugging",
+          "href": "/debugging/",
+          "full_url": "https://docs.chia.net/debugging/"
+        },
+        {
+          "text": "Primitives",
+          "href": "/standard-transactions/",
+          "full_url": "https://docs.chia.net/standard-transactions/"
+        },
+        {
+          "text": "CLVM",
+          "href": "/clvm/",
+          "full_url": "https://docs.chia.net/clvm/"
+        },
+        {
+          "text": "Introduction",
+          "href": "/",
+          "full_url": "https://docs.chia.net/"
+        },
+        {
+          "text": "Chialisp Primer",
+          "href": "/chialisp-primer/",
+          "full_url": "https://docs.chia.net/chialisp-primer/"
+        },
+        {
+          "text": "Chialisp Concepts",
+          "href": "/chialisp-concepts/",
+          "full_url": "https://docs.chia.net/chialisp-concepts/"
+        },
+        {
+          "text": "Commands",
+          "href": "/commands/",
+          "full_url": "https://docs.chia.net/commands/"
+        },
+        {
+          "text": "Syntax",
+          "href": "/syntax/",
+          "full_url": "https://docs.chia.net/syntax/"
+        },
+        {
+          "text": "Modern Chialisp",
+          "href": "/modern-chialisp/",
+          "full_url": "https://docs.chia.net/modern-chialisp/"
+        },
+        {
+          "text": "Operators",
+          "href": "/operators/",
+          "full_url": "https://docs.chia.net/operators/"
+        },
+        {
+          "text": "Examples",
+          "href": "/examples/",
+          "full_url": "https://docs.chia.net/examples/"
+        },
+        {
+          "text": "Costs",
+          "href": "/costs/",
+          "full_url": "https://docs.chia.net/costs/"
+        },
+        {
+          "text": "Conditions",
+          "href": "/conditions/",
+          "full_url": "https://docs.chia.net/conditions/"
+        },
+        {
+          "text": "Optimization",
+          "href": "/optimization/",
+          "full_url": "https://docs.chia.net/optimization/"
+        },
+        {
+          "text": "Common Issues",
+          "href": "/common_issues/",
+          "full_url": "https://docs.chia.net/common_issues/"
+        },
+        {
+          "text": "Debugging",
+          "href": "/debugging/",
+          "full_url": "https://docs.chia.net/debugging/"
+        },
+        {
+          "text": "Primitives",
+          "href": "/standard-transactions/",
+          "full_url": "https://docs.chia.net/standard-transactions/"
+        },
+        {
+          "text": "CLVM",
+          "href": "/clvm/",
+          "full_url": "https://docs.chia.net/clvm/"
+        },
+        {
+          "text": "NextChialisp Primer",
+          "href": "/chialisp-primer/",
+          "full_url": "https://docs.chia.net/chialisp-primer/"
+        }
+      ],
+      "code_examples": [
+        "(mod ()    (defun square (number)        (* number number)    )\n    (square 5))(mod ()\n    (defun square (number)\n        (* number number)\n    )\n\n    (square 5)\n)Chialisp",
+        "(mod ()    (defun square (number)        (* number number)    )\n    (square 5))"
+      ],
+      "api_endpoints": [],
+      "last_updated": "2025-09-20T12:02:48.730005",
+      "scraped_content": {
+        "headings": [
+          "About Chialisp",
+          "Design Decisions​",
+          "CLVM​",
+          "Sandboxed​",
+          "Auditable​",
+          "Composable​",
+          "New language features​",
+          "Getting Started​"
+        ],
+        "paragraphs": [
+          "Chialisp is a pure and functional language with a focus on security and auditability. Chialisp is commonly used on the Chia blockchain to lock funds in smart coins until spent and released by their owner. This enables behavior similar to that of smart contracts.",
+          "Here is an example:",
+          "Many Chialisp code block examples on this site can be edited, and evaluated by clicking the play button in the top right. You can edit the program arguments at the top (if not present, click the keyboard button to add arguments).",
+          "There are many reasons to choose Lisp as the basis for this language, even though it is over 60 years old.",
+          "Chialisp compiles to a lower level form, which is CLVM (Chialisp Virtual Machine) bytecode. This allows the language to change over time while still being executed in the same way.",
+          "CLVM is completely sandboxed, in order to prevent it from gaining access to its host machine. This is important, since on the Chia blockchain, it needs to be run on hundreds of thousands of computers.",
+          "Programs are evaluated, and therefore cannot spawn any new processes or interact with the system.",
+          "Code written in Chialisp has no side effects or hidden information. This makes it easier to find security flaws and bugs. This is essential for smart coins made for the Chia blockchain.",
+          "A program in Lisp is just a list. This enables powerful techniques that allow you to modify source code during program evaluation. You can even have multiple layers of a program that get executed at different stages.",
+          "Chialisp has been receiving new features which mirror other languages in the scheme and lisp family. Install the chialisp nightly tools to enable these features.\nNew features are listed in detail here.",
+          "If you'd like to get started learning and using Chialisp, you can start with the Intro to Chialisp guide. Throughout this series, you will write programs in the language, create smart coins on the Chia blockchain, and spend them on the command-line."
+        ],
+        "links": [
+          {
+            "text": "Skip to main content",
+            "href": "#__docusaurus_skipToContent_fallback"
+          },
+          {
+            "text": "Chialisp",
+            "href": "/"
+          },
+          {
+            "text": "Chia Docs",
+            "href": "https://docs.chia.net"
+          },
+          {
+            "text": "Chia Academy",
+            "href": "https://docs.chia.net/academy-home/"
+          },
+          {
+            "text": "Chia.net",
+            "href": "https://chia.net"
+          },
+          {
+            "text": "GitHub",
+            "href": "https://github.com/Chia-Network/"
+          },
+          {
+            "text": "Introduction",
+            "href": "/"
+          },
+          {
+            "text": "Chialisp Primer",
+            "href": "/chialisp-primer/"
+          },
+          {
+            "text": "Chialisp Concepts",
+            "href": "/chialisp-concepts/"
+          },
+          {
+            "text": "Commands",
+            "href": "/commands/"
+          },
+          {
+            "text": "Syntax",
+            "href": "/syntax/"
+          },
+          {
+            "text": "Modern Chialisp",
+            "href": "/modern-chialisp/"
+          },
+          {
+            "text": "Operators",
+            "href": "/operators/"
+          },
+          {
+            "text": "Examples",
+            "href": "/examples/"
+          },
+          {
+            "text": "Costs",
+            "href": "/costs/"
+          },
+          {
+            "text": "Conditions",
+            "href": "/conditions/"
+          },
+          {
+            "text": "Optimization",
+            "href": "/optimization/"
+          },
+          {
+            "text": "Common Issues",
+            "href": "/common_issues/"
+          },
+          {
+            "text": "Debugging",
+            "href": "/debugging/"
+          },
+          {
+            "text": "Primitives",
+            "href": "/standard-transactions/"
+          },
+          {
+            "text": "CLVM",
+            "href": "/clvm/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          },
+          {
+            "text": "​",
+            "href": "#design-decisions"
+          },
+          {
+            "text": "Lisp",
+            "href": "https://en.wikipedia.org/wiki/Lisp_(programming_language)"
+          },
+          {
+            "text": "​",
+            "href": "#clvm"
+          },
+          {
+            "text": "​",
+            "href": "#sandboxed"
+          },
+          {
+            "text": "​",
+            "href": "#auditable"
+          },
+          {
+            "text": "​",
+            "href": "#composable"
+          },
+          {
+            "text": "​",
+            "href": "#new-language-features"
+          },
+          {
+            "text": "here",
+            "href": "/modern-chialisp/"
+          },
+          {
+            "text": "​",
+            "href": "#getting-started"
+          },
+          {
+            "text": "Intro to Chialisp",
+            "href": "/chialisp-primer/intro/"
+          },
+          {
+            "text": "Edit this page",
+            "href": "https://github.com/Chia-Network/chialisp-web/blob/main/docs/intro.md"
+          },
+          {
+            "text": "NextChialisp Primer",
+            "href": "/chialisp-primer/"
+          },
+          {
+            "text": "Design Decisions",
+            "href": "#design-decisions"
+          },
+          {
+            "text": "Getting Started",
+            "href": "#getting-started"
+          },
+          {
+            "text": "Operators",
+            "href": "/operators/"
+          },
+          {
+            "text": "CLVM",
+            "href": "/clvm/"
+          },
+          {
+            "text": "Chia Docs",
+            "href": "https://docs.chia.net"
+          },
+          {
+            "text": "Discord",
+            "href": "https://discord.gg/chia"
+          },
+          {
+            "text": "Twitter",
+            "href": "https://twitter.com/chia_project"
+          },
+          {
+            "text": "Blog",
+            "href": "https://www.chia.net/blog/"
+          },
+          {
+            "text": "GitHub",
+            "href": "https://github.com/Chia-Network/clvm"
+          },
+          {
+            "text": "",
+            "href": "/"
+          },
+          {
+            "text": "Apache License, Version 2.0",
+            "href": "https://github.com/Chia-Network/chialisp-web/blob/main/LICENSE"
+          },
+          {
+            "text": "Terms",
+            "href": "https://www.chia.net/terms"
+          }
+        ]
+      }
+    },
+    "dev_guides": {
+      "url": "https://docs.chia.net/dev-guides-home/",
+      "type": "documentation",
+      "title": "Dev Guides Home | Chia Documentation",
+      "description": "Welcome to the Chia Network Developer Guides hub! Your gateway to mastering the intricacies of Chia's blockchain and smart transaction platform. Whether you're a seasoned developer, a blockchain enthusiast, or just stepping into the world of decentralized technologies, our documentation is crafted to empower you with knowledge and tools for navigating the Chia ecosystem. From mastering the basics of Chialisp programming to exploring advanced primitives, our guides cover a spectrum of topics designed to elevate your development skills.",
+      "sections": [
+        {
+          "level": 1,
+          "title": "Dev Guides Home",
+          "id": "",
+          "content": ""
+        },
+        {
+          "level": 2,
+          "title": "Chia Crash Course​",
+          "id": "chia-crash-course",
+          "content": "Embark on a swift journey into Chia Network's Crash Course for developers. Start with an Intro to Developing on Chia, grasp the fundamentals of Chialisp, explore the world of Smart Coins, and understand the intricacies of Signatures, State, Inner Puzzles, and Primitives."
+        },
+        {
+          "level": 2,
+          "title": "Primitives​",
+          "id": "primitives",
+          "content": "Explore the core building blocks of Chia development in the Primitives section. Unlock the potential of NFTs, embrace the versatility of CATs (Colored Coins), navigate the intricacies of Offers, leverage the DataLayer for efficient data management, implement Clawback mechanisms, understand the dynamics of DAOs, and secure your applications with Verifiable Credentials. These primitives are the foundation for creating robust and innovative solutions on the Chia Network."
+        },
+        {
+          "level": 2,
+          "title": "Tutorials​",
+          "id": "tutorials",
+          "content": "Immerse yourself in Chia Network's Tutorials section for developers. Understand the intricacies of Application Structure, explore the art of Custom Puzzle Locks, wield the power of the Custody Tool, master Coin Spending via RPC, harness the capabilities of the Seeder and Simulator with our user guides, and gain insights into the WalletConnect framework."
+        },
+        {
+          "level": 2,
+          "title": "Video Series​",
+          "id": "video-series",
+          "content": "Dive into the Video Series of Chia Network's Developer Guides for a dynamic learning experience. Discover why Chia is great, explore the essentials of developing Chia applications, set up your tools efficiently, delve into programming in Chialisp, understand the intricacies of the Coin Lifecycle, implement Singleton Contracts, master the dynamics of State, Coins, and Announcements, ensure security with insights into Arguments and Signing, explore Announcements and Oracles, and harness the potential of CATs (Chia Asset Tokens)."
+        }
+      ],
+      "navigation": [
+        {
+          "text": "Chia Docs",
+          "href": "/",
+          "full_url": "https://docs.chia.net/"
+        },
+        {
+          "text": "Docs",
+          "href": "/chia-blockchain/introduction/",
+          "full_url": "https://docs.chia.net/chia-blockchain/introduction/"
+        },
+        {
+          "text": "Dev Guides",
+          "href": "/dev-guides-home/",
+          "full_url": "https://docs.chia.net/dev-guides-home/"
+        },
+        {
+          "text": "Chia Academy",
+          "href": "/academy-home/",
+          "full_url": "https://docs.chia.net/academy-home/"
+        },
+        {
+          "text": "English",
+          "href": "#",
+          "full_url": "https://docs.chia.net"
+        },
+        {
+          "text": "English",
+          "href": "/dev-guides-home/",
+          "full_url": "https://docs.chia.net/dev-guides-home/"
+        },
+        {
+          "text": "简体中文",
+          "href": "/zh-Hans/dev-guides-home/",
+          "full_url": "https://docs.chia.net/zh-Hans/dev-guides-home/"
+        },
+        {
+          "text": "Chialisp",
+          "href": "https://chialisp.com",
+          "full_url": "https://chialisp.com"
+        },
+        {
+          "text": "Chia Network",
+          "href": "https://chia.net",
+          "full_url": "https://chia.net"
+        },
+        {
+          "text": "GitHub",
+          "href": "https://github.com/Chia-Network/chia-blockchain",
+          "full_url": "https://github.com/Chia-Network/chia-blockchain"
+        },
+        {
+          "text": "English",
+          "href": "/dev-guides-home/",
+          "full_url": "https://docs.chia.net/dev-guides-home/"
+        },
+        {
+          "text": "简体中文",
+          "href": "/zh-Hans/dev-guides-home/",
+          "full_url": "https://docs.chia.net/zh-Hans/dev-guides-home/"
+        },
+        {
+          "text": "Crash Course",
+          "href": "/dev-guides-home/",
+          "full_url": "https://docs.chia.net/dev-guides-home/"
+        },
+        {
+          "text": "Introduction",
+          "href": "/guides/crash-course/introduction/",
+          "full_url": "https://docs.chia.net/guides/crash-course/introduction/"
+        },
+        {
+          "text": "Chialisp",
+          "href": "/guides/crash-course/intro-to-chialisp/",
+          "full_url": "https://docs.chia.net/guides/crash-course/intro-to-chialisp/"
+        },
+        {
+          "text": "Smart Coins",
+          "href": "/guides/crash-course/smart-coins/",
+          "full_url": "https://docs.chia.net/guides/crash-course/smart-coins/"
+        },
+        {
+          "text": "Signatures",
+          "href": "/guides/crash-course/signatures/",
+          "full_url": "https://docs.chia.net/guides/crash-course/signatures/"
+        },
+        {
+          "text": "State",
+          "href": "/guides/crash-course/state/",
+          "full_url": "https://docs.chia.net/guides/crash-course/state/"
+        },
+        {
+          "text": "Inner Puzzles",
+          "href": "/guides/crash-course/inner-puzzles/",
+          "full_url": "https://docs.chia.net/guides/crash-course/inner-puzzles/"
+        },
+        {
+          "text": "CATs, Offers and NFTs",
+          "href": "/guides/crash-course/cats-offers-nfts/",
+          "full_url": "https://docs.chia.net/guides/crash-course/cats-offers-nfts/"
+        },
+        {
+          "text": "Chialisp and TypeScript",
+          "href": "/guides/crash-course/chialisp-and-typescript/",
+          "full_url": "https://docs.chia.net/guides/crash-course/chialisp-and-typescript/"
+        },
+        {
+          "text": "Primitives",
+          "href": "/guides/primitives/",
+          "full_url": "https://docs.chia.net/guides/primitives/"
+        },
+        {
+          "text": "Tutorials",
+          "href": "/guides/tutorials/",
+          "full_url": "https://docs.chia.net/guides/tutorials/"
+        },
+        {
+          "text": "Video Series",
+          "href": "/guides/video-series/",
+          "full_url": "https://docs.chia.net/guides/video-series/"
+        },
+        {
+          "text": "Crash Course",
+          "href": "/dev-guides-home/",
+          "full_url": "https://docs.chia.net/dev-guides-home/"
+        },
+        {
+          "text": "Introduction",
+          "href": "/guides/crash-course/introduction/",
+          "full_url": "https://docs.chia.net/guides/crash-course/introduction/"
+        },
+        {
+          "text": "Chialisp",
+          "href": "/guides/crash-course/intro-to-chialisp/",
+          "full_url": "https://docs.chia.net/guides/crash-course/intro-to-chialisp/"
+        },
+        {
+          "text": "Smart Coins",
+          "href": "/guides/crash-course/smart-coins/",
+          "full_url": "https://docs.chia.net/guides/crash-course/smart-coins/"
+        },
+        {
+          "text": "Signatures",
+          "href": "/guides/crash-course/signatures/",
+          "full_url": "https://docs.chia.net/guides/crash-course/signatures/"
+        },
+        {
+          "text": "State",
+          "href": "/guides/crash-course/state/",
+          "full_url": "https://docs.chia.net/guides/crash-course/state/"
+        },
+        {
+          "text": "Inner Puzzles",
+          "href": "/guides/crash-course/inner-puzzles/",
+          "full_url": "https://docs.chia.net/guides/crash-course/inner-puzzles/"
+        },
+        {
+          "text": "CATs, Offers and NFTs",
+          "href": "/guides/crash-course/cats-offers-nfts/",
+          "full_url": "https://docs.chia.net/guides/crash-course/cats-offers-nfts/"
+        },
+        {
+          "text": "Chialisp and TypeScript",
+          "href": "/guides/crash-course/chialisp-and-typescript/",
+          "full_url": "https://docs.chia.net/guides/crash-course/chialisp-and-typescript/"
+        },
+        {
+          "text": "Primitives",
+          "href": "/guides/primitives/",
+          "full_url": "https://docs.chia.net/guides/primitives/"
+        },
+        {
+          "text": "Tutorials",
+          "href": "/guides/tutorials/",
+          "full_url": "https://docs.chia.net/guides/tutorials/"
+        },
+        {
+          "text": "Video Series",
+          "href": "/guides/video-series/",
+          "full_url": "https://docs.chia.net/guides/video-series/"
+        },
+        {
+          "text": "Introduction",
+          "href": "/guides/crash-course/introduction/",
+          "full_url": "https://docs.chia.net/guides/crash-course/introduction/"
+        },
+        {
+          "text": "Chialisp",
+          "href": "/guides/crash-course/intro-to-chialisp/",
+          "full_url": "https://docs.chia.net/guides/crash-course/intro-to-chialisp/"
+        },
+        {
+          "text": "Smart Coins",
+          "href": "/guides/crash-course/smart-coins/",
+          "full_url": "https://docs.chia.net/guides/crash-course/smart-coins/"
+        },
+        {
+          "text": "Signatures",
+          "href": "/guides/crash-course/signatures/",
+          "full_url": "https://docs.chia.net/guides/crash-course/signatures/"
+        },
+        {
+          "text": "State",
+          "href": "/guides/crash-course/state/",
+          "full_url": "https://docs.chia.net/guides/crash-course/state/"
+        },
+        {
+          "text": "Inner Puzzles",
+          "href": "/guides/crash-course/inner-puzzles/",
+          "full_url": "https://docs.chia.net/guides/crash-course/inner-puzzles/"
+        },
+        {
+          "text": "CATs, Offers and NFTs",
+          "href": "/guides/crash-course/cats-offers-nfts/",
+          "full_url": "https://docs.chia.net/guides/crash-course/cats-offers-nfts/"
+        },
+        {
+          "text": "Chialisp and TypeScript",
+          "href": "/guides/crash-course/chialisp-and-typescript/",
+          "full_url": "https://docs.chia.net/guides/crash-course/chialisp-and-typescript/"
+        },
+        {
+          "text": "NextIntroduction",
+          "href": "/guides/crash-course/introduction/",
+          "full_url": "https://docs.chia.net/guides/crash-course/introduction/"
+        }
+      ],
+      "code_examples": [],
+      "api_endpoints": [],
+      "last_updated": "2025-09-20T12:02:49.990792",
+      "scraped_content": {
+        "headings": [
+          "Dev Guides Home",
+          "Chia Crash Course​",
+          "Primitives​",
+          "Tutorials​",
+          "Video Series​"
+        ],
+        "paragraphs": [
+          "Welcome to the Chia Network Developer Guides hub! Your gateway to mastering the intricacies of Chia's blockchain and smart transaction platform. Whether you're a seasoned developer, a blockchain enthusiast, or just stepping into the world of decentralized technologies, our documentation is crafted to empower you with knowledge and tools for navigating the Chia ecosystem. From mastering the basics of Chialisp programming to exploring advanced primitives, our guides cover a spectrum of topics designed to elevate your development skills.",
+          "Embark on a swift journey into Chia Network's Crash Course for developers. Start with an Intro to Developing on Chia, grasp the fundamentals of Chialisp, explore the world of Smart Coins, and understand the intricacies of Signatures, State, Inner Puzzles, and Primitives.",
+          "Explore the core building blocks of Chia development in the Primitives section. Unlock the potential of NFTs, embrace the versatility of CATs (Colored Coins), navigate the intricacies of Offers, leverage the DataLayer for efficient data management, implement Clawback mechanisms, understand the dynamics of DAOs, and secure your applications with Verifiable Credentials. These primitives are the foundation for creating robust and innovative solutions on the Chia Network.",
+          "Immerse yourself in Chia Network's Tutorials section for developers. Understand the intricacies of Application Structure, explore the art of Custom Puzzle Locks, wield the power of the Custody Tool, master Coin Spending via RPC, harness the capabilities of the Seeder and Simulator with our user guides, and gain insights into the WalletConnect framework.",
+          "Dive into the Video Series of Chia Network's Developer Guides for a dynamic learning experience. Discover why Chia is great, explore the essentials of developing Chia applications, set up your tools efficiently, delve into programming in Chialisp, understand the intricacies of the Coin Lifecycle, implement Singleton Contracts, master the dynamics of State, Coins, and Announcements, ensure security with insights into Arguments and Signing, explore Announcements and Oracles, and harness the potential of CATs (Chia Asset Tokens)."
+        ],
+        "links": [
+          {
+            "text": "Skip to main content",
+            "href": "#__docusaurus_skipToContent_fallback"
+          },
+          {
+            "text": "Chia Docs",
+            "href": "/"
+          },
+          {
+            "text": "Docs",
+            "href": "/chia-blockchain/introduction/"
+          },
+          {
+            "text": "Dev Guides",
+            "href": "/dev-guides-home/"
+          },
+          {
+            "text": "Chia Academy",
+            "href": "/academy-home/"
+          },
+          {
+            "text": "English",
+            "href": "#"
+          },
+          {
+            "text": "English",
+            "href": "/dev-guides-home/"
+          },
+          {
+            "text": "简体中文",
+            "href": "/zh-Hans/dev-guides-home/"
+          },
+          {
+            "text": "Chialisp",
+            "href": "https://chialisp.com"
+          },
+          {
+            "text": "Chia Network",
+            "href": "https://chia.net"
+          },
+          {
+            "text": "GitHub",
+            "href": "https://github.com/Chia-Network/chia-blockchain"
+          },
+          {
+            "text": "Crash Course",
+            "href": "/dev-guides-home/"
+          },
+          {
+            "text": "Introduction",
+            "href": "/guides/crash-course/introduction/"
+          },
+          {
+            "text": "Chialisp",
+            "href": "/guides/crash-course/intro-to-chialisp/"
+          },
+          {
+            "text": "Smart Coins",
+            "href": "/guides/crash-course/smart-coins/"
+          },
+          {
+            "text": "Signatures",
+            "href": "/guides/crash-course/signatures/"
+          },
+          {
+            "text": "State",
+            "href": "/guides/crash-course/state/"
+          },
+          {
+            "text": "Inner Puzzles",
+            "href": "/guides/crash-course/inner-puzzles/"
+          },
+          {
+            "text": "CATs, Offers and NFTs",
+            "href": "/guides/crash-course/cats-offers-nfts/"
+          },
+          {
+            "text": "Chialisp and TypeScript",
+            "href": "/guides/crash-course/chialisp-and-typescript/"
+          },
+          {
+            "text": "Primitives",
+            "href": "/guides/primitives/"
+          },
+          {
+            "text": "Tutorials",
+            "href": "/guides/tutorials/"
+          },
+          {
+            "text": "Video Series",
+            "href": "/guides/video-series/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          },
+          {
+            "text": "​",
+            "href": "#chia-crash-course"
+          },
+          {
+            "text": "",
+            "href": "/guides/crash-course/introduction/"
+          },
+          {
+            "text": "",
+            "href": "/guides/crash-course/intro-to-chialisp/"
+          },
+          {
+            "text": "",
+            "href": "/guides/crash-course/smart-coins/"
+          },
+          {
+            "text": "",
+            "href": "/guides/crash-course/signatures/"
+          },
+          {
+            "text": "",
+            "href": "/guides/crash-course/state/"
+          },
+          {
+            "text": "",
+            "href": "/guides/crash-course/inner-puzzles/"
+          },
+          {
+            "text": "",
+            "href": "/crash-course/cats-offers-nfts/"
+          },
+          {
+            "text": "",
+            "href": "/chialisp-and-typescript/"
+          },
+          {
+            "text": "​",
+            "href": "#primitives"
+          },
+          {
+            "text": "",
+            "href": "/guides/nft-developer-guide/"
+          },
+          {
+            "text": "",
+            "href": "/guides/cat-developer-guide/"
+          },
+          {
+            "text": "",
+            "href": "/guides/datalayer-developer-guide/"
+          },
+          {
+            "text": "",
+            "href": "/guides/clawback-developer-guide/"
+          },
+          {
+            "text": "",
+            "href": "/guides/offers-developer-guide/"
+          },
+          {
+            "text": "",
+            "href": "/guides/daos-developer-guide/"
+          },
+          {
+            "text": "",
+            "href": "/guides/verifiable-credentials-guide"
+          },
+          {
+            "text": "​",
+            "href": "#tutorials"
+          },
+          {
+            "text": "",
+            "href": "/guides/application-structure-tutorial/"
+          },
+          {
+            "text": "",
+            "href": "/guides/custom-puzzle-lock-tutorial/"
+          },
+          {
+            "text": "",
+            "href": "/guides/custody-tool/"
+          },
+          {
+            "text": "",
+            "href": "/guides/coin-spend-rpc-tutorial/"
+          },
+          {
+            "text": "",
+            "href": "/guides/seeder-user-guide/"
+          },
+          {
+            "text": "",
+            "href": "/guides/simulator-user-guide/"
+          },
+          {
+            "text": "",
+            "href": "/guides/rpc-validation-tool/"
+          },
+          {
+            "text": "",
+            "href": "/guides/walletconnect/"
+          },
+          {
+            "text": "​",
+            "href": "#video-series"
+          },
+          {
+            "text": "",
+            "href": "/guides/why-chia-is-great-video-series/"
+          },
+          {
+            "text": "",
+            "href": "/guides/developing-applications-video-series/"
+          },
+          {
+            "text": "",
+            "href": "/guides/tools-and-setup-video-series/"
+          },
+          {
+            "text": "",
+            "href": "/guides/programming-chialisp-video-series/"
+          },
+          {
+            "text": "",
+            "href": "/guides/coin-lifecycle-and-testing-video-series/"
+          },
+          {
+            "text": "",
+            "href": "/guides/singleton-contracts-video-series/"
+          },
+          {
+            "text": "",
+            "href": "/guides/state-coins-announcements-video-series/"
+          },
+          {
+            "text": "",
+            "href": "/guides/security-arguments-signing-video-series/"
+          },
+          {
+            "text": "",
+            "href": "/guides/announcements-oracles-video-series/"
+          },
+          {
+            "text": "",
+            "href": "/guides/single-issuance-cat-video-series/"
+          },
+          {
+            "text": "",
+            "href": "/guides/multiple-issuance-cat-video-series/"
+          },
+          {
+            "text": "Edit this page",
+            "href": "https://github.com/Chia-Network/chia-docs/blob/main/docs/dev-guides-home.md"
+          },
+          {
+            "text": "NextIntroduction",
+            "href": "/guides/crash-course/introduction/"
+          },
+          {
+            "text": "Chia Crash Course",
+            "href": "#chia-crash-course"
+          },
+          {
+            "text": "Primitives",
+            "href": "#primitives"
+          },
+          {
+            "text": "Tutorials",
+            "href": "#tutorials"
+          },
+          {
+            "text": "Video Series",
+            "href": "#video-series"
+          },
+          {
+            "text": "White Paper",
+            "href": "https://chia.net/approach"
+          },
+          {
+            "text": "Green Paper",
+            "href": "https://chia.net/greenpaper"
+          },
+          {
+            "text": "Consensus 1.1",
+            "href": "https://docs.chia.net/consensus-intro"
+          },
+          {
+            "text": "Chialisp",
+            "href": "https://chialisp.com"
+          },
+          {
+            "text": "Chia Academy",
+            "href": "https://docs.chia.net/academy-home/"
+          },
+          {
+            "text": "Developer Guides",
+            "href": "https://docs.chia.net/guides/crash-course/introduction"
+          },
+          {
+            "text": "About",
+            "href": "https://chia.net/about"
+          },
+          {
+            "text": "Blog",
+            "href": "https://chia.net/blog"
+          },
+          {
+            "text": "Contact",
+            "href": "https://chia.net/contact"
+          },
+          {
+            "text": "Apache License, Version 2.0",
+            "href": "https://github.com/Chia-Network/chia-docs/blob/main/LICENSE"
+          },
+          {
+            "text": "Terms",
+            "href": "https://chia.net/terms"
+          }
+        ]
+      }
+    },
+    "rpc_reference": {
+      "url": "https://docs.chia.net/reference-client/rpc-reference/rpc/",
+      "type": "documentation",
+      "title": "RPC Overview | Chia Documentation",
+      "description": "Note about Windows command escaping",
+      "sections": [
+        {
+          "level": 1,
+          "title": "RPC Overview",
+          "id": "",
+          "content": ""
+        },
+        {
+          "level": 3,
+          "title": "Default Ports:​",
+          "id": "default-ports",
+          "content": "Daemon: 55400\nFull Node: 8555\nFarmer: 8559\nHarvester: 8560\nWallet: 9256\nDataLayer: 8562\nCrawler: 8561\nTimelord: 8557"
+        },
+        {
+          "level": 3,
+          "title": "HTTP/JSON​",
+          "id": "httpjson",
+          "content": "The certificates must be used when calling the RPCs from the command line, make sure to use the correct certificates for the services you are calling.\nAll endpoints are made with POST with JSON data. The response is a JSON dictionary with a success field, which can be true or false."
+        },
+        {
+          "level": 3,
+          "title": "WebSockets​",
+          "id": "websockets",
+          "content": "If you are using the Websockets API, you can go directly through the daemon, which routes requests. Each WebSocket message contains the following fields:\nSome examples can be found here."
+        },
+        {
+          "level": 3,
+          "title": "Python​",
+          "id": "python",
+          "content": "Most of the rpc methods are accessible through the different client objects in chia-blockchain/chia/rpc.\nFor examples of usage, see the command line implementation (chia wallet, chia show, etc)."
+        },
+        {
+          "level": 3,
+          "title": "Javascript​",
+          "id": "javascript",
+          "content": "A javascript client can be found here: https://github.com/Chia-Mine/chia-agent.\nThere is also another client here: https://github.com/freddiecoleman/chia-client."
+        },
+        {
+          "level": 2,
+          "title": "Services​",
+          "id": "services",
+          "content": "Explanation:\nEach service is composed of a managed object, an API for control, and an RPC API for remote control. The combination of these into the service is controlled by the service alias types. Service: This column lists the different manager services within the Chia system.\nManaged Objects: This column details the core entities or components that each service oversees.\nAssociated API: This column specifies the API class associated with each service. This API class defines the interface for interacting with the corresponding managed objects.\nAssociated RPC API: This column lists the RPC API class associated with each service. This RPC API class allows for remote control of the managed objects through Remote Procedure Calls (RPC)."
+        },
+        {
+          "level": 2,
+          "title": "Log Levels​",
+          "id": "log-levels",
+          "content": "Added in version 2.5.1, the below RPCs are for interacting with log levels for the various services while they are running running."
+        },
+        {
+          "level": 3,
+          "title": "get_log_level​",
+          "id": "get_log_level",
+          "content": "Functionality: Get the services current log level Usage: chia rpc [SERVICE] get_log_level Options: Request Services: Request Parameters: None"
+        },
+        {
+          "level": 3,
+          "title": "set_log_level​",
+          "id": "set_log_level",
+          "content": "Functionality: Set the services current log level Usage: chia rpc [SERVICE] set_log_level Options: Request Services: Request Parameters:"
+        },
+        {
+          "level": 3,
+          "title": "reset_log_level​",
+          "id": "reset_log_level",
+          "content": "Functionality: Reset the services current log level Usage: chia rpc [SERVICE] reset_log_level Options: Request Services: Request Parameters: None"
+        }
+      ],
+      "navigation": [
+        {
+          "text": "Chia Docs",
+          "href": "/",
+          "full_url": "https://docs.chia.net/"
+        },
+        {
+          "text": "Docs",
+          "href": "/chia-blockchain/introduction/",
+          "full_url": "https://docs.chia.net/chia-blockchain/introduction/"
+        },
+        {
+          "text": "Dev Guides",
+          "href": "/dev-guides-home/",
+          "full_url": "https://docs.chia.net/dev-guides-home/"
+        },
+        {
+          "text": "Chia Academy",
+          "href": "/academy-home/",
+          "full_url": "https://docs.chia.net/academy-home/"
+        },
+        {
+          "text": "English",
+          "href": "#",
+          "full_url": "https://docs.chia.net"
+        },
+        {
+          "text": "English",
+          "href": "/reference-client/rpc-reference/rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/rpc/"
+        },
+        {
+          "text": "简体中文",
+          "href": "/zh-Hans/reference-client/rpc-reference/rpc/",
+          "full_url": "https://docs.chia.net/zh-Hans/reference-client/rpc-reference/rpc/"
+        },
+        {
+          "text": "Chialisp",
+          "href": "https://chialisp.com",
+          "full_url": "https://chialisp.com"
+        },
+        {
+          "text": "Chia Network",
+          "href": "https://chia.net",
+          "full_url": "https://chia.net"
+        },
+        {
+          "text": "GitHub",
+          "href": "https://github.com/Chia-Network/chia-blockchain",
+          "full_url": "https://github.com/Chia-Network/chia-blockchain"
+        },
+        {
+          "text": "English",
+          "href": "/reference-client/rpc-reference/rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/rpc/"
+        },
+        {
+          "text": "简体中文",
+          "href": "/zh-Hans/reference-client/rpc-reference/rpc/",
+          "full_url": "https://docs.chia.net/zh-Hans/reference-client/rpc-reference/rpc/"
+        },
+        {
+          "text": "Chia Blockchain",
+          "href": "/chia-blockchain/introduction/",
+          "full_url": "https://docs.chia.net/chia-blockchain/introduction/"
+        },
+        {
+          "text": "Chia Cloud Wallet",
+          "href": "/cloud-wallet/getting-started/",
+          "full_url": "https://docs.chia.net/cloud-wallet/getting-started/"
+        },
+        {
+          "text": "Chia Signer App",
+          "href": "/chia-signer/getting-started/",
+          "full_url": "https://docs.chia.net/chia-signer/getting-started/"
+        },
+        {
+          "text": "Chia Reference Client",
+          "href": "/reference-client/getting-started/farming-guide/",
+          "full_url": "https://docs.chia.net/reference-client/getting-started/farming-guide/"
+        },
+        {
+          "text": "Getting Started",
+          "href": "/reference-client/getting-started/farming-guide/",
+          "full_url": "https://docs.chia.net/reference-client/getting-started/farming-guide/"
+        },
+        {
+          "text": "Install and Setup",
+          "href": "/reference-client/install-and-setup/installation/",
+          "full_url": "https://docs.chia.net/reference-client/install-and-setup/installation/"
+        },
+        {
+          "text": "Plotting",
+          "href": "/reference-client/plotting/plotting-basics/",
+          "full_url": "https://docs.chia.net/reference-client/plotting/plotting-basics/"
+        },
+        {
+          "text": "Farming",
+          "href": "/reference-client/farming/farming-basics/",
+          "full_url": "https://docs.chia.net/reference-client/farming/farming-basics/"
+        },
+        {
+          "text": "Coin Selection",
+          "href": "/reference-client/coin-selection/",
+          "full_url": "https://docs.chia.net/reference-client/coin-selection/"
+        },
+        {
+          "text": "RPC Reference",
+          "href": "/reference-client/rpc-reference/rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/rpc/"
+        },
+        {
+          "text": "Overview",
+          "href": "/reference-client/rpc-reference/rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/rpc/"
+        },
+        {
+          "text": "DAOs",
+          "href": "/reference-client/rpc-reference/dao-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/dao-rpc/"
+        },
+        {
+          "text": "Daemon",
+          "href": "/reference-client/rpc-reference/daemon-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/daemon-rpc/"
+        },
+        {
+          "text": "DataLayer",
+          "href": "/reference-client/rpc-reference/datalayer-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/datalayer-rpc/"
+        },
+        {
+          "text": "DIDs",
+          "href": "/reference-client/rpc-reference/did-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/did-rpc/"
+        },
+        {
+          "text": "NFTs",
+          "href": "/reference-client/rpc-reference/nft-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/nft-rpc/"
+        },
+        {
+          "text": "Offers",
+          "href": "/reference-client/rpc-reference/offer-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/offer-rpc/"
+        },
+        {
+          "text": "Simulator",
+          "href": "/reference-client/rpc-reference/simulator-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/simulator-rpc/"
+        },
+        {
+          "text": "VCs",
+          "href": "/reference-client/rpc-reference/vc-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/vc-rpc/"
+        },
+        {
+          "text": "Wallet",
+          "href": "/reference-client/rpc-reference/wallet-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/wallet-rpc/"
+        },
+        {
+          "text": "Farmer",
+          "href": "/reference-client/rpc-reference/farmer-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/farmer-rpc/"
+        },
+        {
+          "text": "Full Node",
+          "href": "/reference-client/rpc-reference/full-node-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/full-node-rpc/"
+        },
+        {
+          "text": "Harvester",
+          "href": "/reference-client/rpc-reference/harvester-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/harvester-rpc/"
+        },
+        {
+          "text": "CLI Reference",
+          "href": "/reference-client/cli-reference/cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/cli/"
+        },
+        {
+          "text": "WalletConnect",
+          "href": "/reference-client/walletconnect/walletconnect/",
+          "full_url": "https://docs.chia.net/reference-client/walletconnect/walletconnect/"
+        },
+        {
+          "text": "Troubleshooting",
+          "href": "/reference-client/troubleshooting/check-if-things-are-working/",
+          "full_url": "https://docs.chia.net/reference-client/troubleshooting/check-if-things-are-working/"
+        },
+        {
+          "text": "Contributing",
+          "href": "/contribution/using-github/",
+          "full_url": "https://docs.chia.net/contribution/using-github/"
+        },
+        {
+          "text": "Chia Blockchain",
+          "href": "/chia-blockchain/introduction/",
+          "full_url": "https://docs.chia.net/chia-blockchain/introduction/"
+        },
+        {
+          "text": "Chia Cloud Wallet",
+          "href": "/cloud-wallet/getting-started/",
+          "full_url": "https://docs.chia.net/cloud-wallet/getting-started/"
+        },
+        {
+          "text": "Chia Signer App",
+          "href": "/chia-signer/getting-started/",
+          "full_url": "https://docs.chia.net/chia-signer/getting-started/"
+        },
+        {
+          "text": "Chia Reference Client",
+          "href": "/reference-client/getting-started/farming-guide/",
+          "full_url": "https://docs.chia.net/reference-client/getting-started/farming-guide/"
+        },
+        {
+          "text": "Getting Started",
+          "href": "/reference-client/getting-started/farming-guide/",
+          "full_url": "https://docs.chia.net/reference-client/getting-started/farming-guide/"
+        },
+        {
+          "text": "Install and Setup",
+          "href": "/reference-client/install-and-setup/installation/",
+          "full_url": "https://docs.chia.net/reference-client/install-and-setup/installation/"
+        },
+        {
+          "text": "Plotting",
+          "href": "/reference-client/plotting/plotting-basics/",
+          "full_url": "https://docs.chia.net/reference-client/plotting/plotting-basics/"
+        },
+        {
+          "text": "Farming",
+          "href": "/reference-client/farming/farming-basics/",
+          "full_url": "https://docs.chia.net/reference-client/farming/farming-basics/"
+        },
+        {
+          "text": "Coin Selection",
+          "href": "/reference-client/coin-selection/",
+          "full_url": "https://docs.chia.net/reference-client/coin-selection/"
+        },
+        {
+          "text": "RPC Reference",
+          "href": "/reference-client/rpc-reference/rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/rpc/"
+        },
+        {
+          "text": "Overview",
+          "href": "/reference-client/rpc-reference/rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/rpc/"
+        },
+        {
+          "text": "DAOs",
+          "href": "/reference-client/rpc-reference/dao-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/dao-rpc/"
+        },
+        {
+          "text": "Daemon",
+          "href": "/reference-client/rpc-reference/daemon-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/daemon-rpc/"
+        },
+        {
+          "text": "DataLayer",
+          "href": "/reference-client/rpc-reference/datalayer-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/datalayer-rpc/"
+        },
+        {
+          "text": "DIDs",
+          "href": "/reference-client/rpc-reference/did-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/did-rpc/"
+        },
+        {
+          "text": "NFTs",
+          "href": "/reference-client/rpc-reference/nft-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/nft-rpc/"
+        },
+        {
+          "text": "Offers",
+          "href": "/reference-client/rpc-reference/offer-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/offer-rpc/"
+        },
+        {
+          "text": "Simulator",
+          "href": "/reference-client/rpc-reference/simulator-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/simulator-rpc/"
+        },
+        {
+          "text": "VCs",
+          "href": "/reference-client/rpc-reference/vc-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/vc-rpc/"
+        },
+        {
+          "text": "Wallet",
+          "href": "/reference-client/rpc-reference/wallet-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/wallet-rpc/"
+        },
+        {
+          "text": "Farmer",
+          "href": "/reference-client/rpc-reference/farmer-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/farmer-rpc/"
+        },
+        {
+          "text": "Full Node",
+          "href": "/reference-client/rpc-reference/full-node-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/full-node-rpc/"
+        },
+        {
+          "text": "Harvester",
+          "href": "/reference-client/rpc-reference/harvester-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/harvester-rpc/"
+        },
+        {
+          "text": "CLI Reference",
+          "href": "/reference-client/cli-reference/cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/cli/"
+        },
+        {
+          "text": "WalletConnect",
+          "href": "/reference-client/walletconnect/walletconnect/",
+          "full_url": "https://docs.chia.net/reference-client/walletconnect/walletconnect/"
+        },
+        {
+          "text": "Troubleshooting",
+          "href": "/reference-client/troubleshooting/check-if-things-are-working/",
+          "full_url": "https://docs.chia.net/reference-client/troubleshooting/check-if-things-are-working/"
+        },
+        {
+          "text": "Contributing",
+          "href": "/contribution/using-github/",
+          "full_url": "https://docs.chia.net/contribution/using-github/"
+        },
+        {
+          "text": "Getting Started",
+          "href": "/reference-client/getting-started/farming-guide/",
+          "full_url": "https://docs.chia.net/reference-client/getting-started/farming-guide/"
+        },
+        {
+          "text": "Install and Setup",
+          "href": "/reference-client/install-and-setup/installation/",
+          "full_url": "https://docs.chia.net/reference-client/install-and-setup/installation/"
+        },
+        {
+          "text": "Plotting",
+          "href": "/reference-client/plotting/plotting-basics/",
+          "full_url": "https://docs.chia.net/reference-client/plotting/plotting-basics/"
+        },
+        {
+          "text": "Farming",
+          "href": "/reference-client/farming/farming-basics/",
+          "full_url": "https://docs.chia.net/reference-client/farming/farming-basics/"
+        },
+        {
+          "text": "Coin Selection",
+          "href": "/reference-client/coin-selection/",
+          "full_url": "https://docs.chia.net/reference-client/coin-selection/"
+        },
+        {
+          "text": "RPC Reference",
+          "href": "/reference-client/rpc-reference/rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/rpc/"
+        },
+        {
+          "text": "Overview",
+          "href": "/reference-client/rpc-reference/rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/rpc/"
+        },
+        {
+          "text": "DAOs",
+          "href": "/reference-client/rpc-reference/dao-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/dao-rpc/"
+        },
+        {
+          "text": "Daemon",
+          "href": "/reference-client/rpc-reference/daemon-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/daemon-rpc/"
+        },
+        {
+          "text": "DataLayer",
+          "href": "/reference-client/rpc-reference/datalayer-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/datalayer-rpc/"
+        },
+        {
+          "text": "DIDs",
+          "href": "/reference-client/rpc-reference/did-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/did-rpc/"
+        },
+        {
+          "text": "NFTs",
+          "href": "/reference-client/rpc-reference/nft-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/nft-rpc/"
+        },
+        {
+          "text": "Offers",
+          "href": "/reference-client/rpc-reference/offer-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/offer-rpc/"
+        },
+        {
+          "text": "Simulator",
+          "href": "/reference-client/rpc-reference/simulator-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/simulator-rpc/"
+        },
+        {
+          "text": "VCs",
+          "href": "/reference-client/rpc-reference/vc-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/vc-rpc/"
+        },
+        {
+          "text": "Wallet",
+          "href": "/reference-client/rpc-reference/wallet-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/wallet-rpc/"
+        },
+        {
+          "text": "Farmer",
+          "href": "/reference-client/rpc-reference/farmer-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/farmer-rpc/"
+        },
+        {
+          "text": "Full Node",
+          "href": "/reference-client/rpc-reference/full-node-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/full-node-rpc/"
+        },
+        {
+          "text": "Harvester",
+          "href": "/reference-client/rpc-reference/harvester-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/harvester-rpc/"
+        },
+        {
+          "text": "CLI Reference",
+          "href": "/reference-client/cli-reference/cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/cli/"
+        },
+        {
+          "text": "WalletConnect",
+          "href": "/reference-client/walletconnect/walletconnect/",
+          "full_url": "https://docs.chia.net/reference-client/walletconnect/walletconnect/"
+        },
+        {
+          "text": "Troubleshooting",
+          "href": "/reference-client/troubleshooting/check-if-things-are-working/",
+          "full_url": "https://docs.chia.net/reference-client/troubleshooting/check-if-things-are-working/"
+        },
+        {
+          "text": "Overview",
+          "href": "/reference-client/rpc-reference/rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/rpc/"
+        },
+        {
+          "text": "DAOs",
+          "href": "/reference-client/rpc-reference/dao-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/dao-rpc/"
+        },
+        {
+          "text": "Daemon",
+          "href": "/reference-client/rpc-reference/daemon-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/daemon-rpc/"
+        },
+        {
+          "text": "DataLayer",
+          "href": "/reference-client/rpc-reference/datalayer-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/datalayer-rpc/"
+        },
+        {
+          "text": "DIDs",
+          "href": "/reference-client/rpc-reference/did-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/did-rpc/"
+        },
+        {
+          "text": "NFTs",
+          "href": "/reference-client/rpc-reference/nft-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/nft-rpc/"
+        },
+        {
+          "text": "Offers",
+          "href": "/reference-client/rpc-reference/offer-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/offer-rpc/"
+        },
+        {
+          "text": "Simulator",
+          "href": "/reference-client/rpc-reference/simulator-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/simulator-rpc/"
+        },
+        {
+          "text": "VCs",
+          "href": "/reference-client/rpc-reference/vc-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/vc-rpc/"
+        },
+        {
+          "text": "Wallet",
+          "href": "/reference-client/rpc-reference/wallet-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/wallet-rpc/"
+        },
+        {
+          "text": "Farmer",
+          "href": "/reference-client/rpc-reference/farmer-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/farmer-rpc/"
+        },
+        {
+          "text": "Full Node",
+          "href": "/reference-client/rpc-reference/full-node-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/full-node-rpc/"
+        },
+        {
+          "text": "Harvester",
+          "href": "/reference-client/rpc-reference/harvester-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/harvester-rpc/"
+        },
+        {
+          "text": "PreviousCoin Selection",
+          "href": "/reference-client/coin-selection/",
+          "full_url": "https://docs.chia.net/reference-client/coin-selection/"
+        },
+        {
+          "text": "NextDAOs",
+          "href": "/reference-client/rpc-reference/dao-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/dao-rpc/"
+        }
+      ],
+      "code_examples": [
+        "chia rpc wallet create_new_wallet '{\"wallet_type\": \"nft_wallet\"}'",
+        "chia rpc wallet create_new_wallet '{\"wallet_type\": \"nft_wallet\"}'",
+        "chia rpc wallet create_new_wallet '{\\\"wallet_type\\\": \\\"nft_wallet\\\"}'",
+        "chia rpc wallet create_new_wallet '{\\\"wallet_type\\\": \\\"nft_wallet\\\"}'",
+        "~/.chia/mainnet/config/config.yaml",
+        "curl --insecure --cert $config_root/config/ssl/full_node/private_full_node.crt \\     --key $config_root/config/ssl/full_node/private_full_node.key \\     -d '{ \"header_hash\": \"'$hash'\" }' -H \"Content-Type: application/json\" \\     -X POST https://localhost:$port/get_block",
+        "curl --insecure --cert $config_root/config/ssl/full_node/private_full_node.crt \\     --key $config_root/config/ssl/full_node/private_full_node.key \\     -d '{ \"header_hash\": \"'$hash'\" }' -H \"Content-Type: application/json\" \\     -X POST https://localhost:$port/get_block",
+        "{  \"command\": \"get_blockchain_state\",  \"ack\": false,  \"data\": {},  \"request_id\": \"123456\",  \"destination\": \"wallet\",  \"origin\": \"ui\"}",
+        "{  \"command\": \"get_blockchain_state\",  \"ack\": false,  \"data\": {},  \"request_id\": \"123456\",  \"destination\": \"wallet\",  \"origin\": \"ui\"}",
+        "import jsonfrom datetime import datetimeimport websocketimport ssl# websocket.enableTrace(True)def on_message(ws, message):    print('{0}: Got message: {1}'.format(datetime.now(), message))def on_error(self, error):    print('Error in websocket: {0}'.format(error))def on_close(self, ws, e):    print(\"{0]: Websocket closed: {1}\".format(datetime.now(), e))def on_open(self):    print('{0}: Connected to Websocket'.format(datetime.now()))    message = {\"destination\": \"daemon\", \"command\": \"register_service\", \"request_id\": \"123456ca\", \"origin\": \"\", \"data\": { \"service\": 'chia_agent'}}    on_send_message(self, message)    message = {\"destination\": \"daemon\", \"command\": \"register_service\", \"request_id\": \"123456w\", \"origin\": \"\", \"data\": { \"service\": 'wallet_ui'}}    on_send_message(self, message)def on_send_message(ws, message):    print('{0}: Sent Message: {1}'.format(datetime.now(), message))    wsapp.send(json.dumps(message))def on_ping(ws, data):    print('{0}: Got ping: {1}'.format(datetime.now(), data))print(\"Starting Something\")wsapp = websocket.WebSocketApp(\"wss://localhost:55400\",                               on_open=on_open,                               on_message=on_message,                               on_error=on_error,                               on_ping=on_ping)wsapp.run_forever(sslopt={\"cert_reqs\": ssl.CERT_NONE, \"certfile\": \"ssl/daemon/private_daemon.crt\",                          \"keyfile\": \"ssl/daemon/private_daemon.key\", \"ssl_context.check_hostname\": False})wsapp.close()",
+        "import jsonfrom datetime import datetimeimport websocketimport ssl# websocket.enableTrace(True)def on_message(ws, message):    print('{0}: Got message: {1}'.format(datetime.now(), message))def on_error(self, error):    print('Error in websocket: {0}'.format(error))def on_close(self, ws, e):    print(\"{0]: Websocket closed: {1}\".format(datetime.now(), e))def on_open(self):    print('{0}: Connected to Websocket'.format(datetime.now()))    message = {\"destination\": \"daemon\", \"command\": \"register_service\", \"request_id\": \"123456ca\", \"origin\": \"\", \"data\": { \"service\": 'chia_agent'}}    on_send_message(self, message)    message = {\"destination\": \"daemon\", \"command\": \"register_service\", \"request_id\": \"123456w\", \"origin\": \"\", \"data\": { \"service\": 'wallet_ui'}}    on_send_message(self, message)def on_send_message(ws, message):    print('{0}: Sent Message: {1}'.format(datetime.now(), message))    wsapp.send(json.dumps(message))def on_ping(ws, data):    print('{0}: Got ping: {1}'.format(datetime.now(), data))print(\"Starting Something\")wsapp = websocket.WebSocketApp(\"wss://localhost:55400\",                               on_open=on_open,                               on_message=on_message,                               on_error=on_error,                               on_ping=on_ping)wsapp.run_forever(sslopt={\"cert_reqs\": ssl.CERT_NONE, \"certfile\": \"ssl/daemon/private_daemon.crt\",                          \"keyfile\": \"ssl/daemon/private_daemon.key\", \"ssl_context.check_hostname\": False})wsapp.close()",
+        "XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "Starting Something2022-01-24 21:20:39.782297: Connected to Websocket2022-01-24 21:20:39.782297: Sent Message: {'destination': 'daemon', 'command': 'register_service', 'request_id': '123456ca', 'origin': '', 'data': {'service': 'chia_agent'}}2022-01-24 21:20:39.782297: Sent Message: {'destination': 'daemon', 'command': 'register_service', 'request_id': '123456w', 'origin': '', 'data': {'service': 'wallet_ui'}}2022-01-24 21:20:39.782297: Got message: {\"ack\": true, \"command\": \"register_service\", \"data\": {\"success\": true}, \"destination\": \"\", \"origin\": \"daemon\", \"request_id\": \"123456ca\"}2022-01-24 21:20:39.782297: Got message: {\"ack\": true, \"command\": \"register_service\", \"data\": {\"success\": true}, \"destination\": \"\", \"origin\": \"daemon\", \"request_id\": \"123456w\"}2022-01-24 21:20:45.053029: Got message: {\"ack\": false, \"command\": \"get_connections\", \"data\": {\"connections\": [{\"bytes_read\": 3094726, \"bytes_written\": 1545670, \"creation_time\": 1642488338.7817655, \"last_message_time\": 1643077239.4690468, \"local_port\": 8447, \"node_id\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"peer_host\": \"127.0.0.1\", \"peer_port\": 3445, \"peer_server_port\": 8448, \"type\": 2}, {\"bytes_read\": 870298, \"bytes_written\": 51, \"creation_time\": 1642743064.406306, \"last_message_time\": 1643077239.4690468, \"local_port\": 8447, \"node_id\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"peer_host\": \"127.0.0.1\", \"peer_port\": 8444, \"peer_server_port\": 8444, \"type\": 1}], \"success\": true}, \"destination\": \"wallet_ui\", \"origin\": \"chia_farmer\", \"request_id\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"}2022-01-24 21:20:48.417804: Got message: {\"ack\": false, \"command\": \"new_signage_point\", \"data\": {\"proofs\": [], \"signage_point\": {\"challenge_chain_sp\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"challenge_hash\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"difficulty\": 2672, \"reward_chain_sp\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"signage_point_index\": 8, \"sub_slot_iters\": 135266304}, \"success\": true}, \"destination\": \"wallet_ui\", \"origin\": \"chia_farmer\", \"request_id\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"}2022-01-24 21:20:48.417804: Got message: {\"ack\": false, \"command\": \"new_farming_info\", \"data\": {\"farming_info\": {\"challenge_hash\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"passed_filter\": 0, \"proofs\": 0, \"signage_point\": \"0x35e9aaf13ebca31660f9720f97cf2c127a01a24440a6a253b5953196da715162\", \"timestamp\": 1643077248, \"total_plots\": 3}, \"success\": true}, \"destination\": \"wallet_ui\", \"origin\": \"chia_farmer\", \"request_id\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"}2022-01-24 21:20:57.402740: Got message: {\"ack\": false, \"command\": \"new_signage_point\", \"data\": {\"proofs\": [], \"signage_point\": {\"challenge_chain_sp\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"challenge_hash\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"difficulty\": 2672, \"reward_chain_sp\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"signage_point_index\": 9, \"sub_slot_iters\": 135266304}, \"success\": true}, \"destination\": \"wallet_ui\", \"origin\": \"chia_farmer\", \"request_id\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"}2022-01-24 21:20:57.402740: Got message: {\"ack\": false, \"command\": \"new_farming_info\", \"data\": {\"farming_info\": {\"challenge_hash\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"passed_filter\": 0, \"proofs\": 0, \"signage_point\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"timestamp\": 1643077257, \"total_plots\": 3}, \"success\": true}, \"destination\": \"wallet_ui\", \"origin\": \"chia_farmer\", \"request_id\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"}",
+        "Starting Something2022-01-24 21:20:39.782297: Connected to Websocket2022-01-24 21:20:39.782297: Sent Message: {'destination': 'daemon', 'command': 'register_service', 'request_id': '123456ca', 'origin': '', 'data': {'service': 'chia_agent'}}2022-01-24 21:20:39.782297: Sent Message: {'destination': 'daemon', 'command': 'register_service', 'request_id': '123456w', 'origin': '', 'data': {'service': 'wallet_ui'}}2022-01-24 21:20:39.782297: Got message: {\"ack\": true, \"command\": \"register_service\", \"data\": {\"success\": true}, \"destination\": \"\", \"origin\": \"daemon\", \"request_id\": \"123456ca\"}2022-01-24 21:20:39.782297: Got message: {\"ack\": true, \"command\": \"register_service\", \"data\": {\"success\": true}, \"destination\": \"\", \"origin\": \"daemon\", \"request_id\": \"123456w\"}2022-01-24 21:20:45.053029: Got message: {\"ack\": false, \"command\": \"get_connections\", \"data\": {\"connections\": [{\"bytes_read\": 3094726, \"bytes_written\": 1545670, \"creation_time\": 1642488338.7817655, \"last_message_time\": 1643077239.4690468, \"local_port\": 8447, \"node_id\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"peer_host\": \"127.0.0.1\", \"peer_port\": 3445, \"peer_server_port\": 8448, \"type\": 2}, {\"bytes_read\": 870298, \"bytes_written\": 51, \"creation_time\": 1642743064.406306, \"last_message_time\": 1643077239.4690468, \"local_port\": 8447, \"node_id\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"peer_host\": \"127.0.0.1\", \"peer_port\": 8444, \"peer_server_port\": 8444, \"type\": 1}], \"success\": true}, \"destination\": \"wallet_ui\", \"origin\": \"chia_farmer\", \"request_id\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"}2022-01-24 21:20:48.417804: Got message: {\"ack\": false, \"command\": \"new_signage_point\", \"data\": {\"proofs\": [], \"signage_point\": {\"challenge_chain_sp\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"challenge_hash\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"difficulty\": 2672, \"reward_chain_sp\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"signage_point_index\": 8, \"sub_slot_iters\": 135266304}, \"success\": true}, \"destination\": \"wallet_ui\", \"origin\": \"chia_farmer\", \"request_id\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"}2022-01-24 21:20:48.417804: Got message: {\"ack\": false, \"command\": \"new_farming_info\", \"data\": {\"farming_info\": {\"challenge_hash\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"passed_filter\": 0, \"proofs\": 0, \"signage_point\": \"0x35e9aaf13ebca31660f9720f97cf2c127a01a24440a6a253b5953196da715162\", \"timestamp\": 1643077248, \"total_plots\": 3}, \"success\": true}, \"destination\": \"wallet_ui\", \"origin\": \"chia_farmer\", \"request_id\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"}2022-01-24 21:20:57.402740: Got message: {\"ack\": false, \"command\": \"new_signage_point\", \"data\": {\"proofs\": [], \"signage_point\": {\"challenge_chain_sp\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"challenge_hash\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"difficulty\": 2672, \"reward_chain_sp\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"signage_point_index\": 9, \"sub_slot_iters\": 135266304}, \"success\": true}, \"destination\": \"wallet_ui\", \"origin\": \"chia_farmer\", \"request_id\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"}2022-01-24 21:20:57.402740: Got message: {\"ack\": false, \"command\": \"new_farming_info\", \"data\": {\"farming_info\": {\"challenge_hash\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"passed_filter\": 0, \"proofs\": 0, \"signage_point\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"timestamp\": 1643077257, \"total_plots\": 3}, \"success\": true}, \"destination\": \"wallet_ui\", \"origin\": \"chia_farmer\", \"request_id\": \"XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"}",
+        "chia-blockchain/chia/rpc",
+        "import requestsimport urllib3import jsonurllib3.disable_warnings()headers = {'Content-Type': 'application/json'}url = \"https://localhost:8555/get_blockchain_state\"data = '{}'cert = ('ssl/full_node/private_full_node.crt', 'ssl/full_node/private_full_node.key')response = json.loads(requests.post(url, data=data, headers=headers, cert=cert, verify=False).text)print(json.dumps(response, indent=4, sort_keys=True))",
+        "import requestsimport urllib3import jsonurllib3.disable_warnings()headers = {'Content-Type': 'application/json'}url = \"https://localhost:8555/get_blockchain_state\"data = '{}'cert = ('ssl/full_node/private_full_node.crt', 'ssl/full_node/private_full_node.key')response = json.loads(requests.post(url, data=data, headers=headers, cert=cert, verify=False).text)print(json.dumps(response, indent=4, sort_keys=True))",
+        "using System;using Chia_Client_API.WalletAPI_NS;using CHIA_RPC.General_NS;using CHIA_RPC.Wallet_NS.Wallet_NS;namespace ChiaExamples{    internal class Program    {        private static Wallet_RPC_Client Wallet = new Wallet_RPC_Client(reportResponseErrors: false);        public static void Main()        {            WalletID_RPC walletID_RPC = new WalletID_RPC(1);            GetWalletBalance_Response response = Wallet.GetWalletBalance_Sync(walletID_RPC);            Console.WriteLine(response.wallet_balance.confirmed_wallet_balance_in_xch);            Console.ReadKey();        }    }}",
+        "using System;using Chia_Client_API.WalletAPI_NS;using CHIA_RPC.General_NS;using CHIA_RPC.Wallet_NS.Wallet_NS;namespace ChiaExamples{    internal class Program    {        private static Wallet_RPC_Client Wallet = new Wallet_RPC_Client(reportResponseErrors: false);        public static void Main()        {            WalletID_RPC walletID_RPC = new WalletID_RPC(1);            GetWalletBalance_Response response = Wallet.GetWalletBalance_Sync(walletID_RPC);            Console.WriteLine(response.wallet_balance.confirmed_wallet_balance_in_xch);            Console.ReadKey();        }    }}",
+        "get_log_level",
+        "chia rpc wallet get_log_level",
+        "chia rpc wallet get_log_level",
+        "{  \"available_levels\": [    \"CRITICAL\",    \"FATAL\",    \"ERROR\",    \"WARN\",    \"WARNING\",    \"INFO\",    \"DEBUG\",    \"NOTSET\"  ],  \"level\": \"WARNING\",  \"success\": true}",
+        "{  \"available_levels\": [    \"CRITICAL\",    \"FATAL\",    \"ERROR\",    \"WARN\",    \"WARNING\",    \"INFO\",    \"DEBUG\",    \"NOTSET\"  ],  \"level\": \"WARNING\",  \"success\": true}",
+        "set_log_level",
+        "chia rpc wallet set_log_level '{    \"level\": \"DEBUG\"}'",
+        "chia rpc wallet set_log_level '{    \"level\": \"DEBUG\"}'",
+        "{  \"available_levels\": [    \"CRITICAL\",    \"FATAL\",    \"ERROR\",    \"WARN\",    \"WARNING\",    \"INFO\",    \"DEBUG\",    \"NOTSET\"  ],  \"errors\": [],  \"level\": \"DEBUG\",  \"success\": true}",
+        "{  \"available_levels\": [    \"CRITICAL\",    \"FATAL\",    \"ERROR\",    \"WARN\",    \"WARNING\",    \"INFO\",    \"DEBUG\",    \"NOTSET\"  ],  \"errors\": [],  \"level\": \"DEBUG\",  \"success\": true}",
+        "reset_log_level",
+        "chia rpc wallet reset_log_level",
+        "chia rpc wallet reset_log_level",
+        "{  \"available_levels\": [    \"CRITICAL\",    \"FATAL\",    \"ERROR\",    \"WARN\",    \"WARNING\",    \"INFO\",    \"DEBUG\",    \"NOTSET\"  ],  \"errors\": [],  \"level\": \"WARNING\",  \"success\": true}",
+        "{  \"available_levels\": [    \"CRITICAL\",    \"FATAL\",    \"ERROR\",    \"WARN\",    \"WARNING\",    \"INFO\",    \"DEBUG\",    \"NOTSET\"  ],  \"errors\": [],  \"level\": \"WARNING\",  \"success\": true}",
+        "get_log_level",
+        "set_log_level",
+        "reset_log_level"
+      ],
+      "api_endpoints": [],
+      "last_updated": "2025-09-20T12:02:51.323309",
+      "scraped_content": {
+        "headings": [
+          "RPC Overview",
+          "Default Ports:​",
+          "HTTP/JSON​",
+          "Curl​",
+          "WebSockets​",
+          "WebSockets Example (courtesy of baerrs)​",
+          "WebSockets Example Output​",
+          "Python​",
+          "Python Example (courtesy of baerrs)​",
+          "Javascript​",
+          "C# Example (courtesy of Kryptomine)​",
+          "Services​",
+          "Log Levels​",
+          "get_log_level​",
+          "set_log_level​",
+          "reset_log_level​"
+        ],
+        "paragraphs": [
+          "This document will use Linux/MacOS RPC syntax. When running rpc commands on Windows, you'll need to escape all quotes with backslashes.",
+          "For example, here is a typical RPC command on Linux and MacOS:",
+          "To run the same command on Windows, you need to escape the quotes, so it looks like this (the braces have been removed to support the formatting for this page. You still need to use them in your actual commands.):",
+          "The Chia node and services come with a JSON RPC API server that allows you to access information and control the services.\nThese are accessible via HTTP, WebSockets, or via client SDKs.\nThe ports can be configured in ~/.chia/mainnet/config/config.yaml.\nThe RPC ports should not be exposed to the internet.\nTLS certificates are used to secure the communication.",
+          "Need to validate that your RPC endpoints are working correctly? Use the RPC Validation Tool to test and validate all available RPC functionality.",
+          "The certificates must be used when calling the RPCs from the command line, make sure to use the correct certificates for the services you are calling.\nAll endpoints are made with POST with JSON data. The response is a JSON dictionary with a success field, which can be true or false.",
+          "When using curl commands ensure that the --insecure (or -k) flag is used since the chia client relies on self-signed certificates defined with the --cert and --key flags:\nAn example implementation can be found in the chia docker implementation here.",
+          "If you are using the Websockets API, you can go directly through the daemon, which routes requests. Each WebSocket message contains the following fields:\nSome examples can be found here.",
+          "(Long strings have been replaced with XxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.)",
+          "Most of the rpc methods are accessible through the different client objects in chia-blockchain/chia/rpc.\nFor examples of usage, see the command line implementation (chia wallet, chia show, etc).",
+          "A javascript client can be found here: https://github.com/Chia-Mine/chia-agent.\nThere is also another client here: https://github.com/freddiecoleman/chia-client.",
+          "A C# Client can be found on Nuget/Github.",
+          "Explanation:\nEach service is composed of a managed object, an API for control, and an RPC API for remote control. The combination of these into the service is controlled by the service alias types.",
+          "Added in version 2.5.1, the below RPCs are for interacting with log levels for the various services while they are running running.",
+          "Functionality: Get the services current log level",
+          "Usage: chia rpc [SERVICE] get_log_level",
+          "Options:",
+          "Request Services:",
+          "Request Parameters: None",
+          "Response:",
+          "Functionality: Set the services current log level",
+          "Usage: chia rpc [SERVICE] set_log_level",
+          "Options:",
+          "Request Services:",
+          "Request Parameters:",
+          "Response:",
+          "Functionality: Reset the services current log level",
+          "Usage: chia rpc [SERVICE] reset_log_level",
+          "Options:",
+          "Request Services:",
+          "Request Parameters: None",
+          "Response:"
+        ],
+        "links": [
+          {
+            "text": "Skip to main content",
+            "href": "#__docusaurus_skipToContent_fallback"
+          },
+          {
+            "text": "Chia Docs",
+            "href": "/"
+          },
+          {
+            "text": "Docs",
+            "href": "/chia-blockchain/introduction/"
+          },
+          {
+            "text": "Dev Guides",
+            "href": "/dev-guides-home/"
+          },
+          {
+            "text": "Chia Academy",
+            "href": "/academy-home/"
+          },
+          {
+            "text": "English",
+            "href": "#"
+          },
+          {
+            "text": "English",
+            "href": "/reference-client/rpc-reference/rpc/"
+          },
+          {
+            "text": "简体中文",
+            "href": "/zh-Hans/reference-client/rpc-reference/rpc/"
+          },
+          {
+            "text": "Chialisp",
+            "href": "https://chialisp.com"
+          },
+          {
+            "text": "Chia Network",
+            "href": "https://chia.net"
+          },
+          {
+            "text": "GitHub",
+            "href": "https://github.com/Chia-Network/chia-blockchain"
+          },
+          {
+            "text": "Chia Blockchain",
+            "href": "/chia-blockchain/introduction/"
+          },
+          {
+            "text": "Chia Cloud Wallet",
+            "href": "/cloud-wallet/getting-started/"
+          },
+          {
+            "text": "Chia Signer App",
+            "href": "/chia-signer/getting-started/"
+          },
+          {
+            "text": "Chia Reference Client",
+            "href": "/reference-client/getting-started/farming-guide/"
+          },
+          {
+            "text": "Getting Started",
+            "href": "/reference-client/getting-started/farming-guide/"
+          },
+          {
+            "text": "Install and Setup",
+            "href": "/reference-client/install-and-setup/installation/"
+          },
+          {
+            "text": "Plotting",
+            "href": "/reference-client/plotting/plotting-basics/"
+          },
+          {
+            "text": "Farming",
+            "href": "/reference-client/farming/farming-basics/"
+          },
+          {
+            "text": "Coin Selection",
+            "href": "/reference-client/coin-selection/"
+          },
+          {
+            "text": "RPC Reference",
+            "href": "/reference-client/rpc-reference/rpc/"
+          },
+          {
+            "text": "Overview",
+            "href": "/reference-client/rpc-reference/rpc/"
+          },
+          {
+            "text": "DAOs",
+            "href": "/reference-client/rpc-reference/dao-rpc/"
+          },
+          {
+            "text": "Daemon",
+            "href": "/reference-client/rpc-reference/daemon-rpc/"
+          },
+          {
+            "text": "DataLayer",
+            "href": "/reference-client/rpc-reference/datalayer-rpc/"
+          },
+          {
+            "text": "DIDs",
+            "href": "/reference-client/rpc-reference/did-rpc/"
+          },
+          {
+            "text": "NFTs",
+            "href": "/reference-client/rpc-reference/nft-rpc/"
+          },
+          {
+            "text": "Offers",
+            "href": "/reference-client/rpc-reference/offer-rpc/"
+          },
+          {
+            "text": "Simulator",
+            "href": "/reference-client/rpc-reference/simulator-rpc/"
+          },
+          {
+            "text": "VCs",
+            "href": "/reference-client/rpc-reference/vc-rpc/"
+          },
+          {
+            "text": "Wallet",
+            "href": "/reference-client/rpc-reference/wallet-rpc/"
+          },
+          {
+            "text": "Farmer",
+            "href": "/reference-client/rpc-reference/farmer-rpc/"
+          },
+          {
+            "text": "Full Node",
+            "href": "/reference-client/rpc-reference/full-node-rpc/"
+          },
+          {
+            "text": "Harvester",
+            "href": "/reference-client/rpc-reference/harvester-rpc/"
+          },
+          {
+            "text": "CLI Reference",
+            "href": "/reference-client/cli-reference/cli/"
+          },
+          {
+            "text": "WalletConnect",
+            "href": "/reference-client/walletconnect/walletconnect/"
+          },
+          {
+            "text": "Troubleshooting",
+            "href": "/reference-client/troubleshooting/check-if-things-are-working/"
+          },
+          {
+            "text": "Contributing",
+            "href": "/contribution/using-github/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          },
+          {
+            "text": "RPC Validation Tool",
+            "href": "/guides/rpc-validation-tool/"
+          },
+          {
+            "text": "​",
+            "href": "#default-ports"
+          },
+          {
+            "text": "​",
+            "href": "#httpjson"
+          },
+          {
+            "text": "​",
+            "href": "#curl"
+          },
+          {
+            "text": "here",
+            "href": "https://github.com/Chia-Network/chia-docker/blob/d00a988368adb2cc26b9ac24e79e0f109e54b5af/docker-healthcheck.sh#L116"
+          },
+          {
+            "text": "​",
+            "href": "#websockets"
+          },
+          {
+            "text": "here",
+            "href": "https://github.com/Chia-Mine/chia-agent"
+          },
+          {
+            "text": "baerrs",
+            "href": "https://github.com/baerrs"
+          },
+          {
+            "text": "​",
+            "href": "#websockets-example-courtesy-of-baerrs"
+          },
+          {
+            "text": "​",
+            "href": "#websockets-example-output"
+          },
+          {
+            "text": "​",
+            "href": "#python"
+          },
+          {
+            "text": "baerrs",
+            "href": "https://github.com/baerrs"
+          },
+          {
+            "text": "​",
+            "href": "#python-example-courtesy-of-baerrs"
+          },
+          {
+            "text": "​",
+            "href": "#javascript"
+          },
+          {
+            "text": "https://github.com/Chia-Mine/chia-agent",
+            "href": "https://github.com/Chia-Mine/chia-agent"
+          },
+          {
+            "text": "https://github.com/freddiecoleman/chia-client",
+            "href": "https://github.com/freddiecoleman/chia-client"
+          },
+          {
+            "text": "Kryptomine",
+            "href": "https://www.nuget.org/profiles/Kryptomine.ch"
+          },
+          {
+            "text": "​",
+            "href": "#c-example-courtesy-of-kryptomine"
+          },
+          {
+            "text": "Nuget/Github",
+            "href": "https://www.nuget.org/packages/Chia-Client-API"
+          },
+          {
+            "text": "​",
+            "href": "#services"
+          },
+          {
+            "text": "Farmer",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/farmer/farmer.py"
+          },
+          {
+            "text": "FarmerAPI",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/farmer/farmer_api.py"
+          },
+          {
+            "text": "FarmerRpcApi",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/rpc/farmer_rpc_api.py"
+          },
+          {
+            "text": "FullNode",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/full_node/full_node.py"
+          },
+          {
+            "text": "FullNodeAPI",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/full_node/full_node_api.py"
+          },
+          {
+            "text": "FullNodeRpcApi",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/rpc/full_node_rpc_api.py"
+          },
+          {
+            "text": "Harvester",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/harvester/harvester.py"
+          },
+          {
+            "text": "HarvesterAPI",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/harvester/harvester_api.py"
+          },
+          {
+            "text": "HarvesterRpcApi",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/rpc/harvester_rpc_api.py"
+          },
+          {
+            "text": "Introducer",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/introducer/introducer.py"
+          },
+          {
+            "text": "IntroducerAPI",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/introducer/introducer_api.py"
+          },
+          {
+            "text": "FullNodeRpcApi",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/rpc/full_node_rpc_api.py"
+          },
+          {
+            "text": "Crawler",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/seeder/crawler.py"
+          },
+          {
+            "text": "CrawlerAPI",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/seeder/crawler_api.py"
+          },
+          {
+            "text": "CrawlerRpcApi",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/rpc/crawler_rpc_api.py"
+          },
+          {
+            "text": "DataLayer",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/data_layer/data_layer.py"
+          },
+          {
+            "text": "DataLayerAPI",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/data_layer/data_layer_api.py"
+          },
+          {
+            "text": "DataLayerRpcApi",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/rpc/data_layer_rpc_api.py"
+          },
+          {
+            "text": "Timelord",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/timelord/timelord.py"
+          },
+          {
+            "text": "TimelordAPI",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/timelord/timelord_api.py"
+          },
+          {
+            "text": "TimelordRpcApi",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/rpc/timelord_rpc_api.py"
+          },
+          {
+            "text": "WalletNode",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/wallet/wallet_node.py"
+          },
+          {
+            "text": "WalletNodeAPI",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/wallet/wallet_node_api.py"
+          },
+          {
+            "text": "WalletRpcApi",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/rpc/wallet_rpc_api.py"
+          },
+          {
+            "text": "service alias",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/types/aliases.py"
+          },
+          {
+            "text": "​",
+            "href": "#log-levels"
+          },
+          {
+            "text": "​",
+            "href": "#get_log_level"
+          },
+          {
+            "text": "​",
+            "href": "#set_log_level"
+          },
+          {
+            "text": "​",
+            "href": "#reset_log_level"
+          },
+          {
+            "text": "Edit this page",
+            "href": "https://github.com/Chia-Network/chia-docs/blob/main/docs/reference-client/rpc-reference/rpc.md"
+          },
+          {
+            "text": "PreviousCoin Selection",
+            "href": "/reference-client/coin-selection/"
+          },
+          {
+            "text": "NextDAOs",
+            "href": "/reference-client/rpc-reference/dao-rpc/"
+          },
+          {
+            "text": "Default Ports:",
+            "href": "#default-ports"
+          },
+          {
+            "text": "HTTP/JSON",
+            "href": "#httpjson"
+          },
+          {
+            "text": "WebSockets",
+            "href": "#websockets"
+          },
+          {
+            "text": "Python",
+            "href": "#python"
+          },
+          {
+            "text": "Javascript",
+            "href": "#javascript"
+          },
+          {
+            "text": "Services",
+            "href": "#services"
+          },
+          {
+            "text": "Log Levels",
+            "href": "#log-levels"
+          },
+          {
+            "text": "get_log_level",
+            "href": "#get_log_level"
+          },
+          {
+            "text": "set_log_level",
+            "href": "#set_log_level"
+          },
+          {
+            "text": "reset_log_level",
+            "href": "#reset_log_level"
+          },
+          {
+            "text": "White Paper",
+            "href": "https://chia.net/approach"
+          },
+          {
+            "text": "Green Paper",
+            "href": "https://chia.net/greenpaper"
+          },
+          {
+            "text": "Consensus 1.1",
+            "href": "https://docs.chia.net/consensus-intro"
+          },
+          {
+            "text": "Chialisp",
+            "href": "https://chialisp.com"
+          },
+          {
+            "text": "Chia Academy",
+            "href": "https://docs.chia.net/academy-home/"
+          },
+          {
+            "text": "Developer Guides",
+            "href": "https://docs.chia.net/guides/crash-course/introduction"
+          },
+          {
+            "text": "About",
+            "href": "https://chia.net/about"
+          },
+          {
+            "text": "Blog",
+            "href": "https://chia.net/blog"
+          },
+          {
+            "text": "Contact",
+            "href": "https://chia.net/contact"
+          },
+          {
+            "text": "Apache License, Version 2.0",
+            "href": "https://github.com/Chia-Network/chia-docs/blob/main/LICENSE"
+          },
+          {
+            "text": "Terms",
+            "href": "https://chia.net/terms"
+          }
+        ]
+      }
+    },
+    "cli_reference": {
+      "url": "https://docs.chia.net/reference-client/cli-reference/cli/",
+      "type": "documentation",
+      "title": "CLI Overview | Chia Documentation",
+      "description": "This page should provide additional high-level documentation and explanation beyond just chia -h.",
+      "sections": [
+        {
+          "level": 1,
+          "title": "CLI Commands Reference",
+          "id": "",
+          "content": ""
+        },
+        {
+          "level": 1,
+          "title": "Locate the chia binary executable",
+          "id": "",
+          "content": ""
+        },
+        {
+          "level": 2,
+          "title": "Mac​",
+          "id": "mac",
+          "content": "If you installed Chia.app in your /Applications directory, you can find the chia binary at /Applications/Chia.app/Contents/Resources/app.asar.unpacked/daemon/chia. Do a sanity check in Terminal.app with the following command: You can use that if you augment your PATH with the following command: Then, running the chia -h command should work."
+        },
+        {
+          "level": 2,
+          "title": "Windows​",
+          "id": "windows",
+          "content": "There is more than one chia.exe binary; the GUI is Chia.exe (two of these!) and the CLI is chia.exe. They are found in different places. Note the big C versus the little c. The CLI one is the one referred to in this document, and for version 2.1.0 installed for the user it can be found at If installed for all users it can be found at"
+        },
+        {
+          "level": 1,
+          "title": "init",
+          "id": "",
+          "content": "Command: chia init First, init checks for old versions of Chia installed in your ~/.chia directory. If so, init migrates these old files to the new version: config (including old SSL files)\ndb\nwallet\nUsing config.yaml, updates wallet keys and ensures coinbase rewards go to the right wallet puzzlehash. If no old version exists, init: Creates a default Chia configuration\nInitializes a new SSL key and cert (for secure communication with the GUI)"
+        },
+        {
+          "level": 1,
+          "title": "start",
+          "id": "",
+          "content": "Command: chia start {service} Service node will start only the full node.\nService farmer will start the farmer, harvester, a full node, and the wallet.\npositional arguments:\n{all,node,harvester,farmer,farmer-no-wallet,farmer-only,timelord,timelord-only,timelord-launcher-only,wallet,wallet-only,introducer,simulator} Flags -r, --restart: Restart of running processes"
+        },
+        {
+          "level": 1,
+          "title": "plotters",
+          "id": "",
+          "content": "In 2.1.0 the option to use different plotters including compressed plotter was introduced. Each plotter has slightly different hardware requirements and may need slightly different options specified.\nThe cli reference for all plotters can be found in the Plotters CLI Page. Learn more about the alternative plotters in the Alternative Plotters page."
+        },
+        {
+          "level": 2,
+          "title": "plotnft​",
+          "id": "plotnft",
+          "content": "Using the CLI, you can perform the same operations as with the GUI. There is a new command, called chia plotnft. Type chia plotnft -h to see all the available sub-commands: To create a Plot NFT, use chia plotnft create -u https://poolnamehere.com, entering the URL of the pool you want to use. To create a plot NFT in self-farming mode, do chia plotnft create -s local.\nTo switch pools, you can use chia plotnft join, and to leave a pool (switch to self farming), use chia plotnft leave.\nThe show command can be used to check your current points balance. CLI plotting with create_plots is the same as before, but the -p is replaced with -c, and the pool contract address from chia plotnft show should be used here."
+        },
+        {
+          "level": 2,
+          "title": "Plots check​",
+          "id": "plots-check",
+          "content": "Command: chia plots check -n [num checks] -l -g [substring] First, this looks in all plot directories from your config.yaml. You can check those directories with chia plots show. This command will check whether plots are valid given the plot's associated keys and your machine's stored Chia keys, as well as test the plot with challenges to identify found plots vs. expected number of plots. -g check only plots with directory or file name containing case-sensitive [substring].\nIf -g isn't specified all plots in every plot directory in your config.yaml will be checked. Examples for using -g Check plots within a long directory name like /mnt/chia/DriveA can use chia plots check -g DriveA\nCheck only k33 plots can use chia plots check -g k33\nCheck plots created on October 31, 2020 can use chia plots check -g 2020-10-31 -l allows you to find duplicate plots by ID. It checks all plot directories listed in config.yaml and lists out any plot filenames with the same filename ending; *-[64 char plot ID].plot. You should use -l -n 0 if you only want to check for duplicates. -n represents the number of challenges given. If you don't include an -n integer, the default is 30. For instance, if -n is 30, then 30 challenges will be given to each plot. The challenges count from 5 (minimum) to -n, and are not random. Each plot will take each challenge and: Get the quality for the challenge (Is there a proof of space? You should expect 1 proof per challenge, but there may be 0 or more than 1.)\nGet the full proof(s) for the challenge if a proof was present\nValidate that the # of full proofs matches the # of expected quality proofs. Finally, you'll see a report the final true proofs vs. expected proofs. Therefore, if -n is 20, you would expect 20 proofs, but your plot may have more or fewer. Running the command with -n 10 or -n 20 is good for a very minor check, but won't actually give you much information about if the plots are actually high-quality or not. Consider using -n 30 to get a statistically better idea. For more detail, you can read about the DiskProver commands in chiapos What does the ratio of full proofs vs expected proofs mean? If the ratio is >1, your plot was relatively lucky for this run of challenges.\nIf the ratio is <1, your plot was relatively unlucky.\n\nThis shouldn't really concern you unless your ratio is <0.70 # If so, do a more thorough chia plots check by increasing your -n The plots check challenge is a static challenge. For example if you run a plots check 20 times, with 30 tries against the same file, it will produce the same result every time. So while you may see a plot ratio << 1 for a plot check with x number of tries, it does not mean that the plot itself is worthless. It just means that given these static challenges, the plot is producing however many proofs. As the number of tries (-n) increases, we would expect the ratio to not be << 1. Since Mainnet is live, and given that the blockchain has new challenges with every signage point - just because a plot is having a bad time with one specific challenge, does not mean it has the same results versus another challenge. \"Number of plots\" and \"k-size\" are much more influential factors at winning blocks than \"proofs produced per challenge\". In theory, a plot with a ratio >> 1 would be more likely to win challenges on the blockchain. Likewise, a plot with a ratio << 1 would be less likely to win. However, in practice, this isn't actually going to be noticeable. Therefore, don't worry if your plot check ratios are less than 1, unless they're significantly less than 1 for many -n."
+        },
+        {
+          "level": 1,
+          "title": "db",
+          "id": "",
+          "content": ""
+        },
+        {
+          "level": 2,
+          "title": "upgrade​",
+          "id": "upgrade",
+          "content": "Command: chia db upgrade [add flags and parameters] Flags --input [PATH]: (optional) Specify a database input file. Must be a v1 database. --output [PATH]: (optional) Specify a database output file. Can be any name, but must not already exist. --no-update-config Don't update the config file to point to your new database. When specifying a custom output file, the config will not be updated regardless. Database upgrade notes This will upgrade your database from version 1 to version 2, which is around 45% smaller and slightly faster.\nThe upgrade could take several hours to complete. Use at your own leisure.\nYou do not need to stop your Chia node while performing the upgrade.\nThe new database file will be written to the same folder as the original. The current size requirement (2nd quarter 2022) is around 55 GB. Note that the database is always growing, so the size requirement for the v2 database will have gone up by the time you are reading this — plan accordingly. After the version 2 file has been created, you can stop Chia and move/delete your version 1 file, which will free up enough space to move your version 2 file to the original folder. Finally, update the references in config.yaml to point to your version 2 file.\nAfter the upgrade has completed, run chia start farmer -r. This will restart your farmer, and begin using your new database. Note that it will have the same peak as version 1 at the time you initiated the upgrade. Your node will still need to run a short sync to fetch the remaining blocks that had gotten added while the upgrade was being performed.\nFor more information on the new database version, see our FAQ."
+        },
+        {
+          "level": 2,
+          "title": "backup​",
+          "id": "backup",
+          "content": "Command: chia db backup [add flags and parameters] Flags --backup_file [PATH]: (optional) Specifies the backup file and location. Default will create the backup in the same directory as the database. --no_indexes: (optional) Create backup without indexes. Database backup notes This will vacuum (compress) and backup your database and may take several hours to complete. Use at your own leisure.\nYou do not need to stop your Chia node while performing the upgrade.\nThe new database file will be written to the same folder as the original with \"vacuumed_\" prepended to the name.\nTo use the backup database: Close the chia client, remove/delete the main database, rename the backup database to remove \"vacuumed_\", and restart the chia client. Note the initial start will take extra time as the client verifies the backup db file."
+        },
+        {
+          "level": 2,
+          "title": "validate​",
+          "id": "validate",
+          "content": "Command: chia db validate [add flags and parameters] Flags --db [PATH]: (optional) Specifies which database file to validate. Default will use the default database and path. --validate-blocks: (optional) Validate consistency of properties of the encoded blocks and block records. Note this will increase the validation time. Database validate notes This will validate your database and may take several hours to complete. Use at your own leisure.\nYou do not need to stop your Chia node while performing the upgrade.\nThis will start by processing the latest block and traverse to the first block."
+        },
+        {
+          "level": 1,
+          "title": "keys",
+          "id": "",
+          "content": ""
+        },
+        {
+          "level": 2,
+          "title": "derive​",
+          "id": "derive",
+          "content": "Command: chia keys derive [OPTIONS] COMMAND [ARGS] Flags -f, --fingerprint [INTEGER]: The fingerprint of the key you want to use. --mnemonic-seed-filename [TEXT]: The filename containing the mnemonic seed of the master key to derive from. Notes on deriving keys This command will display or search for derived keys or wallet-addresses.\nThis command requires either a fingerprint or a mnemonic seed file.\nThe valid values for COMMAND are child-key, search, and wallet-address.\nSee below for details and example commands."
+        },
+        {
+          "level": 3,
+          "title": "child-key​",
+          "id": "child-key",
+          "content": "Command: chia keys derive child-key [OPTIONS] Flags -t, --type [farmer|pool|wallet|local|backup|singleton|pool_auth]: Type of child key to derive. -p, --derive-from-hd-path [TEXT]: Derive child keys rooted from a specific HD path. Indices ending in an 'n' indicate that non-observer derivation should used at that index. Example HD path: m/12381n/8444n/2/ -i, --index [INTEGER]: Index of the first child key to derive. (Index 0 is the first child key.) -n, --count [INTEGER]: Number of child keys to derive, starting at index. -d, --non-observer-derivation: Derive keys using non-observer derivation. [default: False] -s, --show-private-keys: Display derived private keys. [default: False] --show-hd-path: Show the HD path of the derived wallet addresses. [default: False] Examples Show the first singleton pubkey: chia keys derive -f <fingerprint> child-key -t singleton\n\n\nShow a pair of public and private keys derived from a mixed observer/non-observer HD path using an imported key's mnemonic seed: chia keys derive --mnemonic-seed-filename <(chia keys generate_and_print | sed -n 2p) child-key --derive-from-hd-path 'm/12381n/8444n/2/' --show-private-keys --show-hd-path\n\n\nGenerate a mnemonic seed and show the farmer pubkeys 10-14 derived from that seed: chia keys derive --mnemonic-seed-filename <(chia keys generate_and_print | sed -n 2p) child-key -i 10 -n 5 -t farmer"
+        },
+        {
+          "level": 3,
+          "title": "search​",
+          "id": "search",
+          "content": "Command: chia keys derive search [OPTIONS] [SEARCH_TERMS]... Flags -l, --limit [INTEGER]: Limit the number of derivations to search against. [default: 100] -d, --non-observer-derivation: Search will be performed against keys derived using non-observer derivation. [default: False] -P, --show-progress: Show search progress. [default: False] -t, --search-type [public_key|private_key|address|all]: Limit the search to include just the specified types. [default: address, public_key] -p, --derive-from-hd-path [TEXT]: Search for items derived from a specific HD path. Indices ending in an 'n' indicate that non-observer derivation should used at that index. Example HD path: m/12381n/8444n/2/ Examples Search for a wallet address: chia keys derive search -t address -l 100 <xch address>"
+        },
+        {
+          "level": 3,
+          "title": "wallet-address​",
+          "id": "wallet-address",
+          "content": "Command: chia keys derive wallet-address [OPTIONS] Flags -i, --index [INTEGER]: Index of the first wallet address to derive. Index 0 is the first wallet address. -n, --count [INTEGER]: Number of wallet addresses to derive, starting at index. -x, --prefix [TEXT]: Address prefix (xch for mainnet, txch for testnet). -d, --non-observer-derivation: Derive wallet addresses using non-observer derivation. [default: False] --show-hd-path: Show the HD path of the derived wallet addresses. If non-observer-derivation is specified, path indices will have an 'n' suffix. [default: False] Examples Show first 10 wallet addresses:\nchia keys derive -f <fingerprint> wallet-address -i 0 -n 10 --show-hd-path"
+        },
+        {
+          "level": 1,
+          "title": "DID",
+          "id": "",
+          "content": "See our official DID reference."
+        },
+        {
+          "level": 1,
+          "title": "NFT",
+          "id": "",
+          "content": "See our official NFT reference."
+        },
+        {
+          "level": 1,
+          "title": "dev",
+          "id": "",
+          "content": ""
+        },
+        {
+          "level": 2,
+          "title": "mempool​",
+          "id": "mempool",
+          "content": "The chia dev mempool commands provide developer tools for managing and analyzing the mempool. These commands are available in Chia 2.5.5 and later versions."
+        },
+        {
+          "level": 3,
+          "title": "import​",
+          "id": "import",
+          "content": "Command: chia dev mempool import [OPTIONS] Imports mempool data from a file. This is useful for testing and development purposes. Flags -f, --file PATH: Path to the mempool data file to import. Example"
+        },
+        {
+          "level": 3,
+          "title": "export​",
+          "id": "export",
+          "content": "Command: chia dev mempool export [OPTIONS] Exports current mempool data to a file. This can be used for analysis or to share mempool state. Flags -f, --file PATH: Path where the exported mempool data will be saved. Example"
+        },
+        {
+          "level": 3,
+          "title": "benchmark​",
+          "id": "benchmark",
+          "content": "Command: chia dev mempool benchmark [OPTIONS] Benchmarks mempool performance and provides metrics for optimization analysis. Flags -n, --num-iterations INTEGER: Number of benchmark iterations to run. [default: 100] Example Note: These commands are primarily intended for developers and advanced users. Use with caution in production environments."
+        },
+        {
+          "level": 1,
+          "title": "Other commands (not all are fully documented)",
+          "id": "",
+          "content": "To see what you can do with each of these commands, use the help flag -h. For example, chia show -h. To check your full node status, do chia show -s and you'll see something like this. To figure how close\nyou are look at your height. Once fully synced it'll say Full Node Synced at the top. You can add and remove directories for your plots with chia plots add -d 'your_dir' or chia plots remove -d 'your_dir', help can be found for respective add/remove with chia plots add/remove -h"
+        },
+        {
+          "level": 2,
+          "title": "Checking Logs and Status​",
+          "id": "checking-logs-and-status",
+          "content": "You can check contents of your wallet with: chia wallet, and status of your farmer with chia farm summary. Check harvester and farmer logs: grep ~/.chia/mainnet/log/debug.log -e harvester Sample result: Maybe follow logs: tail -F ~/.chia/mainnet/log/debug.log. Chia is nice enough to rotate logs for you."
+        }
+      ],
+      "navigation": [
+        {
+          "text": "Chia Docs",
+          "href": "/",
+          "full_url": "https://docs.chia.net/"
+        },
+        {
+          "text": "Docs",
+          "href": "/chia-blockchain/introduction/",
+          "full_url": "https://docs.chia.net/chia-blockchain/introduction/"
+        },
+        {
+          "text": "Dev Guides",
+          "href": "/dev-guides-home/",
+          "full_url": "https://docs.chia.net/dev-guides-home/"
+        },
+        {
+          "text": "Chia Academy",
+          "href": "/academy-home/",
+          "full_url": "https://docs.chia.net/academy-home/"
+        },
+        {
+          "text": "English",
+          "href": "#",
+          "full_url": "https://docs.chia.net"
+        },
+        {
+          "text": "English",
+          "href": "/reference-client/cli-reference/cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/cli/"
+        },
+        {
+          "text": "简体中文",
+          "href": "/zh-Hans/reference-client/cli-reference/cli/",
+          "full_url": "https://docs.chia.net/zh-Hans/reference-client/cli-reference/cli/"
+        },
+        {
+          "text": "Chialisp",
+          "href": "https://chialisp.com",
+          "full_url": "https://chialisp.com"
+        },
+        {
+          "text": "Chia Network",
+          "href": "https://chia.net",
+          "full_url": "https://chia.net"
+        },
+        {
+          "text": "GitHub",
+          "href": "https://github.com/Chia-Network/chia-blockchain",
+          "full_url": "https://github.com/Chia-Network/chia-blockchain"
+        },
+        {
+          "text": "English",
+          "href": "/reference-client/cli-reference/cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/cli/"
+        },
+        {
+          "text": "简体中文",
+          "href": "/zh-Hans/reference-client/cli-reference/cli/",
+          "full_url": "https://docs.chia.net/zh-Hans/reference-client/cli-reference/cli/"
+        },
+        {
+          "text": "Chia Blockchain",
+          "href": "/chia-blockchain/introduction/",
+          "full_url": "https://docs.chia.net/chia-blockchain/introduction/"
+        },
+        {
+          "text": "Chia Cloud Wallet",
+          "href": "/cloud-wallet/getting-started/",
+          "full_url": "https://docs.chia.net/cloud-wallet/getting-started/"
+        },
+        {
+          "text": "Chia Signer App",
+          "href": "/chia-signer/getting-started/",
+          "full_url": "https://docs.chia.net/chia-signer/getting-started/"
+        },
+        {
+          "text": "Chia Reference Client",
+          "href": "/reference-client/getting-started/farming-guide/",
+          "full_url": "https://docs.chia.net/reference-client/getting-started/farming-guide/"
+        },
+        {
+          "text": "Getting Started",
+          "href": "/reference-client/getting-started/farming-guide/",
+          "full_url": "https://docs.chia.net/reference-client/getting-started/farming-guide/"
+        },
+        {
+          "text": "Install and Setup",
+          "href": "/reference-client/install-and-setup/installation/",
+          "full_url": "https://docs.chia.net/reference-client/install-and-setup/installation/"
+        },
+        {
+          "text": "Plotting",
+          "href": "/reference-client/plotting/plotting-basics/",
+          "full_url": "https://docs.chia.net/reference-client/plotting/plotting-basics/"
+        },
+        {
+          "text": "Farming",
+          "href": "/reference-client/farming/farming-basics/",
+          "full_url": "https://docs.chia.net/reference-client/farming/farming-basics/"
+        },
+        {
+          "text": "Coin Selection",
+          "href": "/reference-client/coin-selection/",
+          "full_url": "https://docs.chia.net/reference-client/coin-selection/"
+        },
+        {
+          "text": "RPC Reference",
+          "href": "/reference-client/rpc-reference/rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/rpc/"
+        },
+        {
+          "text": "CLI Reference",
+          "href": "/reference-client/cli-reference/cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/cli/"
+        },
+        {
+          "text": "Overview",
+          "href": "/reference-client/cli-reference/cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/cli/"
+        },
+        {
+          "text": "DAOs",
+          "href": "/reference-client/cli-reference/dao-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/dao-cli/"
+        },
+        {
+          "text": "DataLayer",
+          "href": "/reference-client/cli-reference/datalayer-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/datalayer-cli/"
+        },
+        {
+          "text": "DIDs",
+          "href": "/reference-client/cli-reference/did-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/did-cli/"
+        },
+        {
+          "text": "NFTs",
+          "href": "/reference-client/cli-reference/nft-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/nft-cli/"
+        },
+        {
+          "text": "Offers",
+          "href": "/reference-client/cli-reference/offer-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/offer-cli/"
+        },
+        {
+          "text": "Plotters",
+          "href": "/reference-client/cli-reference/plotter-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/plotter-cli/"
+        },
+        {
+          "text": "Simulator",
+          "href": "/reference-client/cli-reference/simulator-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/simulator-cli/"
+        },
+        {
+          "text": "VCs",
+          "href": "/reference-client/cli-reference/vc-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/vc-cli/"
+        },
+        {
+          "text": "Wallet",
+          "href": "/reference-client/cli-reference/wallet-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/wallet-cli/"
+        },
+        {
+          "text": "CAT Admin",
+          "href": "/reference-client/cli-reference/cat-admin-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/cat-admin-cli/"
+        },
+        {
+          "text": "Clawback",
+          "href": "/reference-client/cli-reference/clawback-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/clawback-cli/"
+        },
+        {
+          "text": "Custody Tool",
+          "href": "/reference-client/cli-reference/custody-tool-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/custody-tool-cli/"
+        },
+        {
+          "text": "ASICs",
+          "href": "/reference-client/cli-reference/asic-hwvdf-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/asic-hwvdf-cli/"
+        },
+        {
+          "text": "WalletConnect",
+          "href": "/reference-client/walletconnect/walletconnect/",
+          "full_url": "https://docs.chia.net/reference-client/walletconnect/walletconnect/"
+        },
+        {
+          "text": "Troubleshooting",
+          "href": "/reference-client/troubleshooting/check-if-things-are-working/",
+          "full_url": "https://docs.chia.net/reference-client/troubleshooting/check-if-things-are-working/"
+        },
+        {
+          "text": "Contributing",
+          "href": "/contribution/using-github/",
+          "full_url": "https://docs.chia.net/contribution/using-github/"
+        },
+        {
+          "text": "Chia Blockchain",
+          "href": "/chia-blockchain/introduction/",
+          "full_url": "https://docs.chia.net/chia-blockchain/introduction/"
+        },
+        {
+          "text": "Chia Cloud Wallet",
+          "href": "/cloud-wallet/getting-started/",
+          "full_url": "https://docs.chia.net/cloud-wallet/getting-started/"
+        },
+        {
+          "text": "Chia Signer App",
+          "href": "/chia-signer/getting-started/",
+          "full_url": "https://docs.chia.net/chia-signer/getting-started/"
+        },
+        {
+          "text": "Chia Reference Client",
+          "href": "/reference-client/getting-started/farming-guide/",
+          "full_url": "https://docs.chia.net/reference-client/getting-started/farming-guide/"
+        },
+        {
+          "text": "Getting Started",
+          "href": "/reference-client/getting-started/farming-guide/",
+          "full_url": "https://docs.chia.net/reference-client/getting-started/farming-guide/"
+        },
+        {
+          "text": "Install and Setup",
+          "href": "/reference-client/install-and-setup/installation/",
+          "full_url": "https://docs.chia.net/reference-client/install-and-setup/installation/"
+        },
+        {
+          "text": "Plotting",
+          "href": "/reference-client/plotting/plotting-basics/",
+          "full_url": "https://docs.chia.net/reference-client/plotting/plotting-basics/"
+        },
+        {
+          "text": "Farming",
+          "href": "/reference-client/farming/farming-basics/",
+          "full_url": "https://docs.chia.net/reference-client/farming/farming-basics/"
+        },
+        {
+          "text": "Coin Selection",
+          "href": "/reference-client/coin-selection/",
+          "full_url": "https://docs.chia.net/reference-client/coin-selection/"
+        },
+        {
+          "text": "RPC Reference",
+          "href": "/reference-client/rpc-reference/rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/rpc/"
+        },
+        {
+          "text": "CLI Reference",
+          "href": "/reference-client/cli-reference/cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/cli/"
+        },
+        {
+          "text": "Overview",
+          "href": "/reference-client/cli-reference/cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/cli/"
+        },
+        {
+          "text": "DAOs",
+          "href": "/reference-client/cli-reference/dao-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/dao-cli/"
+        },
+        {
+          "text": "DataLayer",
+          "href": "/reference-client/cli-reference/datalayer-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/datalayer-cli/"
+        },
+        {
+          "text": "DIDs",
+          "href": "/reference-client/cli-reference/did-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/did-cli/"
+        },
+        {
+          "text": "NFTs",
+          "href": "/reference-client/cli-reference/nft-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/nft-cli/"
+        },
+        {
+          "text": "Offers",
+          "href": "/reference-client/cli-reference/offer-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/offer-cli/"
+        },
+        {
+          "text": "Plotters",
+          "href": "/reference-client/cli-reference/plotter-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/plotter-cli/"
+        },
+        {
+          "text": "Simulator",
+          "href": "/reference-client/cli-reference/simulator-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/simulator-cli/"
+        },
+        {
+          "text": "VCs",
+          "href": "/reference-client/cli-reference/vc-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/vc-cli/"
+        },
+        {
+          "text": "Wallet",
+          "href": "/reference-client/cli-reference/wallet-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/wallet-cli/"
+        },
+        {
+          "text": "CAT Admin",
+          "href": "/reference-client/cli-reference/cat-admin-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/cat-admin-cli/"
+        },
+        {
+          "text": "Clawback",
+          "href": "/reference-client/cli-reference/clawback-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/clawback-cli/"
+        },
+        {
+          "text": "Custody Tool",
+          "href": "/reference-client/cli-reference/custody-tool-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/custody-tool-cli/"
+        },
+        {
+          "text": "ASICs",
+          "href": "/reference-client/cli-reference/asic-hwvdf-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/asic-hwvdf-cli/"
+        },
+        {
+          "text": "WalletConnect",
+          "href": "/reference-client/walletconnect/walletconnect/",
+          "full_url": "https://docs.chia.net/reference-client/walletconnect/walletconnect/"
+        },
+        {
+          "text": "Troubleshooting",
+          "href": "/reference-client/troubleshooting/check-if-things-are-working/",
+          "full_url": "https://docs.chia.net/reference-client/troubleshooting/check-if-things-are-working/"
+        },
+        {
+          "text": "Contributing",
+          "href": "/contribution/using-github/",
+          "full_url": "https://docs.chia.net/contribution/using-github/"
+        },
+        {
+          "text": "Getting Started",
+          "href": "/reference-client/getting-started/farming-guide/",
+          "full_url": "https://docs.chia.net/reference-client/getting-started/farming-guide/"
+        },
+        {
+          "text": "Install and Setup",
+          "href": "/reference-client/install-and-setup/installation/",
+          "full_url": "https://docs.chia.net/reference-client/install-and-setup/installation/"
+        },
+        {
+          "text": "Plotting",
+          "href": "/reference-client/plotting/plotting-basics/",
+          "full_url": "https://docs.chia.net/reference-client/plotting/plotting-basics/"
+        },
+        {
+          "text": "Farming",
+          "href": "/reference-client/farming/farming-basics/",
+          "full_url": "https://docs.chia.net/reference-client/farming/farming-basics/"
+        },
+        {
+          "text": "Coin Selection",
+          "href": "/reference-client/coin-selection/",
+          "full_url": "https://docs.chia.net/reference-client/coin-selection/"
+        },
+        {
+          "text": "RPC Reference",
+          "href": "/reference-client/rpc-reference/rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/rpc/"
+        },
+        {
+          "text": "CLI Reference",
+          "href": "/reference-client/cli-reference/cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/cli/"
+        },
+        {
+          "text": "Overview",
+          "href": "/reference-client/cli-reference/cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/cli/"
+        },
+        {
+          "text": "DAOs",
+          "href": "/reference-client/cli-reference/dao-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/dao-cli/"
+        },
+        {
+          "text": "DataLayer",
+          "href": "/reference-client/cli-reference/datalayer-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/datalayer-cli/"
+        },
+        {
+          "text": "DIDs",
+          "href": "/reference-client/cli-reference/did-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/did-cli/"
+        },
+        {
+          "text": "NFTs",
+          "href": "/reference-client/cli-reference/nft-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/nft-cli/"
+        },
+        {
+          "text": "Offers",
+          "href": "/reference-client/cli-reference/offer-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/offer-cli/"
+        },
+        {
+          "text": "Plotters",
+          "href": "/reference-client/cli-reference/plotter-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/plotter-cli/"
+        },
+        {
+          "text": "Simulator",
+          "href": "/reference-client/cli-reference/simulator-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/simulator-cli/"
+        },
+        {
+          "text": "VCs",
+          "href": "/reference-client/cli-reference/vc-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/vc-cli/"
+        },
+        {
+          "text": "Wallet",
+          "href": "/reference-client/cli-reference/wallet-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/wallet-cli/"
+        },
+        {
+          "text": "CAT Admin",
+          "href": "/reference-client/cli-reference/cat-admin-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/cat-admin-cli/"
+        },
+        {
+          "text": "Clawback",
+          "href": "/reference-client/cli-reference/clawback-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/clawback-cli/"
+        },
+        {
+          "text": "Custody Tool",
+          "href": "/reference-client/cli-reference/custody-tool-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/custody-tool-cli/"
+        },
+        {
+          "text": "ASICs",
+          "href": "/reference-client/cli-reference/asic-hwvdf-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/asic-hwvdf-cli/"
+        },
+        {
+          "text": "WalletConnect",
+          "href": "/reference-client/walletconnect/walletconnect/",
+          "full_url": "https://docs.chia.net/reference-client/walletconnect/walletconnect/"
+        },
+        {
+          "text": "Troubleshooting",
+          "href": "/reference-client/troubleshooting/check-if-things-are-working/",
+          "full_url": "https://docs.chia.net/reference-client/troubleshooting/check-if-things-are-working/"
+        },
+        {
+          "text": "Overview",
+          "href": "/reference-client/cli-reference/cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/cli/"
+        },
+        {
+          "text": "DAOs",
+          "href": "/reference-client/cli-reference/dao-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/dao-cli/"
+        },
+        {
+          "text": "DataLayer",
+          "href": "/reference-client/cli-reference/datalayer-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/datalayer-cli/"
+        },
+        {
+          "text": "DIDs",
+          "href": "/reference-client/cli-reference/did-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/did-cli/"
+        },
+        {
+          "text": "NFTs",
+          "href": "/reference-client/cli-reference/nft-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/nft-cli/"
+        },
+        {
+          "text": "Offers",
+          "href": "/reference-client/cli-reference/offer-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/offer-cli/"
+        },
+        {
+          "text": "Plotters",
+          "href": "/reference-client/cli-reference/plotter-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/plotter-cli/"
+        },
+        {
+          "text": "Simulator",
+          "href": "/reference-client/cli-reference/simulator-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/simulator-cli/"
+        },
+        {
+          "text": "VCs",
+          "href": "/reference-client/cli-reference/vc-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/vc-cli/"
+        },
+        {
+          "text": "Wallet",
+          "href": "/reference-client/cli-reference/wallet-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/wallet-cli/"
+        },
+        {
+          "text": "CAT Admin",
+          "href": "/reference-client/cli-reference/cat-admin-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/cat-admin-cli/"
+        },
+        {
+          "text": "Clawback",
+          "href": "/reference-client/cli-reference/clawback-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/clawback-cli/"
+        },
+        {
+          "text": "Custody Tool",
+          "href": "/reference-client/cli-reference/custody-tool-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/custody-tool-cli/"
+        },
+        {
+          "text": "ASICs",
+          "href": "/reference-client/cli-reference/asic-hwvdf-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/asic-hwvdf-cli/"
+        },
+        {
+          "text": "PreviousHarvester",
+          "href": "/reference-client/rpc-reference/harvester-rpc/",
+          "full_url": "https://docs.chia.net/reference-client/rpc-reference/harvester-rpc/"
+        },
+        {
+          "text": "NextDAOs",
+          "href": "/reference-client/cli-reference/dao-cli/",
+          "full_url": "https://docs.chia.net/reference-client/cli-reference/dao-cli/"
+        }
+      ],
+      "code_examples": [
+        "chia plots -h",
+        "chia plots check -h",
+        "chia plotters madmax -h",
+        "chia start -h",
+        "/Applications",
+        "/Applications/Chia.app/Contents/Resources/app.asar.unpacked/daemon/chia",
+        "Terminal.app",
+        "/Applications/Chia.app/Contents/Resources/app.asar.unpacked/daemon/chia -h",
+        "/Applications/Chia.app/Contents/Resources/app.asar.unpacked/daemon/chia -h",
+        "PATH=/Applications/Chia.app/Contents/Resources/app.asar.unpacked/daemon:$PATH",
+        "PATH=/Applications/Chia.app/Contents/Resources/app.asar.unpacked/daemon:$PATH",
+        "~\\AppData\\Local\\Programs\\Chia\\resources\\app.asar.unpacked\\daemon\\chia.exe",
+        "~\\AppData\\Local\\Programs\\Chia\\resources\\app.asar.unpacked\\daemon\\chia.exe",
+        "C:\\Program Files\\Chia\\resources\\app.asar.unpacked\\daemon\\chia.exe",
+        "C:\\Program Files\\Chia\\resources\\app.asar.unpacked\\daemon\\chia.exe",
+        "chia start {service}",
+        "-r, --restart",
+        "chia plotnft",
+        "chia plotnft -h",
+        "» chia plotnft -hUsage: chia plotnft [OPTIONS] COMMAND [ARGS]...Options:  -h, --help  Show this message and exit.Commands:  claim           Claim rewards from a plot NFT  create          Create a plot NFT  get_login_link  Create a login link for a pool. To get the launcher id, use                  plotnft show.  inspect         Get Detailed plotnft information as JSON  join            Join a plot NFT to a Pool  leave           Leave a pool and return to self-farming  show            Show plotnft information",
+        "» chia plotnft -hUsage: chia plotnft [OPTIONS] COMMAND [ARGS]...Options:  -h, --help  Show this message and exit.Commands:  claim           Claim rewards from a plot NFT  create          Create a plot NFT  get_login_link  Create a login link for a pool. To get the launcher id, use                  plotnft show.  inspect         Get Detailed plotnft information as JSON  join            Join a plot NFT to a Pool  leave           Leave a pool and return to self-farming  show            Show plotnft information",
+        "chia plotnft create -u https://poolnamehere.com",
+        "chia plotnft create -s local",
+        "chia plotnft join",
+        "chia plotnft leave",
+        "create_plots",
+        "chia plotnft show",
+        "chia plots check -n [num checks] -l -g [substring]",
+        "chia plots show",
+        "/mnt/chia/DriveA",
+        "chia plots check -g DriveA",
+        "chia plots check -g k33",
+        "chia plots check -g 2020-10-31",
+        "*-[64 char plot ID].plot",
+        "chia plots check",
+        "chia db upgrade [add flags and parameters]",
+        "--input [PATH]",
+        "--output [PATH]",
+        "--no-update-config",
+        "chia start farmer -r",
+        "chia db backup [add flags and parameters]",
+        "--backup_file [PATH]",
+        "--no_indexes",
+        "chia db validate [add flags and parameters]",
+        "--db [PATH]",
+        "--validate-blocks",
+        "chia keys derive [OPTIONS] COMMAND [ARGS]",
+        "--fingerprint",
+        "--mnemonic-seed-filename",
+        "wallet-address",
+        "chia keys derive child-key [OPTIONS]",
+        "[farmer|pool|wallet|local|backup|singleton|pool_auth]",
+        "--derive-from-hd-path",
+        "--non-observer-derivation",
+        "--show-private-keys",
+        "--show-hd-path",
+        "chia keys derive -f <fingerprint> child-key -t singleton",
+        "chia keys derive --mnemonic-seed-filename <(chia keys generate_and_print | sed -n 2p) child-key --derive-from-hd-path 'm/12381n/8444n/2/' --show-private-keys --show-hd-path",
+        "chia keys derive --mnemonic-seed-filename <(chia keys generate_and_print | sed -n 2p) child-key -i 10 -n 5 -t farmer",
+        "chia keys derive search [OPTIONS] [SEARCH_TERMS]...",
+        "--non-observer-derivation",
+        "--show-progress",
+        "--search-type",
+        "[public_key|private_key|address|all]",
+        "--derive-from-hd-path",
+        "chia keys derive search -t address -l 100 <xch address>",
+        "chia keys derive wallet-address [OPTIONS]",
+        "--non-observer-derivation",
+        "--show-hd-path",
+        "chia keys derive -f <fingerprint> wallet-address -i 0 -n 10 --show-hd-path",
+        "chia dev mempool",
+        "chia dev mempool import [OPTIONS]",
+        "-f, --file PATH",
+        "chia dev mempool import -f mempool_data.json",
+        "chia dev mempool import -f mempool_data.json",
+        "chia dev mempool export [OPTIONS]",
+        "-f, --file PATH",
+        "chia dev mempool export -f mempool_export.json",
+        "chia dev mempool export -f mempool_export.json",
+        "chia dev mempool benchmark [OPTIONS]",
+        "-n, --num-iterations INTEGER",
+        "chia dev mempool benchmark -n 1000",
+        "chia dev mempool benchmark -n 1000",
+        "$ chiaOptions:  --root-path PATH            Config file root                              [default: ~\\.chia\\mainnet]  --keys-root-path PATH       Keyring file root                              [default: ~\\.chia_keys]  --passphrase-file FILENAME  File or descriptor to read the keyring                              passphrase from  -h, --help                  Show this message and exit.Commands:  completion  Generate shell completion  configure   Modify configuration  dao         Create, manage or show state of DAOs  data        Manage your data  db          Manage the blockchain database  dev         Developer commands and tools  farm        Manage your farm  init        Create or migrate the configuration  keys        Manage your keys  netspace    Estimate total farmed space on the network  passphrase  Manage your keyring passphrase  peer        Show, or modify peering connections  plotnft     Manage your plot NFTs  plots       Manage your plots  plotters    Advanced plotting options  rpc         RPC Client  run_daemon  Runs chia daemon  show        Show node information  start       Start service groups  stop        Stop services  version     Show chia version  wallet      Manage your wallet",
+        "$ chiaOptions:  --root-path PATH            Config file root                              [default: ~\\.chia\\mainnet]  --keys-root-path PATH       Keyring file root                              [default: ~\\.chia_keys]  --passphrase-file FILENAME  File or descriptor to read the keyring                              passphrase from  -h, --help                  Show this message and exit.Commands:  completion  Generate shell completion  configure   Modify configuration  dao         Create, manage or show state of DAOs  data        Manage your data  db          Manage the blockchain database  dev         Developer commands and tools  farm        Manage your farm  init        Create or migrate the configuration  keys        Manage your keys  netspace    Estimate total farmed space on the network  passphrase  Manage your keyring passphrase  peer        Show, or modify peering connections  plotnft     Manage your plot NFTs  plots       Manage your plots  plotters    Advanced plotting options  rpc         RPC Client  run_daemon  Runs chia daemon  show        Show node information  start       Start service groups  stop        Stop services  version     Show chia version  wallet      Manage your wallet",
+        "chia show -h",
+        "chia show -s",
+        "Full Node Synced",
+        "Current Blockchain Status: Full Node SyncedPeak: Hash: 34554a10aff6b52545623e18667c9487758fa93a3b2345974da0d263939189dc      Time: Tue Mar 23 2021 20:54:46 JST                  Height:      19882Estimated network space: 136.225 PiBCurrent difficulty: 9Current VDF sub_slot_iters: 112197632Total iterations since the start of the blockchain: 63291534050  Height: |   Hash:    19882 | 34554a10aff6b52545623e18667c9487758fa93a3b2345974da0d263939189dc    19881 | f53c052cd7ac58539ff5c35cb9d515bc521308a49cec7566b23dba84f76009d8    19880 | 924d825a7fdbfd61e4582efbbe1d977bb554b368eea58c349a71e688e43fcc49",
+        "Current Blockchain Status: Full Node SyncedPeak: Hash: 34554a10aff6b52545623e18667c9487758fa93a3b2345974da0d263939189dc      Time: Tue Mar 23 2021 20:54:46 JST                  Height:      19882Estimated network space: 136.225 PiBCurrent difficulty: 9Current VDF sub_slot_iters: 112197632Total iterations since the start of the blockchain: 63291534050  Height: |   Hash:    19882 | 34554a10aff6b52545623e18667c9487758fa93a3b2345974da0d263939189dc    19881 | f53c052cd7ac58539ff5c35cb9d515bc521308a49cec7566b23dba84f76009d8    19880 | 924d825a7fdbfd61e4582efbbe1d977bb554b368eea58c349a71e688e43fcc49",
+        "chia plots add -d 'your_dir'",
+        "chia plots remove -d 'your_dir'",
+        "chia plots add/remove -h",
+        "chia wallet",
+        "chia farm summary",
+        "grep ~/.chia/mainnet/log/debug.log -e harvester",
+        "17:08:03.191 harvester harvester_server        : INFO     <- harvester_handshake from peer 214b269a425b8223cb50fbd458dab056599348e255f07a018c13ea9efb509ee5 127.0.0.117:08:03.194 farmer farmer_server              : INFO     -> harvester_handshake to peer 127.0.0.1 65f3fa0b0407a07da8ccf04dfa0f64c28f714726312aa051d3a8529390db4d7a17:08:03.218 harvester src.plotting.plot_tools : INFO     Searching directories ['/home/user/slab1/plots']17:08:03.227 harvester src.plotting.plot_tools : INFO     Found plot /home/user/slab1/plots/plot-k32-2021-01-11-17-26-bf2363828e469a3417b89eb98cfa9d694809e1ce8bef0ffd1d12853d4227aa0a.plot of size 3217:08:03.227 harvester src.plotting.plot_tools : INFO     Loaded a total of 1 plots of size 0.09895819725716137 TiB",
+        "17:08:03.191 harvester harvester_server        : INFO     <- harvester_handshake from peer 214b269a425b8223cb50fbd458dab056599348e255f07a018c13ea9efb509ee5 127.0.0.117:08:03.194 farmer farmer_server              : INFO     -> harvester_handshake to peer 127.0.0.1 65f3fa0b0407a07da8ccf04dfa0f64c28f714726312aa051d3a8529390db4d7a17:08:03.218 harvester src.plotting.plot_tools : INFO     Searching directories ['/home/user/slab1/plots']17:08:03.227 harvester src.plotting.plot_tools : INFO     Found plot /home/user/slab1/plots/plot-k32-2021-01-11-17-26-bf2363828e469a3417b89eb98cfa9d694809e1ce8bef0ffd1d12853d4227aa0a.plot of size 3217:08:03.227 harvester src.plotting.plot_tools : INFO     Loaded a total of 1 plots of size 0.09895819725716137 TiB",
+        "tail -F ~/.chia/mainnet/log/debug.log"
+      ],
+      "api_endpoints": [],
+      "last_updated": "2025-09-20T12:02:52.648290",
+      "scraped_content": {
+        "headings": [
+          "CLI Commands Reference",
+          "Locate the chia binary executable",
+          "Mac​",
+          "Windows​",
+          "init",
+          "start",
+          "plotters",
+          "plotnft​",
+          "Plots check​",
+          "db",
+          "upgrade​",
+          "backup​",
+          "validate​",
+          "keys",
+          "derive​",
+          "child-key​",
+          "search​",
+          "wallet-address​",
+          "DID",
+          "NFT",
+          "dev",
+          "mempool​",
+          "import​",
+          "export​",
+          "benchmark​",
+          "Other commands (not all are fully documented)",
+          "Checking Logs and Status​"
+        ],
+        "paragraphs": [
+          "This page should provide additional high-level documentation and explanation beyond just chia -h.",
+          "This is not meant to be comprehensive, because often the -h (help) text is clear enough. We recommend fully investigating with the -h switch before looking elsewhere.",
+          "To better understand what a command's options are, append -h at the end to see options and explanations.",
+          "Some examples:",
+          "As with the rest of this project, this doc is a work-in-progress. Feel free to browse the source code or the Chia Proof of Space Construction Document for more insight in the meantime.",
+          "If you installed Chia.app in your /Applications directory, you can find the chia binary at /Applications/Chia.app/Contents/Resources/app.asar.unpacked/daemon/chia.",
+          "Do a sanity check in Terminal.app with the following command:",
+          "You can use that if you augment your PATH with the following command:",
+          "Then, running the chia -h command should work.",
+          "There is more than one chia.exe binary; the GUI is Chia.exe (two of these!) and the CLI is chia.exe. They are found in different places. Note the big C versus the little c.",
+          "The CLI one is the one referred to in this document, and for version 2.1.0 installed for the user it can be found at",
+          "If installed for all users it can be found at",
+          "Command: chia init",
+          "First, init checks for old versions of Chia installed in your ~/.chia directory.",
+          "If so, init migrates these old files to the new version:",
+          "If no old version exists, init:",
+          "Command: chia start {service}",
+          "Flags",
+          "-r, --restart: Restart of running processes",
+          "In 2.1.0 the option to use different plotters including compressed plotter was introduced. Each plotter has slightly different hardware requirements and may need slightly different options specified.\nThe cli reference for all plotters can be found in the Plotters CLI Page. Learn more about the alternative plotters in the Alternative Plotters page.",
+          "Using the CLI, you can perform the same operations as with the GUI. There is a new command, called chia plotnft. Type chia plotnft -h to see all the available sub-commands:",
+          "To create a Plot NFT, use chia plotnft create -u https://poolnamehere.com, entering the URL of the pool you want to use. To create a plot NFT in self-farming mode, do chia plotnft create -s local.\nTo switch pools, you can use chia plotnft join, and to leave a pool (switch to self farming), use chia plotnft leave.\nThe show command can be used to check your current points balance. CLI plotting with create_plots is the same as before, but the -p is replaced with -c, and the pool contract address from chia plotnft show should be used here.",
+          "Command: chia plots check -n [num checks] -l -g [substring]",
+          "First, this looks in all plot directories from your config.yaml. You can check those directories with chia plots show. This command will check whether plots are valid given the plot's associated keys and your machine's stored Chia keys, as well as test the plot with challenges to identify found plots vs. expected number of plots.",
+          "-g check only plots with directory or file name containing case-sensitive [substring].\nIf -g isn't specified all plots in every plot directory in your config.yaml will be checked.",
+          "Examples for using -g",
+          "-l allows you to find duplicate plots by ID. It checks all plot directories listed in config.yaml and lists out any plot filenames with the same filename ending; *-[64 char plot ID].plot. You should use -l -n 0 if you only want to check for duplicates.",
+          "-n represents the number of challenges given. If you don't include an -n integer, the default is 30. For instance, if -n is 30, then 30 challenges will be given to each plot. The challenges count from 5 (minimum) to -n, and are not random.",
+          "Each plot will take each challenge and:",
+          "Finally, you'll see a report the final true proofs vs. expected proofs.",
+          "Therefore, if -n is 20, you would expect 20 proofs, but your plot may have more or fewer.",
+          "Running the command with -n 10 or -n 20 is good for a very minor check, but won't actually give you much information about if the plots are actually high-quality or not.",
+          "Consider using -n 30 to get a statistically better idea.",
+          "For more detail, you can read about the DiskProver commands in chiapos",
+          "What does the ratio of full proofs vs expected proofs mean?",
+          "The plots check challenge is a static challenge. For example if you run a plots check 20 times, with 30 tries against the same file, it will produce the same result every time. So while you may see a plot ratio << 1 for a plot check with x number of tries, it does not mean that the plot itself is worthless. It just means that given these static challenges, the plot is producing however many proofs. As the number of tries (-n) increases, we would expect the ratio to not be << 1. Since Mainnet is live, and given that the blockchain has new challenges with every signage point - just because a plot is having a bad time with one specific challenge, does not mean it has the same results versus another challenge. \"Number of plots\" and \"k-size\" are much more influential factors at winning blocks than \"proofs produced per challenge\".",
+          "In theory, a plot with a ratio >> 1 would be more likely to win challenges on the blockchain. Likewise, a plot with a ratio << 1 would be less likely to win. However, in practice, this isn't actually going to be noticeable. Therefore, don't worry if your plot check ratios are less than 1, unless they're significantly less than 1 for many -n.",
+          "Command: chia db upgrade [add flags and parameters]",
+          "Flags",
+          "--input [PATH]: (optional) Specify a database input file. Must be a v1 database.",
+          "--output [PATH]: (optional) Specify a database output file. Can be any name, but must not already exist.",
+          "--no-update-config Don't update the config file to point to your new database. When specifying a custom output file, the config will not be updated regardless.",
+          "Database upgrade notes",
+          "Command: chia db backup [add flags and parameters]",
+          "Flags",
+          "--backup_file [PATH]: (optional) Specifies the backup file and location. Default will create the backup in the same directory as the database.",
+          "--no_indexes: (optional) Create backup without indexes.",
+          "Database backup notes",
+          "Command: chia db validate [add flags and parameters]",
+          "Flags",
+          "--db [PATH]: (optional) Specifies which database file to validate. Default will use the default database and path.",
+          "--validate-blocks: (optional) Validate consistency of properties of the encoded blocks and block records. Note this will increase the validation time.",
+          "Database validate notes",
+          "Command: chia keys derive [OPTIONS] COMMAND [ARGS]",
+          "Flags",
+          "-f, --fingerprint [INTEGER]: The fingerprint of the key you want to use.",
+          "--mnemonic-seed-filename [TEXT]: The filename containing the mnemonic seed of the master key to derive from.",
+          "Notes on deriving keys",
+          "Command: chia keys derive child-key [OPTIONS]",
+          "Flags",
+          "-t, --type [farmer|pool|wallet|local|backup|singleton|pool_auth]: Type of child key to derive.",
+          "-p, --derive-from-hd-path [TEXT]: Derive child keys rooted from a specific HD path. Indices ending in an 'n' indicate that non-observer derivation should used at that index.",
+          "Example HD path: m/12381n/8444n/2/",
+          "-i, --index [INTEGER]: Index of the first child key to derive. (Index 0 is the first child key.)",
+          "-n, --count [INTEGER]: Number of child keys to derive, starting at index.",
+          "-d, --non-observer-derivation: Derive keys using non-observer derivation. [default: False]",
+          "-s, --show-private-keys: Display derived private keys. [default: False]",
+          "--show-hd-path: Show the HD path of the derived wallet addresses. [default: False]",
+          "Examples",
+          "Show the first singleton pubkey: chia keys derive -f <fingerprint> child-key -t singleton",
+          "Show a pair of public and private keys derived from a mixed observer/non-observer HD path using an imported key's mnemonic seed: chia keys derive --mnemonic-seed-filename <(chia keys generate_and_print | sed -n 2p) child-key --derive-from-hd-path 'm/12381n/8444n/2/' --show-private-keys --show-hd-path",
+          "Generate a mnemonic seed and show the farmer pubkeys 10-14 derived from that seed: chia keys derive --mnemonic-seed-filename <(chia keys generate_and_print | sed -n 2p) child-key -i 10 -n 5 -t farmer",
+          "Command: chia keys derive search [OPTIONS] [SEARCH_TERMS]...",
+          "Flags",
+          "-l, --limit [INTEGER]: Limit the number of derivations to search against. [default: 100]",
+          "-d, --non-observer-derivation: Search will be performed against keys derived using non-observer derivation. [default: False]",
+          "-P, --show-progress: Show search progress. [default: False]",
+          "-t, --search-type [public_key|private_key|address|all]: Limit the search to include just the specified types. [default: address, public_key]",
+          "-p, --derive-from-hd-path [TEXT]: Search for items derived from a specific HD path. Indices ending in an 'n' indicate that non-observer derivation should used at that index. Example HD path: m/12381n/8444n/2/",
+          "Examples",
+          "Command: chia keys derive wallet-address [OPTIONS]",
+          "Flags",
+          "-i, --index [INTEGER]: Index of the first wallet address to derive. Index 0 is the first wallet address.",
+          "-n, --count [INTEGER]: Number of wallet addresses to derive, starting at index.",
+          "-x, --prefix [TEXT]: Address prefix (xch for mainnet, txch for testnet).",
+          "-d, --non-observer-derivation: Derive wallet addresses using non-observer derivation. [default: False]",
+          "--show-hd-path: Show the HD path of the derived wallet addresses. If non-observer-derivation is specified, path indices will have an 'n' suffix. [default: False]",
+          "Examples",
+          "Show first 10 wallet addresses:",
+          "chia keys derive -f <fingerprint> wallet-address -i 0 -n 10 --show-hd-path",
+          "See our official DID reference.",
+          "See our official NFT reference.",
+          "The chia dev mempool commands provide developer tools for managing and analyzing the mempool. These commands are available in Chia 2.5.5 and later versions.",
+          "Command: chia dev mempool import [OPTIONS]",
+          "Imports mempool data from a file. This is useful for testing and development purposes.",
+          "Flags",
+          "-f, --file PATH: Path to the mempool data file to import.",
+          "Example",
+          "Command: chia dev mempool export [OPTIONS]",
+          "Exports current mempool data to a file. This can be used for analysis or to share mempool state.",
+          "Flags",
+          "-f, --file PATH: Path where the exported mempool data will be saved.",
+          "Example",
+          "Command: chia dev mempool benchmark [OPTIONS]",
+          "Benchmarks mempool performance and provides metrics for optimization analysis.",
+          "Flags",
+          "-n, --num-iterations INTEGER: Number of benchmark iterations to run. [default: 100]",
+          "Example",
+          "Note: These commands are primarily intended for developers and advanced users. Use with caution in production environments.",
+          "To see what you can do with each of these commands, use the help flag -h. For example, chia show -h.",
+          "To check your full node status, do chia show -s and you'll see something like this. To figure how close\nyou are look at your height. Once fully synced it'll say Full Node Synced at the top.",
+          "You can add and remove directories for your plots with chia plots add -d 'your_dir' or chia plots remove -d 'your_dir', help can be found for respective add/remove with chia plots add/remove -h",
+          "You can check contents of your wallet with: chia wallet, and status of your farmer with chia farm summary.",
+          "Check harvester and farmer logs: grep ~/.chia/mainnet/log/debug.log -e harvester",
+          "Sample result:",
+          "Maybe follow logs: tail -F ~/.chia/mainnet/log/debug.log. Chia is nice enough to rotate logs for you."
+        ],
+        "links": [
+          {
+            "text": "Skip to main content",
+            "href": "#__docusaurus_skipToContent_fallback"
+          },
+          {
+            "text": "Chia Docs",
+            "href": "/"
+          },
+          {
+            "text": "Docs",
+            "href": "/chia-blockchain/introduction/"
+          },
+          {
+            "text": "Dev Guides",
+            "href": "/dev-guides-home/"
+          },
+          {
+            "text": "Chia Academy",
+            "href": "/academy-home/"
+          },
+          {
+            "text": "English",
+            "href": "#"
+          },
+          {
+            "text": "English",
+            "href": "/reference-client/cli-reference/cli/"
+          },
+          {
+            "text": "简体中文",
+            "href": "/zh-Hans/reference-client/cli-reference/cli/"
+          },
+          {
+            "text": "Chialisp",
+            "href": "https://chialisp.com"
+          },
+          {
+            "text": "Chia Network",
+            "href": "https://chia.net"
+          },
+          {
+            "text": "GitHub",
+            "href": "https://github.com/Chia-Network/chia-blockchain"
+          },
+          {
+            "text": "Chia Blockchain",
+            "href": "/chia-blockchain/introduction/"
+          },
+          {
+            "text": "Chia Cloud Wallet",
+            "href": "/cloud-wallet/getting-started/"
+          },
+          {
+            "text": "Chia Signer App",
+            "href": "/chia-signer/getting-started/"
+          },
+          {
+            "text": "Chia Reference Client",
+            "href": "/reference-client/getting-started/farming-guide/"
+          },
+          {
+            "text": "Getting Started",
+            "href": "/reference-client/getting-started/farming-guide/"
+          },
+          {
+            "text": "Install and Setup",
+            "href": "/reference-client/install-and-setup/installation/"
+          },
+          {
+            "text": "Plotting",
+            "href": "/reference-client/plotting/plotting-basics/"
+          },
+          {
+            "text": "Farming",
+            "href": "/reference-client/farming/farming-basics/"
+          },
+          {
+            "text": "Coin Selection",
+            "href": "/reference-client/coin-selection/"
+          },
+          {
+            "text": "RPC Reference",
+            "href": "/reference-client/rpc-reference/rpc/"
+          },
+          {
+            "text": "CLI Reference",
+            "href": "/reference-client/cli-reference/cli/"
+          },
+          {
+            "text": "Overview",
+            "href": "/reference-client/cli-reference/cli/"
+          },
+          {
+            "text": "DAOs",
+            "href": "/reference-client/cli-reference/dao-cli/"
+          },
+          {
+            "text": "DataLayer",
+            "href": "/reference-client/cli-reference/datalayer-cli/"
+          },
+          {
+            "text": "DIDs",
+            "href": "/reference-client/cli-reference/did-cli/"
+          },
+          {
+            "text": "NFTs",
+            "href": "/reference-client/cli-reference/nft-cli/"
+          },
+          {
+            "text": "Offers",
+            "href": "/reference-client/cli-reference/offer-cli/"
+          },
+          {
+            "text": "Plotters",
+            "href": "/reference-client/cli-reference/plotter-cli/"
+          },
+          {
+            "text": "Simulator",
+            "href": "/reference-client/cli-reference/simulator-cli/"
+          },
+          {
+            "text": "VCs",
+            "href": "/reference-client/cli-reference/vc-cli/"
+          },
+          {
+            "text": "Wallet",
+            "href": "/reference-client/cli-reference/wallet-cli/"
+          },
+          {
+            "text": "CAT Admin",
+            "href": "/reference-client/cli-reference/cat-admin-cli/"
+          },
+          {
+            "text": "Clawback",
+            "href": "/reference-client/cli-reference/clawback-cli/"
+          },
+          {
+            "text": "Custody Tool",
+            "href": "/reference-client/cli-reference/custody-tool-cli/"
+          },
+          {
+            "text": "ASICs",
+            "href": "/reference-client/cli-reference/asic-hwvdf-cli/"
+          },
+          {
+            "text": "WalletConnect",
+            "href": "/reference-client/walletconnect/walletconnect/"
+          },
+          {
+            "text": "Troubleshooting",
+            "href": "/reference-client/troubleshooting/check-if-things-are-working/"
+          },
+          {
+            "text": "Contributing",
+            "href": "/contribution/using-github/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          },
+          {
+            "text": "source code",
+            "href": "https://github.com/Chia-Network/chia-blockchain/tree/main/chia/cmds"
+          },
+          {
+            "text": "Chia Proof of Space Construction Document",
+            "href": "https://www.chia.net/assets/Chia_Proof_of_Space_Construction_v1.1.pdf"
+          },
+          {
+            "text": "​",
+            "href": "#mac"
+          },
+          {
+            "text": "​",
+            "href": "#windows"
+          },
+          {
+            "text": "init",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/master/src/cmds/init.py"
+          },
+          {
+            "text": "Plotters CLI Page",
+            "href": "/reference-client/cli-reference/plotter-cli/"
+          },
+          {
+            "text": "Alternative Plotters page",
+            "href": "/reference-client/plotting/plotting-software/"
+          },
+          {
+            "text": "​",
+            "href": "#plotnft"
+          },
+          {
+            "text": "Plots check",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/master/src/plotting/check_plots.py"
+          },
+          {
+            "text": "​",
+            "href": "#plots-check"
+          },
+          {
+            "text": "chiapos",
+            "href": "https://github.com/Chia-Network/chiapos/blob/master/src/prover_disk.hpp"
+          },
+          {
+            "text": "upgrade",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/cmds/db.py"
+          },
+          {
+            "text": "​",
+            "href": "#upgrade"
+          },
+          {
+            "text": "FAQ",
+            "href": "https://docs.chia.net/chia-blockchain/resources/faq/#what-is-the-new-database"
+          },
+          {
+            "text": "backup",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/cmds/db.py"
+          },
+          {
+            "text": "​",
+            "href": "#backup"
+          },
+          {
+            "text": "validate",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/main/chia/cmds/db.py"
+          },
+          {
+            "text": "​",
+            "href": "#validate"
+          },
+          {
+            "text": "derive",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/2f2593661c842b70a0e848752f12777f2df3ed18/chia/cmds/keys.py#L139"
+          },
+          {
+            "text": "​",
+            "href": "#derive"
+          },
+          {
+            "text": "child-key",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/2f2593661c842b70a0e848752f12777f2df3ed18/chia/cmds/keys.py#L271"
+          },
+          {
+            "text": "​",
+            "href": "#child-key"
+          },
+          {
+            "text": "search",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/2f2593661c842b70a0e848752f12777f2df3ed18/chia/cmds/keys.py#L162"
+          },
+          {
+            "text": "​",
+            "href": "#search"
+          },
+          {
+            "text": "wallet-address",
+            "href": "https://github.com/Chia-Network/chia-blockchain/blob/2f2593661c842b70a0e848752f12777f2df3ed18/chia/cmds/keys.py#L234"
+          },
+          {
+            "text": "​",
+            "href": "#wallet-address"
+          },
+          {
+            "text": "official DID reference",
+            "href": "/reference-client/cli-reference/did-cli/"
+          },
+          {
+            "text": "official NFT reference",
+            "href": "/reference-client/cli-reference/nft-cli/"
+          },
+          {
+            "text": "​",
+            "href": "#mempool"
+          },
+          {
+            "text": "​",
+            "href": "#import"
+          },
+          {
+            "text": "​",
+            "href": "#export"
+          },
+          {
+            "text": "​",
+            "href": "#benchmark"
+          },
+          {
+            "text": "​",
+            "href": "#checking-logs-and-status"
+          },
+          {
+            "text": "Edit this page",
+            "href": "https://github.com/Chia-Network/chia-docs/blob/main/docs/reference-client/cli-reference/cli.md"
+          },
+          {
+            "text": "PreviousHarvester",
+            "href": "/reference-client/rpc-reference/harvester-rpc/"
+          },
+          {
+            "text": "NextDAOs",
+            "href": "/reference-client/cli-reference/dao-cli/"
+          },
+          {
+            "text": "Mac",
+            "href": "#mac"
+          },
+          {
+            "text": "Windows",
+            "href": "#windows"
+          },
+          {
+            "text": "plotnft",
+            "href": "#plotnft"
+          },
+          {
+            "text": "Plots check",
+            "href": "#plots-check"
+          },
+          {
+            "text": "upgrade",
+            "href": "#upgrade"
+          },
+          {
+            "text": "backup",
+            "href": "#backup"
+          },
+          {
+            "text": "validate",
+            "href": "#validate"
+          },
+          {
+            "text": "derive",
+            "href": "#derive"
+          },
+          {
+            "text": "child-key",
+            "href": "#child-key"
+          },
+          {
+            "text": "search",
+            "href": "#search"
+          },
+          {
+            "text": "wallet-address",
+            "href": "#wallet-address"
+          },
+          {
+            "text": "mempool",
+            "href": "#mempool"
+          },
+          {
+            "text": "import",
+            "href": "#import"
+          },
+          {
+            "text": "export",
+            "href": "#export"
+          },
+          {
+            "text": "benchmark",
+            "href": "#benchmark"
+          },
+          {
+            "text": "Checking Logs and Status",
+            "href": "#checking-logs-and-status"
+          },
+          {
+            "text": "White Paper",
+            "href": "https://chia.net/approach"
+          },
+          {
+            "text": "Green Paper",
+            "href": "https://chia.net/greenpaper"
+          },
+          {
+            "text": "Consensus 1.1",
+            "href": "https://docs.chia.net/consensus-intro"
+          },
+          {
+            "text": "Chialisp",
+            "href": "https://chialisp.com"
+          },
+          {
+            "text": "Chia Academy",
+            "href": "https://docs.chia.net/academy-home/"
+          },
+          {
+            "text": "Developer Guides",
+            "href": "https://docs.chia.net/guides/crash-course/introduction"
+          },
+          {
+            "text": "About",
+            "href": "https://chia.net/about"
+          },
+          {
+            "text": "Blog",
+            "href": "https://chia.net/blog"
+          },
+          {
+            "text": "Contact",
+            "href": "https://chia.net/contact"
+          },
+          {
+            "text": "Apache License, Version 2.0",
+            "href": "https://github.com/Chia-Network/chia-docs/blob/main/LICENSE"
+          },
+          {
+            "text": "Terms",
+            "href": "https://chia.net/terms"
+          }
+        ]
+      }
+    }
+  },
+  "github": {
+    "chia_network_org": {
+      "url": "https://github.com/chia-network",
+      "type": "github_organization",
+      "name": "chia-network",
+      "description": "The green cryptocurrency with Chialisp. Chia Network has 131 repositories available. Follow their code on GitHub.",
+      "repositories": [],
+      "members": [
+        {
+          "username": "login?return_to=https%3A%2F%2Fgithub.com%2Fchia-network",
+          "profile_url": "https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fchia-network"
+        },
+        {
+          "username": "Chia-Network",
+          "profile_url": "https://github.com/Chia-Network"
+        },
+        {
+          "username": "solutions/industry/nonprofits",
+          "profile_url": "https://github.com/solutions/industry/nonprofits"
+        },
+        {
+          "username": "solutions/use-case/devsecops",
+          "profile_url": "https://github.com/solutions/use-case/devsecops"
+        },
+        {
+          "username": "solutions/use-case/devops",
+          "profile_url": "https://github.com/solutions/use-case/devops"
+        },
+        {
+          "username": "solutions/use-case/ci-cd",
+          "profile_url": "https://github.com/solutions/use-case/ci-cd"
+        },
+        {
+          "username": "solutions/use-case",
+          "profile_url": "https://github.com/solutions/use-case"
+        },
+        {
+          "username": "solutions/industry/healthcare",
+          "profile_url": "https://github.com/solutions/industry/healthcare"
+        },
+        {
+          "username": "solutions/industry/financial-services",
+          "profile_url": "https://github.com/solutions/industry/financial-services"
+        },
+        {
+          "username": "solutions/industry/manufacturing",
+          "profile_url": "https://github.com/solutions/industry/manufacturing"
+        },
+        {
+          "username": "solutions/industry/government",
+          "profile_url": "https://github.com/solutions/industry/government"
+        },
+        {
+          "username": "solutions/industry",
+          "profile_url": "https://github.com/solutions/industry"
+        },
+        {
+          "username": "solutions",
+          "profile_url": "https://github.com/solutions"
+        },
+        {
+          "username": "resources/articles/ai",
+          "profile_url": "https://github.com/resources/articles/ai"
+        },
+        {
+          "username": "resources/articles/devops",
+          "profile_url": "https://github.com/resources/articles/devops"
+        },
+        {
+          "username": "resources/articles/security",
+          "profile_url": "https://github.com/resources/articles/security"
+        },
+        {
+          "username": "resources/articles/software-development",
+          "profile_url": "https://github.com/resources/articles/software-development"
+        },
+        {
+          "username": "resources/articles",
+          "profile_url": "https://github.com/resources/articles"
+        },
+        {
+          "username": "sponsors",
+          "profile_url": "https://github.com/sponsors"
+        },
+        {
+          "username": "enterprise",
+          "profile_url": "https://github.com/enterprise"
+        }
+      ],
+      "stats": {
+        "repositories": 0,
+        "members": 0,
+        "location": "Worldwide",
+        "website": "https://chia.net"
+      },
+      "last_updated": "2025-09-20T12:03:00.740343"
+    }
+  }
+}

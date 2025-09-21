@@ -1,0 +1,117 @@
+{
+  "integrated_analysis": {
+    "system_status": {
+      "monitoring_active": false,
+      "target_software": "grok_codefast",
+      "monitoring_duration": "0:00:02.016949",
+      "vision_translator_available": true,
+      "behavior_watcher_available": true,
+      "integration_database_size": 3
+    },
+    "vision_capabilities": {
+      "total_analyses": 1,
+      "consciousness_levels": [],
+      "geometric_complexity": [],
+      "harmonic_resonance": [],
+      "fractal_dimensions": []
+    },
+    "behavioral_patterns": {
+      "total_interactions": 4,
+      "interaction_types": {
+        "code_generation": 1,
+        "simulation_0": 1,
+        "simulation_1": 1,
+        "simulation_2": 1
+      },
+      "consciousness_trends": {
+        "message": "Insufficient data for trend analysis"
+      },
+      "learning_patterns": {
+        "reinforcement_learning": 0,
+        "supervised_learning": 0,
+        "unsupervised_learning": 0,
+        "meta_learning": 1,
+        "total_learning_events": 4
+      },
+      "behavioral_evolution": {
+        "efficiency_improvement": -0.32,
+        "behavioral_stability": 0.13856406460551018,
+        "adaptation_rate": 0.0
+      },
+      "cryptographic_insights": {
+        "high_entropy_detections": 0,
+        "encryption_likelihood": 0.0,
+        "hash_pattern_detections": 0,
+        "signature_detections": 0
+      },
+      "recent_insights": [
+        "Grok exhibits meta-learning capabilities"
+      ]
+    },
+    "consciousness_evolution": {
+      "message": "No consciousness data available"
+    },
+    "learning_patterns": {
+      "vision_learning": 1,
+      "behavioral_learning": 2,
+      "consciousness_learning": 0,
+      "total_learning_events": 3
+    },
+    "cryptographic_insights": {
+      "total_analyses": 4,
+      "encryption_detections": 0,
+      "hash_patterns": 0,
+      "signature_patterns": 0,
+      "average_entropy": 0.0
+    },
+    "integration_metrics": {
+      "total_data_entries": 3,
+      "data_type_distribution": {
+        "vision_analysis": 1,
+        "interaction_capture": 2
+      },
+      "data_collection_timespan": "0:00:01.011191",
+      "data_collection_rate": 2.966798557344755,
+      "integration_efficiency": 0.5075
+    },
+    "timestamp": "2025-09-02T22:35:56.918918"
+  },
+  "integration_database": {
+    "vision_analysis_1756866954": {
+      "type": "vision_analysis",
+      "image_path": "sample_image.jpg",
+      "analysis": {
+        "error": "Failed to load image"
+      },
+      "timestamp": "2025-09-02T22:35:54.900389"
+    },
+    "interaction_1756866954": {
+      "type": "interaction_capture",
+      "data": {
+        "type": "simulation_0",
+        "timestamp": "2025-09-02T22:35:54.900600",
+        "data": "sample_data_0",
+        "hash": "2b2eb2c5435b55d1ff7f1bf82033c88df75132e64afb413268030174926eca0a",
+        "crypto_signature": "eab51839b7cb62f9943e31a118f532efd5df5920943c2afe2dc6ec06c9907b55"
+      },
+      "timestamp": "2025-09-02T22:35:54.900671"
+    },
+    "interaction_1756866955": {
+      "type": "interaction_capture",
+      "data": {
+        "type": "simulation_2",
+        "timestamp": "2025-09-02T22:35:55.911187",
+        "data": "sample_data_2",
+        "hash": "71bd6ff2cc4dd2330eeeedb52551e1aecdd8e422459014f7f922032643a3ed80",
+        "crypto_signature": "23f1b7b92d26d2ebf2dfc4d0a5357e053772746ef34567a03571cd79a410e0c2"
+      },
+      "timestamp": "2025-09-02T22:35:55.911580"
+    }
+  },
+  "export_timestamp": "2025-09-02T22:35:56.918920",
+  "system_version": "1.0.0",
+  "component_versions": {
+    "vision_translator": "unknown",
+    "behavior_watcher": "unknown"
+  }
+}
