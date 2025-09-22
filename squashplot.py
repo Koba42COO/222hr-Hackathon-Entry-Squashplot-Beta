@@ -473,8 +473,8 @@ class WhitelistManager:
 
     def create_plots(self, config: PlotterConfig) -> Dict[str, any]:
         """Create plots using integrated plotting backend (similar to Mad Max/BladeBit)"""
-        print("
-🔧 Initializing SquashPlot Engine..."        print(f"   🎯 K-Size: {config.k_size if hasattr(config, 'k_size') else 32}")
+        print("🔧 Initializing SquashPlot Engine... ")       
+        print(f"   🎯 K-Size: {config.k_size if hasattr(config, 'k_size') else 32}")
         print(f"   📊 Plot Count: {config.count}")
         print(f"   🧵 Threads: {config.threads}")
         print(f"   🪣 Buckets: {config.buckets}")
@@ -488,8 +488,8 @@ class WhitelistManager:
             # Validate system requirements
             requirements = self.plotter_backend.validate_plotter_requirements("madmax")
             if requirements:
-                print("
-📋 System Requirements Check:"                print(f"   💾 Temp1 Space Needed: {requirements.get('temp1_space', 0)} GB")
+                print("📋 System Requirements Check:")                
+                print(f"   💾 Temp1 Space Needed: {requirements.get('temp1_space', 0)} GB")
                 print(f"   💾 Temp2 Space Needed: {requirements.get('temp2_space', 0)} GB")
                 print(f"   🧠 RAM Minimum: {requirements.get('ram_minimum', 4)} GB")
                 print(f"   📝 {requirements.get('description', '')}")
@@ -722,8 +722,8 @@ def main():
                 print("python squashplot.py -t /tmp/plot1 -d /plots -f <farmer_key> -p <pool_key>")
                 return
 
-            print("
-🚀 SquashPlot Plotting Mode (Mad Max Style)"            print(f"   📁 Temp Dir 1: {args.tmp_dir}")
+            print("🚀 SquashPlot Plotting Mode (Mad Max Style)")
+            print(f"   📁 Temp Dir 1: {args.tmp_dir}")
             if args.tmp_dir2:
                 print(f"   📁 Temp Dir 2: {args.tmp_dir2}")
             print(f"   📁 Final Dir: {args.final_dir}")
@@ -760,8 +760,8 @@ def main():
                 result = compressor.create_plots(config)
 
                 if result['success']:
-                    print("
-✅ Plotting completed successfully!"                    print(f"   📊 Plots Created: {result['plots_created']}")
+                    print("✅ Plotting completed successfully!")
+                    print(f"   📊 Plots Created: {result['plots_created']}")
                     print(f"   💾 Total Space Used: {result['total_space_gb']:.1f} GB")
                     print(f"   ⚡ Average Time per Plot: {result['avg_time_per_plot']:.1f} minutes")
 
