@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔗 GunDB Blockchain Knowledge Marketplace</title>
+    <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>
+    <script src="https://unpkg.com/ethereumjs-util@7.1.5/dist/index.js"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --background: #0f0f23;
+            --card: #1a1a2e;
+            --text: #e2e8f0;
+            --text-secondary: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--background), #2d1b69);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .status.connected {
+            background: var(--success);
+            color: white;
+        }
+
+        .status.disconnected {
+            background: var(--error);
+            color: white;
+        }
+
+        .status.connecting {
+            background: var(--warning);
+            color: white;
+        }
+
+        .wallet-info {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .wallet-address {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            word-break: break-all;
+            color: var(--text-secondary);
+        }
+
+        .balance {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--success);
+        }
+
+        .btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .input-group input, .input-group select, .input-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .input-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contribution-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .contribution-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .contribution-item h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .contribution-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .usage-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .log-area {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 15px;
+            height: 200px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .log-entry {
+            margin-bottom: 5px;
+            padding: 2px 0;
+        }
+
+        .log-entry.success { color: var(--success); }
+        .log-entry.error { color: var(--error); }
+        .log-entry.info { color: var(--text-secondary); }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🚀 GunDB Blockchain Knowledge Marketplace</h1>
+            <p>Decentralized knowledge monetization with browser wallet connectivity</p>
+        </header>
+
+        <div class="grid">
+            <!-- Wallet Connection -->
+            <div class="card">
+                <h3>🔐 Wallet Connection</h3>
+                <div id="walletStatus" class="status disconnected">Disconnected</div>
+                <div id="walletInfo" class="wallet-info" style="display: none;">
+                    <div>Address: <span id="walletAddress" class="wallet-address"></span></div>
+                    <div>Balance: <span id="walletBalance" class="balance">$0.00</span></div>
+                    <div>Reputation: <span id="reputationScore">0.0</span></div>
+                </div>
+                <button id="connectWallet" class="btn">Connect MetaMask</button>
+                <button id="disconnectWallet" class="btn" style="display: none;">Disconnect</button>
+            </div>
+
+            <!-- Submit Contribution -->
+            <div class="card">
+                <h3>📝 Submit Contribution</h3>
+                <div class="input-group">
+                    <label for="contribTitle">Title</label>
+                    <input type="text" id="contribTitle" placeholder="Enter contribution title">
+                </div>
+                <div class="input-group">
+                    <label for="contribType">Type</label>
+                    <select id="contribType">
+                        <option value="knowledge">Knowledge</option>
+                        <option value="code">Code</option>
+                        <option value="content">Content</option>
+                        <option value="tutorial">Tutorial</option>
+                        <option value="tool">Tool</option>
+                        <option value="dataset">Dataset</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="contribContent">Content</label>
+                    <textarea id="contribContent" placeholder="Enter your knowledge, code, or content here..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="contribTags">Tags (comma-separated)</label>
+                    <input type="text" id="contribTags" placeholder="python, tutorial, best-practices">
+                </div>
+                <button id="submitContribution" class="btn">Submit Contribution</button>
+            </div>
+
+            <!-- Available Contributions -->
+            <div class="card">
+                <h3>📚 Available Contributions</h3>
+                <div id="contributionsList" class="contribution-list">
+                    <p style="color: var(--text-secondary); text-align: center; padding: 20px;">
+                        Connect your wallet to view contributions
+                    </p>
+                </div>
+            </div>
+
+            <!-- Usage Dashboard -->
+            <div class="card">
+                <h3>📊 Usage Dashboard</h3>
+                <div id="usageList" class="contribution-list">
+                    <p style="color: var(--text-secondary); text-align: center; padding: 20px;">
+                        Your usage history will appear here
+                    </p>
+                </div>
+            </div>
+
+            <!-- Earnings Dashboard -->
+            <div class="card">
+                <h3>💰 Earnings Dashboard</h3>
+                <div id="earningsInfo">
+                    <div class="metric">
+                        <span class="metric-value" id="totalEarnings">$0.00</span>
+                        <span class="metric-label">Total Earnings</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value" id="availableBalance">$0.00</span>
+                        <span class="metric-label">Available Balance</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value" id="monthlyEarnings">$0.00</span>
+                        <span class="metric-label">This Month</span>
+                    </div>
+                </div>
+                <button id="withdrawEarnings" class="btn" style="margin-top: 15px;">Withdraw Earnings</button>
+            </div>
+
+            <!-- Marketplace Analytics -->
+            <div class="card">
+                <h3>📈 Marketplace Analytics</h3>
+                <div class="analytics-grid">
+                    <div class="metric">
+                        <span class="metric-value" id="totalUsers">0</span>
+                        <span class="metric-label">Total Users</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value" id="totalContributions">0</span>
+                        <span class="metric-label">Contributions</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value" id="totalRevenue">$0.00</span>
+                        <span class="metric-label">Total Revenue</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value" id="activeUsers">0</span>
+                        <span class="metric-label">Active Users</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Log -->
+        <div class="card">
+            <h3>📋 Activity Log</h3>
+            <div id="activityLog" class="log-area">
+                <div class="log-entry info">🔄 Initializing GunDB connection...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize GunDB
+        const gun = Gun(['https://gun-manhattan.herokuapp.com/gun']);
+        const marketplace = gun.get('blockchain_marketplace');
+
+        // Global state
+        let currentWallet = null;
+        let userContributions = [];
+        let userUsage = [];
+
+        // DOM elements
+        const walletStatus = document.getElementById('walletStatus');
+        const walletInfo = document.getElementById('walletInfo');
+        const walletAddress = document.getElementById('walletAddress');
+        const walletBalance = document.getElementById('walletBalance');
+        const reputationScore = document.getElementById('reputationScore');
+        const connectWallet = document.getElementById('connectWallet');
+        const disconnectWallet = document.getElementById('disconnectWallet');
+        const submitContribution = document.getElementById('submitContribution');
+        const contributionsList = document.getElementById('contributionsList');
+        const usageList = document.getElementById('usageList');
+        const activityLog = document.getElementById('activityLog');
+
+        // Check if MetaMask is installed
+        async function checkMetaMask() {
+            if (typeof window.ethereum !== 'undefined') {
+                logActivity('✅ MetaMask detected', 'success');
+                return true;
+            } else {
+                logActivity('❌ MetaMask not detected. Please install MetaMask.', 'error');
+                return false;
+            }
+        }
+
+        // Connect wallet
+        async function connectWalletHandler() {
+            if (!await checkMetaMask()) return;
+
+            try {
+                updateWalletStatus('connecting');
+
+                // Request account access
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                const account = accounts[0];
+
+                currentWallet = account;
+                updateWalletStatus('connected');
+
+                // Get wallet info
+                await loadWalletInfo(account);
+
+                // Load user data from GunDB
+                loadUserData(account);
+
+                logActivity(`🔗 Connected to wallet: ${account.slice(0, 10)}...`, 'success');
+
+            } catch (error) {
+                logActivity(`❌ Wallet connection failed: ${error.message}`, 'error');
+                updateWalletStatus('disconnected');
+            }
+        }
+
+        // Disconnect wallet
+        function disconnectWalletHandler() {
+            currentWallet = null;
+            updateWalletStatus('disconnected');
+            clearUserData();
+            logActivity('👋 Disconnected from wallet', 'info');
+        }
+
+        // Update wallet status
+        function updateWalletStatus(status) {
+            walletStatus.className = `status ${status}`;
+            walletStatus.textContent = status.charAt(0).toUpperCase() + status.slice(1);
+
+            if (status === 'connected') {
+                walletInfo.style.display = 'block';
+                connectWallet.style.display = 'none';
+                disconnectWallet.style.display = 'inline-block';
+                submitContribution.disabled = false;
+            } else {
+                walletInfo.style.display = 'none';
+                connectWallet.style.display = 'inline-block';
+                disconnectWallet.style.display = 'none';
+                submitContribution.disabled = true;
+            }
+        }
+
+        // Load wallet information
+        async function loadWalletInfo(address) {
+            try {
+                // Get ETH balance
+                const balance = await window.ethereum.request({
+                    method: 'eth_getBalance',
+                    params: [address, 'latest']
+                });
+
+                const ethBalance = parseInt(balance, 16) / Math.pow(10, 18);
+                walletAddress.textContent = address;
+                walletBalance.textContent = `$${ethBalance.toFixed(4)}`;
+
+                // Load reputation from GunDB
+                const userData = await getUserData(address);
+                reputationScore.textContent = userData.reputation || '0.0';
+
+            } catch (error) {
+                logActivity(`❌ Failed to load wallet info: ${error.message}`, 'error');
+            }
+        }
+
+        // Load user data from GunDB
+        function loadUserData(walletAddress) {
+            const userNode = marketplace.get('users').get(walletAddress);
+
+            userNode.on((data) => {
+                if (data && data.contributions) {
+                    userContributions = data.contributions;
+                    renderContributions();
+                }
+                if (data && data.usage) {
+                    userUsage = data.usage;
+                    renderUsage();
+                }
+                if (data && data.earnings) {
+                    updateEarnings(data.earnings);
+                }
+            });
+        }
+
+        // Submit contribution
+        async function submitContributionHandler() {
+            if (!currentWallet) {
+                logActivity('❌ Please connect your wallet first', 'error');
+                return;
+            }
+
+            const title = document.getElementById('contribTitle').value;
+            const contentType = document.getElementById('contribType').value;
+            const content = document.getElementById('contribContent').value;
+            const tags = document.getElementById('contribTags').value;
+
+            if (!title || !content) {
+                logActivity('❌ Please fill in title and content', 'error');
+                return;
+            }
+
+            try {
+                const contributionId = `contrib_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+
+                const contribution = {
+                    id: contributionId,
+                    contributor: currentWallet,
+                    title: title,
+                    contentType: contentType,
+                    content: content,
+                    tags: tags.split(',').map(tag => tag.trim()).filter(tag => tag),
+                    pricePerUse: 0.01,
+                    createdAt: new Date().toISOString(),
+                    qualityTier: 'bronze',
+                    upvotes: 0,
+                    downvotes: 0,
+                    usageCount: 0
+                };
+
+                // Save to GunDB
+                marketplace.get('contributions').get(contributionId).put(contribution);
+
+                // Update user's contributions
+                const userNode = marketplace.get('users').get(currentWallet);
+                userNode.get('contributions').get(contributionId).put(contribution);
+
+                logActivity(`📝 Contribution submitted: ${title}`, 'success');
+
+                // Clear form
+                document.getElementById('contribTitle').value = '';
+                document.getElementById('contribContent').value = '';
+                document.getElementById('contribTags').value = '';
+
+                // Refresh contributions list
+                loadAllContributions();
+
+            } catch (error) {
+                logActivity(`❌ Failed to submit contribution: ${error.message}`, 'error');
+            }
+        }
+
+        // Load all contributions
+        function loadAllContributions() {
+            const contributionsNode = marketplace.get('contributions');
+
+            contributionsNode.map().on((contribution, id) => {
+                if (contribution && contribution.title) {
+                    renderContribution(contribution);
+                }
+            });
+        }
+
+        // Render contribution in list
+        function renderContribution(contribution) {
+            const contributionDiv = document.createElement('div');
+            contributionDiv.className = 'contribution-item';
+            contributionDiv.innerHTML = `
+                <h4>${contribution.title}</h4>
+                <p>${contribution.content.substring(0, 100)}...</p>
+                <div class="contribution-meta">
+                    <span>By: ${contribution.contributor.slice(0, 10)}...</span>
+                    <span>$${contribution.pricePerUse}</span>
+                    <button onclick="useContribution('${contribution.id}')" class="btn" style="width: auto; padding: 5px 10px; font-size: 0.8rem;">Use</button>
+                </div>
+            `;
+
+            // Avoid duplicates
+            const existing = contributionsList.querySelector(`[data-id="${contribution.id}"]`);
+            if (!existing) {
+                contributionDiv.setAttribute('data-id', contribution.id);
+                contributionsList.appendChild(contributionDiv);
+            }
+        }
+
+        // Use contribution
+        async function useContribution(contributionId) {
+            if (!currentWallet) {
+                logActivity('❌ Please connect your wallet first', 'error');
+                return;
+            }
+
+            try {
+                // Record usage in GunDB
+                const usageRecord = {
+                    id: `usage_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+                    contributionId: contributionId,
+                    userWallet: currentWallet,
+                    timestamp: new Date().toISOString(),
+                    duration: Math.floor(Math.random() * 300) + 60, // 1-5 minutes
+                    paymentAmount: 0.01 + Math.random() * 0.04 // $0.01 - $0.05
+                };
+
+                marketplace.get('usage').get(usageRecord.id).put(usageRecord);
+
+                // Update user's usage
+                const userNode = marketplace.get('users').get(currentWallet);
+                userNode.get('usage').get(usageRecord.id).put(usageRecord);
+
+                logActivity(`💰 Used contribution - Payment: $${usageRecord.paymentAmount.toFixed(4)}`, 'success');
+
+                // Refresh usage list
+                renderUsage();
+
+            } catch (error) {
+                logActivity(`❌ Failed to use contribution: ${error.message}`, 'error');
+            }
+        }
+
+        // Render usage history
+        function renderUsage() {
+            if (userUsage.length === 0) {
+                usageList.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 20px;">Your usage history will appear here</p>';
+                return;
+            }
+
+            usageList.innerHTML = '';
+            userUsage.slice(-10).forEach(usage => {
+                const usageDiv = document.createElement('div');
+                usageDiv.className = 'usage-item';
+                usageDiv.innerHTML = `
+                    <div>Contribution: ${usage.contributionId.slice(0, 20)}...</div>
+                    <div>Amount: $${usage.paymentAmount.toFixed(4)} | Duration: ${usage.duration}s</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">${new Date(usage.timestamp).toLocaleString()}</div>
+                `;
+                usageList.appendChild(usageDiv);
+            });
+        }
+
+        // Update earnings display
+        function updateEarnings(earnings) {
+            document.getElementById('totalEarnings').textContent = `$${earnings.total || 0}`;
+            document.getElementById('availableBalance').textContent = `$${earnings.available || 0}`;
+            document.getElementById('monthlyEarnings').textContent = `$${earnings.monthly || 0}`;
+        }
+
+        // Get user data from GunDB
+        function getUserData(walletAddress) {
+            return new Promise((resolve) => {
+                const userNode = marketplace.get('users').get(walletAddress);
+                userNode.once((data) => {
+                    resolve(data || {});
+                });
+            });
+        }
+
+        // Clear user data display
+        function clearUserData() {
+            contributionsList.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 20px;">Connect your wallet to view contributions</p>';
+            usageList.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 20px;">Your usage history will appear here</p>';
+            userContributions = [];
+            userUsage = [];
+        }
+
+        // Log activity
+        function logActivity(message, type = 'info') {
+            const logEntry = document.createElement('div');
+            logEntry.className = `log-entry ${type}`;
+            logEntry.textContent = `${new Date().toLocaleTimeString()} - ${message}`;
+
+            activityLog.appendChild(logEntry);
+            activityLog.scrollTop = activityLog.scrollHeight;
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', async () => {
+            logActivity('🚀 GunDB Blockchain Marketplace initialized', 'success');
+
+            // Check for existing connection
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+                    if (accounts.length > 0) {
+                        await connectWalletHandler();
+                    }
+                } catch (error) {
+                    logActivity('No existing wallet connection found', 'info');
+                }
+            }
+
+            // Load all contributions
+            loadAllContributions();
+        });
+
+        // Event listeners
+        connectWallet.addEventListener('click', connectWalletHandler);
+        disconnectWallet.addEventListener('click', disconnectWalletHandler);
+        submitContribution.addEventListener('click', submitContributionHandler);
+
+        // Make useContribution globally available
+        window.useContribution = useContribution;
+
+        // Listen for account changes
+        if (typeof window.ethereum !== 'undefined') {
+            window.ethereum.on('accountsChanged', (accounts) => {
+                if (accounts.length === 0) {
+                    disconnectWalletHandler();
+                } else if (accounts[0] !== currentWallet) {
+                    disconnectWalletHandler();
+                    currentWallet = accounts[0];
+                    connectWalletHandler();
+                }
+            });
+        }
+
+        logActivity('🔄 Ready for wallet connection', 'info');
+    </script>
+</body>
+</html>

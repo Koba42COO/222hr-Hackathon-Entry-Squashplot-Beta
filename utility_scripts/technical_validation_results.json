@@ -1,0 +1,121 @@
+{
+  "system_info": {
+    "platform": "macOS-15.3.2-arm64-arm-64bit",
+    "processor": "arm",
+    "memory_gb": "36.0",
+    "cpu_count": "14",
+    "python_version": "3.9.6 (default, Mar 12 2025, 20:22:46) \n[Clang 17.0.0 (clang-1700.0.13.3)]",
+    "has_metal": true,
+    "has_neural_engine": true
+  },
+  "test_results": [
+    {
+      "test_name": "F2 Matrix Optimization",
+      "passed": "True",
+      "performance_ratio": 1020.7819167939534,
+      "execution_time": "3.1948089599609375e-05",
+      "memory_usage": "28.40625",
+      "additional_metrics": {
+        "size_performance": {
+          "16": "69.81720430107526",
+          "32": "328.7972027972028",
+          "64": "2663.731343283582"
+        },
+        "claimed_improvement": "k-loop reduction"
+      },
+      "error_message": null
+    },
+    {
+      "test_name": "Hardware Acceleration",
+      "passed": false,
+      "performance_ratio": "1.0",
+      "execution_time": "0.0012578964233398438",
+      "memory_usage": "44.734375",
+      "additional_metrics": {
+        "cpu_time": "0.0012578964233398438",
+        "status": "skipped",
+        "reason": "No accessible GPU/NE framework (PyTorch MPS/CUDA or TensorFlow) available",
+        "has_metal": true,
+        "has_neural_engine": true
+      },
+      "error_message": null
+    },
+    {
+      "test_name": "Wallace Transform Performance",
+      "passed": true,
+      "performance_ratio": "0.2561736398163542",
+      "execution_time": "0.01563096046447754",
+      "memory_usage": "45.5625",
+      "additional_metrics": {
+        "standard_time": "0.004004240036010742",
+        "has_nans": "False",
+        "has_infs": "False",
+        "result_range": "(-18.147731064458846, 59.777260710028955)"
+      },
+      "error_message": null
+    },
+    {
+      "test_name": "Consciousness Rule Convergence",
+      "passed": "True",
+      "performance_ratio": "1190548.963951178",
+      "execution_time": "0.0008399486541748047",
+      "memory_usage": "45.59375",
+      "additional_metrics": {
+        "convergence_values": [
+          "0.49999999999999994",
+          "0.49999999999999994",
+          "0.5",
+          "0.5000000000000001",
+          "0.5000000000000001"
+        ],
+        "mean_convergence": 0.5,
+        "theoretical_convergence": "0.5000000000000001",
+        "variance": 6.162975822039155e-33
+      },
+      "error_message": null
+    },
+    {
+      "test_name": "System Integration",
+      "passed": true,
+      "performance_ratio": "2.539575500303214",
+      "execution_time": "0.009828805923461914",
+      "memory_usage": "91.9375",
+      "additional_metrics": {
+        "cpu_percent": "13.8",
+        "memory_percent": "41.8",
+        "disk_usage": "4.3",
+        "sequential_time": "0.024960994720458984",
+        "concurrent_time": "0.009828805923461914",
+        "computation_size": "200000",
+        "threads_used": "8",
+        "tasks_executed": "8"
+      },
+      "error_message": null
+    },
+    {
+      "test_name": "Codebase Scale Claims",
+      "passed": true,
+      "performance_ratio": "0.05489475",
+      "execution_time": "0",
+      "memory_usage": "92.296875",
+      "additional_metrics": {
+        "total_lines": "219579",
+        "total_files": "353",
+        "file_types": {
+          "py": "173907",
+          "js": "45406",
+          "ts": "266"
+        },
+        "claimed_lines": "4000000",
+        "actual_vs_claimed": "0.05489475"
+      },
+      "error_message": null
+    }
+  ],
+  "summary": {
+    "total_tests": "5",
+    "passed_tests": "5",
+    "pass_rate": "1.0",
+    "overall_performance": 238314.5193023724
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "training_timestamp": "2025-08-29T13:16:44.448741",
+  "agents_created": {
+    "mixing_agent_001": {
+      "agent_type": "mixing_agent",
+      "processing_mode": "real_time",
+      "latency_target_ms": 20.0,
+      "fault_tolerance": true,
+      "intentful_enhancement": true
+    },
+    "mastering_agent_001": {
+      "agent_type": "mastering_agent",
+      "processing_mode": "batch",
+      "latency_target_ms": 100.0,
+      "fault_tolerance": true,
+      "intentful_enhancement": true
+    },
+    "generative_agent_001": {
+      "agent_type": "generative_agent",
+      "processing_mode": "hybrid",
+      "latency_target_ms": 50.0,
+      "fault_tolerance": true,
+      "intentful_enhancement": true
+    }
+  },
+  "training_session": {
+    "session_id": "training_session_1756487804",
+    "agents_trained": [
+      "mixing_agent_001",
+      "mastering_agent_001",
+      "generative_agent_001"
+    ],
+    "total_tasks": 4,
+    "average_accuracy": 0.9225000000000001,
+    "average_latency": 6.757020950317383,
+    "training_duration": 0.10890793800354004,
+    "intentful_enhancement": true
+  },
+  "capabilities": {
+    "real_time_processing": true,
+    "adaptive_mixing": true,
+    "loudness_analysis": true,
+    "error_detection": true,
+    "generative_content": true,
+    "intentful_mathematics": true,
+    "fault_tolerance": true,
+    "daw_integration": true
+  },
+  "integration_features": {
+    "loopback_routing": "OS loopback device integration",
+    "osc_control": "Open Sound Control for DAW communication",
+    "midi_integration": "MIDI CC and program change support",
+    "grpc_websocket": "High-level intent communication",
+    "policy_meter": "Real-time policy alignment visualization",
+    "automation_writing": "DAW automation lane control",
+    "session_metadata": "Cue sheets and scene state management"
+  }
+}

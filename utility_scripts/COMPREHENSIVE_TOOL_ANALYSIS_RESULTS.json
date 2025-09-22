@@ -1,0 +1,1532 @@
+{
+  "use_cases": [
+    {
+      "id": "codebase_search_explore_codebase",
+      "tool": "codebase_search",
+      "description": "Explore unfamiliar codebases to understand behavior and architecture",
+      "cost_per_use": 15.0,
+      "profit_potential": 52.5,
+      "complexity": "medium",
+      "frequency": "occasional",
+      "outputs": [
+        "Code understanding",
+        "Architecture insights",
+        "Function discovery"
+      ],
+      "prerequisites": [
+        "Codebase access",
+        "Query formulation"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "codebase_search_find_implementation",
+      "tool": "codebase_search",
+      "description": "Find where interfaces/classes are implemented",
+      "cost_per_use": 12.0,
+      "profit_potential": 42.0,
+      "complexity": "simple",
+      "frequency": "frequent",
+      "outputs": [
+        "Implementation locations",
+        "Code references"
+      ],
+      "prerequisites": [
+        "Interface/class name"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "codebase_search_understand_workflow",
+      "tool": "codebase_search",
+      "description": "Understand complex workflows and data flows",
+      "cost_per_use": 18.0,
+      "profit_potential": 63.0,
+      "complexity": "complex",
+      "frequency": "occasional",
+      "outputs": [
+        "Workflow diagrams",
+        "Data flow analysis"
+      ],
+      "prerequisites": [
+        "Workflow understanding",
+        "System knowledge"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "run_terminal_cmd_execute_script",
+      "tool": "run_terminal_cmd",
+      "description": "Execute scripts and commands on the system",
+      "cost_per_use": 5.0,
+      "profit_potential": 10.0,
+      "complexity": "simple",
+      "frequency": "frequent",
+      "outputs": [
+        "Command results",
+        "System changes"
+      ],
+      "prerequisites": [
+        "Command knowledge",
+        "System access"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "run_terminal_cmd_background_process",
+      "tool": "run_terminal_cmd",
+      "description": "Run long-running processes in background",
+      "cost_per_use": 3.5,
+      "profit_potential": 7.0,
+      "complexity": "medium",
+      "frequency": "occasional",
+      "outputs": [
+        "Background process ID",
+        "Asynchronous execution"
+      ],
+      "prerequisites": [
+        "Process management knowledge"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "run_terminal_cmd_system_administration",
+      "tool": "run_terminal_cmd",
+      "description": "Perform system administration tasks",
+      "cost_per_use": 7.5,
+      "profit_potential": 15.0,
+      "complexity": "complex",
+      "frequency": "rare",
+      "outputs": [
+        "System configuration",
+        "Service management"
+      ],
+      "prerequisites": [
+        "Admin privileges",
+        "System knowledge"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "grep_exact_string_search",
+      "tool": "grep",
+      "description": "Find exact string matches across codebase",
+      "cost_per_use": 2.0,
+      "profit_potential": 3.6,
+      "complexity": "simple",
+      "frequency": "frequent",
+      "outputs": [
+        "File locations",
+        "Line numbers",
+        "Match counts"
+      ],
+      "prerequisites": [
+        "Search pattern",
+        "Target directory"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "grep_regex_search",
+      "tool": "grep",
+      "description": "Advanced regex pattern matching",
+      "cost_per_use": 2.6,
+      "profit_potential": 4.680000000000001,
+      "complexity": "medium",
+      "frequency": "occasional",
+      "outputs": [
+        "Complex pattern matches",
+        "Context lines"
+      ],
+      "prerequisites": [
+        "Regex knowledge",
+        "Pattern design"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "grep_multiline_search",
+      "tool": "grep",
+      "description": "Search across multiple lines with complex patterns",
+      "cost_per_use": 3.6,
+      "profit_potential": 6.48,
+      "complexity": "complex",
+      "frequency": "rare",
+      "outputs": [
+        "Multiline matches",
+        "Cross-line patterns"
+      ],
+      "prerequisites": [
+        "Advanced regex",
+        "Pattern testing"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "delete_file_remove_single_file",
+      "tool": "delete_file",
+      "description": "Delete individual files",
+      "cost_per_use": 1.0,
+      "profit_potential": 1.2,
+      "complexity": "simple",
+      "frequency": "occasional",
+      "outputs": [
+        "File removal confirmation"
+      ],
+      "prerequisites": [
+        "File path",
+        "Deletion confirmation"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "delete_file_cleanup_temp_files",
+      "tool": "delete_file",
+      "description": "Clean up temporary and cache files",
+      "cost_per_use": 0.8,
+      "profit_potential": 0.96,
+      "complexity": "simple",
+      "frequency": "frequent",
+      "outputs": [
+        "Cleanup summary",
+        "Space freed"
+      ],
+      "prerequisites": [
+        "Temp file identification"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "delete_file_batch_file_deletion",
+      "tool": "delete_file",
+      "description": "Delete multiple files based on criteria",
+      "cost_per_use": 1.3,
+      "profit_potential": 1.56,
+      "complexity": "medium",
+      "frequency": "rare",
+      "outputs": [
+        "Batch deletion results",
+        "Deletion log"
+      ],
+      "prerequisites": [
+        "Deletion criteria",
+        "Safety checks"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "read_lints_check_file_lints",
+      "tool": "read_lints",
+      "description": "Check linter errors for specific files",
+      "cost_per_use": 3.0,
+      "profit_potential": 7.5,
+      "complexity": "simple",
+      "frequency": "frequent",
+      "outputs": [
+        "Lint errors",
+        "Error locations"
+      ],
+      "prerequisites": [
+        "File path"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "read_lints_directory_lint_check",
+      "tool": "read_lints",
+      "description": "Check lints for entire directories",
+      "cost_per_use": 3.3000000000000003,
+      "profit_potential": 8.25,
+      "complexity": "medium",
+      "frequency": "occasional",
+      "outputs": [
+        "Directory lint report",
+        "Error summary"
+      ],
+      "prerequisites": [
+        "Directory path"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "read_lints_comprehensive_lint_analysis",
+      "tool": "read_lints",
+      "description": "Full workspace lint analysis and reporting",
+      "cost_per_use": 4.5,
+      "profit_potential": 11.25,
+      "complexity": "complex",
+      "frequency": "rare",
+      "outputs": [
+        "Complete lint report",
+        "Quality metrics"
+      ],
+      "prerequisites": [
+        "Workspace access",
+        "Lint configuration"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "todo_write_create_task_list",
+      "tool": "todo_write",
+      "description": "Create structured task lists for projects",
+      "cost_per_use": 8.0,
+      "profit_potential": 32.0,
+      "complexity": "simple",
+      "frequency": "frequent",
+      "outputs": [
+        "Task list",
+        "Project structure"
+      ],
+      "prerequisites": [
+        "Task requirements",
+        "Project scope"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "todo_write_complex_project_management",
+      "tool": "todo_write",
+      "description": "Manage complex multi-step projects",
+      "cost_per_use": 11.2,
+      "profit_potential": 44.8,
+      "complexity": "medium",
+      "frequency": "occasional",
+      "outputs": [
+        "Project roadmap",
+        "Task dependencies"
+      ],
+      "prerequisites": [
+        "Project complexity",
+        "Resource planning"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "todo_write_enterprise_organization",
+      "tool": "todo_write",
+      "description": "Organize large-scale enterprise projects",
+      "cost_per_use": 17.6,
+      "profit_potential": 70.4,
+      "complexity": "complex",
+      "frequency": "rare",
+      "outputs": [
+        "Enterprise structure",
+        "Resource allocation"
+      ],
+      "prerequisites": [
+        "Enterprise scale",
+        "Multi-team coordination"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "search_replace_simple_replacement",
+      "tool": "search_replace",
+      "description": "Replace simple strings in files",
+      "cost_per_use": 6.0,
+      "profit_potential": 18.0,
+      "complexity": "simple",
+      "frequency": "frequent",
+      "outputs": [
+        "Modified files",
+        "Replacement count"
+      ],
+      "prerequisites": [
+        "Target file",
+        "Old/new strings"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "search_replace_bulk_rename",
+      "tool": "search_replace",
+      "description": "Rename variables or functions across codebase",
+      "cost_per_use": 9.0,
+      "profit_potential": 27.0,
+      "complexity": "medium",
+      "frequency": "occasional",
+      "outputs": [
+        "Renamed identifiers",
+        "Updated references"
+      ],
+      "prerequisites": [
+        "Variable/function name",
+        "Scope definition"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "search_replace_code_refactoring",
+      "tool": "search_replace",
+      "description": "Complex code refactoring with pattern matching",
+      "cost_per_use": 12.0,
+      "profit_potential": 36.0,
+      "complexity": "complex",
+      "frequency": "rare",
+      "outputs": [
+        "Refactored code",
+        "Improved structure"
+      ],
+      "prerequisites": [
+        "Refactoring strategy",
+        "Code analysis"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "write_create_new_file",
+      "tool": "write",
+      "description": "Create new files with content",
+      "cost_per_use": 10.0,
+      "profit_potential": 38.0,
+      "complexity": "simple",
+      "frequency": "frequent",
+      "outputs": [
+        "New file",
+        "File contents"
+      ],
+      "prerequisites": [
+        "File path",
+        "Content"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "write_generate_code",
+      "tool": "write",
+      "description": "Generate code files programmatically",
+      "cost_per_use": 13.0,
+      "profit_potential": 49.4,
+      "complexity": "medium",
+      "frequency": "occasional",
+      "outputs": [
+        "Generated code",
+        "Code structure"
+      ],
+      "prerequisites": [
+        "Code templates",
+        "Requirements"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "write_create_system",
+      "tool": "write",
+      "description": "Create complete system with multiple files",
+      "cost_per_use": 25.0,
+      "profit_potential": 95.0,
+      "complexity": "complex",
+      "frequency": "rare",
+      "outputs": [
+        "Complete system",
+        "File structure"
+      ],
+      "prerequisites": [
+        "System architecture",
+        "Requirements spec"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "read_file_read_entire_file",
+      "tool": "read_file",
+      "description": "Read complete file contents",
+      "cost_per_use": 1.5,
+      "profit_potential": 1.9500000000000002,
+      "complexity": "simple",
+      "frequency": "frequent",
+      "outputs": [
+        "File contents",
+        "Line count"
+      ],
+      "prerequisites": [
+        "File path"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "read_file_read_file_section",
+      "tool": "read_file",
+      "description": "Read specific sections of large files",
+      "cost_per_use": 1.2000000000000002,
+      "profit_potential": 1.5600000000000003,
+      "complexity": "simple",
+      "frequency": "occasional",
+      "outputs": [
+        "File section",
+        "Line range"
+      ],
+      "prerequisites": [
+        "File path",
+        "Line numbers"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "read_file_batch_file_reading",
+      "tool": "read_file",
+      "description": "Read multiple files in batch for analysis",
+      "cost_per_use": 1.7999999999999998,
+      "profit_potential": 2.3400000000000003,
+      "complexity": "medium",
+      "frequency": "occasional",
+      "outputs": [
+        "Multiple file contents",
+        "Batch analysis"
+      ],
+      "prerequisites": [
+        "File list",
+        "Reading strategy"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "list_dir_explore_directory",
+      "tool": "list_dir",
+      "description": "List directory contents for exploration",
+      "cost_per_use": 0.5,
+      "profit_potential": 0.55,
+      "complexity": "simple",
+      "frequency": "frequent",
+      "outputs": [
+        "Directory listing",
+        "File structure"
+      ],
+      "prerequisites": [
+        "Directory path"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "list_dir_filtered_listing",
+      "tool": "list_dir",
+      "description": "List directories with glob pattern filtering",
+      "cost_per_use": 0.45,
+      "profit_potential": 0.49500000000000005,
+      "complexity": "simple",
+      "frequency": "occasional",
+      "outputs": [
+        "Filtered listing",
+        "Pattern matches"
+      ],
+      "prerequisites": [
+        "Directory path",
+        "Glob pattern"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "list_dir_recursive_exploration",
+      "tool": "list_dir",
+      "description": "Explore directory trees recursively",
+      "cost_per_use": 0.55,
+      "profit_potential": 0.6050000000000001,
+      "complexity": "medium",
+      "frequency": "occasional",
+      "outputs": [
+        "Complete tree structure",
+        "Nested directories"
+      ],
+      "prerequisites": [
+        "Root directory",
+        "Recursion strategy"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "glob_file_search_find_by_pattern",
+      "tool": "glob_file_search",
+      "description": "Find files matching specific patterns",
+      "cost_per_use": 4.0,
+      "profit_potential": 8.8,
+      "complexity": "simple",
+      "frequency": "frequent",
+      "outputs": [
+        "File matches",
+        "Pattern results"
+      ],
+      "prerequisites": [
+        "Glob pattern",
+        "Search directory"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "glob_file_search_complex_file_discovery",
+      "tool": "glob_file_search",
+      "description": "Discover files with complex naming patterns",
+      "cost_per_use": 4.8,
+      "profit_potential": 10.56,
+      "complexity": "medium",
+      "frequency": "occasional",
+      "outputs": [
+        "Complex matches",
+        "File categorization"
+      ],
+      "prerequisites": [
+        "Advanced patterns",
+        "File organization"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "glob_file_search_enterprise_file_management",
+      "tool": "glob_file_search",
+      "description": "Manage large-scale file systems",
+      "cost_per_use": 7.2,
+      "profit_potential": 15.840000000000002,
+      "complexity": "complex",
+      "frequency": "rare",
+      "outputs": [
+        "File system analysis",
+        "Management structure"
+      ],
+      "prerequisites": [
+        "Enterprise scale",
+        "File policies"
+      ],
+      "dependencies": []
+    }
+  ],
+  "combinations": [
+    {
+      "id": "cornerstone_foundation",
+      "tools": [
+        "list_dir",
+        "read_file",
+        "todo_write"
+      ],
+      "description": "Establish project foundation with directory structure and initial planning",
+      "workflow_steps": [
+        "List directory structure to understand project layout",
+        "Read key configuration files for requirements",
+        "Create comprehensive task list for project foundation"
+      ],
+      "total_cost": 10.0,
+      "total_profit": 34.5,
+      "efficiency_gain": 2.1,
+      "construction_phase": "cornerstone",
+      "outputs": [
+        "Project foundation",
+        "Task roadmap",
+        "Requirements understanding"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "foundation_analysis",
+      "tools": [
+        "codebase_search",
+        "grep",
+        "read_lints"
+      ],
+      "description": "Analyze codebase foundation for quality and structure",
+      "workflow_steps": [
+        "Search codebase semantically for architecture patterns",
+        "Grep for specific code patterns and dependencies",
+        "Check code quality with lint analysis"
+      ],
+      "total_cost": 20.0,
+      "total_profit": 63.6,
+      "efficiency_gain": 2.8,
+      "construction_phase": "foundation",
+      "outputs": [
+        "Codebase analysis",
+        "Quality metrics",
+        "Architecture understanding"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "frame_structure",
+      "tools": [
+        "write",
+        "search_replace",
+        "todo_write"
+      ],
+      "description": "Build structural framework with code generation and refactoring",
+      "workflow_steps": [
+        "Generate core structural files and templates",
+        "Refactor existing code to fit new structure",
+        "Update task list with structural progress"
+      ],
+      "total_cost": 24.0,
+      "total_profit": 88.0,
+      "efficiency_gain": 3.2,
+      "construction_phase": "frame",
+      "outputs": [
+        "Structural framework",
+        "Code organization",
+        "Progress tracking"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "wire_integration",
+      "tools": [
+        "run_terminal_cmd",
+        "search_replace",
+        "grep"
+      ],
+      "description": "Wire up system components and integrations",
+      "workflow_steps": [
+        "Execute integration scripts and commands",
+        "Make integration-specific code changes",
+        "Verify integration points with pattern matching"
+      ],
+      "total_cost": 13.0,
+      "total_profit": 31.6,
+      "efficiency_gain": 2.5,
+      "construction_phase": "wire_it_up",
+      "outputs": [
+        "System integration",
+        "Component wiring",
+        "Integration verification"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "code_development_workflow",
+      "tools": [
+        "write",
+        "search_replace",
+        "read_lints",
+        "run_terminal_cmd"
+      ],
+      "description": "Complete code development workflow from creation to testing",
+      "workflow_steps": [
+        "Create new code files with templates",
+        "Make iterative code improvements",
+        "Check code quality with lints",
+        "Test changes with terminal commands"
+      ],
+      "total_cost": 24.0,
+      "total_profit": 73.5,
+      "efficiency_gain": 3.8,
+      "construction_phase": "frame",
+      "outputs": [
+        "Complete code",
+        "Quality assurance",
+        "Working system"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "code_analysis_powerhouse",
+      "tools": [
+        "codebase_search",
+        "grep",
+        "read_file",
+        "glob_file_search"
+      ],
+      "description": "Powerful code analysis combining semantic and pattern-based search",
+      "workflow_steps": [
+        "Semantic search for high-level understanding",
+        "Pattern-based grep for specific implementations",
+        "Read detailed file contents for deep analysis",
+        "Glob search for file discovery and organization"
+      ],
+      "total_cost": 22.5,
+      "total_profit": 66.85000000000001,
+      "efficiency_gain": 4.2,
+      "construction_phase": "foundation",
+      "outputs": [
+        "Comprehensive analysis",
+        "Code insights",
+        "Architecture understanding"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "system_administration_suite",
+      "tools": [
+        "run_terminal_cmd",
+        "list_dir",
+        "delete_file",
+        "glob_file_search"
+      ],
+      "description": "Complete system administration and maintenance toolkit",
+      "workflow_steps": [
+        "Execute system administration commands",
+        "List and explore directory structures",
+        "Clean up unnecessary files and directories",
+        "Find files matching maintenance patterns"
+      ],
+      "total_cost": 10.5,
+      "total_profit": 20.55,
+      "efficiency_gain": 2.9,
+      "construction_phase": "wire_it_up",
+      "outputs": [
+        "System maintenance",
+        "Clean environment",
+        "Optimized performance"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "quality_assurance_pipeline",
+      "tools": [
+        "read_lints",
+        "search_replace",
+        "run_terminal_cmd",
+        "todo_write"
+      ],
+      "description": "Automated quality assurance and code improvement pipeline",
+      "workflow_steps": [
+        "Analyze code quality with comprehensive linting",
+        "Automatically fix common issues with search-replace",
+        "Run automated tests and quality checks",
+        "Track quality improvements and remaining tasks"
+      ],
+      "total_cost": 22.0,
+      "total_profit": 67.5,
+      "efficiency_gain": 3.6,
+      "construction_phase": "insulate",
+      "outputs": [
+        "Quality improvements",
+        "Automated fixes",
+        "Quality tracking"
+      ],
+      "prerequisites": []
+    }
+  ],
+  "methodology": {
+    "cornerstone": {
+      "phase_name": "Cornerstone",
+      "description": "Establish fundamental understanding and planning",
+      "key_tools": [
+        "list_dir",
+        "read_file",
+        "todo_write"
+      ],
+      "objectives": [
+        "Project foundation",
+        "Requirements gathering",
+        "Initial planning"
+      ],
+      "success_criteria": [
+        "Clear project scope",
+        "Task breakdown",
+        "Resource understanding"
+      ]
+    },
+    "foundation": {
+      "phase_name": "Foundation",
+      "description": "Analyze and understand codebase structure",
+      "key_tools": [
+        "codebase_search",
+        "grep",
+        "read_lints"
+      ],
+      "objectives": [
+        "Code analysis",
+        "Architecture understanding",
+        "Quality assessment"
+      ],
+      "success_criteria": [
+        "Codebase insights",
+        "Quality metrics",
+        "Structural understanding"
+      ]
+    },
+    "frame": {
+      "phase_name": "Frame",
+      "description": "Build structural framework and core systems",
+      "key_tools": [
+        "write",
+        "search_replace",
+        "todo_write"
+      ],
+      "objectives": [
+        "Code generation",
+        "Structure building",
+        "Framework creation"
+      ],
+      "success_criteria": [
+        "Working framework",
+        "Code organization",
+        "Structural integrity"
+      ]
+    },
+    "wire_it_up": {
+      "phase_name": "Wire It Up",
+      "description": "Connect components and establish integrations",
+      "key_tools": [
+        "run_terminal_cmd",
+        "search_replace",
+        "grep"
+      ],
+      "objectives": [
+        "System integration",
+        "Component wiring",
+        "Functionality testing"
+      ],
+      "success_criteria": [
+        "Integrated system",
+        "Working connections",
+        "Functional verification"
+      ]
+    },
+    "insulate": {
+      "phase_name": "Insulate",
+      "description": "Add quality assurance and error handling",
+      "key_tools": [
+        "read_lints",
+        "search_replace",
+        "run_terminal_cmd"
+      ],
+      "objectives": [
+        "Quality improvement",
+        "Error prevention",
+        "Robustness enhancement"
+      ],
+      "success_criteria": [
+        "Quality standards met",
+        "Error handling",
+        "System reliability"
+      ]
+    },
+    "windows_doors": {
+      "phase_name": "Windows & Doors",
+      "description": "Add interfaces and user interaction points",
+      "key_tools": [
+        "write",
+        "search_replace",
+        "run_terminal_cmd"
+      ],
+      "objectives": [
+        "Interface creation",
+        "User interaction",
+        "API development"
+      ],
+      "success_criteria": [
+        "User interfaces",
+        "API endpoints",
+        "Interaction design"
+      ]
+    },
+    "walls": {
+      "phase_name": "Walls",
+      "description": "Build protective barriers and security measures",
+      "key_tools": [
+        "write",
+        "read_lints",
+        "run_terminal_cmd"
+      ],
+      "objectives": [
+        "Security implementation",
+        "Access control",
+        "Data protection"
+      ],
+      "success_criteria": [
+        "Security measures",
+        "Access controls",
+        "Data integrity"
+      ]
+    },
+    "finish_trim": {
+      "phase_name": "Finish & Trim",
+      "description": "Add finishing touches and optimizations",
+      "key_tools": [
+        "search_replace",
+        "read_lints",
+        "todo_write"
+      ],
+      "objectives": [
+        "Optimization",
+        "Documentation",
+        "Final polish"
+      ],
+      "success_criteria": [
+        "Performance optimization",
+        "Complete documentation",
+        "Production ready"
+      ]
+    },
+    "side_roof": {
+      "phase_name": "Side & Roof",
+      "description": "Complete the system with deployment and monitoring",
+      "key_tools": [
+        "run_terminal_cmd",
+        "write",
+        "todo_write"
+      ],
+      "objectives": [
+        "Deployment setup",
+        "Monitoring",
+        "Maintenance procedures"
+      ],
+      "success_criteria": [
+        "Deployed system",
+        "Monitoring active",
+        "Maintenance procedures"
+      ]
+    }
+  },
+  "cost_profit_analysis": {
+    "individual_tools": {
+      "codebase_search": {
+        "use_cases_count": 3,
+        "total_cost": 45.0,
+        "total_profit": 157.5,
+        "roi_percentage": 250.0,
+        "average_cost_per_use": 15.0,
+        "average_profit_per_use": 52.5,
+        "complexity_distribution": {
+          "simple": 1,
+          "medium": 1,
+          "complex": 1
+        },
+        "frequency_distribution": {
+          "rare": 0,
+          "occasional": 2,
+          "frequent": 1
+        }
+      },
+      "run_terminal_cmd": {
+        "use_cases_count": 3,
+        "total_cost": 16.0,
+        "total_profit": 32.0,
+        "roi_percentage": 100.0,
+        "average_cost_per_use": 5.33,
+        "average_profit_per_use": 10.67,
+        "complexity_distribution": {
+          "simple": 1,
+          "medium": 1,
+          "complex": 1
+        },
+        "frequency_distribution": {
+          "rare": 1,
+          "occasional": 1,
+          "frequent": 1
+        }
+      },
+      "grep": {
+        "use_cases_count": 3,
+        "total_cost": 8.2,
+        "total_profit": 14.76,
+        "roi_percentage": 80.0,
+        "average_cost_per_use": 2.73,
+        "average_profit_per_use": 4.92,
+        "complexity_distribution": {
+          "simple": 1,
+          "medium": 1,
+          "complex": 1
+        },
+        "frequency_distribution": {
+          "rare": 1,
+          "occasional": 1,
+          "frequent": 1
+        }
+      },
+      "delete_file": {
+        "use_cases_count": 3,
+        "total_cost": 3.1,
+        "total_profit": 3.72,
+        "roi_percentage": 20.0,
+        "average_cost_per_use": 1.03,
+        "average_profit_per_use": 1.24,
+        "complexity_distribution": {
+          "simple": 2,
+          "medium": 1,
+          "complex": 0
+        },
+        "frequency_distribution": {
+          "rare": 1,
+          "occasional": 1,
+          "frequent": 1
+        }
+      },
+      "read_lints": {
+        "use_cases_count": 3,
+        "total_cost": 10.8,
+        "total_profit": 27.0,
+        "roi_percentage": 150.0,
+        "average_cost_per_use": 3.6,
+        "average_profit_per_use": 9.0,
+        "complexity_distribution": {
+          "simple": 1,
+          "medium": 1,
+          "complex": 1
+        },
+        "frequency_distribution": {
+          "rare": 1,
+          "occasional": 1,
+          "frequent": 1
+        }
+      },
+      "todo_write": {
+        "use_cases_count": 3,
+        "total_cost": 36.8,
+        "total_profit": 147.2,
+        "roi_percentage": 300.0,
+        "average_cost_per_use": 12.27,
+        "average_profit_per_use": 49.07,
+        "complexity_distribution": {
+          "simple": 1,
+          "medium": 1,
+          "complex": 1
+        },
+        "frequency_distribution": {
+          "rare": 1,
+          "occasional": 1,
+          "frequent": 1
+        }
+      },
+      "search_replace": {
+        "use_cases_count": 3,
+        "total_cost": 27.0,
+        "total_profit": 81.0,
+        "roi_percentage": 200.0,
+        "average_cost_per_use": 9.0,
+        "average_profit_per_use": 27.0,
+        "complexity_distribution": {
+          "simple": 1,
+          "medium": 1,
+          "complex": 1
+        },
+        "frequency_distribution": {
+          "rare": 1,
+          "occasional": 1,
+          "frequent": 1
+        }
+      },
+      "write": {
+        "use_cases_count": 3,
+        "total_cost": 48.0,
+        "total_profit": 182.4,
+        "roi_percentage": 280.0,
+        "average_cost_per_use": 16.0,
+        "average_profit_per_use": 60.8,
+        "complexity_distribution": {
+          "simple": 1,
+          "medium": 1,
+          "complex": 1
+        },
+        "frequency_distribution": {
+          "rare": 1,
+          "occasional": 1,
+          "frequent": 1
+        }
+      },
+      "read_file": {
+        "use_cases_count": 3,
+        "total_cost": 4.5,
+        "total_profit": 5.85,
+        "roi_percentage": 30.0,
+        "average_cost_per_use": 1.5,
+        "average_profit_per_use": 1.95,
+        "complexity_distribution": {
+          "simple": 2,
+          "medium": 1,
+          "complex": 0
+        },
+        "frequency_distribution": {
+          "rare": 0,
+          "occasional": 2,
+          "frequent": 1
+        }
+      },
+      "list_dir": {
+        "use_cases_count": 3,
+        "total_cost": 1.5,
+        "total_profit": 1.65,
+        "roi_percentage": 10.0,
+        "average_cost_per_use": 0.5,
+        "average_profit_per_use": 0.55,
+        "complexity_distribution": {
+          "simple": 2,
+          "medium": 1,
+          "complex": 0
+        },
+        "frequency_distribution": {
+          "rare": 0,
+          "occasional": 2,
+          "frequent": 1
+        }
+      },
+      "glob_file_search": {
+        "use_cases_count": 3,
+        "total_cost": 16.0,
+        "total_profit": 35.2,
+        "roi_percentage": 120.0,
+        "average_cost_per_use": 5.33,
+        "average_profit_per_use": 11.73,
+        "complexity_distribution": {
+          "simple": 1,
+          "medium": 1,
+          "complex": 1
+        },
+        "frequency_distribution": {
+          "rare": 1,
+          "occasional": 1,
+          "frequent": 1
+        }
+      }
+    },
+    "tool_combinations": {
+      "cornerstone_foundation": {
+        "tools_involved": [
+          "list_dir",
+          "read_file",
+          "todo_write"
+        ],
+        "description": "Establish project foundation with directory structure and initial planning",
+        "total_cost": 10.0,
+        "total_profit": 34.5,
+        "efficiency_gain": 2.1,
+        "roi_percentage": 245.0,
+        "construction_phase": "cornerstone",
+        "net_profit": 24.5
+      },
+      "foundation_analysis": {
+        "tools_involved": [
+          "codebase_search",
+          "grep",
+          "read_lints"
+        ],
+        "description": "Analyze codebase foundation for quality and structure",
+        "total_cost": 20.0,
+        "total_profit": 63.6,
+        "efficiency_gain": 2.8,
+        "roi_percentage": 218.0,
+        "construction_phase": "foundation",
+        "net_profit": 43.6
+      },
+      "frame_structure": {
+        "tools_involved": [
+          "write",
+          "search_replace",
+          "todo_write"
+        ],
+        "description": "Build structural framework with code generation and refactoring",
+        "total_cost": 24.0,
+        "total_profit": 88.0,
+        "efficiency_gain": 3.2,
+        "roi_percentage": 266.67,
+        "construction_phase": "frame",
+        "net_profit": 64.0
+      },
+      "wire_integration": {
+        "tools_involved": [
+          "run_terminal_cmd",
+          "search_replace",
+          "grep"
+        ],
+        "description": "Wire up system components and integrations",
+        "total_cost": 13.0,
+        "total_profit": 31.6,
+        "efficiency_gain": 2.5,
+        "roi_percentage": 143.08,
+        "construction_phase": "wire_it_up",
+        "net_profit": 18.6
+      },
+      "code_development_workflow": {
+        "tools_involved": [
+          "write",
+          "search_replace",
+          "read_lints",
+          "run_terminal_cmd"
+        ],
+        "description": "Complete code development workflow from creation to testing",
+        "total_cost": 24.0,
+        "total_profit": 73.5,
+        "efficiency_gain": 3.8,
+        "roi_percentage": 206.25,
+        "construction_phase": "frame",
+        "net_profit": 49.5
+      },
+      "code_analysis_powerhouse": {
+        "tools_involved": [
+          "codebase_search",
+          "grep",
+          "read_file",
+          "glob_file_search"
+        ],
+        "description": "Powerful code analysis combining semantic and pattern-based search",
+        "total_cost": 22.5,
+        "total_profit": 66.85,
+        "efficiency_gain": 4.2,
+        "roi_percentage": 197.11,
+        "construction_phase": "foundation",
+        "net_profit": 44.35
+      },
+      "system_administration_suite": {
+        "tools_involved": [
+          "run_terminal_cmd",
+          "list_dir",
+          "delete_file",
+          "glob_file_search"
+        ],
+        "description": "Complete system administration and maintenance toolkit",
+        "total_cost": 10.5,
+        "total_profit": 20.55,
+        "efficiency_gain": 2.9,
+        "roi_percentage": 95.71,
+        "construction_phase": "wire_it_up",
+        "net_profit": 10.05
+      },
+      "quality_assurance_pipeline": {
+        "tools_involved": [
+          "read_lints",
+          "search_replace",
+          "run_terminal_cmd",
+          "todo_write"
+        ],
+        "description": "Automated quality assurance and code improvement pipeline",
+        "total_cost": 22.0,
+        "total_profit": 67.5,
+        "efficiency_gain": 3.6,
+        "roi_percentage": 206.82,
+        "construction_phase": "insulate",
+        "net_profit": 45.5
+      }
+    },
+    "construction_phases": {
+      "cornerstone": {
+        "phase_name": "Cornerstone",
+        "combinations_count": 1,
+        "total_cost": 10.0,
+        "total_profit": 34.5,
+        "roi_percentage": 245.0,
+        "key_tools": [
+          "list_dir",
+          "read_file",
+          "todo_write"
+        ],
+        "objectives": [
+          "Project foundation",
+          "Requirements gathering",
+          "Initial planning"
+        ]
+      },
+      "foundation": {
+        "phase_name": "Foundation",
+        "combinations_count": 2,
+        "total_cost": 42.5,
+        "total_profit": 130.45,
+        "roi_percentage": 206.94,
+        "key_tools": [
+          "codebase_search",
+          "grep",
+          "read_lints"
+        ],
+        "objectives": [
+          "Code analysis",
+          "Architecture understanding",
+          "Quality assessment"
+        ]
+      },
+      "frame": {
+        "phase_name": "Frame",
+        "combinations_count": 2,
+        "total_cost": 48.0,
+        "total_profit": 161.5,
+        "roi_percentage": 236.46,
+        "key_tools": [
+          "write",
+          "search_replace",
+          "todo_write"
+        ],
+        "objectives": [
+          "Code generation",
+          "Structure building",
+          "Framework creation"
+        ]
+      },
+      "wire_it_up": {
+        "phase_name": "Wire It Up",
+        "combinations_count": 2,
+        "total_cost": 23.5,
+        "total_profit": 52.15,
+        "roi_percentage": 121.91,
+        "key_tools": [
+          "run_terminal_cmd",
+          "search_replace",
+          "grep"
+        ],
+        "objectives": [
+          "System integration",
+          "Component wiring",
+          "Functionality testing"
+        ]
+      },
+      "insulate": {
+        "phase_name": "Insulate",
+        "combinations_count": 1,
+        "total_cost": 22.0,
+        "total_profit": 67.5,
+        "roi_percentage": 206.82,
+        "key_tools": [
+          "read_lints",
+          "search_replace",
+          "run_terminal_cmd"
+        ],
+        "objectives": [
+          "Quality improvement",
+          "Error prevention",
+          "Robustness enhancement"
+        ]
+      }
+    },
+    "overall_metrics": {
+      "individual_tools": {
+        "total_cost": 216.9,
+        "total_profit": 688.28,
+        "roi_percentage": 217.33
+      },
+      "tool_combinations": {
+        "total_cost": 146.0,
+        "total_profit": 446.1,
+        "roi_percentage": 205.55
+      },
+      "combined_total": {
+        "total_cost": 362.9,
+        "total_profit": 1134.38,
+        "roi_percentage": 212.59
+      }
+    },
+    "profitability_ranking": {
+      "top_tools": [
+        {
+          "tool": "todo_write",
+          "roi_percentage": 300.0,
+          "total_profit": 147.2,
+          "efficiency_score": 210.4416
+        },
+        {
+          "tool": "write",
+          "roi_percentage": 280.0,
+          "total_profit": 182.4,
+          "efficiency_score": 196.5472
+        },
+        {
+          "tool": "codebase_search",
+          "roi_percentage": 250.0,
+          "total_profit": 157.5,
+          "efficiency_score": 175.4725
+        },
+        {
+          "tool": "search_replace",
+          "roi_percentage": 200.0,
+          "total_profit": 81.0,
+          "efficiency_score": 140.243
+        },
+        {
+          "tool": "read_lints",
+          "roi_percentage": 150.0,
+          "total_profit": 27.0,
+          "efficiency_score": 105.081
+        }
+      ],
+      "top_combinations": [
+        {
+          "combination": "frame_structure",
+          "roi_percentage": 266.67,
+          "total_profit": 88.0,
+          "efficiency_gain": 3.2,
+          "efficiency_score": 192.178
+        },
+        {
+          "combination": "cornerstone_foundation",
+          "roi_percentage": 245.0,
+          "total_profit": 34.5,
+          "efficiency_gain": 2.1,
+          "efficiency_score": 168.069
+        },
+        {
+          "combination": "code_development_workflow",
+          "roi_percentage": 206.25,
+          "total_profit": 73.5,
+          "efficiency_gain": 3.8,
+          "efficiency_score": 161.897
+        },
+        {
+          "combination": "code_analysis_powerhouse",
+          "roi_percentage": 197.11,
+          "total_profit": 66.85,
+          "efficiency_gain": 4.2,
+          "efficiency_score": 160.39970000000002
+        },
+        {
+          "combination": "quality_assurance_pipeline",
+          "roi_percentage": 206.82,
+          "total_profit": 67.5,
+          "efficiency_gain": 3.6,
+          "efficiency_score": 160.22699999999998
+        }
+      ]
+    },
+    "efficiency_analysis": {
+      "best_individual_tool": [
+        "todo_write",
+        {
+          "use_cases_count": 3,
+          "total_cost": 36.8,
+          "total_profit": 147.2,
+          "roi_percentage": 300.0,
+          "average_cost_per_use": 12.27,
+          "average_profit_per_use": 49.07,
+          "complexity_distribution": {
+            "simple": 1,
+            "medium": 1,
+            "complex": 1
+          },
+          "frequency_distribution": {
+            "rare": 1,
+            "occasional": 1,
+            "frequent": 1
+          }
+        }
+      ],
+      "best_combination": [
+        "frame_structure",
+        {
+          "tools_involved": [
+            "write",
+            "search_replace",
+            "todo_write"
+          ],
+          "description": "Build structural framework with code generation and refactoring",
+          "total_cost": 24.0,
+          "total_profit": 88.0,
+          "efficiency_gain": 3.2,
+          "roi_percentage": 266.67,
+          "construction_phase": "frame",
+          "net_profit": 64.0
+        }
+      ],
+      "most_profitable_phase": [
+        "cornerstone",
+        {
+          "phase_name": "Cornerstone",
+          "combinations_count": 1,
+          "total_cost": 10.0,
+          "total_profit": 34.5,
+          "roi_percentage": 245.0,
+          "key_tools": [
+            "list_dir",
+            "read_file",
+            "todo_write"
+          ],
+          "objectives": [
+            "Project foundation",
+            "Requirements gathering",
+            "Initial planning"
+          ]
+        }
+      ],
+      "efficiency_insights": [
+        "Top tool: todo_write with 300.0% ROI",
+        "Top combination: frame_structure with 266.7% ROI and 3.2x efficiency",
+        "Most profitable construction phase: Cornerstone with 245.0% ROI"
+      ]
+    }
+  },
+  "summary": {
+    "total_use_cases": 33,
+    "total_combinations": 8,
+    "total_tools_analyzed": 11
+  }
+}

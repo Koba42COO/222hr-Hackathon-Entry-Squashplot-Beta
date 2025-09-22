@@ -1,0 +1,79 @@
+{
+  "integration_timestamp": "2025-08-29T13:19:10.060735",
+  "search_index": {
+    "files": [],
+    "total_files": 0,
+    "optimization_score": 0.0,
+    "index_size": 0,
+    "build_time": 0.004462242126464844
+  },
+  "search_results": [
+    {
+      "query": "*.py",
+      "pattern_type": "*.py",
+      "total_matches": 0,
+      "search_time_ms": 0.25010108947753906,
+      "memory_usage_mb": 0.0,
+      "intentful_score": 0.8013027798624498,
+      "optimization_score": 1.6631576872929368
+    },
+    {
+      "query": "test",
+      "pattern_type": "test",
+      "total_matches": 0,
+      "search_time_ms": 0.15211105346679688,
+      "memory_usage_mb": 0.0,
+      "intentful_score": 0.8010381536650767,
+      "optimization_score": 0.9059409396280066
+    },
+    {
+      "query": "intentful",
+      "pattern_type": "intentful",
+      "total_matches": 0,
+      "search_time_ms": 0.19097328186035156,
+      "memory_usage_mb": 0.0,
+      "intentful_score": 0.671056715645836,
+      "optimization_score": 0.7700635169985124
+    },
+    {
+      "query": "[a-z]+_",
+      "pattern_type": "[a-z]+_",
+      "total_matches": 0,
+      "search_time_ms": 0.2770423889160156,
+      "memory_usage_mb": 0.0,
+      "intentful_score": 0.7221512364922165,
+      "optimization_score": 0.9652308758813791
+    },
+    {
+      "query": "agent",
+      "pattern_type": "agent",
+      "total_matches": 0,
+      "search_time_ms": 0.21600723266601562,
+      "memory_usage_mb": 0.0,
+      "intentful_score": 0.7744074296404628,
+      "optimization_score": 1.09833478007123
+    }
+  ],
+  "performance_statistics": {
+    "total_matches": 0,
+    "average_search_time": 0.21724700927734375,
+    "average_intentful_score": 0.7539912630612082,
+    "average_optimization_score": 1.080545559974413
+  },
+  "capabilities": {
+    "fastglob_integration": true,
+    "intentful_mathematics": true,
+    "memory_optimization": true,
+    "pattern_optimization": true,
+    "multi_pattern_search": true,
+    "performance_monitoring": true
+  },
+  "optimization_features": {
+    "search_pattern_optimization": "Intentful mathematics applied to search patterns",
+    "memory_management": "Optimized memory usage with mathematical framework",
+    "cache_optimization": "Intentful-based cache management",
+    "performance_monitoring": "Real-time performance tracking and optimization",
+    "multi_threading": "Concurrent search processing",
+    "pattern_caching": "Cached optimized patterns for faster subsequent searches"
+  }
+}

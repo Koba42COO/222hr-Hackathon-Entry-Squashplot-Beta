@@ -1,0 +1,360 @@
+{
+  "timestamp": "2025-09-02T14:57:07.316967",
+  "summary": {
+    "total_duplicate_groups": 12,
+    "total_duplicate_instances": 36,
+    "identical_files": 7,
+    "all_different_files": 3,
+    "mixed_files": 2
+  },
+  "duplicate_details": {
+    "quantum_email_server_implementation.py": {
+      "file_info": [
+        {
+          "path": "/Users/coo-koba42/dev/quantum_email_server_implementation.py",
+          "size": 38365,
+          "mtime": 1756353666.0759594,
+          "hash": "64dd9a42c7961a2d1ed0d9bba1b45302",
+          "directory": "/Users/coo-koba42/dev"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/structured_chaos_full_archive/inventions/quantum_inventions/quantum_email_server_implementation.py",
+          "size": 38365,
+          "mtime": 1756589627.1153882,
+          "hash": "64dd9a42c7961a2d1ed0d9bba1b45302",
+          "directory": "/Users/coo-koba42/dev/structured_chaos_full_archive/inventions/quantum_inventions"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/structured_chaos_full_archive/build/inventions/quantum_inventions/quantum_email_server_implementation.py",
+          "size": 38365,
+          "mtime": 1756604854.4165957,
+          "hash": "64dd9a42c7961a2d1ed0d9bba1b45302",
+          "directory": "/Users/coo-koba42/dev/structured_chaos_full_archive/build/inventions/quantum_inventions"
+        }
+      ],
+      "unique_hashes": 1,
+      "total_copies": 3,
+      "are_identical": true,
+      "all_different": false
+    },
+    "quantum_email_tauri_desktop.py": {
+      "file_info": [
+        {
+          "path": "/Users/coo-koba42/dev/quantum_email_tauri_desktop.py",
+          "size": 35980,
+          "mtime": 1756353665.9965198,
+          "hash": "5c56856189483dc7aa3b6ccae700dce4",
+          "directory": "/Users/coo-koba42/dev"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/structured_chaos_full_archive/inventions/quantum_inventions/quantum_email_tauri_desktop.py",
+          "size": 35980,
+          "mtime": 1756589627.1156318,
+          "hash": "5c56856189483dc7aa3b6ccae700dce4",
+          "directory": "/Users/coo-koba42/dev/structured_chaos_full_archive/inventions/quantum_inventions"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/structured_chaos_full_archive/build/inventions/quantum_inventions/quantum_email_tauri_desktop.py",
+          "size": 35980,
+          "mtime": 1756604854.416778,
+          "hash": "5c56856189483dc7aa3b6ccae700dce4",
+          "directory": "/Users/coo-koba42/dev/structured_chaos_full_archive/build/inventions/quantum_inventions"
+        }
+      ],
+      "unique_hashes": 1,
+      "total_copies": 3,
+      "are_identical": true,
+      "all_different": false
+    },
+    "Deepfake_Detection_Algorithm.py": {
+      "file_info": [
+        {
+          "path": "/Users/coo-koba42/dev/Deepfake_Detection_Algorithm.py",
+          "size": 22727,
+          "mtime": 1756582628.5800333,
+          "hash": "62b01241197594092234c7f6cc33fc45",
+          "directory": "/Users/coo-koba42/dev"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/structured_chaos_full_archive/inventions/technological_breakthroughs/Deepfake_Detection_Algorithm.py",
+          "size": 22727,
+          "mtime": 1756586064.9648094,
+          "hash": "62b01241197594092234c7f6cc33fc45",
+          "directory": "/Users/coo-koba42/dev/structured_chaos_full_archive/inventions/technological_breakthroughs"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/structured_chaos_full_archive/build/inventions/technological_breakthroughs/Deepfake_Detection_Algorithm.py",
+          "size": 22727,
+          "mtime": 1756604854.4141254,
+          "hash": "62b01241197594092234c7f6cc33fc45",
+          "directory": "/Users/coo-koba42/dev/structured_chaos_full_archive/build/inventions/technological_breakthroughs"
+        }
+      ],
+      "unique_hashes": 1,
+      "total_copies": 3,
+      "are_identical": true,
+      "all_different": false
+    },
+    "TherapAi_Ethics_Engine.py": {
+      "file_info": [
+        {
+          "path": "/Users/coo-koba42/dev/TherapAi_Ethics_Engine.py",
+          "size": 21399,
+          "mtime": 1756582498.9310539,
+          "hash": "f49413933efc7a3e173105efee280532",
+          "directory": "/Users/coo-koba42/dev"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/structured_chaos_full_archive/build/thertics/therapeutic_systems/TherapAi_Ethics_Engine.py",
+          "size": 21399,
+          "mtime": 1756604854.4128904,
+          "hash": "f49413933efc7a3e173105efee280532",
+          "directory": "/Users/coo-koba42/dev/structured_chaos_full_archive/build/thertics/therapeutic_systems"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/structured_chaos_full_archive/thertics/therapeutic_systems/TherapAi_Ethics_Engine.py",
+          "size": 21399,
+          "mtime": 1756586055.7113903,
+          "hash": "f49413933efc7a3e173105efee280532",
+          "directory": "/Users/coo-koba42/dev/structured_chaos_full_archive/thertics/therapeutic_systems"
+        }
+      ],
+      "unique_hashes": 1,
+      "total_copies": 3,
+      "are_identical": true,
+      "all_different": false
+    },
+    "Gaussian_Splat_3D_Detector.py": {
+      "file_info": [
+        {
+          "path": "/Users/coo-koba42/dev/Gaussian_Splat_3D_Detector.py",
+          "size": 17330,
+          "mtime": 1756582556.606222,
+          "hash": "fc849296ce1dfc0678ab2ba7102f6445",
+          "directory": "/Users/coo-koba42/dev"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/structured_chaos_full_archive/inventions/technological_breakthroughs/Gaussian_Splat_3D_Detector.py",
+          "size": 17330,
+          "mtime": 1756586064.9650404,
+          "hash": "fc849296ce1dfc0678ab2ba7102f6445",
+          "directory": "/Users/coo-koba42/dev/structured_chaos_full_archive/inventions/technological_breakthroughs"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/structured_chaos_full_archive/build/inventions/technological_breakthroughs/Gaussian_Splat_3D_Detector.py",
+          "size": 17330,
+          "mtime": 1756604854.4142106,
+          "hash": "fc849296ce1dfc0678ab2ba7102f6445",
+          "directory": "/Users/coo-koba42/dev/structured_chaos_full_archive/build/inventions/technological_breakthroughs"
+        }
+      ],
+      "unique_hashes": 1,
+      "total_copies": 3,
+      "are_identical": true,
+      "all_different": false
+    },
+    "INTENTFUL_VOICE_INTEGRATION.py": {
+      "file_info": [
+        {
+          "path": "/Users/coo-koba42/dev/INTENTFUL_VOICE_INTEGRATION.py",
+          "size": 29544,
+          "mtime": 1756520074.3436978,
+          "hash": "c3648593f058b9934377a6564f5f2430",
+          "directory": "/Users/coo-koba42/dev"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/structured_chaos_full_archive/inventions/technological_breakthroughs/INTENTFUL_VOICE_INTEGRATION.py",
+          "size": 29544,
+          "mtime": 1756586076.6077182,
+          "hash": "c3648593f058b9934377a6564f5f2430",
+          "directory": "/Users/coo-koba42/dev/structured_chaos_full_archive/inventions/technological_breakthroughs"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/structured_chaos_full_archive/build/inventions/technological_breakthroughs/INTENTFUL_VOICE_INTEGRATION.py",
+          "size": 29544,
+          "mtime": 1756604854.4142938,
+          "hash": "c3648593f058b9934377a6564f5f2430",
+          "directory": "/Users/coo-koba42/dev/structured_chaos_full_archive/build/inventions/technological_breakthroughs"
+        }
+      ],
+      "unique_hashes": 1,
+      "total_copies": 3,
+      "are_identical": true,
+      "all_different": false
+    },
+    "KOBA42_DIGITAL_LEDGER_SYSTEM.py": {
+      "file_info": [
+        {
+          "path": "/Users/coo-koba42/dev/KOBA42_DIGITAL_LEDGER_SYSTEM.py",
+          "size": 37086,
+          "mtime": 1756525523.6577687,
+          "hash": "c1de09fed764f6347276263816d1772c",
+          "directory": "/Users/coo-koba42/dev"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/structured_chaos_full_archive/build/protocols/computational_protocols/KOBA42_DIGITAL_LEDGER_SYSTEM.py",
+          "size": 37086,
+          "mtime": 1756604854.411931,
+          "hash": "c1de09fed764f6347276263816d1772c",
+          "directory": "/Users/coo-koba42/dev/structured_chaos_full_archive/build/protocols/computational_protocols"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/structured_chaos_full_archive/protocols/computational_protocols/KOBA42_DIGITAL_LEDGER_SYSTEM.py",
+          "size": 37086,
+          "mtime": 1756586280.667492,
+          "hash": "c1de09fed764f6347276263816d1772c",
+          "directory": "/Users/coo-koba42/dev/structured_chaos_full_archive/protocols/computational_protocols"
+        }
+      ],
+      "unique_hashes": 1,
+      "total_copies": 3,
+      "are_identical": true,
+      "all_different": false
+    },
+    "token_free_quantum_braiding_app.py": {
+      "file_info": [
+        {
+          "path": "/Users/coo-koba42/dev/token_free_quantum_braiding_app.py",
+          "size": 14811,
+          "mtime": 1756585095.0110815,
+          "hash": "d8c93595fdc5f886e61162a9499cafe4",
+          "directory": "/Users/coo-koba42/dev"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/EIMF-Benchmark/token_free_quantum_braiding_app.py",
+          "size": 21522,
+          "mtime": 1756578653.8112445,
+          "hash": "da30e7589739e172df1f55cb51dfe377",
+          "directory": "/Users/coo-koba42/dev/EIMF-Benchmark"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/structured_chaos_full_archive/inventions/consciousness_inventions/token_free_quantum_braiding_app.py",
+          "size": 14811,
+          "mtime": 1756586060.189048,
+          "hash": "d8c93595fdc5f886e61162a9499cafe4",
+          "directory": "/Users/coo-koba42/dev/structured_chaos_full_archive/inventions/consciousness_inventions"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/structured_chaos_full_archive/build/inventions/consciousness_inventions/token_free_quantum_braiding_app.py",
+          "size": 14811,
+          "mtime": 1756604854.414912,
+          "hash": "d8c93595fdc5f886e61162a9499cafe4",
+          "directory": "/Users/coo-koba42/dev/structured_chaos_full_archive/build/inventions/consciousness_inventions"
+        }
+      ],
+      "unique_hashes": 2,
+      "total_copies": 4,
+      "are_identical": false,
+      "all_different": false
+    },
+    "comprehensive_research_integration.py": {
+      "file_info": [
+        {
+          "path": "/Users/coo-koba42/dev/comprehensive_research_integration.py",
+          "size": 24494,
+          "mtime": 1756468813.179158,
+          "hash": "9e1b26ad7e0e7b1faed08f4dcbbd56f6",
+          "directory": "/Users/coo-koba42/dev"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/EIMF-Benchmark/comprehensive_research_integration.py",
+          "size": 24454,
+          "mtime": 1756574147.1672413,
+          "hash": "a8d303c6960c21634328f336e05522a0",
+          "directory": "/Users/coo-koba42/dev/EIMF-Benchmark"
+        }
+      ],
+      "unique_hashes": 2,
+      "total_copies": 2,
+      "are_identical": false,
+      "all_different": true
+    },
+    "omniversal_consciousness_interface.py": {
+      "file_info": [
+        {
+          "path": "/Users/coo-koba42/dev/omniversal_consciousness_interface.py",
+          "size": 18894,
+          "mtime": 1756585149.7518804,
+          "hash": "59634baac9315d0012cdfa549aeb2350",
+          "directory": "/Users/coo-koba42/dev"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/EIMF-Benchmark/omniversal_consciousness_interface.py",
+          "size": 29125,
+          "mtime": 1756578352.8237312,
+          "hash": "b11fe47a71d0e0fa4489119c374e5852",
+          "directory": "/Users/coo-koba42/dev/EIMF-Benchmark"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/structured_chaos_full_archive/inventions/consciousness_inventions/omniversal_consciousness_interface.py",
+          "size": 18894,
+          "mtime": 1756586060.1892705,
+          "hash": "59634baac9315d0012cdfa549aeb2350",
+          "directory": "/Users/coo-koba42/dev/structured_chaos_full_archive/inventions/consciousness_inventions"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/structured_chaos_full_archive/build/inventions/consciousness_inventions/omniversal_consciousness_interface.py",
+          "size": 18894,
+          "mtime": 1756604854.414995,
+          "hash": "59634baac9315d0012cdfa549aeb2350",
+          "directory": "/Users/coo-koba42/dev/structured_chaos_full_archive/build/inventions/consciousness_inventions"
+        }
+      ],
+      "unique_hashes": 2,
+      "total_copies": 4,
+      "are_identical": false,
+      "all_different": false
+    },
+    "COMPREHENSIVE_TEST_SUITE.py": {
+      "file_info": [
+        {
+          "path": "/Users/coo-koba42/dev/COMPREHENSIVE_TEST_SUITE.py",
+          "size": 36316,
+          "mtime": 1756585617.5464592,
+          "hash": "e0925aff266561f809ed26c45e9faf21",
+          "directory": "/Users/coo-koba42/dev"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/structured_chaos_full_archive/documentation/implementation_guides/COMPREHENSIVE_TEST_SUITE.py",
+          "size": 36970,
+          "mtime": 1756601522.1908226,
+          "hash": "bfb85833bb7f64b48086bfec78675212",
+          "directory": "/Users/coo-koba42/dev/structured_chaos_full_archive/documentation/implementation_guides"
+        }
+      ],
+      "unique_hashes": 2,
+      "total_copies": 2,
+      "are_identical": false,
+      "all_different": true
+    },
+    "__init__.py": {
+      "file_info": [
+        {
+          "path": "/Users/coo-koba42/dev/EIMF-Benchmark/core/__init__.py",
+          "size": 480,
+          "mtime": 1756528633.6641452,
+          "hash": "1c0d86ae6a6d9560bd950476f5c6a317",
+          "directory": "/Users/coo-koba42/dev/EIMF-Benchmark/core"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/EIMF-Benchmark/benchmarks/__init__.py",
+          "size": 669,
+          "mtime": 1756528654.4810495,
+          "hash": "fb9fe1ed27f3538dc8101e0add3a446d",
+          "directory": "/Users/coo-koba42/dev/EIMF-Benchmark/benchmarks"
+        },
+        {
+          "path": "/Users/coo-koba42/dev/tests/__init__.py",
+          "size": 34,
+          "mtime": 1756828773.8653367,
+          "hash": "09387b23231c16be0402c50d08474c73",
+          "directory": "/Users/coo-koba42/dev/tests"
+        }
+      ],
+      "unique_hashes": 3,
+      "total_copies": 3,
+      "are_identical": false,
+      "all_different": true
+    }
+  }
+}

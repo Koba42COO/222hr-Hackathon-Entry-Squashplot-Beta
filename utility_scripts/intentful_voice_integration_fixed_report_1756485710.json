@@ -1,0 +1,70 @@
+{
+  "integration_timestamp": "2025-08-29T12:41:50.912838",
+  "vibevoice_model": "1.5B",
+  "max_duration_minutes": 90.0,
+  "speaker_count": 4,
+  "synthesis_results": [
+    {
+      "application": "Mathematical",
+      "speaker": "speaker_2",
+      "emotion": "professional",
+      "intentful_score": 0.9089283118982336,
+      "quantum_resonance": 0.8084204027080335,
+      "consciousness_alignment": 0.6168042596902208,
+      "mathematical_precision": 0.9089283118982336,
+      "synthesis_quality": 0.8107703215486805,
+      "duration_seconds": 11.200000000000001
+    },
+    {
+      "application": "Quantum",
+      "speaker": "speaker_3",
+      "emotion": "excited",
+      "intentful_score": 0.9089283118982336,
+      "quantum_resonance": 0.8845170791776402,
+      "consciousness_alignment": 0.6990215799261291,
+      "mathematical_precision": 0.9089283118982336,
+      "synthesis_quality": 0.8503488207250592,
+      "duration_seconds": 10.799999999999999
+    },
+    {
+      "application": "Consciousness",
+      "speaker": "speaker_4",
+      "emotion": "calm",
+      "intentful_score": 0.9089283118982336,
+      "quantum_resonance": 0.6362498183287635,
+      "consciousness_alignment": 0.7914472725103858,
+      "mathematical_precision": 0.9089283118982336,
+      "synthesis_quality": 0.8113884286589041,
+      "duration_seconds": 12.0
+    },
+    {
+      "application": "General",
+      "speaker": "speaker_1",
+      "emotion": "intentful",
+      "intentful_score": 0.9089283118982336,
+      "quantum_resonance": 0.7253887285971569,
+      "consciousness_alignment": 0.8993337142666736,
+      "mathematical_precision": 0.9089283118982336,
+      "synthesis_quality": 0.8606447666650745,
+      "duration_seconds": 11.6
+    }
+  ],
+  "overall_metrics": {
+    "clarity_score": 0.9089283118982336,
+    "emotional_expressiveness": 0.7516517065983523,
+    "mathematical_accuracy": 0.9089283118982336,
+    "quantum_coherence": 0.7636440072028986,
+    "consciousness_depth": 0.7516517065983523,
+    "overall_quality": 0.8332880843994295
+  },
+  "capabilities": {
+    "text_to_speech": true,
+    "emotion_control": true,
+    "speaker_diversity": true,
+    "long_form_synthesis": true,
+    "intentful_mathematics_integration": true,
+    "quantum_resonance": true,
+    "consciousness_alignment": true,
+    "mathematical_precision": true
+  }
+}

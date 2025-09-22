@@ -1,0 +1,5 @@
+{
+  "error": "'RosettaTestSuite' object has no attribute '_test_glyph_usage_patterns'",
+  "traceback": "Traceback (most recent call last):\n  File \"/Users/coo-koba42/dev/ROSETTA_RIGOROUS_TEST_SUITE.py\", line 1459, in main\n    test_report = test_suite.run_all_tests()\n  File \"/Users/coo-koba42/dev/ROSETTA_RIGOROUS_TEST_SUITE.py\", line 128, in run_all_tests\n    self._run_statistical_tests()\n  File \"/Users/coo-koba42/dev/ROSETTA_RIGOROUS_TEST_SUITE.py\", line 288, in _run_statistical_tests\n    self._test_glyph_usage_patterns()\nAttributeError: 'RosettaTestSuite' object has no attribute '_test_glyph_usage_patterns'\n",
+  "timestamp": "2025-09-03T00:34:52.993242"
+}
