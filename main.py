@@ -66,7 +66,7 @@ def start_web_interface(port=5000):
         print()
 
         # Start the web server
-        app.run(host='0.0.0.0', port=port, debug=True)
+        app.run(host='127.0.0.1', port=port, debug=True)
 
     except Exception as e:
         print(f"❌ Failed to start SquashPlot web server: {e}")
