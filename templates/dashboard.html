@@ -1,76 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SquashPlot Beta - Chia Farming Dashboard</title>
-    <link rel="stylesheet" href="/static/css/unified-design-system.css">
+{% extends 'base.html' %}
+{% block title %}SquashPlot Beta - Chia Farming Dashboard{% endblock %}
+{% block head %}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* STREAMLINED HEADER - Less Clunky Design */
+        /* COMPACT HEADER - Navbar-like Design */
         .streamlined-header {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            border-bottom: 2px solid #60a5fa;
+            border-bottom: 1px solid #60a5fa;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+            width: 100vw;
+            left: 0;
+            right: 0;
         }
 
-        /* HEADER LAYOUT - TOP ALIGNED WITH ADEQUATE HEIGHT */
+        /* HEADER LAYOUT - Compact and Responsive */
         .header-main {
             display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding: 20px 24px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 20px;
             margin-left: 280px; /* Push to right of sidebar */
             width: calc(100vw - 280px); /* Full width minus sidebar */
-            min-height: 120px; /* Adequate height for content */
+            min-height: 50px; /* More compact height */
             position: relative;
             box-sizing: border-box;
         }
 
-        /* Title positioned absolutely on the left */
-        .header-left {
-            position: absolute;
-            left: -320px; /* Moved further left for better positioning */
-            top: 20px; /* Align to top with padding */
+        /* Centered Title */
+        .header-center {
             display: flex;
             flex-direction: column;
+            align-items: center;
             gap: 8px;
+            flex: 1;
             z-index: 10;
         }
 
+        /* Right Content in 2 Rows */
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+            z-index: 5;
+        }
+
         .dashboard-title {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 600;
-            color: #ffffff; /* White text for visibility on blue background */
+            color: #ffffff;
             margin: 0;
             display: flex;
             align-items: center;
-            gap: 12px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3); /* Add shadow for better visibility */
+            gap: 8px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
         }
 
         .title-icon {
-            font-size: 28px;
+            font-size: 24px;
         }
 
         .status-badges {
             display: flex;
-            gap: 8px;
+            gap: 6px;
         }
 
         .status-badge {
             display: flex;
             align-items: center;
-            gap: 6px;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
+            gap: 4px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
             font-weight: 500;
-            background: rgba(34, 197, 94, 0.9); /* More opaque background */
-            color: #ffffff; /* White text for better visibility */
+            background: rgba(34, 197, 94, 0.9);
+            color: #ffffff;
             border: 1px solid rgba(34, 197, 94, 1.0);
             text-shadow: 0 1px 1px rgba(0,0,0,0.2);
         }
@@ -82,25 +89,15 @@
             background: #16a34a;
         }
 
-        /* CENTERED CONTENT - TOP ALIGNED IN AVAILABLE SPACE */
-        .centered-content {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            justify-content: center;
-            z-index: 5;
-            padding: 0 24px;
-            box-sizing: border-box;
-            width: 100%;
-        }
-
+        /* MARKET INFO - First Row */
         .market-info {
             display: flex;
-            gap: 24px;
+            gap: 16px;
             background: rgba(255,255,255,0.1);
-            padding: 12px 20px;
-            border-radius: 12px;
+            padding: 6px 12px;
+            border-radius: 8px;
             backdrop-filter: blur(10px);
+            justify-content: center;
         }
 
         .market-item {
@@ -111,15 +108,15 @@
         }
 
         .market-label {
-            font-size: 11px;
+            font-size: 10px;
             color: rgba(255,255,255,0.8);
             font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
 
         .market-value {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             color: white;
         }
@@ -150,19 +147,20 @@
             align-items: center;
         }
 
+        /* QUICK ACTIONS - Second Row (Smaller) */
         .quick-actions {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
         }
 
         .action-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
             border: none;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -469,105 +467,295 @@
             background: rgba(107, 114, 128, 0.1);
         }
 
-        /* Responsive Design - MOBILE OPTIMIZED */
-        @media (max-width: 768px) {
+        /* Industry Standard Responsive Breakpoints */
+        
+        /* Extra Large Devices (1400px+) - Large Desktop */
+        @media (min-width: 1400px) {
             .header-main {
-                flex-direction: column;
-                gap: 16px;
-                padding: 16px;
-                margin-left: 0; /* Remove sidebar offset on mobile */
-                width: 100vw; /* Full width on mobile */
-                min-height: auto; /* Auto height on mobile */
-                justify-content: flex-start;
+                padding: 12px 40px;
+                min-height: 50px;
+                margin-left: 280px; /* Match main content width */
+                width: calc(100vw - 280px); /* Match main content width */
             }
-
-            .header-left {
-                position: static; /* Remove absolute positioning on mobile */
-                text-align: center; /* Center title on mobile */
-                width: 100%;
-                left: auto;
-                top: auto;
-                transform: none;
-                order: 1; /* Title first on mobile */
-            }
-
-            .centered-content {
-                flex-direction: column;
-                gap: 16px;
-                width: 100%;
-                order: 2; /* Content below title on mobile */
-                padding: 0;
-            }
-
             .market-info {
-                justify-content: space-around;
-                width: 100%;
-                flex-wrap: wrap;
+                gap: 32px;
+                padding: 10px 24px;
             }
-
             .dashboard-title {
                 font-size: 20px;
-                justify-content: center;
             }
-
-            .quick-actions {
-                gap: 12px;
-                justify-content: center;
-                flex-wrap: wrap;
-                order: 3; /* Actions after market info */
-            }
-
-            .action-btn {
-                width: 48px;
-                height: 48px;
-                font-size: 20px;
-            }
-
-            .user-menu {
-                display: none; /* Hide user avatar on mobile */
-            }
-
-            .stats-overview {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-
-            .stat-card {
-                padding: 16px;
-                gap: 12px;
-            }
-
-            .stat-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 24px;
-            }
-
-            .stat-value {
-                font-size: 20px;
-            }
-
-            .action-cards {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-
-            /* MOBILE LAYOUT ADJUSTMENTS */
             .enterprise-sidebar {
-                display: none; /* Hide sidebar on mobile */
+                padding-top: 50px;
             }
-
             .main-content {
-                margin-left: 0; /* No sidebar offset on mobile */
-                margin-top: 160px; /* Space for mobile header */
-                width: 100vw;
-                min-height: calc(100vh - 160px);
+                margin-top: 50px;
+                min-height: calc(100vh - 50px);
             }
+        }
+        
+        /* Large Devices (1200px - 1399px) - Desktop */
+        @media (min-width: 1200px) and (max-width: 1399px) {
+            .header-main {
+                padding: 10px 32px;
+                min-height: 50px;
+                margin-left: 280px; /* Match main content width */
+                width: calc(100vw - 280px); /* Match main content width */
+            }
+            .market-info {
+                gap: 24px;
+                padding: 8px 20px;
+            }
+            .dashboard-title {
+                font-size: 18px;
+            }
+            .enterprise-sidebar {
+                padding-top: 50px;
+            }
+            .main-content {
+                margin-top: 50px;
+                min-height: calc(100vh - 50px);
+            }
+        }
+        
+        /* Medium Devices (992px - 1199px) - Small Desktop/Large Tablet */
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .header-main {
+                padding: 8px 24px;
+                min-height: 50px;
+                margin-left: 280px; /* Match main content width */
+                width: calc(100vw - 280px); /* Match main content width */
+            }
+            .market-info {
+                gap: 20px;
+                padding: 6px 16px;
+            }
+            .dashboard-title {
+                font-size: 18px;
+            }
+            .enterprise-sidebar {
+                padding-top: 50px;
+            }
+            .main-content {
+                margin-top: 50px;
+                min-height: calc(100vh - 50px);
+            }
+        }
+        
+        /* Small Devices (768px - 991px) - Tablet */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .header-main {
+                padding: 10px 20px;
+                margin-left: 0;
+                width: 100vw;
+            }
+            .enterprise-sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+                margin-top: 60px;
+                width: 100vw;
+            }
+            .market-info {
+                gap: 16px;
+                padding: 8px 16px;
+            }
+            .dashboard-title {
+                font-size: 18px;
+            }
+        }
+        
+        /* Extra Small Devices (576px - 767px) - Large Mobile */
+        @media (min-width: 576px) and (max-width: 767px) {
+            .header-main {
+                flex-direction: column;
+                gap: 8px;
+                padding: 8px 16px;
+                margin-left: 0;
+                width: 100vw;
+            }
+            .header-center {
+                order: 1;
+            }
+            .header-right {
+                order: 2;
+                align-items: center;
+            }
+            .enterprise-sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+                margin-top: 70px;
+                width: 100vw;
+            }
+            .market-info {
+                gap: 12px;
+                padding: 6px 12px;
+            }
+            .dashboard-title {
+                font-size: 18px;
+            }
+        }
+        
+        /* Small Mobile Devices (480px - 575px) */
+        @media (min-width: 480px) and (max-width: 575px) {
+            .header-main {
+                flex-direction: column;
+                gap: 6px;
+                padding: 6px 12px;
+                margin-left: 0;
+                width: 100vw;
+            }
+            .header-center {
+                order: 1;
+            }
+            .header-right {
+                order: 2;
+                align-items: center;
+            }
+            .enterprise-sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+                margin-top: 65px;
+                width: 100vw;
+            }
+            .market-info {
+                gap: 10px;
+                padding: 5px 10px;
+            }
+            .dashboard-title {
+                font-size: 16px;
+            }
+            .market-label {
+                font-size: 9px;
+            }
+            .market-value {
+                font-size: 13px;
+            }
+        }
+        
+        /* Extra Small Mobile Devices (320px - 479px) */
+        @media (min-width: 320px) and (max-width: 479px) {
+            .header-main {
+                flex-direction: column;
+                gap: 4px;
+                padding: 4px 8px;
+                margin-left: 0;
+                width: 100vw;
+            }
+            .header-center {
+                order: 1;
+            }
+            .header-right {
+                order: 2;
+                align-items: center;
+            }
+            .enterprise-sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+                margin-top: 60px;
+                width: 100vw;
+            }
+            .market-info {
+                gap: 8px;
+                padding: 4px 8px;
+            }
+            .dashboard-title {
+                font-size: 14px;
+            }
+            .title-icon {
+                font-size: 18px;
+            }
+            .market-label {
+                font-size: 8px;
+            }
+            .market-value {
+                font-size: 11px;
+            }
+            .status-badge {
+                padding: 1px 6px;
+                font-size: 9px;
+            }
+        }
+        
+        /* Legacy Mobile (below 320px) */
+        @media (max-width: 319px) {
+            .header-main {
+                flex-direction: column;
+                gap: 2px;
+                padding: 2px 4px;
+                margin-left: 0;
+                width: 100vw;
+            }
+            .header-center {
+                order: 1;
+            }
+            .header-right {
+                order: 2;
+                align-items: center;
+            }
+            .enterprise-sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+                margin-top: 50px;
+                width: 100vw;
+            }
+            .market-info {
+                gap: 4px;
+                padding: 2px 4px;
+            }
+            .dashboard-title {
+                font-size: 12px;
+            }
+            .title-icon {
+                font-size: 16px;
+            }
+            .market-label {
+                font-size: 7px;
+            }
+            .market-value {
+                font-size: 10px;
+            }
+            .status-badge {
+                padding: 1px 4px;
+                font-size: 8px;
+            }
+        }
 
-            .streamlined-header {
-                margin-left: 0; /* No sidebar offset on mobile */
-                width: 100vw;
+        /* FIXED SIDEBAR LAYOUT - NO MORE OBSTRUCTIONS */
+            .header-main {
+                flex-direction: row;
+                gap: 12px;
+                padding: 6px 12px;
+                min-height: 50px;
             }
+            .header-left {
+                order: 1;
+                flex: 1;
+            }
+            .centered-content {
+                order: 2;
+                flex: 2;
+            }
+            .dashboard-title {
+                font-size: 16px;
+            }
+            .market-info {
+                gap: 8px;
+                padding: 4px 8px;
+            }
+            .main-content {
+                margin-top: 50px;
+                min-height: calc(100vh - 50px);
+            }
+        }
 
             /* Mobile: Stack columns vertically */
             .dashboard-layout {
@@ -642,7 +830,7 @@
             width: 280px;
             background: #1f2937;
             z-index: 50;
-            padding-top: 140px; /* Space for taller header */
+            padding-top: 50px; /* Space for more compact header */
             border-right: 2px solid #374151;
             box-sizing: border-box;
         }
@@ -650,9 +838,9 @@
         /* FIXED MAIN CONTENT LAYOUT - NO MORE BLOCKING */
         .main-content {
             margin-left: 280px;
-            margin-top: 140px; /* Space for taller header */
+            margin-top: 50px; /* Space for more compact header */
             padding: 24px;
-            min-height: calc(100vh - 140px);
+            min-height: calc(100vh - 50px);
             background: #f9fafb;
             border: 1px solid #e5e7eb;
             border-radius: 8px;
@@ -725,14 +913,12 @@
             display: block;
         }
     </style>
-</head>
-<body data-section="dashboard">
-    <div class="enterprise-layout">
+{% endblock %}
+{% block content %}
+    <div class="enterprise-layout" data-section="dashboard">
         <!-- FIXED SIDEBAR - NO MORE BLOCKING -->
         <aside class="enterprise-sidebar">
-            <div class="nav-brand">
-                <h1>SquashPlot <span class="beta-badge">Beta</span></h1>
-            </div>
+            
 
             <nav class="nav-menu">
                 <div class="nav-section">
@@ -773,55 +959,52 @@
             </nav>
         </aside>
 
-        <!-- Streamlined Header -->
-        <header class="streamlined-header">
-            <div class="header-main">
-                <!-- Title positioned absolutely on left -->
-                <div class="header-left">
-                    <h1 class="dashboard-title">
-                        <span class="title-icon">🌱</span>
-                        SquashPlot Dashboard
-                    </h1>
-                    <div class="status-badges">
-                        <span class="status-badge online">
-                            <span class="status-dot"></span>
-                            System Online
-                        </span>
-                    </div>
-                </div>
-
-                <!-- PERFECTLY CENTERED CONTENT -->
-                <div class="centered-content">
-                    <div class="market-info">
-                        <div class="market-item">
-                            <span class="market-label">XCH Price</span>
-                            <span id="xch-price" class="market-value">$--</span>
-                            <span id="price-change" class="price-change">--</span>
-                        </div>
-                        <div class="market-item">
-                            <span class="market-label">Netspace</span>
-                            <span id="netspace" class="market-value">-- EiB</span>
-                        </div>
-                    </div>
-
-                    <div class="quick-actions">
-                        <button id="export-btn" class="action-btn secondary" onclick="exportReport()" title="Export Report">
-                            📊
-                        </button>
-                        <button id="start-plotting-btn" class="action-btn primary" onclick="startPlotting()" title="Start Plotting">
-                            ⚡
-                        </button>
-                    </div>
-
-                    <div class="user-menu">
-                        <div class="user-avatar-small">👤</div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
             <!-- Main Content Area -->
             <main class="enterprise-main">
+                <!-- Streamlined Header -->
+                <header class="streamlined-header">
+                    <div class="header-main">
+                        <!-- Centered Title -->
+                        <div class="header-center">
+                            <h1 class="dashboard-title">
+                                <span class="title-icon">🌱</span>
+                                SquashPlot Dashboard
+                            </h1>
+                            <div class="status-badges">
+                                <span class="status-badge online">
+                                    <span class="status-dot"></span>
+                                    System Online
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Right Content in 2 Rows -->
+                        <div class="header-right">
+                            <!-- First Row: Market Info -->
+                            <div class="market-info">
+                                <div class="market-item">
+                                    <span class="market-label">XCH Price</span>
+                                    <span id="xch-price" class="market-value">$--</span>
+                                    <span id="price-change" class="price-change">--</span>
+                                </div>
+                                <div class="market-item">
+                                    <span class="market-label">Netspace</span>
+                                    <span id="netspace" class="market-value">-- EiB</span>
+                                </div>
+                            </div>
+
+                            <!-- Second Row: Quick Actions (Smaller) -->
+                            <div class="quick-actions">
+                                <button id="export-btn" class="action-btn secondary" onclick="exportReport()" title="Export Report">
+                                    📊
+                                </button>
+                                <button id="start-plotting-btn" class="action-btn primary" onclick="startPlotting()" title="Start Plotting">
+                                    ⚡
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </header>
                 <div class="dashboard-layout">
                     <!-- Left Content Column -->
                     <div class="content-column main-content">
@@ -1702,5 +1885,4 @@
                 });
         }
     </script>
-</body>
-</html>
+{% endblock %}

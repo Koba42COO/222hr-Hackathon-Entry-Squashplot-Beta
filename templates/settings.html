@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SquashPlot Beta - Settings</title>
-    <link rel="stylesheet" href="/static/css/unified-design-system.css">
+{% extends 'base.html' %}
+{% block title %}SquashPlot Beta - Settings{% endblock %}
+{% block head %}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* Settings-specific styles */
@@ -232,8 +228,9 @@
             }
         }
     </style>
-</head>
-<body data-section="settings">
+{% endblock %}
+{% block content %}
+<div data-section="settings">
     <div class="enterprise-layout">
         <!-- Fixed Header -->
         <header class="enterprise-header">
@@ -266,9 +263,6 @@
 
         <!-- Sidebar -->
         <aside class="enterprise-sidebar">
-            <div class="nav-brand">
-                <h1>SquashPlot <span class="beta-badge">Beta</span></h1>
-            </div>
 
             <nav class="nav-menu">
                 <div class="nav-section">
@@ -489,7 +483,6 @@
             </div>
         </main>
     </div>
-
     <!-- Scripts -->
     <script src="/static/js/dashboard.js"></script>
     <script src="/static/js/auth-features.js"></script>
@@ -622,6 +615,5 @@
             }
         }
     </script>
-</body>
-</html>
+{% endblock %}
 

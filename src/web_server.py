@@ -17,7 +17,7 @@ import requests
 from datetime import datetime, timedelta
 from functools import wraps, lru_cache
 from dataclasses import asdict
-from flask import Flask, render_template, request, jsonify, send_from_directory, Response, session
+from flask import Flask, render_template, request, jsonify, send_from_directory, Response, session, redirect, url_for, g, make_response
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import current_user, login_required
@@ -26,6 +26,7 @@ import io
 import csv
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
+import jwt
 
 # Import the SquashPlot system
 try:
@@ -35,13 +36,13 @@ try:
 
     # Try to import web components if available
     try:
-        from auth import init_auth, require_login
-        from models import db, User
-        from monitoring import get_health_status
+        from src.auth import init_auth, require_login
+        from src.models import db, User
+        from src.monitoring import get_health_status
         AUTH_AVAILABLE = True
-    except ImportError:
+    except ImportError as e:
         AUTH_AVAILABLE = False
-        print("⚠️ Advanced auth system not available - using basic mode")
+        print(f"⚠️ Advanced auth system not available - using basic mode: {e}")
 
 except ImportError as e:
     print(f"❌ Failed to import core SquashPlot modules: {e}")
@@ -161,6 +162,10 @@ app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)  # needed for url_for
 # Configuration
 app.config['SECRET_KEY'] = os.getenv('SESSION_SECRET', os.getenv('SECRET_KEY', 'dev-secret-key-change-in-production'))
 app.config['API_KEY'] = os.getenv('API_KEY', 'dev-api-key')
+app.config['JWT_SECRET'] = os.getenv('JWT_SECRET', app.config['SECRET_KEY'])
+app.config['JWT_COOKIE_NAME'] = 'sp_auth'
+app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
+app.config['SESSION_COOKIE_SECURE'] = os.getenv('FLASK_ENV') == 'production'
 
 # Database configuration with fallback
 database_url = os.getenv('DATABASE_URL')
@@ -523,103 +528,176 @@ class ExternalAPIService:
 
 # Initialize external API service
 api_service = ExternalAPIService()
+# -----------------------
+# Local password auth (coexists with OAuth)
+# -----------------------
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'GET':
+        return render_template('signup.html')
+    if not AUTH_AVAILABLE:
+        return redirect(url_for('index'))
+    data = request.form
+    username = (data.get('username') or '').strip().lower()
+    email = (data.get('email') or '').strip().lower() or None
+    password = data.get('password') or ''
+    if not username or not password:
+        return render_template('signup.html', error='Username and password are required')
+    existing = User.query.filter((User.username == username) | (User.email == email)).first()
+    if existing:
+        return render_template('signup.html', error='Username or email already exists')
+    # Create user
+    new_user = User(id=str(uuid.uuid4()), username=username, email=email)
+    new_user.set_password(password)
+    db.session.add(new_user)
+    db.session.commit()
+    # Set JWT cookie
+    token = create_jwt_for_user(new_user)
+    resp = make_response(redirect(url_for('index')))
+    resp.set_cookie(
+        app.config['JWT_COOKIE_NAME'], token, httponly=True, secure=app.config['SESSION_COOKIE_SECURE'], samesite='Lax', max_age=60*60*24*7
+    )
+    return resp
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+        return render_template('login.html')
+    if not AUTH_AVAILABLE:
+        return redirect(url_for('index'))
+    data = request.form
+    identifier = (data.get('username') or '').strip().lower()
+    password = data.get('password') or ''
+    user = None
+    if identifier:
+        user = User.query.filter((User.username == identifier) | (User.email == identifier)).first()
+    if not user or not user.check_password(password):
+        return render_template('login.html', error='Invalid credentials')
+    token = create_jwt_for_user(user)
+    # Redirect to the page they were trying to access, or dashboard
+    next_page = request.args.get('next') or url_for('dashboard_direct')
+    resp = make_response(redirect(next_page))
+    resp.set_cookie(
+        app.config['JWT_COOKIE_NAME'], token, httponly=True, secure=app.config['SESSION_COOKIE_SECURE'], samesite='Lax', max_age=60*60*24*7
+    )
+    return resp
+
+@app.route('/logout')
+def logout():
+    resp = make_response(redirect(url_for('index')))
+    resp.delete_cookie(app.config['JWT_COOKIE_NAME'])
+    return resp
+
+# -----------------------
+# Auth helpers (JWT cookie)
+# -----------------------
+def create_jwt_for_user(user):
+    payload = {
+        'sub': user.id,
+        'email': user.email,
+        'username': getattr(user, 'username', None),
+        'iat': int(time.time()),
+        'exp': int(time.time()) + 60 * 60 * 24 * 7  # 7 days
+    }
+    token = jwt.encode(payload, app.config['JWT_SECRET'], algorithm='HS256')
+    return token
+
+def get_user_from_jwt_cookie():
+    token = request.cookies.get(app.config['JWT_COOKIE_NAME'])
+    if not token:
+        return None
+    try:
+        payload = jwt.decode(token, app.config['JWT_SECRET'], algorithms=['HS256'])
+        user = User.query.get(payload.get('sub')) if AUTH_AVAILABLE else None
+        return user
+    except Exception:
+        return None
+
+@app.before_request
+def attach_jwt_user():
+    if not AUTH_AVAILABLE:
+        g.jwt_user = None
+        return
+    
+    # Check JWT cookie first (for local username/password auth)
+    jwt_user = get_user_from_jwt_cookie()
+    if jwt_user:
+        g.jwt_user = jwt_user
+    elif hasattr(current_user, 'is_authenticated') and current_user.is_authenticated:
+        # Fall back to Flask-Login user (for OAuth)
+        g.jwt_user = current_user
+    else:
+        g.jwt_user = None
 
 @app.route('/')
 def index():
     """Main dashboard page"""
-    if AUTH_AVAILABLE and current_user.is_authenticated:
-        return render_template('dashboard.html', user=current_user)
-    else:
-        return render_template('dashboard.html', user=None)
+    user_ctx = getattr(g, 'jwt_user', None) if AUTH_AVAILABLE else None
+    return render_template('dashboard.html', user=user_ctx)
 
 @app.route('/dashboard')
 def dashboard_direct():
-    """Direct access to dashboard for demo purposes"""
-    # Create a mock user object for demo purposes
-    from types import SimpleNamespace
-    mock_user = SimpleNamespace()
-    mock_user.username = "Demo User"
-    mock_user.email = "demo@squashplot.com"
-    mock_user.is_authenticated = True
-    mock_user.id = 1
-    return render_template('dashboard.html', user=mock_user)
+    """Direct access to dashboard"""
+    user_ctx = getattr(g, 'jwt_user', None) if AUTH_AVAILABLE else None
+    if not user_ctx:
+        return redirect(url_for('login', next=request.url))
+    return render_template('dashboard.html', user=user_ctx)
 
 @app.route('/jobs')
 def jobs():
     """Plotting jobs management page"""
-    from types import SimpleNamespace
-    mock_user = SimpleNamespace()
-    mock_user.username = "Demo User"
-    mock_user.email = "demo@squashplot.com"
-    mock_user.is_authenticated = True
-    mock_user.id = 1
-    return render_template('jobs.html', user=mock_user)
+    user_ctx = getattr(g, 'jwt_user', None) if AUTH_AVAILABLE else None
+    if not user_ctx:
+        return redirect(url_for('login', next=request.url))
+    return render_template('jobs.html', user=user_ctx)
 
 @app.route('/storage')
 def storage():
     """Storage management page"""
-    from types import SimpleNamespace
-    mock_user = SimpleNamespace()
-    mock_user.username = "Demo User"
-    mock_user.email = "demo@squashplot.com"
-    mock_user.is_authenticated = True
-    mock_user.id = 1
-    return render_template('storage.html', user=mock_user)
+    user_ctx = getattr(g, 'jwt_user', None) if AUTH_AVAILABLE else None
+    if not user_ctx:
+        return redirect(url_for('login', next=request.url))
+    return render_template('storage.html', user=user_ctx)
 
 @app.route('/rewards')
 def rewards():
     """Rewards and earnings page"""
-    from types import SimpleNamespace
-    mock_user = SimpleNamespace()
-    mock_user.username = "Demo User"
-    mock_user.email = "demo@squashplot.com"
-    mock_user.is_authenticated = True
-    mock_user.id = 1
-    return render_template('rewards.html', user=mock_user)
+    user_ctx = getattr(g, 'jwt_user', None) if AUTH_AVAILABLE else None
+    if not user_ctx:
+        return redirect(url_for('login', next=request.url))
+    return render_template('rewards.html', user=user_ctx)
 
 @app.route('/pools')
 def pools():
     """Pool management page"""
-    from types import SimpleNamespace
-    mock_user = SimpleNamespace()
-    mock_user.username = "Demo User"
-    mock_user.email = "demo@squashplot.com"
-    mock_user.is_authenticated = True
-    mock_user.id = 1
-    return render_template('pools.html', user=mock_user)
+    user_ctx = getattr(g, 'jwt_user', None) if AUTH_AVAILABLE else None
+    if not user_ctx:
+        return redirect(url_for('login', next=request.url))
+    return render_template('pools.html', user=user_ctx)
 
 @app.route('/analytics')
 def analytics():
     """Analytics and insights page"""
-    from types import SimpleNamespace
-    mock_user = SimpleNamespace()
-    mock_user.username = "Demo User"
-    mock_user.email = "demo@squashplot.com"
-    mock_user.is_authenticated = True
-    mock_user.id = 1
-    return render_template('analytics.html', user=mock_user)
+    user_ctx = getattr(g, 'jwt_user', None) if AUTH_AVAILABLE else None
+    if not user_ctx:
+        return redirect(url_for('login', next=request.url))
+    return render_template('analytics.html', user=user_ctx)
 
 @app.route('/settings')
 def settings():
     """Settings configuration page"""
-    from types import SimpleNamespace
-    mock_user = SimpleNamespace()
-    mock_user.username = "Demo User"
-    mock_user.email = "demo@squashplot.com"
-    mock_user.is_authenticated = True
-    mock_user.id = 1
-    return render_template('settings.html', user=mock_user)
+    user_ctx = getattr(g, 'jwt_user', None) if AUTH_AVAILABLE else None
+    if not user_ctx:
+        return redirect(url_for('login', next=request.url))
+    return render_template('settings.html', user=user_ctx)
 
 @app.route('/help')
 def help_page():
     """Help and documentation page"""
-    from types import SimpleNamespace
-    mock_user = SimpleNamespace()
-    mock_user.username = "Demo User"
-    mock_user.email = "demo@squashplot.com"
-    mock_user.is_authenticated = True
-    mock_user.id = 1
-    return render_template('help.html', user=mock_user)
+    user_ctx = getattr(g, 'jwt_user', None) if AUTH_AVAILABLE else None
+    if not user_ctx:
+        return redirect(url_for('login', next=request.url))
+    return render_template('help.html', user=user_ctx)
 
 # New Enhanced API Endpoints
 

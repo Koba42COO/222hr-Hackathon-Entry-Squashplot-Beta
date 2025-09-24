@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SquashPlot Beta - Help & Documentation</title>
-    <link rel="stylesheet" href="/static/css/unified-design-system.css">
+{% extends 'base.html' %}
+{% block title %}SquashPlot Beta - Help & Documentation{% endblock %}
+{% block head %}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .help-content {
@@ -145,8 +141,9 @@
             color: #6b7280;
         }
     </style>
-</head>
-<body data-section="help">
+{% endblock %}
+{% block content %}
+<div data-section="help">
     <div class="enterprise-layout">
         <!-- Fixed Header -->
         <header class="enterprise-header">
@@ -179,9 +176,6 @@
 
         <!-- Sidebar -->
         <aside class="enterprise-sidebar">
-            <div class="nav-brand">
-                <h1>SquashPlot <span class="beta-badge">Beta</span></h1>
-            </div>
 
             <nav class="nav-menu">
                 <div class="nav-section">
@@ -400,7 +394,6 @@
             </div>
         </main>
     </div>
-
     <!-- Scripts -->
     <script src="/static/js/dashboard.js"></script>
     <script src="/static/js/auth-features.js"></script>
@@ -479,5 +472,4 @@
             setInterval(updatePriceTicker, 30000);
         });
     </script>
-</body>
-</html>
+{% endblock %}
