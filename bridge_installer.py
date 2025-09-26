@@ -184,18 +184,74 @@ class BridgeInstaller:
             "security_settings": {
                 "authentication_required": True,
                 "whitelist_commands": [
-                    "squashplot --help",
-                    "squashplot --version", 
-                    "squashplot --status",
-                    "squashplot --compress",
-                    "squashplot --decompress"
+                    # Dashboard commands
+                    "squashplot --help", "squashplot --version", "squashplot --status",
+                    "squashplot --info", "squashplot --config", "squashplot --list-plots",
+                    "squashplot dashboard --status", "squashplot dashboard --info",
+                    "squashplot dashboard --health", "squashplot dashboard --metrics",
+                    "squashplot system --info", "squashplot system --status",
+                    "squashplot system --health", "squashplot system --disk-usage",
+                    "squashplot config --show", "squashplot config --list",
+                    "squashplot logs --show", "squashplot logs --tail",
+                    "squashplot monitor --start", "squashplot monitor --stop",
+                    
+                    # Plotting commands
+                    "squashplot plot --create", "squashplot plot --list",
+                    "squashplot plot --status", "squashplot plot --info",
+                    "squashplot plot --validate", "squashplot plot --check",
+                    "squashplot plot --compress", "squashplot plot --decompress",
+                    "squashplot compress --plot", "squashplot compress --all",
+                    "squashplot compress --status", "squashplot compress --progress",
+                    "squashplot decompress --plot", "squashplot decompress --all",
+                    "squashplot validate --plot", "squashplot validate --all",
+                    
+                    # Farming commands
+                    "squashplot farm --start", "squashplot farm --stop",
+                    "squashplot farm --status", "squashplot farm --info",
+                    "squashplot farm --health", "squashplot farm --metrics",
+                    "squashplot harvest --start", "squashplot harvest --stop",
+                    "squashplot farm --add-plot", "squashplot farm --remove-plot",
+                    "squashplot farm --list-plots", "squashplot farm --optimize",
+                    
+                    # Compression commands
+                    "squashplot compress --algorithm lz4", "squashplot compress --algorithm zstd",
+                    "squashplot compress --level 1", "squashplot compress --level 3",
+                    "squashplot compress --level 6", "squashplot compress --level 9",
+                    "squashplot compress --optimize", "squashplot compress --benchmark",
+                    "squashplot compress --batch", "squashplot compress --parallel 2",
+                    "squashplot compress --parallel 4", "squashplot compress --parallel 8",
+                    
+                    # Monitoring commands
+                    "squashplot monitor --cpu", "squashplot monitor --memory",
+                    "squashplot monitor --disk", "squashplot monitor --network",
+                    "squashplot health --check", "squashplot health --status",
+                    "squashplot health --report", "squashplot alerts --list",
+                    "squashplot alerts --status", "squashplot alerts --test",
+                    
+                    # Utility commands
+                    "squashplot files --list", "squashplot files --info",
+                    "squashplot files --size", "squashplot files --checksum",
+                    "squashplot backup --create", "squashplot backup --list",
+                    "squashplot backup --restore", "squashplot maintenance --start",
+                    "squashplot maintenance --stop", "squashplot update --check",
+                    "squashplot update --available", "squashplot update --install",
+                    
+                    # API commands
+                    "squashplot api --start", "squashplot api --stop",
+                    "squashplot api --status", "squashplot api --info",
+                    "squashplot web --start", "squashplot web --stop",
+                    "squashplot web --status", "squashplot integrate --chia",
+                    "squashplot integrate --madmax", "squashplot integrate --bladebit"
                 ],
                 "dangerous_patterns": [
-                    "rm -rf",
-                    "sudo",
-                    "chmod 777",
-                    "format",
-                    "del /f"
+                    "rm\\s+-rf", "sudo\\s+", "chmod\\s+777", "chown\\s+", "format\\s+",
+                    "del\\s+/f", "rd\\s+/s", "wget\\s+", "curl\\s+", "nc\\s+",
+                    "netcat\\s+", "telnet\\s+", "ssh\\s+", "scp\\s+", "kill\\s+",
+                    "killall\\s+", "taskkill\\s+", "pkill\\s+", "ps\\s+", "top\\s+",
+                    "dd\\s+", "mkfs\\s+", "fdisk\\s+", "mount\\s+", "umount\\s+",
+                    "bash\\s+", "sh\\s+", "cmd\\s+", "powershell\\s+", "python\\s+-c",
+                    "python\\s+-m", "[;&|`$]", "\\.\\./", "\\.\\.\\\\", "<", ">",
+                    "\\*", "\\?", "\\[", "\\]"
                 ]
             },
             "startup_settings": {
