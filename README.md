@@ -4,9 +4,9 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.75+-green.svg)](https://fastapi.tiangolo.com/)
 [![Chia](https://img.shields.io/badge/Chia-Farming-orange.svg)](https://www.chia.net/)
-[![Andy's CLI](https://img.shields.io/badge/Andy's_CLI-Integrated-blueviolet)](https://github.com/Koba42COO)
+[![SquashPlot CLI](https://img.shields.io/badge/SquashPlot_CLI-Integrated-blueviolet)](https://github.com/Koba42COO)
 
-> **🧠 Andy's Enhanced SquashPlot: Professional Chia plotting with CLI integration, real-time monitoring, and Replit-optimized deployment.**
+> **🧠 SquashPlot: Professional Chia plotting with CLI integration, real-time monitoring, and Replit-optimized deployment featuring Black Glass UI/UX.**
 
 ## 🚀 Features
 
@@ -34,7 +34,7 @@
 - **Analytics**: Performance insights and trends
 - **Automation**: Auto-claim, auto-compress, scheduling
 
-### 🤖 **Andy's CLI Integration**
+### 🤖 **SquashPlot CLI Integration**
 - **Server Monitoring**: Real-time status with `check_server.py` logic
 - **Professional Commands**: Mad Max/BladeBit compatible CLI structures
 - **Command Templates**: Pre-built commands for common operations
@@ -51,12 +51,12 @@
 
 ### Quick Start
 
-#### 🚀 **Replit Deployment (Recommended - Andy's Optimization)**
+#### 🚀 **Replit Deployment (Recommended)**
 
 1. **Fork on Replit**
    ```bash
    # Click "Fork" on the Replit template
-   # Automatic setup with Andy's CLI integration
+   # Automatic setup with SquashPlot CLI integration
    ```
 
 2. **Run the Application**
@@ -68,8 +68,8 @@
 3. **Features Available**
    - ✅ Real-time server monitoring
    - ✅ CLI command templates
-   - ✅ Professional web dashboard
-   - ✅ Andy's check_server integration
+   - ✅ Professional Black Glass UI/UX dashboard
+   - ✅ SquashPlot check_server integration
 
 #### 💻 **Local Development**
 
@@ -80,7 +80,7 @@
    pip install -r requirements.txt
    ```
 
-2. **Run SquashPlot (Andy's CLI)**
+2. **Run SquashPlot**
    ```bash
    # Enhanced Web Dashboard with CLI integration
    python main.py --web
@@ -91,7 +91,7 @@
    # Interactive Demo
    python main.py --demo
 
-   # Server Status Check (Andy's utility)
+   # Server Status Check
    python check_server.py
    ```
 
