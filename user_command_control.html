@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SquashPlot - Command Control Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: #b0b0b0;
+            font-size: 1.1rem;
+        }
+
+        .control-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .control-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .control-section h3 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .search-box::placeholder {
+            color: #888;
+        }
+
+        .category-section {
+            margin-bottom: 30px;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-header:hover {
+            background: rgba(0, 212, 255, 0.2);
+        }
+
+        .category-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #00d4ff;
+        }
+
+        .category-count {
+            background: rgba(0, 212, 255, 0.2);
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: #ffffff;
+        }
+
+        .category-toggle {
+            background: none;
+            border: none;
+            color: #00d4ff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .category-toggle.expanded {
+            transform: rotate(180deg);
+        }
+
+        .command-list {
+            display: none;
+            margin-left: 20px;
+        }
+
+        .command-list.expanded {
+            display: block;
+        }
+
+        .command-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .command-item:last-child {
+            border-bottom: none;
+        }
+
+        .command-checkbox {
+            margin-right: 12px;
+            transform: scale(1.2);
+            accent-color: #00d4ff;
+        }
+
+        .command-text {
+            flex: 1;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 10px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .command-status {
+            margin-left: 10px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-allowed {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+        }
+
+        .status-blocked {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+        }
+
+        .bulk-actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .bulk-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .bulk-btn.allow-all {
+            background: linear-gradient(135deg, #00ff88, #00cc6a);
+            color: #000;
+        }
+
+        .bulk-btn.block-all {
+            background: linear-gradient(135deg, #ff6b6b, #ff4757);
+            color: #fff;
+        }
+
+        .bulk-btn.reset {
+            background: linear-gradient(135deg, #ffa502, #ff6348);
+            color: #fff;
+        }
+
+        .bulk-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .stats-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00d4ff;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
+        .save-panel {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .save-btn {
+            background: linear-gradient(135deg, #00ff88, #00cc6a);
+            color: #000;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .save-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .save-btn:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 500;
+            z-index: 1000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background: linear-gradient(135deg, #00ff88, #00cc6a);
+        }
+
+        .notification.error {
+            background: linear-gradient(135deg, #ff6b6b, #ff4757);
+        }
+
+        .warning-box {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .warning-box h4 {
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+
+        .warning-box p {
+            color: #ffc107;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .control-panel {
+                grid-template-columns: 1fr;
+            }
+            
+            .bulk-actions {
+                flex-direction: column;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔒 SquashPlot Command Control Center</h1>
+            <p>Manage which commands are allowed on your system</p>
+        </div>
+
+        <div class="warning-box">
+            <h4>⚠️ Important Security Notice</h4>
+            <p>You can block specific commands to enhance security. Blocked commands will be denied by the bridge app. Use caution when blocking essential commands as this may affect functionality.</p>
+        </div>
+
+        <div class="stats-panel">
+            <h3 style="color: #00d4ff; margin-bottom: 20px;">📊 Command Statistics</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value" id="total-commands">0</div>
+                    <div class="stat-label">Total Commands</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="allowed-commands">0</div>
+                    <div class="stat-label">Allowed Commands</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="blocked-commands">0</div>
+                    <div class="stat-label">Blocked Commands</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="categories-count">0</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-panel">
+            <div class="control-section">
+                <h3>🔍 Search & Filter</h3>
+                <input type="text" class="search-box" id="search-input" placeholder="Search commands...">
+                
+                <div class="bulk-actions">
+                    <button class="bulk-btn allow-all" onclick="allowAllCommands()">✅ Allow All</button>
+                    <button class="bulk-btn block-all" onclick="blockAllCommands()">❌ Block All</button>
+                    <button class="bulk-btn reset" onclick="resetToDefaults()">🔄 Reset to Defaults</button>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h3>⚙️ Quick Actions</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <button class="bulk-btn allow-all" onclick="allowCategory('dashboard_commands')">Allow Dashboard</button>
+                    <button class="bulk-btn allow-all" onclick="allowCategory('plotting_commands')">Allow Plotting</button>
+                    <button class="bulk-btn allow-all" onclick="allowCategory('farming_commands')">Allow Farming</button>
+                    <button class="bulk-btn allow-all" onclick="allowCategory('compression_commands')">Allow Compression</button>
+                    <button class="bulk-btn allow-all" onclick="allowCategory('monitoring_commands')">Allow Monitoring</button>
+                    <button class="bulk-btn allow-all" onclick="allowCategory('utility_commands')">Allow Utilities</button>
+                    <button class="bulk-btn allow-all" onclick="allowCategory('api_commands')">Allow API</button>
+                    <button class="bulk-btn reset" onclick="blockAllCategories()">Block All Categories</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="command-categories">
+            <!-- Categories will be populated by JavaScript -->
+        </div>
+
+        <div class="save-panel">
+            <h3 style="color: #00ff88; margin-bottom: 15px;">💾 Save Configuration</h3>
+            <p style="color: #b0b0b0; margin-bottom: 20px;">Your command preferences will be saved to the bridge app configuration</p>
+            <button class="save-btn" onclick="saveConfiguration()" id="save-btn">
+                💾 Save Command Settings
+            </button>
+            <button class="save-btn" onclick="exportConfiguration()" style="background: linear-gradient(135deg, #00d4ff, #0099cc); color: #fff;">
+                📤 Export Settings
+            </button>
+        </div>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Command data structure
+        const commandCategories = {
+            "dashboard_commands": {
+                "name": "Dashboard Commands",
+                "description": "Dashboard and interface commands",
+                "commands": [
+                    "squashplot --help", "squashplot --version", "squashplot --status",
+                    "squashplot --info", "squashplot --config", "squashplot --list-plots",
+                    "squashplot dashboard --status", "squashplot dashboard --info",
+                    "squashplot dashboard --health", "squashplot dashboard --metrics",
+                    "squashplot system --info", "squashplot system --status",
+                    "squashplot system --health", "squashplot system --disk-usage",
+                    "squashplot config --show", "squashplot config --list",
+                    "squashplot logs --show", "squashplot logs --tail",
+                    "squashplot monitor --start", "squashplot monitor --stop"
+                ]
+            },
+            "plotting_commands": {
+                "name": "Plotting Commands",
+                "description": "Plot creation and management commands",
+                "commands": [
+                    "squashplot plot --create", "squashplot plot --list",
+                    "squashplot plot --status", "squashplot plot --info",
+                    "squashplot plot --validate", "squashplot plot --check",
+                    "squashplot plot --compress", "squashplot plot --decompress",
+                    "squashplot compress --plot", "squashplot compress --all",
+                    "squashplot compress --status", "squashplot compress --progress",
+                    "squashplot decompress --plot", "squashplot decompress --all",
+                    "squashplot validate --plot", "squashplot validate --all"
+                ]
+            },
+            "farming_commands": {
+                "name": "Farming Commands",
+                "description": "Farming and harvesting commands",
+                "commands": [
+                    "squashplot farm --start", "squashplot farm --stop",
+                    "squashplot farm --status", "squashplot farm --info",
+                    "squashplot farm --health", "squashplot farm --metrics",
+                    "squashplot harvest --start", "squashplot harvest --stop",
+                    "squashplot farm --add-plot", "squashplot farm --remove-plot",
+                    "squashplot farm --list-plots", "squashplot farm --optimize"
+                ]
+            },
+            "compression_commands": {
+                "name": "Compression Commands",
+                "description": "Advanced compression and optimization commands",
+                "commands": [
+                    "squashplot compress --algorithm lz4", "squashplot compress --algorithm zstd",
+                    "squashplot compress --level 1", "squashplot compress --level 3",
+                    "squashplot compress --level 6", "squashplot compress --level 9",
+                    "squashplot compress --optimize", "squashplot compress --benchmark",
+                    "squashplot compress --batch", "squashplot compress --parallel 2",
+                    "squashplot compress --parallel 4", "squashplot compress --parallel 8"
+                ]
+            },
+            "monitoring_commands": {
+                "name": "Monitoring Commands",
+                "description": "System monitoring and health check commands",
+                "commands": [
+                    "squashplot monitor --cpu", "squashplot monitor --memory",
+                    "squashplot monitor --disk", "squashplot monitor --network",
+                    "squashplot health --check", "squashplot health --status",
+                    "squashplot health --report", "squashplot alerts --list",
+                    "squashplot alerts --status", "squashplot alerts --test"
+                ]
+            },
+            "utility_commands": {
+                "name": "Utility Commands",
+                "description": "Utility and maintenance commands",
+                "commands": [
+                    "squashplot files --list", "squashplot files --info",
+                    "squashplot files --size", "squashplot files --checksum",
+                    "squashplot backup --create", "squashplot backup --list",
+                    "squashplot backup --restore", "squashplot maintenance --start",
+                    "squashplot maintenance --stop", "squashplot update --check",
+                    "squashplot update --available", "squashplot update --install"
+                ]
+            },
+            "api_commands": {
+                "name": "API Commands",
+                "description": "API and integration commands",
+                "commands": [
+                    "squashplot api --start", "squashplot api --stop",
+                    "squashplot api --status", "squashplot api --info",
+                    "squashplot web --start", "squashplot web --stop",
+                    "squashplot web --status", "squashplot integrate --chia",
+                    "squashplot integrate --madmax", "squashplot integrate --bladebit"
+                ]
+            }
+        };
+
+        // User preferences (stored in localStorage)
+        let userPreferences = JSON.parse(localStorage.getItem('squashplot_command_preferences') || '{}');
+
+        // Initialize the interface
+        function initializeInterface() {
+            renderCategories();
+            updateStatistics();
+            setupEventListeners();
+        }
+
+        // Render command categories
+        function renderCategories() {
+            const container = document.getElementById('command-categories');
+            container.innerHTML = '';
+
+            Object.entries(commandCategories).forEach(([categoryId, category]) => {
+                const categoryElement = document.createElement('div');
+                categoryElement.className = 'category-section';
+                
+                const allowedCount = category.commands.filter(cmd => 
+                    userPreferences[cmd] !== false
+                ).length;
+                
+                categoryElement.innerHTML = `
+                    <div class="category-header" onclick="toggleCategory('${categoryId}')">
+                        <div>
+                            <div class="category-title">${category.name}</div>
+                            <div style="font-size: 0.9rem; color: #888; margin-top: 2px;">${category.description}</div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div class="category-count">${allowedCount}/${category.commands.length}</div>
+                            <button class="category-toggle" id="toggle-${categoryId}">▼</button>
+                        </div>
+                    </div>
+                    <div class="command-list" id="list-${categoryId}">
+                        ${category.commands.map(cmd => {
+                            const isAllowed = userPreferences[cmd] !== false;
+                            return `
+                                <div class="command-item">
+                                    <input type="checkbox" class="command-checkbox" 
+                                           id="cmd-${cmd.replace(/[^a-zA-Z0-9]/g, '_')}" 
+                                           ${isAllowed ? 'checked' : ''}
+                                           onchange="toggleCommand('${cmd}')">
+                                    <div class="command-text">${cmd}</div>
+                                    <div class="command-status ${isAllowed ? 'status-allowed' : 'status-blocked'}">
+                                        ${isAllowed ? 'ALLOWED' : 'BLOCKED'}
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+                
+                container.appendChild(categoryElement);
+            });
+        }
+
+        // Toggle category visibility
+        function toggleCategory(categoryId) {
+            const list = document.getElementById(`list-${categoryId}`);
+            const toggle = document.getElementById(`toggle-${categoryId}`);
+            
+            if (list.classList.contains('expanded')) {
+                list.classList.remove('expanded');
+                toggle.classList.remove('expanded');
+            } else {
+                list.classList.add('expanded');
+                toggle.classList.add('expanded');
+            }
+        }
+
+        // Toggle individual command
+        function toggleCommand(command) {
+            const checkbox = document.getElementById(`cmd-${command.replace(/[^a-zA-Z0-9]/g, '_')}`);
+            const statusElement = checkbox.parentElement.querySelector('.command-status');
+            
+            if (checkbox.checked) {
+                userPreferences[command] = true;
+                statusElement.textContent = 'ALLOWED';
+                statusElement.className = 'command-status status-allowed';
+            } else {
+                userPreferences[command] = false;
+                statusElement.textContent = 'BLOCKED';
+                statusElement.className = 'command-status status-blocked';
+            }
+            
+            localStorage.setItem('squashplot_command_preferences', JSON.stringify(userPreferences));
+            updateStatistics();
+        }
+
+        // Allow all commands
+        function allowAllCommands() {
+            Object.keys(commandCategories).forEach(categoryId => {
+                commandCategories[categoryId].commands.forEach(cmd => {
+                    userPreferences[cmd] = true;
+                });
+            });
+            
+            localStorage.setItem('squashplot_command_preferences', JSON.stringify(userPreferences));
+            renderCategories();
+            updateStatistics();
+            showNotification('All commands allowed!', 'success');
+        }
+
+        // Block all commands
+        function blockAllCommands() {
+            if (confirm('Are you sure you want to block ALL commands? This will severely limit functionality.')) {
+                Object.keys(commandCategories).forEach(categoryId => {
+                    commandCategories[categoryId].commands.forEach(cmd => {
+                        userPreferences[cmd] = false;
+                    });
+                });
+                
+                localStorage.setItem('squashplot_command_preferences', JSON.stringify(userPreferences));
+                renderCategories();
+                updateStatistics();
+                showNotification('All commands blocked!', 'error');
+            }
+        }
+
+        // Reset to defaults
+        function resetToDefaults() {
+            if (confirm('Reset all command settings to defaults?')) {
+                userPreferences = {};
+                localStorage.removeItem('squashplot_command_preferences');
+                renderCategories();
+                updateStatistics();
+                showNotification('Settings reset to defaults!', 'success');
+            }
+        }
+
+        // Allow specific category
+        function allowCategory(categoryId) {
+            commandCategories[categoryId].commands.forEach(cmd => {
+                userPreferences[cmd] = true;
+            });
+            
+            localStorage.setItem('squashplot_command_preferences', JSON.stringify(userPreferences));
+            renderCategories();
+            updateStatistics();
+            showNotification(`${commandCategories[categoryId].name} commands allowed!`, 'success');
+        }
+
+        // Block all categories
+        function blockAllCategories() {
+            if (confirm('Block all command categories?')) {
+                Object.keys(commandCategories).forEach(categoryId => {
+                    commandCategories[categoryId].commands.forEach(cmd => {
+                        userPreferences[cmd] = false;
+                    });
+                });
+                
+                localStorage.setItem('squashplot_command_preferences', JSON.stringify(userPreferences));
+                renderCategories();
+                updateStatistics();
+                showNotification('All categories blocked!', 'error');
+            }
+        }
+
+        // Update statistics
+        function updateStatistics() {
+            const totalCommands = Object.values(commandCategories).reduce((sum, category) => 
+                sum + category.commands.length, 0);
+            
+            const allowedCommands = Object.values(commandCategories).reduce((sum, category) => 
+                sum + category.commands.filter(cmd => userPreferences[cmd] !== false).length, 0);
+            
+            const blockedCommands = totalCommands - allowedCommands;
+            
+            document.getElementById('total-commands').textContent = totalCommands;
+            document.getElementById('allowed-commands').textContent = allowedCommands;
+            document.getElementById('blocked-commands').textContent = blockedCommands;
+            document.getElementById('categories-count').textContent = Object.keys(commandCategories).length;
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            const searchInput = document.getElementById('search-input');
+            searchInput.addEventListener('input', filterCommands);
+        }
+
+        // Filter commands based on search
+        function filterCommands() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const commandItems = document.querySelectorAll('.command-item');
+            
+            commandItems.forEach(item => {
+                const commandText = item.querySelector('.command-text').textContent.toLowerCase();
+                if (commandText.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Save configuration
+        function saveConfiguration() {
+            const config = {
+                user_preferences: userPreferences,
+                timestamp: new Date().toISOString(),
+                total_commands: Object.values(commandCategories).reduce((sum, category) => 
+                    sum + category.commands.length, 0),
+                allowed_commands: Object.values(commandCategories).reduce((sum, category) => 
+                    sum + category.commands.filter(cmd => userPreferences[cmd] !== false).length, 0)
+            };
+            
+            // In a real implementation, this would send to the bridge app
+            console.log('Saving configuration:', config);
+            
+            showNotification('Configuration saved successfully!', 'success');
+        }
+
+        // Export configuration
+        function exportConfiguration() {
+            const config = {
+                user_preferences: userPreferences,
+                timestamp: new Date().toISOString(),
+                categories: commandCategories
+            };
+            
+            const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'squashplot_command_config.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showNotification('Configuration exported!', 'success');
+        }
+
+        // Show notification
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initializeInterface);
+    </script>
+</body>
+</html>

@@ -258,13 +258,21 @@ async def root():
                     </div>
                 </a>
 
-                <a href="/bridge-download" class="interface-card">
-                    <div class="interface-title">🔒 Secure Bridge App</div>
-                    <div class="interface-desc">
-                        Download the advanced CLI automation bridge for
-                        professional users with top-level security
-                    </div>
-                </a>
+                        <a href="/bridge-download" class="interface-card">
+                            <div class="interface-title">🔒 Secure Bridge App</div>
+                            <div class="interface-desc">
+                                Download the advanced CLI automation bridge for
+                                professional users with top-level security
+                            </div>
+                        </a>
+
+                        <a href="/command-control" class="interface-card">
+                            <div class="interface-title">⚙️ Command Control</div>
+                            <div class="interface-desc">
+                                Manage which commands are allowed on your system
+                                with user-friendly checkboxes and security controls
+                            </div>
+                        </a>
             </div>
 
             <div class="status">
@@ -552,20 +560,71 @@ async def download_uninstaller():
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error serving uninstaller: {str(e)}")
 
-@app.get("/download/system_scanner.py")
-async def download_system_scanner():
-    """Download the system scanner script"""
-    try:
-        if os.path.exists("system_scanner.py"):
-            return FileResponse(
-                "system_scanner.py",
-                media_type="application/octet-stream",
-                filename="system_scanner.py"
-            )
-        else:
-            raise HTTPException(status_code=404, detail="System scanner not found")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error serving system scanner: {str(e)}")
+        @app.get("/download/system_scanner.py")
+        async def download_system_scanner():
+            """Download the system scanner script"""
+            try:
+                if os.path.exists("system_scanner.py"):
+                    return FileResponse(
+                        "system_scanner.py",
+                        media_type="application/octet-stream",
+                        filename="system_scanner.py"
+                    )
+                else:
+                    raise HTTPException(status_code=404, detail="System scanner not found")
+            except Exception as e:
+                raise HTTPException(status_code=500, detail=f"Error serving system scanner: {str(e)}")
+
+        @app.get("/command-control", response_class=HTMLResponse)
+        async def command_control():
+            """Serve the user command control interface"""
+            try:
+                with open("user_command_control.html", "r", encoding="utf-8") as f:
+                    return f.read()
+            except FileNotFoundError:
+                return HTMLResponse("""
+                <h1>Command Control Not Available</h1>
+                <p>The command control interface is not available.</p>
+                <a href="/">Back to main interface</a>
+                """)
+
+        @app.get("/api/command-preferences")
+        async def get_command_preferences():
+            """Get current command preferences"""
+            try:
+                from user_command_controller import UserCommandController
+                controller = UserCommandController()
+                return controller.get_web_interface_data()
+            except Exception as e:
+                raise HTTPException(status_code=500, detail=f"Error getting preferences: {str(e)}")
+
+        @app.post("/api/command-preferences")
+        async def update_command_preferences(request: dict):
+            """Update command preferences"""
+            try:
+                from user_command_controller import UserCommandController
+                controller = UserCommandController()
+                
+                if "user_preferences" in request:
+                    controller.import_configuration(request)
+                    controller.update_bridge_config()
+                    return {"status": "success", "message": "Preferences updated"}
+                else:
+                    raise HTTPException(status_code=400, detail="Invalid request format")
+            except Exception as e:
+                raise HTTPException(status_code=500, detail=f"Error updating preferences: {str(e)}")
+
+        @app.post("/api/command-preferences/reset")
+        async def reset_command_preferences():
+            """Reset command preferences to defaults"""
+            try:
+                from user_command_controller import UserCommandController
+                controller = UserCommandController()
+                controller.reset_to_defaults()
+                controller.update_bridge_config()
+                return {"status": "success", "message": "Preferences reset to defaults"}
+            except Exception as e:
+                raise HTTPException(status_code=500, detail=f"Error resetting preferences: {str(e)}")
 
 # Replit-specific optimizations
 if Config.REPLIT_MODE:
