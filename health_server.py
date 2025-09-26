@@ -398,8 +398,8 @@ if __name__ == '__main__':
     print("🚜 Harvester Manager: Operational")
     print("🧩 Replot Easter Egg: Available")
     print()
-    print("🌐 Access dashboard at: http://localhost:8081")
-    print("📊 API endpoints available at: http://localhost:8081/api/")
+    print("🌐 Access dashboard at: http://localhost:8083")
+    print("📊 API endpoints available at: http://localhost:8083/api/")
     print("=" * 60)
 
-    app.run(host='0.0.0.0', port=8081, debug=True)
+    app.run(host='0.0.0.0', port=8083, debug=True)

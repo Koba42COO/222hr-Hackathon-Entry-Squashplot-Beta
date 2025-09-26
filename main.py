@@ -69,8 +69,10 @@ def start_web_interface(port=8080):  # Replit default port
         print("💻 CLI Commands: Available in dashboard")
         print()
 
-        # Start the server
-        app.run(host='0.0.0.0', port=port, debug=True)
+        # Start the server with uvicorn for FastAPI
+        import uvicorn
+        print("🚀 Starting FastAPI server with uvicorn...")
+        uvicorn.run(app, host='0.0.0.0', port=port, reload=True)
 
     except ImportError:
         print("❌ Enhanced API server not available, trying basic server...")
