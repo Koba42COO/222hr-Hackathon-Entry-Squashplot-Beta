@@ -51,6 +51,7 @@
             <a href="/dashboard" class="{% if request.path.startswith('/dashboard') or request.path=='/' %}active{% endif %}">Dashboard</a>
             <a href="/jobs" class="{% if request.path.startswith('/jobs') %}active{% endif %}">Jobs</a>
             <a href="/storage" class="{% if request.path.startswith('/storage') %}active{% endif %}">Storage</a>
+            <a href="/health" class="{% if request.path.startswith('/health') %}active{% endif %}">Health</a>
             <a href="/rewards" class="{% if request.path.startswith('/rewards') %}active{% endif %}">Rewards</a>
             <a href="/pools" class="{% if request.path.startswith('/pools') %}active{% endif %}">Pools</a>
             <a href="/analytics" class="{% if request.path.startswith('/analytics') %}active{% endif %}">Analytics</a>

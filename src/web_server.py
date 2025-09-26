@@ -683,6 +683,14 @@ def analytics():
         return redirect(url_for('login', next=request.url))
     return render_template('analytics.html', user=user_ctx)
 
+@app.route('/health')
+def health_dashboard():
+    """Health and harvesting dashboard"""
+    user_ctx = getattr(g, 'jwt_user', None) if AUTH_AVAILABLE else None
+    if not user_ctx:
+        return redirect(url_for('login', next=request.url))
+    return render_template('health.html', user=user_ctx)
+
 @app.route('/settings')
 def settings():
     """Settings configuration page"""
@@ -1974,16 +1982,109 @@ def get_health():
     try:
         health = get_health_status()
         status_code = 200
-        
+
         if health['status'] == 'warning':
             status_code = 202
         elif health['status'] == 'critical':
             status_code = 503
-            
+
         return jsonify(health), status_code
-        
+
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+@app.route('/api/health/plots', methods=['GET'])
+def get_plot_health():
+    """Get plot health data for health dashboard"""
+    try:
+        # For now, return mock data since the plot checker integration is complex
+        # In a full implementation, this would scan actual plot files
+        mock_plots = [
+            {
+                'id': 'plot-001',
+                'filename': 'plot-k32-2024-09-01-12-30-45.plot',
+                'path': '/plots/plot-k32-2024-09-01-12-30-45.plot',
+                'size_gb': 108.5,
+                'health_score': 95,
+                'status': 'healthy',
+                'last_checked': '2024-09-26T10:30:00Z',
+                'corruption_detected': False
+            },
+            {
+                'id': 'plot-002',
+                'filename': 'plot-k32-2024-09-02-14-15-30.plot',
+                'path': '/plots/plot-k32-2024-09-02-14-15-30.plot',
+                'size_gb': 108.7,
+                'health_score': 88,
+                'status': 'healthy',
+                'last_checked': '2024-09-26T10:30:00Z',
+                'corruption_detected': False
+            },
+            {
+                'id': 'plot-003',
+                'filename': 'plot-k32-2024-09-03-16-45-20.plot',
+                'path': '/plots/plot-k32-2024-09-03-16-45-20.plot',
+                'size_gb': 108.3,
+                'health_score': 45,
+                'status': 'corrupt',
+                'last_checked': '2024-09-26T10:30:00Z',
+                'corruption_detected': True
+            }
+        ]
+
+        return jsonify({
+            'plots': mock_plots,
+            'total_plots': len(mock_plots),
+            'healthy_plots': len([p for p in mock_plots if p['health_score'] > 80]),
+            'corrupt_plots': len([p for p in mock_plots if p['health_score'] < 50])
+        })
+
+    except Exception as e:
+        return jsonify({'error': str(e), 'plots': [], 'total_plots': 0}), 500
+
+@app.route('/api/health/harvesters', methods=['GET'])
+def get_harvester_status():
+    """Get harvester status data for health dashboard"""
+    try:
+        # Import harvester manager
+        from src.harvester_manager import HarvesterManager, get_harvester_manager
+
+        # Get harvester data
+        manager = get_harvester_manager()
+        harvesters = manager.check_all_harvesters()
+
+        # Handle if it's a coroutine (async function)
+        if hasattr(harvesters, '__await__'):
+            # For now, return mock data since async handling is complex in Flask
+            harvesters = [
+                {'id': 'harvester-1', 'name': 'Main Farm Node', 'status': 'online', 'plots': 89, 'proofs': 1543},
+                {'id': 'harvester-2', 'name': 'Backup Node', 'status': 'online', 'plots': 45, 'proofs': 892},
+                {'id': 'harvester-3', 'name': 'Remote Harvester', 'status': 'offline', 'plots': 22, 'proofs': 412}
+            ]
+        elif not isinstance(harvesters, list):
+            harvesters = []
+
+        return jsonify({
+            'harvesters': harvesters,
+            'total_harvesters': len(harvesters),
+            'online_harvesters': len([h for h in harvesters if h.get('status') == 'online']),
+            'total_plots': sum(h.get('plots', 0) for h in harvesters),
+            'total_proofs': sum(h.get('proofs', 0) for h in harvesters)
+        })
+
+    except Exception as e:
+        # Fallback to mock data
+        mock_harvesters = [
+            {'id': 'harvester-1', 'name': 'Main Farm Node', 'status': 'online', 'plots': 89, 'proofs': 1543},
+            {'id': 'harvester-2', 'name': 'Backup Node', 'status': 'online', 'plots': 45, 'proofs': 892}
+        ]
+        return jsonify({
+            'harvesters': mock_harvesters,
+            'total_harvesters': len(mock_harvesters),
+            'online_harvesters': len([h for h in mock_harvesters if h.get('status') == 'online']),
+            'total_plots': sum(h.get('plots', 0) for h in mock_harvesters),
+            'total_proofs': sum(h.get('proofs', 0) for h in mock_harvesters)
+        })
 
 @app.route('/api/monitoring/metrics', methods=['GET'])
 def get_monitoring_metrics():

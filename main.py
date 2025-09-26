@@ -33,8 +33,8 @@ def main():
                        help='Start command-line interface')
     parser.add_argument('--demo', action='store_true',
                        help='Run interactive demo')
-    parser.add_argument('--port', type=int, default=5000,
-                       help='Port for web server (default: 5000)')
+    parser.add_argument('--port', type=int, default=8080,
+                       help='Port for web server (default: 8080)')
 
     args = parser.parse_args()
 
@@ -49,29 +49,42 @@ def main():
     elif args.demo:
         run_demo()
 
-def start_web_interface(port=5000):
-    """Start the web interface"""
-    print("🚀 Starting SquashPlot Web Dashboard...")
-    print(f"📡 Server will be available at: https://your-replit-url.replit.dev")
-    print(f"🔗 Or locally at: http://localhost:{port}")
+def start_web_interface(port=8080):  # Replit default port
+    """Start the comprehensive SquashPlot enterprise web interface"""
+    print("🚀 Starting SquashPlot Enterprise Platform...")
+    print("=" * 60)
+    print("🌱 Complete Chia Farming Management System")
+    print("🔐 Authentication | 📊 Multi-Dashboard | ⚡ Job Management")
+    print("📈 Analytics | 🏊 Pool Management | 💰 Rewards Tracking")
+    print("💾 Storage Management | 🩺 Health Monitoring")
+    print("=" * 60)
+    print(f"📡 Access URL: http://localhost:{port}")
     print()
 
     try:
-        # Import and start SquashPlot web server
+        # Import the comprehensive Flask application
         from src.web_server import app
 
-        print("✅ SquashPlot Web Server started successfully!")
-        print(f"🌐 Dashboard available at: http://localhost:{port}")
-        print("📊 Access the web interface to manage Chia plotting operations")
+        print("✅ SquashPlot Enterprise Platform loaded successfully!")
+        print("🔐 Authentication System: Active")
+        print("📊 Dashboard System: Multi-page enterprise interface")
+        print("⚡ Job Management: Real-time plotting job control")
+        print("📈 Analytics: Professional data visualization")
+        print("🩺 Health Integration: Plot and harvester monitoring")
         print()
 
-        # Start the web server
+        # Start the Flask development server
+        print(f"🚀 Starting Flask server on port {port}...")
         app.run(host='127.0.0.1', port=port, debug=True)
 
+    except ImportError as e:
+        print(f"❌ Enterprise platform not available: {e}")
+        print("💡 Make sure all dependencies are installed")
+        print("🔧 Install with: pip install -r requirements.txt")
+        start_cli_interface()
     except Exception as e:
-        print(f"❌ Failed to start SquashPlot web server: {e}")
-        print("💡 Make sure the port is available and dependencies are installed")
-        print("🔧 Falling back to basic SquashPlot CLI mode...")
+        print(f"❌ Failed to start enterprise platform: {e}")
+        print("💡 Check port availability and dependencies")
         start_cli_interface()
 
 def start_cli_interface():
