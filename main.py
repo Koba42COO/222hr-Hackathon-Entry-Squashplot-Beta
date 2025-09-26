@@ -60,7 +60,7 @@ def start_web_interface(port=8080):  # Replit default port
     print()
 
     try:
-        # Import and start the enhanced API server
+        # Import and start the main SquashPlot web interface
         from squashplot_api_server import app
 
         print("✅ SquashPlot API Server started successfully!")
@@ -72,7 +72,7 @@ def start_web_interface(port=8080):  # Replit default port
         # Start the server with uvicorn for FastAPI
         import uvicorn
         print("🚀 Starting FastAPI server with uvicorn...")
-        uvicorn.run(app, host='0.0.0.0', port=port, reload=True)
+        uvicorn.run("squashplot_api_server:app", host='0.0.0.0', port=port, reload=True)
 
     except ImportError:
         print("❌ Enhanced API server not available, trying basic server...")
