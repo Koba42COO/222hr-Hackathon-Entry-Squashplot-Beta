@@ -324,6 +324,19 @@ This project was developed for the **222hr Hackathon** and represents a complete
 
 ---
 
+## 🎨 Beautiful Corner Archive
+
+**Interface Selection Landing Page** (Archived 2025-09-26)
+- Beautiful gradient background with Chia farming theme
+- Glass morphism interface cards with smooth animations
+- Professional typography and hover effects
+- Multiple interface options in elegant grid layout
+- Real-time server status indicators
+
+*Preserved as `beautiful_corner_interface_selection.html` for future design inspiration and potential restoration.*
+
+---
+
 **Made with ❤️ for the Chia farming community**
 
 *SquashPlot - Compress More, Farm Better*

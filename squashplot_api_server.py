@@ -136,136 +136,33 @@ class ServerStatus(BaseModel):
 
 # Routes
 
+# BACKLOG NOTE: Beautiful Interface Selection Landing Page
+# ========================================================
+# The original root route served a beautiful landing page with interface selection:
+# - Gradient background with Chia farming theme
+# - Glass morphism cards for different interfaces
+# - Professional typography and animations
+# - Options for: Enhanced Dashboard, Original Interface, API Docs, System Status
+# - Status indicator showing server health
+#
+# This was archived on 2025-09-26 as "beautiful corner" - a design reference
+# for future interface selection or onboarding experiences.
+#
+# To restore: Replace root() with the archived interface selection HTML
+# ========================================================
+
 @app.get("/", response_class=HTMLResponse)
 async def root():
-    """Serve the interface selection landing page"""
-    return HTMLResponse("""
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SquashPlot - Choose Your Interface</title>
-        <style>
-            body {
-                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                background: linear-gradient(135deg, #1a4d3a 0%, #2e7d3e 50%, #f0ad4e 100%);
-                min-height: 100vh;
-                margin: 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: white;
-            }
-            .container {
-                text-align: center;
-                background: rgba(255, 255, 255, 0.1);
-                backdrop-filter: blur(20px);
-                padding: 40px;
-                border-radius: 20px;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-                max-width: 600px;
-                width: 90%;
-            }
-            h1 {
-                font-size: 3rem;
-                margin-bottom: 10px;
-                background: linear-gradient(135deg, white, #f0ad4e);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-            }
-            .subtitle {
-                font-size: 1.2rem;
-                opacity: 0.9;
-                margin-bottom: 30px;
-            }
-            .interface-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 20px;
-                margin-top: 30px;
-            }
-            .interface-card {
-                background: rgba(255, 255, 255, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                border-radius: 15px;
-                padding: 25px;
-                transition: all 0.3s ease;
-                cursor: pointer;
-                text-decoration: none;
-                color: white;
-                display: block;
-            }
-            .interface-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-                background: rgba(255, 255, 255, 0.15);
-            }
-            .interface-title {
-                font-size: 1.5rem;
-                font-weight: 600;
-                margin-bottom: 10px;
-            }
-            .interface-desc {
-                font-size: 0.9rem;
-                opacity: 0.8;
-                line-height: 1.4;
-            }
-            .status {
-                margin-top: 20px;
-                padding: 10px;
-                background: rgba(0, 255, 0, 0.1);
-                border-radius: 10px;
-                font-size: 0.9rem;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <h1>🧠 SquashPlot</h1>
-            <div class="subtitle">Advanced Chia Plot Compression with Andy's Enhancements</div>
-
-            <div class="interface-grid">
-                <a href="/dashboard" class="interface-card">
-                    <div class="interface-title">🎨 Enhanced Dashboard</div>
-                    <div class="interface-desc">
-                        Andy's professional UI with real-time monitoring,
-                        CLI integration, and modern design system
-                    </div>
-                </a>
-
-                <a href="/original" class="interface-card">
-                    <div class="interface-title">📊 Original Interface</div>
-                    <div class="interface-desc">
-                        Classic SquashPlot interface with compression tools
-                        and farming calculators
-                    </div>
-                </a>
-
-                <a href="/docs" class="interface-card">
-                    <div class="interface-title">📖 API Documentation</div>
-                    <div class="interface-desc">
-                        Interactive API docs for developers and integrations
-                        with FastAPI/Swagger UI
-                    </div>
-                </a>
-
-                <a href="/health" class="interface-card">
-                    <div class="interface-title">🔍 System Status</div>
-                    <div class="interface-desc">
-                        Real-time system health, API status, and monitoring
-                        information
-                    </div>
-                </a>
-            </div>
-
-            <div class="status">
-                ✅ Server Online | 🔐 Authentication Ready | 🎯 CLI Integration Active
-            </div>
-        </div>
-    </body>
-    </html>
-    """)
+    """Serve the main SquashPlot dashboard directly"""
+    try:
+        with open("squashplot_dashboard.html", "r") as f:
+            return f.read()
+    except FileNotFoundError:
+        return HTMLResponse("""
+        <h1>SquashPlot Dashboard Not Found</h1>
+        <p>The dashboard file is not available. Please check if squashplot_dashboard.html exists.</p>
+        <a href="/original">Try Original Interface</a>
+        """)
 
 @app.get("/health")
 async def health_check():
