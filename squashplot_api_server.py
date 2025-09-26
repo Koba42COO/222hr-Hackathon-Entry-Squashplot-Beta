@@ -451,6 +451,77 @@ async def bridge_download():
         <a href="/">Back to main interface</a>
         """)
 
+@app.get("/eula", response_class=HTMLResponse)
+async def eula():
+    """Serve the End User License Agreement"""
+    try:
+        with open("EULA.md", "r", encoding="utf-8") as f:
+            content = f.read()
+            # Convert markdown to HTML (simplified)
+            html_content = f"""
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>SquashPlot Bridge App - EULA</title>
+                <style>
+                    body {{ font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }}
+                    h1 {{ color: #333; border-bottom: 2px solid #00d4ff; }}
+                    h2 {{ color: #555; margin-top: 30px; }}
+                    .warning {{ background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 20px 0; }}
+                </style>
+            </head>
+            <body>
+                <div class="warning">
+                    <strong>⚠️ IMPORTANT:</strong> This is a legal document. Please read carefully before using the software.
+                </div>
+                <pre style="white-space: pre-wrap; font-family: Arial, sans-serif;">{content}</pre>
+            </body>
+            </html>
+            """
+            return HTMLResponse(html_content)
+    except FileNotFoundError:
+        return HTMLResponse("<h1>EULA Not Available</h1><p>The End User License Agreement is not available.</p>")
+
+@app.get("/privacy", response_class=HTMLResponse)
+async def privacy():
+    """Serve the Privacy Policy"""
+    try:
+        with open("PRIVACY_POLICY.md", "r", encoding="utf-8") as f:
+            content = f.read()
+            # Convert markdown to HTML (simplified)
+            html_content = f"""
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>SquashPlot Bridge App - Privacy Policy</title>
+                <style>
+                    body {{ font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }}
+                    h1 {{ color: #333; border-bottom: 2px solid #00d4ff; }}
+                    h2 {{ color: #555; margin-top: 30px; }}
+                    .notice {{ background: #e3f2fd; border: 1px solid #2196f3; padding: 15px; border-radius: 5px; margin: 20px 0; }}
+                </style>
+            </head>
+            <body>
+                <div class="notice">
+                    <strong>📋 Privacy Notice:</strong> This policy explains how we collect, use, and protect your information.
+                </div>
+                <pre style="white-space: pre-wrap; font-family: Arial, sans-serif;">{content}</pre>
+            </body>
+            </html>
+            """
+            return HTMLResponse(html_content)
+    except FileNotFoundError:
+        return HTMLResponse("<h1>Privacy Policy Not Available</h1><p>The Privacy Policy is not available.</p>")
+
+@app.get("/security-warning", response_class=HTMLResponse)
+async def security_warning():
+    """Serve the security warning modal"""
+    try:
+        with open("security_warning_modal.html", "r", encoding="utf-8") as f:
+            return f.read()
+    except FileNotFoundError:
+        return HTMLResponse("<h1>Security Warning Not Available</h1><p>The security warning page is not available.</p>")
+
 # Replit-specific optimizations
 if Config.REPLIT_MODE:
     print("🔧 Running in Replit mode - optimizing for Replit environment")

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Warning - SquashPlot Bridge App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+            min-height: 100vh;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .security-modal {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 800px;
+            width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .warning-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .warning-icon {
+            font-size: 4rem;
+            color: #ff4757;
+            margin-bottom: 20px;
+        }
+
+        .warning-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff4757;
+            margin-bottom: 10px;
+        }
+
+        .warning-subtitle {
+            color: #b0b0b0;
+            font-size: 1.1rem;
+        }
+
+        .warning-content {
+            margin-bottom: 30px;
+        }
+
+        .warning-section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(255, 71, 87, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 71, 87, 0.3);
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ff4757;
+            margin-bottom: 10px;
+        }
+
+        .section-content {
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .warning-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .warning-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .warning-list li:last-child {
+            border-bottom: none;
+        }
+
+        .warning-list li::before {
+            content: "⚠️";
+            margin-right: 10px;
+        }
+
+        .legal-notice {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .legal-notice h3 {
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+
+        .legal-notice p {
+            color: #ffc107;
+            font-size: 0.9rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-danger {
+            background: #ff4757;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #ff3742;
+            transform: translateY(-2px);
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #00d4ff;
+        }
+
+        .checkbox-container label {
+            color: #e0e0e0;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .security-modal {
+                padding: 20px;
+            }
+            
+            .warning-title {
+                font-size: 1.5rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="security-modal">
+        <div class="warning-header">
+            <div class="warning-icon">🚨</div>
+            <h1 class="warning-title">SECURITY WARNING</h1>
+            <p class="warning-subtitle">Important Security Information for SquashPlot Bridge App</p>
+        </div>
+
+        <div class="warning-content">
+            <div class="warning-section">
+                <h3 class="section-title">⚠️ CRITICAL SECURITY NOTICE</h3>
+                <div class="section-content">
+                    <p>The SquashPlot Secure Bridge App executes commands on your local machine with your user privileges. This presents significant security risks that you must understand before proceeding.</p>
+                </div>
+            </div>
+
+            <div class="warning-section">
+                <h3 class="section-title">🔒 Security Risks</h3>
+                <div class="section-content">
+                    <ul class="warning-list">
+                        <li>Commands execute with your user privileges and can access all your files</li>
+                        <li>Malicious commands could damage your system or steal data</li>
+                        <li>Network connections could be exploited by attackers</li>
+                        <li>Command logs may contain sensitive information</li>
+                        <li>System vulnerabilities could be exploited</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warning-section">
+                <h3 class="section-title">🛡️ Your Responsibilities</h3>
+                <div class="section-content">
+                    <ul class="warning-list">
+                        <li>Only use trusted command sources and templates</li>
+                        <li>Maintain proper firewall and security settings</li>
+                        <li>Regularly update your system and security software</li>
+                        <li>Monitor command logs for suspicious activity</li>
+                        <li>Never share your bridge credentials or access</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="legal-notice">
+                <h3>⚖️ Legal Notice</h3>
+                <p>By using this software, you agree to the End User License Agreement and Privacy Policy. SquashPlot is not responsible for any damages, security breaches, or data loss resulting from use of this software. You assume all risks and responsibilities.</p>
+            </div>
+        </div>
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="understandRisks" required>
+            <label for="understandRisks">I understand the security risks and accept full responsibility for using this software</label>
+        </div>
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="agreeTerms" required>
+            <label for="agreeTerms">I agree to the End User License Agreement and Privacy Policy</label>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="acceptAndContinue()" id="acceptBtn" disabled>
+                ✅ Accept Risks & Continue
+            </button>
+            <button class="btn btn-secondary" onclick="showDocumentation()">
+                📖 Read Documentation
+            </button>
+            <button class="btn btn-danger" onclick="declineAndExit()">
+                ❌ Decline & Exit
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Enable accept button only when both checkboxes are checked
+        function updateAcceptButton() {
+            const understandRisks = document.getElementById('understandRisks').checked;
+            const agreeTerms = document.getElementById('agreeTerms').checked;
+            const acceptBtn = document.getElementById('acceptBtn');
+            
+            acceptBtn.disabled = !(understandRisks && agreeTerms);
+        }
+
+        // Add event listeners to checkboxes
+        document.getElementById('understandRisks').addEventListener('change', updateAcceptButton);
+        document.getElementById('agreeTerms').addEventListener('change', updateAcceptButton);
+
+        function acceptAndContinue() {
+            // Store acceptance in localStorage
+            localStorage.setItem('squashplot_bridge_eula_accepted', 'true');
+            localStorage.setItem('squashplot_bridge_security_warning_accepted', 'true');
+            localStorage.setItem('squashplot_bridge_acceptance_date', new Date().toISOString());
+            
+            // Redirect to main dashboard
+            window.location.href = '/dashboard';
+        }
+
+        function showDocumentation() {
+            // Open documentation in new tab
+            window.open('/bridge-download', '_blank');
+        }
+
+        function declineAndExit() {
+            // Redirect away from bridge features
+            window.location.href = '/';
+        }
+
+        // Check if already accepted
+        if (localStorage.getItem('squashplot_bridge_eula_accepted') === 'true') {
+            // Already accepted, redirect to dashboard
+            window.location.href = '/dashboard';
+        }
+    </script>
+</body>
+</html>
