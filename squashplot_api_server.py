@@ -522,6 +522,36 @@ async def security_warning():
     except FileNotFoundError:
         return HTMLResponse("<h1>Security Warning Not Available</h1><p>The security warning page is not available.</p>")
 
+@app.get("/download/bridge_installer.py")
+async def download_bridge_installer():
+    """Download the bridge installer script"""
+    try:
+        if os.path.exists("bridge_installer.py"):
+            return FileResponse(
+                "bridge_installer.py",
+                media_type="application/octet-stream",
+                filename="bridge_installer.py"
+            )
+        else:
+            raise HTTPException(status_code=404, detail="Bridge installer not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error serving installer: {str(e)}")
+
+@app.get("/download/uninstall_bridge.py")
+async def download_uninstaller():
+    """Download the bridge uninstaller script"""
+    try:
+        if os.path.exists("uninstall_bridge.py"):
+            return FileResponse(
+                "uninstall_bridge.py",
+                media_type="application/octet-stream",
+                filename="uninstall_bridge.py"
+            )
+        else:
+            raise HTTPException(status_code=404, detail="Bridge uninstaller not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error serving uninstaller: {str(e)}")
+
 # Replit-specific optimizations
 if Config.REPLIT_MODE:
     print("🔧 Running in Replit mode - optimizing for Replit environment")

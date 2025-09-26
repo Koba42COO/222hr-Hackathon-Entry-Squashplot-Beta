@@ -316,24 +316,37 @@
 
         <!-- Download Section -->
         <div class="download-section">
-            <h2>Download Secure Bridge App</h2>
+            <h2>Download & Install Secure Bridge App</h2>
             <p style="margin-bottom: 30px; color: #b0b0b0;">
-                Choose your platform to download the secure bridge application
+                Automated installation with startup integration for all operating systems
             </p>
             
             <div class="download-buttons">
-                <a href="#" class="download-btn" onclick="downloadApp('windows')">
-                    🪟 Windows (64-bit)
+                <a href="/download/bridge_installer.py" class="download-btn" download="bridge_installer.py">
+                    🚀 Download Installer
                 </a>
-                <a href="#" class="download-btn" onclick="downloadApp('macos')">
-                    🍎 macOS (Intel/Apple Silicon)
+                <a href="#" class="download-btn" onclick="runInstaller()">
+                    ⚡ Run Installation Now
                 </a>
-                <a href="#" class="download-btn" onclick="downloadApp('linux')">
-                    🐧 Linux (x64)
+                <a href="#" class="download-btn" onclick="checkInstallation()">
+                    🔍 Check Installation Status
                 </a>
-                <a href="#" class="download-btn" onclick="downloadApp('source')">
-                    📦 Source Code
+                <a href="/download/uninstall_bridge.py" class="download-btn" download="uninstall_bridge.py" style="background: linear-gradient(135deg, #ff4757, #ff6b7a);">
+                    🗑️ Download Uninstaller
                 </a>
+                <a href="#" class="download-btn" onclick="runUninstaller()" style="background: linear-gradient(135deg, #ff4757, #ff6b7a);">
+                    ⚠️ Uninstall Instructions
+                </a>
+            </div>
+            
+            <div style="margin-top: 20px; padding: 15px; background: rgba(0, 255, 136, 0.1); border: 1px solid rgba(0, 255, 136, 0.3); border-radius: 8px;">
+                <strong>✨ New Features:</strong>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li>Automatic startup integration (Windows Registry, macOS LaunchAgent, Linux systemd)</li>
+                    <li>Quiet background operation - no console windows</li>
+                    <li>One-click installation and uninstallation</li>
+                    <li>Cross-platform compatibility (Windows, macOS, Linux)</li>
+                </ul>
             </div>
         </div>
 
@@ -344,23 +357,27 @@
             <div class="step">
                 <div class="step-number">1</div>
                 <div class="step-content">
-                    <h4>Download the App</h4>
-                    <p>Download the appropriate version for your operating system from the buttons above.</p>
+                    <h4>Download the Installer</h4>
+                    <p>Click "Download Installer" above to get the automated installation script.</p>
                 </div>
             </div>
 
             <div class="step">
                 <div class="step-number">2</div>
                 <div class="step-content">
-                    <h4>Extract and Install</h4>
-                    <p>Extract the downloaded file and run the installation script:</p>
+                    <h4>Run the Installation</h4>
+                    <p>Execute the installer script. It will automatically:</p>
+                    <ul style="margin: 10px 0; padding-left: 20px;">
+                        <li>Install the bridge app to the appropriate directory</li>
+                        <li>Add it to system startup (Windows Registry, macOS LaunchAgent, Linux systemd)</li>
+                        <li>Configure security settings and whitelist commands</li>
+                        <li>Create an uninstaller for easy removal</li>
+                    </ul>
                     <div class="code-block">
-# Windows
-squashplot-bridge-install.exe
+# Run the installer
+python bridge_installer.py
 
-# macOS/Linux
-chmod +x squashplot-bridge-install.sh
-./squashplot-bridge-install.sh
+# The installer handles everything automatically!
                     </div>
                 </div>
             </div>
@@ -368,14 +385,15 @@ chmod +x squashplot-bridge-install.sh
             <div class="step">
                 <div class="step-number">3</div>
                 <div class="step-content">
-                    <h4>Start the Bridge Service</h4>
-                    <p>Start the secure bridge service:</p>
+                    <h4>Automatic Startup</h4>
+                    <p>The bridge service will start automatically when you restart your computer. It runs quietly in the background on port 8443.</p>
                     <div class="code-block">
-# Start the service
-python secure_bridge_app.py --daemon
+# Manual start (if needed)
+cd ~/AppData/Local/SquashPlot/Bridge  # Windows
+python secure_bridge_app.py --quiet
 
-# Or run in foreground for testing
-python secure_bridge_app.py
+# Check status
+python bridge_installer.py --status
                     </div>
                 </div>
             </div>
@@ -384,7 +402,7 @@ python secure_bridge_app.py
                 <div class="step-number">4</div>
                 <div class="step-content">
                     <h4>Connect to Dashboard</h4>
-                    <p>Return to the SquashPlot dashboard. The bridge will automatically connect and enable advanced automation features.</p>
+                    <p>Return to the SquashPlot dashboard. The bridge will automatically connect and enable advanced automation features. No manual configuration needed!</p>
                 </div>
             </div>
         </div>
@@ -396,21 +414,64 @@ python secure_bridge_app.py
     </div>
 
     <script>
-        function downloadApp(platform) {
-            // In production, this would trigger actual downloads
-            const downloads = {
-                'windows': 'squashplot-bridge-windows-x64.zip',
-                'macos': 'squashplot-bridge-macos-universal.zip',
-                'linux': 'squashplot-bridge-linux-x64.tar.gz',
-                'source': 'squashplot-bridge-source.zip'
-            };
-            
-            const filename = downloads[platform];
-            alert(`Download would start: ${filename}\n\nIn production, this would download the actual secure bridge application.`);
-            
-            // Simulate download
-            console.log(`Downloading ${filename}...`);
+        function runInstaller() {
+            alert('Installer Functionality:\n\n' +
+                  '1. Download bridge_installer.py\n' +
+                  '2. Run: python bridge_installer.py\n' +
+                  '3. The installer will:\n' +
+                  '   - Install bridge app to system directory\n' +
+                  '   - Add to startup (Windows Registry, macOS LaunchAgent, Linux systemd)\n' +
+                  '   - Configure security settings\n' +
+                  '   - Create uninstaller\n' +
+                  '   - Start service automatically\n\n' +
+                  'After installation, restart your computer and the bridge will start automatically!');
         }
+        
+        function checkInstallation() {
+            // Check if bridge is running
+            fetch('http://127.0.0.1:8443', {
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain' },
+                body: 'PING',
+                signal: AbortSignal.timeout(3000)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('✅ Bridge App Status: CONNECTED\n\n' +
+                          'The SquashPlot Bridge App is running and ready!\n' +
+                          'You can now use advanced automation features on the dashboard.\n\n' +
+                          'To uninstall: Download and run uninstall_bridge.py');
+                } else {
+                    throw new Error('Bridge not responding');
+                }
+            })
+            .catch(error => {
+                alert('❌ Bridge App Status: NOT CONNECTED\n\n' +
+                      'The bridge app is not running. Please:\n' +
+                      '1. Download and run the installer\n' +
+                      '2. Restart your computer\n' +
+                      '3. Check the installation directory\n\n' +
+                      'Error: ' + error.message);
+            });
+        }
+        
+        function runUninstaller() {
+            alert('Uninstaller Instructions:\n\n' +
+                  '1. Download uninstall_bridge.py\n' +
+                  '2. Run: python uninstall_bridge.py\n' +
+                  '3. The uninstaller will:\n' +
+                  '   - Stop the bridge service\n' +
+                  '   - Remove startup entries\n' +
+                  '   - Delete installation directory\n' +
+                  '   - Clean up system integration\n' +
+                  '   - Remove desktop shortcuts\n\n' +
+                  'This will completely remove the bridge app from your system.');
+        }
+        
+        // Auto-check installation status on page load
+        window.addEventListener('load', function() {
+            setTimeout(checkInstallation, 1000);
+        });
     </script>
 </body>
 </html>
