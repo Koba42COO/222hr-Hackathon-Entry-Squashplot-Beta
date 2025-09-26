@@ -236,6 +236,14 @@ class SecureBridgeApp:
                 logger.info("Ping request handled")
                 return
             
+            # Check if this is a stop request
+            if data.strip() == "STOP":
+                client_socket.send("STOPPED".encode())
+                logger.info("Stop request received")
+                # Schedule shutdown
+                threading.Timer(1.0, self.stop_server).start()
+                return
+            
             # Try to parse as JSON for encrypted commands
             try:
                 request_data = json.loads(data)

@@ -167,6 +167,53 @@
             background: linear-gradient(90deg, transparent, rgba(255, 107, 107, 0.1), transparent);
         }
 
+        /* Bridge Controls */
+        .bridge-controls {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+            font-size: 14px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            transform: scale(1.1);
+        }
+
+        .control-btn.stop-btn {
+            color: #ff4757;
+        }
+
+        .control-btn.stop-btn:hover {
+            background: rgba(255, 71, 87, 0.2);
+            color: #ff4757;
+        }
+
+        .control-btn.troubleshoot-btn {
+            color: #ffa502;
+        }
+
+        .control-btn.troubleshoot-btn:hover {
+            background: rgba(255, 165, 2, 0.2);
+            color: #ffa502;
+        }
+
         .header-left h1 {
             font-size: 2.5rem;
             font-weight: 700;
@@ -553,9 +600,17 @@
                     <div class="bridge-status-widget" id="bridgeStatusWidget">
                         <div class="status-indicator" id="bridgeIndicator"></div>
                         <span class="status-text" id="bridgeStatusText">Checking bridge...</span>
-                        <button class="refresh-btn" onclick="checkBridgeStatus()" title="Refresh bridge status">
-                            🔄
-                        </button>
+                        <div class="bridge-controls">
+                            <button class="control-btn" onclick="checkBridgeStatus()" title="Refresh bridge status">
+                                🔄
+                            </button>
+                            <button class="control-btn stop-btn" onclick="stopBridgeApp()" title="Stop bridge app" id="stopBridgeBtn" style="display: none;">
+                                ⏹️
+                            </button>
+                            <button class="control-btn troubleshoot-btn" onclick="troubleshootBridge()" title="Troubleshoot bridge connection">
+                                🔧
+                            </button>
+                        </div>
                     </div>
 
                     <!-- Server Status Widget -->
@@ -782,6 +837,9 @@
                     bridgeStatusText.textContent = '🔒 Bridge Connected';
                     bridgeWidget.classList.add('connected');
                     bridgeWidget.classList.remove('disconnected');
+                    
+                    // Show stop button when connected
+                    document.getElementById('stopBridgeBtn').style.display = 'inline-flex';
                 } else {
                     throw new Error(`Bridge error: ${response.status}`);
                 }
@@ -790,10 +848,387 @@
                 bridgeStatusText.textContent = '📋 Copy-Paste Mode';
                 bridgeWidget.classList.add('disconnected');
                 bridgeWidget.classList.remove('connected');
+                
+                // Hide stop button when disconnected
+                document.getElementById('stopBridgeBtn').style.display = 'none';
+                
                 console.log('Bridge not available:', error.message);
             } finally {
                 bridgeWidget.classList.remove('loading');
             }
+        }
+
+        // Stop bridge app
+        async function stopBridgeApp() {
+            const bridgeWidget = document.getElementById('bridgeStatusWidget');
+            const bridgeStatusText = document.getElementById('bridgeStatusText');
+            
+            try {
+                bridgeWidget.classList.add('loading');
+                bridgeStatusText.textContent = 'Stopping bridge...';
+                
+                // Send stop command to bridge
+                const response = await fetch('http://127.0.0.1:8443', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: 'STOP',
+                    signal: AbortSignal.timeout(5000)
+                });
+                
+                if (response.ok) {
+                    showNotification('Bridge app stopped successfully', 'success');
+                    // Update status after stopping
+                    setTimeout(() => {
+                        checkBridgeStatus();
+                    }, 1000);
+                } else {
+                    throw new Error('Failed to stop bridge');
+                }
+            } catch (error) {
+                showNotification('Failed to stop bridge app. You may need to stop it manually.', 'error');
+                console.log('Stop bridge error:', error.message);
+            } finally {
+                bridgeWidget.classList.remove('loading');
+            }
+        }
+
+        // Troubleshoot bridge connection
+        async function troubleshootBridge() {
+            const bridgeWidget = document.getElementById('bridgeStatusWidget');
+            const bridgeStatusText = document.getElementById('bridgeStatusText');
+            
+            try {
+                bridgeWidget.classList.add('loading');
+                bridgeStatusText.textContent = 'Troubleshooting...';
+                
+                // Run diagnostic checks
+                const diagnostics = await runBridgeDiagnostics();
+                
+                // Show diagnostic results
+                showTroubleshootModal(diagnostics);
+                
+            } catch (error) {
+                showNotification('Troubleshooting failed', 'error');
+                console.log('Troubleshoot error:', error.message);
+            } finally {
+                bridgeWidget.classList.remove('loading');
+                bridgeStatusText.textContent = '📋 Copy-Paste Mode';
+            }
+        }
+
+        // Run bridge diagnostics
+        async function runBridgeDiagnostics() {
+            const diagnostics = {
+                timestamp: new Date().toISOString(),
+                checks: []
+            };
+            
+            // Check 1: Port availability
+            try {
+                const response = await fetch('http://127.0.0.1:8443', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: 'PING',
+                    signal: AbortSignal.timeout(2000)
+                });
+                diagnostics.checks.push({
+                    name: 'Port 8443 Connection',
+                    status: response.ok ? 'success' : 'error',
+                    message: response.ok ? 'Port is accessible' : `HTTP ${response.status}`
+                });
+            } catch (error) {
+                diagnostics.checks.push({
+                    name: 'Port 8443 Connection',
+                    status: 'error',
+                    message: 'Port is not accessible - Bridge app may not be running'
+                });
+            }
+            
+            // Check 2: Bridge app process
+            diagnostics.checks.push({
+                name: 'Bridge App Process',
+                status: 'info',
+                message: 'Check if secure_bridge_app.py is running in your terminal'
+            });
+            
+            // Check 3: Firewall/Network
+            diagnostics.checks.push({
+                name: 'Local Network',
+                status: 'info',
+                message: 'Ensure no firewall is blocking localhost connections'
+            });
+            
+            // Check 4: Installation
+            diagnostics.checks.push({
+                name: 'Bridge Installation',
+                status: 'info',
+                message: 'Verify bridge app is properly installed and configured'
+            });
+            
+            return diagnostics;
+        }
+
+        // Show troubleshoot modal
+        function showTroubleshootModal(diagnostics) {
+            const modal = document.createElement('div');
+            modal.className = 'troubleshoot-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>🔧 Bridge Troubleshooting</h3>
+                        <button class="close-btn" onclick="this.parentElement.parentElement.parentElement.remove()">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="diagnostic-results">
+                            ${diagnostics.checks.map(check => `
+                                <div class="diagnostic-item ${check.status}">
+                                    <div class="check-name">${check.name}</div>
+                                    <div class="check-message">${check.message}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="troubleshoot-actions">
+                            <button class="action-btn primary" onclick="window.open('/bridge-download', '_blank')">
+                                📥 Download Bridge App
+                            </button>
+                            <button class="action-btn secondary" onclick="showBridgeInstructions()">
+                                📖 Installation Guide
+                            </button>
+                            <button class="action-btn" onclick="this.parentElement.parentElement.parentElement.remove()">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Add modal styles
+            if (!document.getElementById('troubleshoot-styles')) {
+                const style = document.createElement('style');
+                style.id = 'troubleshoot-styles';
+                style.textContent = `
+                    .troubleshoot-modal {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.8);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 10000;
+                    }
+                    
+                    .modal-content {
+                        background: var(--glass-bg);
+                        backdrop-filter: blur(20px);
+                        border-radius: 16px;
+                        padding: 0;
+                        max-width: 600px;
+                        width: 90%;
+                        max-height: 80vh;
+                        overflow-y: auto;
+                        border: 1px solid var(--glass-border);
+                    }
+                    
+                    .modal-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 20px;
+                        border-bottom: 1px solid var(--glass-border);
+                    }
+                    
+                    .modal-header h3 {
+                        margin: 0;
+                        color: var(--text-primary);
+                    }
+                    
+                    .close-btn {
+                        background: none;
+                        border: none;
+                        color: var(--text-secondary);
+                        font-size: 24px;
+                        cursor: pointer;
+                        padding: 5px;
+                    }
+                    
+                    .modal-body {
+                        padding: 20px;
+                    }
+                    
+                    .diagnostic-results {
+                        margin-bottom: 20px;
+                    }
+                    
+                    .diagnostic-item {
+                        padding: 15px;
+                        margin-bottom: 10px;
+                        border-radius: 8px;
+                        border: 1px solid var(--glass-border);
+                    }
+                    
+                    .diagnostic-item.success {
+                        background: rgba(46, 204, 113, 0.1);
+                        border-color: rgba(46, 204, 113, 0.3);
+                    }
+                    
+                    .diagnostic-item.error {
+                        background: rgba(231, 76, 60, 0.1);
+                        border-color: rgba(231, 76, 60, 0.3);
+                    }
+                    
+                    .diagnostic-item.info {
+                        background: rgba(52, 152, 219, 0.1);
+                        border-color: rgba(52, 152, 219, 0.3);
+                    }
+                    
+                    .check-name {
+                        font-weight: 600;
+                        color: var(--text-primary);
+                        margin-bottom: 5px;
+                    }
+                    
+                    .check-message {
+                        color: var(--text-secondary);
+                        font-size: 0.9rem;
+                    }
+                    
+                    .troubleshoot-actions {
+                        display: flex;
+                        gap: 10px;
+                        flex-wrap: wrap;
+                    }
+                    
+                    .action-btn {
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-weight: 600;
+                        transition: all 0.3s ease;
+                    }
+                    
+                    .action-btn.primary {
+                        background: linear-gradient(135deg, #00d4ff, #00ff88);
+                        color: white;
+                    }
+                    
+                    .action-btn.secondary {
+                        background: rgba(255, 255, 255, 0.1);
+                        color: var(--text-primary);
+                        border: 1px solid var(--glass-border);
+                    }
+                    
+                    .action-btn:hover {
+                        transform: translateY(-2px);
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(modal);
+        }
+
+        // Show bridge instructions
+        function showBridgeInstructions() {
+            const instructions = `
+🔧 Bridge App Installation Guide
+
+1. Download the Bridge App:
+   - Visit the download page
+   - Choose your operating system
+   - Download the secure bridge app
+
+2. Install the Bridge App:
+   - Extract the downloaded file
+   - Run the installation script
+   - Follow the setup instructions
+
+3. Start the Bridge Service:
+   - Open terminal/command prompt
+   - Navigate to the bridge app directory
+   - Run: python secure_bridge_app.py
+
+4. Verify Connection:
+   - Return to this dashboard
+   - Check the status bar
+   - Should show "🔒 Bridge Connected"
+
+5. Troubleshooting:
+   - Ensure port 8443 is not blocked
+   - Check firewall settings
+   - Verify Python is installed
+   - Check bridge app logs
+
+For advanced users, run in daemon mode:
+python secure_bridge_app.py --daemon
+            `;
+            
+            alert(instructions);
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <span>${message}</span>
+                <button onclick="this.parentElement.remove()">×</button>
+            `;
+            
+            // Add notification styles if not exists
+            if (!document.getElementById('notification-styles')) {
+                const style = document.createElement('style');
+                style.id = 'notification-styles';
+                style.textContent = `
+                    .notification {
+                        position: fixed;
+                        top: 100px;
+                        right: 20px;
+                        background: #10b981;
+                        color: white;
+                        padding: 12px 20px;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                        z-index: 10001;
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        animation: slideIn 0.3s ease-out;
+                    }
+                    
+                    .notification.error {
+                        background: #ef4444;
+                    }
+                    
+                    .notification button {
+                        background: none;
+                        border: none;
+                        color: white;
+                        font-size: 20px;
+                        cursor: pointer;
+                        padding: 0;
+                        margin-left: 10px;
+                    }
+                    
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(notification);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
         }
 
         // Execute CLI command using Andy's templates
