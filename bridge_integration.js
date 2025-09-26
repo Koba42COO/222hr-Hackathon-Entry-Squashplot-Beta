@@ -30,9 +30,15 @@ class SquashPlotBridge {
      */
     async detectBridge() {
         try {
-            // Try to connect to the bridge
-            const response = await this.sendCommand('ping');
-            this.bridgeAvailable = response.success;
+            // Try to connect to the bridge using a simple ping
+            const response = await fetch('http://127.0.0.1:8443', {
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain' },
+                body: 'PING',
+                signal: AbortSignal.timeout(3000)
+            });
+            
+            this.bridgeAvailable = response.ok;
             
             if (this.bridgeAvailable) {
                 console.log('🔒 SquashPlot Secure Bridge detected');
@@ -211,32 +217,23 @@ For advanced automation, download the SquashPlot Bridge App
      * Show bridge connection status
      */
     showBridgeStatus(status) {
-        // Create or update status indicator
-        let statusElement = document.getElementById('bridgeStatus');
-        if (!statusElement) {
-            statusElement = document.createElement('div');
-            statusElement.id = 'bridgeStatus';
-            statusElement.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                padding: 10px 15px;
-                border-radius: 8px;
-                font-weight: 600;
-                z-index: 10000;
-                transition: all 0.3s ease;
-            `;
-            document.body.appendChild(statusElement);
-        }
+        // Update the status bar in the header
+        const bridgeIndicator = document.getElementById('bridgeIndicator');
+        const bridgeStatusText = document.getElementById('bridgeStatusText');
+        const bridgeWidget = document.getElementById('bridgeStatusWidget');
         
-        if (status === 'connected') {
-            statusElement.innerHTML = '🔒 Secure Bridge Connected';
-            statusElement.style.background = '#2ecc71';
-            statusElement.style.color = 'white';
-        } else {
-            statusElement.innerHTML = '📋 Copy-Paste Mode';
-            statusElement.style.background = '#f39c12';
-            statusElement.style.color = 'white';
+        if (bridgeIndicator && bridgeStatusText && bridgeWidget) {
+            if (status === 'connected') {
+                bridgeIndicator.className = 'status-indicator online';
+                bridgeStatusText.textContent = '🔒 Bridge Connected';
+                bridgeWidget.classList.add('connected');
+                bridgeWidget.classList.remove('disconnected');
+            } else {
+                bridgeIndicator.className = 'status-indicator';
+                bridgeStatusText.textContent = '📋 Copy-Paste Mode';
+                bridgeWidget.classList.add('disconnected');
+                bridgeWidget.classList.remove('connected');
+            }
         }
     }
     

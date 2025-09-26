@@ -225,30 +225,49 @@ class SecureBridgeApp:
             # Set timeout
             client_socket.settimeout(self.connection_timeout)
             
-            # Receive encrypted command
-            encrypted_data = client_socket.recv(4096).decode()
-            if not encrypted_data:
+            # Receive data
+            data = client_socket.recv(4096).decode()
+            if not data:
                 return
             
-            # Decrypt command
-            command = self._decrypt_message(encrypted_data)
-            if not command:
-                logger.error("Failed to decrypt command")
+            # Check if this is a ping request
+            if data.strip() == "PING":
+                client_socket.send("PONG".encode())
+                logger.info("Ping request handled")
                 return
             
-            # Execute command
-            result = self._execute_command(command)
-            
-            # Encrypt response
-            response = json.dumps(result)
-            encrypted_response = self._encrypt_message(response)
-            
-            # Send response
-            client_socket.send(encrypted_response.encode())
-            
-            # Log the interaction
-            if self.config["logging"]["log_all_commands"]:
-                logger.info(f"Command executed: {command} - Success: {result['success']}")
+            # Try to parse as JSON for encrypted commands
+            try:
+                request_data = json.loads(data)
+                if 'command' in request_data:
+                    # Decrypt command
+                    command = self._decrypt_message(request_data['command'])
+                    if not command:
+                        logger.error("Failed to decrypt command")
+                        return
+                    
+                    # Execute command
+                    result = self._execute_command(command)
+                    
+                    # Encrypt response
+                    response = json.dumps(result)
+                    encrypted_response = self._encrypt_message(response)
+                    
+                    # Send response
+                    client_socket.send(encrypted_response.encode())
+                    
+                    # Log the interaction
+                    if self.config["logging"]["log_all_commands"]:
+                        logger.info(f"Command executed: {command} - Success: {result['success']}")
+                else:
+                    # Invalid request
+                    client_socket.send(json.dumps({"error": "Invalid request"}).encode())
+            except json.JSONDecodeError:
+                # Not JSON, treat as plain text command (for testing)
+                command = data.strip()
+                if command:
+                    result = self._execute_command(command)
+                    client_socket.send(json.dumps(result).encode())
             
         except Exception as e:
             logger.error(f"Error handling client: {e}")
