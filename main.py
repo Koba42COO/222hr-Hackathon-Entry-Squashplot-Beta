@@ -56,17 +56,17 @@ def start_web_interface(port=8080):  # Replit default port
     print("🚀 Starting SquashPlot Web Dashboard...")
     print(f"📡 Replit URL: https://your-replit-name.replit.dev")
     print(f"🔗 Local access: http://localhost:{port}")
-    print("📊 Andy's CLI Integration: Available via dashboard")
+    print("📊 SquashPlot CLI Integration: Available via dashboard")
     print()
 
     try:
-        # Import and start the enhanced API server (Andy's integration)
+        # Import and start the enhanced API server
         from squashplot_api_server import app
 
         print("✅ SquashPlot API Server started successfully!")
         print(f"🌐 Dashboard: http://localhost:{port}")
         print(f"📖 API Docs: http://localhost:{port}/docs")
-        print("💻 CLI Commands: Available in dashboard")
+        print("💻 CLI Commands: Available in Black Glass UI/UX dashboard")
         print()
 
         # Start the server with uvicorn for FastAPI

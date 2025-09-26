@@ -94,7 +94,7 @@
             opacity: 1;
         }
 
-        /* Andy's CLI Integration Styles */
+        /* SquashPlot CLI Integration Styles */
         .cli-section {
             margin-bottom: 25px;
             padding: 20px;
@@ -571,7 +571,7 @@
                 <button class="version-btn" onclick="switchVersion('pro')">Pro (Enhanced)</button>
             </div>
 
-            <!-- Andy's Server Status Integration -->
+            <!-- SquashPlot Server Status Integration -->
             <div class="server-status" id="serverStatus">
                 <div class="status-indicator checking" id="statusIndicator"></div>
                 <span id="statusText">Checking server...</span>
@@ -862,12 +862,12 @@
                     </table>
                 </div>
 
-                <!-- Andy's CLI Integration -->
+                <!-- SquashPlot CLI Integration -->
                 <div id="cli-tab" class="tab-content">
                     <h3>Command Line Interface</h3>
 
                     <div class="alert">
-                        <h4>Andy's Professional CLI Commands</h4>
+                        <h4>SquashPlot Professional CLI Commands</h4>
                         <div style="margin-top: 10px;">
                             <div><strong>Enhanced Structure:</strong> Mad Max/BladeBit compatible command syntax</div>
                             <div><strong>Multi-Mode Operation:</strong> Web, CLI, and Demo modes available</div>
@@ -977,7 +977,7 @@
         let connectedWallet = null;
         let walletInfo = null;
 
-        // Andy's Server Status Integration
+        // SquashPlot Server Status Integration
         let serverCheckInterval = null;
 
         const versions = {
@@ -1001,7 +1001,7 @@
             }
         };
 
-        // Andy's Server Status Integration - Check server status
+        // SquashPlot Server Status Integration - Check server status
         async function checkServerStatus() {
             const statusIndicator = document.getElementById('statusIndicator');
             const statusText = document.getElementById('statusText');
@@ -1011,7 +1011,7 @@
                 statusIndicator.className = 'status-indicator checking';
                 statusText.textContent = 'Checking server...';
 
-                // Check server using Andy's check_server.py logic
+                // Check server using SquashPlot check_server.py logic
                 const response = await fetch('/api/status', {
                     method: 'GET',
                     headers: {
@@ -1060,7 +1060,7 @@
             }
         }
 
-        // Andy's CLI Integration - Execute predefined CLI commands
+        // SquashPlot CLI Integration - Execute predefined CLI commands
         async function executeCLICommand(command) {
             const outputContent = document.getElementById('outputContent');
             outputContent.textContent = `Executing: ${command}\n\nPlease run this command in your terminal for full functionality.\n\nThis web interface provides command examples and templates.`;
@@ -1083,7 +1083,7 @@
                 return;
             }
 
-            outputContent.textContent = `Command: ${command}\n\nNote: CLI commands must be executed in your local terminal.\n\nThis web interface provides command templates and examples.\n\nAvailable commands based on Andy's improvements:\n• python main.py --web (Start web interface)\n• python main.py --cli (Start CLI mode)\n• python main.py --demo (Run demo)\n• python check_server.py (Check server status)\n• python squashplot.py [plotting options] (Mad Max style plotting)`;
+            outputContent.textContent = `Command: ${command}\n\nNote: CLI commands must be executed in your local terminal.\n\nThis web interface provides command templates and examples.\n\nAvailable SquashPlot commands:\n• python main.py --web (Start web interface)\n• python main.py --cli (Start CLI mode)\n• python main.py --demo (Run demo)\n• python check_server.py (Check server status)\n• python squashplot.py [plotting options] (Mad Max style plotting)\n• python health_server.py (Start health dashboard)`;
 
             // Show CLI tab
             switchTab('cli');
@@ -1540,7 +1540,7 @@
             calculateROI();
             updateComparisonTable();
 
-            // Andy's Server Status Integration - Start monitoring
+            // SquashPlot Server Status Integration - Start monitoring
             startServerMonitoring();
         });
     </script>

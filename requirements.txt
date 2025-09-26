@@ -8,7 +8,7 @@ psutil>=5.8.0
 # Compression libraries
 # Note: zlib, bz2, lzma are built into Python 3.6+
 
-# Andy's Enhanced Authentication & Database System (Latest Update)
+# SquashPlot Authentication & Database System
 Flask==2.3.3
 Flask-CORS==4.0.0
 Flask-SQLAlchemy==3.0.5
@@ -19,7 +19,7 @@ PyJWT>=2.9.0
 Werkzeug==2.3.7
 SQLAlchemy==2.0.21
 
-# Andy's Enhanced API Server (FastAPI + Flask)
+# SquashPlot Enhanced API Server
 fastapi>=0.75.0
 uvicorn[standard]>=0.17.0
 python-multipart>=0.0.5

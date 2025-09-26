@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SquashPlot Dashboard - Andy's Enhanced Interface</title>
+    <title>SquashPlot Dashboard - Black Glass UI/UX</title>
     <link rel="stylesheet" href="/static/css/dashboard.css">
     <link rel="icon" href="/static/favicon.ico">
     <style>
@@ -75,7 +75,7 @@
             min-height: 100vh;
         }
 
-        /* Header with Andy's Server Status - Black Glass Theme */
+        /* Header with Server Status - Black Glass Theme */
         .dashboard-header {
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
@@ -142,7 +142,7 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        /* Andy's Server Status Integration - Black Glass Theme */
+        /* Server Status Integration - Black Glass Theme */
         .server-status-widget {
             background: var(--glass-bg);
             backdrop-filter: blur(15px);
@@ -496,15 +496,15 @@
 </head>
 <body>
     <div class="dashboard-container">
-        <!-- Andy's Enhanced Header -->
+            <!-- SquashPlot Enhanced Header -->
         <header class="dashboard-header">
             <div class="header-content">
                 <div class="header-left">
                     <h1>SquashPlot Dashboard</h1>
-                    <div class="subtitle">Advanced Chia Compression with Andy's CLI Integration</div>
+                    <div class="subtitle">Advanced Chia Compression with Professional CLI Integration</div>
                 </div>
 
-                <!-- Andy's Server Status Widget -->
+                <!-- Server Status Widget -->
                 <div class="server-status-widget" id="serverStatusWidget">
                     <div class="status-indicator checking" id="statusIndicator"></div>
                     <span class="status-text" id="statusText">Checking server...</span>
@@ -565,13 +565,13 @@
                 </div>
             </div>
 
-            <!-- Andy's CLI Integration -->
+            <!-- SquashPlot CLI Integration -->
             <div class="dashboard-card cli-section">
                 <div class="card-header">
                     <div class="card-icon" style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color));">
                         💻
                     </div>
-                    <h3 class="card-title">CLI Commands - Andy's Templates</h3>
+                    <h3 class="card-title">CLI Commands - Professional Templates</h3>
                 </div>
 
                 <div class="cli-commands-grid">
@@ -592,7 +592,7 @@
 
                     <button class="cli-command-card" onclick="executeCLICommand('python check_server.py')">
                         <div class="cli-command-title">Check Server</div>
-                        <div class="cli-command-desc">Andy's server monitoring utility</div>
+                        <div class="cli-command-desc">Professional server monitoring utility</div>
                     </button>
 
                     <button class="cli-command-card" onclick="executeCLICommand('python squashplot.py -t /tmp/plot1 -d /plots -f YOUR_FARMER_KEY -p YOUR_POOL_KEY')">
@@ -659,7 +659,7 @@
     </div>
 
     <script>
-        // Andy's Server Status Integration
+        // Server Status Integration
         let serverCheckInterval = null;
         let systemMetricsInterval = null;
 
@@ -674,7 +674,7 @@
                 statusIndicator.className = 'status-indicator checking';
                 statusText.textContent = 'Checking server...';
 
-                // Use Andy's check_server.py logic with 5-second timeout
+                // Use check_server.py logic with 5-second timeout
                 const response = await fetch('/api/status', {
                     method: 'GET',
                     headers: { 'Content-Type': 'application/json' },
@@ -702,13 +702,13 @@
             }
         }
 
-        // Execute CLI command using Andy's templates
+        // Execute CLI command using professional templates
         async function executeCLICommand(command) {
             const outputDiv = document.getElementById('cliOutput');
             const outputContent = document.getElementById('outputContent');
 
             outputDiv.style.display = 'block';
-            outputContent.textContent = `Executing: ${command}\n\nNote: This is a command template.\nFor full functionality, run this command in your local terminal.\n\nAndy's CLI Integration provides these professional command structures.`;
+            outputContent.textContent = `Executing: ${command}\n\nNote: This is a command template.\nFor full functionality, run this command in your local terminal.\n\nSquashPlot provides these professional command structures.`;
 
             // Add to recent activity
             addRecentActivity(`CLI Command: ${command.split(' ')[1] || 'custom'}`);
@@ -778,7 +778,7 @@
 
         // Initialize dashboard
         document.addEventListener('DOMContentLoaded', function() {
-            // Start server monitoring (Andy's integration)
+            // Start server monitoring
             checkServerStatus();
             serverCheckInterval = setInterval(checkServerStatus, 30000); // Every 30 seconds
 
@@ -787,9 +787,9 @@
             systemMetricsInterval = setInterval(updateSystemMetrics, 10000); // Every 10 seconds
 
             // Add initial activity
-            addRecentActivity('Dashboard loaded - Andy\'s CLI integration active');
+            addRecentActivity('Dashboard loaded - Professional CLI integration active');
 
-            console.log('🧠 SquashPlot Dashboard initialized with Andy\'s enhancements');
+            console.log('🧠 SquashPlot Dashboard initialized with Professional enhancements');
         });
 
         // Cleanup on page unload
