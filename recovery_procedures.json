@@ -1,0 +1,22 @@
+{
+  "emergency_recovery": {
+    "steps": [
+      "1. Stop all services",
+      "2. Restore from latest backup",
+      "3. Verify data integrity",
+      "4. Restart services",
+      "5. Test functionality"
+    ],
+    "estimated_time": "15-30 minutes"
+  },
+  "data_recovery": {
+    "steps": [
+      "1. Identify data loss scope",
+      "2. Locate appropriate backup",
+      "3. Restore specific files",
+      "4. Verify data integrity",
+      "5. Update systems"
+    ],
+    "estimated_time": "5-15 minutes"
+  }
+}

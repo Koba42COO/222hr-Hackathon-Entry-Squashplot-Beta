@@ -1,0 +1,36 @@
+{
+  "authentication": {
+    "enabled": true,
+    "token_expiry": 3600,
+    "max_attempts": 3,
+    "lockout_duration": 300
+  },
+  "input_validation": {
+    "enabled": true,
+    "max_length": 500,
+    "dangerous_patterns": [
+      "[;&|`$]",
+      "\\.\\./",
+      "rm\\s+-rf",
+      "sudo",
+      "chmod\\s+777"
+    ]
+  },
+  "process_isolation": {
+    "enabled": true,
+    "max_execution_time": 30,
+    "max_memory_mb": 100,
+    "working_directory": "/tmp/squashplot_bridge"
+  },
+  "rate_limiting": {
+    "enabled": true,
+    "max_requests_per_minute": 10,
+    "time_window": 60
+  },
+  "audit_logging": {
+    "enabled": true,
+    "log_file": "security_audit.log",
+    "log_rotation": true,
+    "max_log_size_mb": 10
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "security_monitoring": {
+    "enabled": true,
+    "log_file": "security_audit.log",
+    "alert_threshold": 10,
+    "check_interval": 60
+  },
+  "compliance_monitoring": {
+    "enabled": true,
+    "standards": [
+      "gdpr",
+      "ccpa",
+      "ada"
+    ],
+    "check_interval": 3600
+  },
+  "performance_monitoring": {
+    "enabled": true,
+    "cpu_threshold": 80,
+    "memory_threshold": 80,
+    "disk_threshold": 90
+  },
+  "alerting": {
+    "email_enabled": false,
+    "webhook_enabled": false,
+    "log_alerts": true
+  }
+}
