@@ -708,13 +708,85 @@
             const outputContent = document.getElementById('outputContent');
 
             outputDiv.style.display = 'block';
-            outputContent.textContent = `Executing: ${command}\n\nNote: This is a command template.\nFor full functionality, run this command in your local terminal.\n\nAndy's CLI Integration provides these professional command structures.`;
+            
+            // Create a clean, professional command display
+            const commandDisplay = `
+🧠 SquashPlot CLI Command
+
+📋 Command to Copy:
+${command}
+
+📝 Instructions:
+1. Copy the command above
+2. Open your terminal/command prompt
+3. Paste and press Enter
+4. Command will run on your local machine
+
+🔒 Security Note:
+This command runs locally on your machine.
+The website only provides the template.
+
+💡 Pro Tip:
+For advanced automation, download the SquashPlot Bridge App
+            `;
+
+            outputContent.textContent = commandDisplay;
+
+            // Add copy-to-clipboard functionality
+            addCopyToClipboardButton(command);
 
             // Add to recent activity
             addRecentActivity(`CLI Command: ${command.split(' ')[1] || 'custom'}`);
+        }
 
-            // Show CLI tab
-            document.querySelector('[onclick*="cli"]').click();
+        // Add copy-to-clipboard button
+        function addCopyToClipboardButton(command) {
+            const outputDiv = document.getElementById('cliOutput');
+            
+            // Remove existing button if any
+            const existingButton = document.getElementById('copyButton');
+            if (existingButton) {
+                existingButton.remove();
+            }
+
+            // Create copy button
+            const copyButton = document.createElement('button');
+            copyButton.id = 'copyButton';
+            copyButton.innerHTML = '📋 Copy Command';
+            copyButton.style.cssText = `
+                background: linear-gradient(135deg, #00d4ff, #00ff88);
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-weight: 600;
+                margin-top: 10px;
+                transition: all 0.3s ease;
+            `;
+
+            copyButton.onclick = async () => {
+                try {
+                    await navigator.clipboard.writeText(command);
+                    copyButton.innerHTML = '✅ Copied!';
+                    copyButton.style.background = '#2ecc71';
+                    setTimeout(() => {
+                        copyButton.innerHTML = '📋 Copy Command';
+                        copyButton.style.background = 'linear-gradient(135deg, #00d4ff, #00ff88)';
+                    }, 2000);
+                } catch (err) {
+                    // Fallback for older browsers
+                    const textArea = document.createElement('textarea');
+                    textArea.value = command;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    copyButton.innerHTML = '✅ Copied!';
+                }
+            };
+
+            outputDiv.appendChild(copyButton);
         }
 
         // Execute custom CLI command
@@ -802,5 +874,8 @@
             }
         });
     </script>
+    
+    <!-- SquashPlot Bridge Integration -->
+    <script src="bridge_integration.js"></script>
 </body>
 </html>

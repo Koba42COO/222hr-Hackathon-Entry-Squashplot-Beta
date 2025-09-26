@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SquashPlot Secure Bridge App - Download</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+            min-height: 100vh;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #00d4ff;
+        }
+
+        .feature-description {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        .download-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 50px;
+        }
+
+        .download-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #00ff88;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .security-notice {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .security-notice h3 {
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+
+        .security-notice p {
+            color: #ffc107;
+            font-size: 0.9rem;
+        }
+
+        .installation-steps {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .installation-steps h3 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .step-content p {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            color: #00ff88;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        .back-to-dashboard {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🔒 SquashPlot Secure Bridge App</h1>
+            <p>Advanced CLI automation with top-level security for professional SquashPlot users</p>
+        </div>
+
+        <!-- Features -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3 class="feature-title">Top-Level Security</h3>
+                <p class="feature-description">
+                    Whitelist-only command execution with encrypted communication and authentication tokens.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Instant Automation</h3>
+                <p class="feature-description">
+                    Execute CLI commands directly from the web dashboard with one-click automation.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3 class="feature-title">Local Execution</h3>
+                <p class="feature-description">
+                    All commands run locally on your machine. No remote access or security risks.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 class="feature-title">Professional Templates</h3>
+                <p class="feature-description">
+                    Pre-built command templates for Mad Max, BladeBit, and advanced plotting operations.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3 class="feature-title">Command Validation</h3>
+                <p class="feature-description">
+                    Advanced validation prevents dangerous commands and ensures system security.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3 class="feature-title">Activity Logging</h3>
+                <p class="feature-description">
+                    Complete audit trail of all executed commands with detailed logging and monitoring.
+                </p>
+            </div>
+        </div>
+
+        <!-- Security Notice -->
+        <div class="security-notice">
+            <h3>⚠️ Security Notice</h3>
+            <p>
+                This is a closed-source, advanced security component. Only download from official SquashPlot sources.
+                The app runs locally on your machine and requires explicit user permission for all operations.
+            </p>
+        </div>
+
+        <!-- Download Section -->
+        <div class="download-section">
+            <h2>Download Secure Bridge App</h2>
+            <p style="margin-bottom: 30px; color: #b0b0b0;">
+                Choose your platform to download the secure bridge application
+            </p>
+            
+            <div class="download-buttons">
+                <a href="#" class="download-btn" onclick="downloadApp('windows')">
+                    🪟 Windows (64-bit)
+                </a>
+                <a href="#" class="download-btn" onclick="downloadApp('macos')">
+                    🍎 macOS (Intel/Apple Silicon)
+                </a>
+                <a href="#" class="download-btn" onclick="downloadApp('linux')">
+                    🐧 Linux (x64)
+                </a>
+                <a href="#" class="download-btn" onclick="downloadApp('source')">
+                    📦 Source Code
+                </a>
+            </div>
+        </div>
+
+        <!-- Installation Steps -->
+        <div class="installation-steps">
+            <h3>Installation & Setup</h3>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Download the App</h4>
+                    <p>Download the appropriate version for your operating system from the buttons above.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Extract and Install</h4>
+                    <p>Extract the downloaded file and run the installation script:</p>
+                    <div class="code-block">
+# Windows
+squashplot-bridge-install.exe
+
+# macOS/Linux
+chmod +x squashplot-bridge-install.sh
+./squashplot-bridge-install.sh
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Start the Bridge Service</h4>
+                    <p>Start the secure bridge service:</p>
+                    <div class="code-block">
+# Start the service
+python secure_bridge_app.py --daemon
+
+# Or run in foreground for testing
+python secure_bridge_app.py
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h4>Connect to Dashboard</h4>
+                    <p>Return to the SquashPlot dashboard. The bridge will automatically connect and enable advanced automation features.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Dashboard -->
+        <div class="back-to-dashboard">
+            <a href="/dashboard" class="back-btn">← Back to SquashPlot Dashboard</a>
+        </div>
+    </div>
+
+    <script>
+        function downloadApp(platform) {
+            // In production, this would trigger actual downloads
+            const downloads = {
+                'windows': 'squashplot-bridge-windows-x64.zip',
+                'macos': 'squashplot-bridge-macos-universal.zip',
+                'linux': 'squashplot-bridge-linux-x64.tar.gz',
+                'source': 'squashplot-bridge-source.zip'
+            };
+            
+            const filename = downloads[platform];
+            alert(`Download would start: ${filename}\n\nIn production, this would download the actual secure bridge application.`);
+            
+            // Simulate download
+            console.log(`Downloading ${filename}...`);
+        }
+    </script>
+</body>
+</html>

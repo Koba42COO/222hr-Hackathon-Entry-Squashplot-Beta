@@ -257,6 +257,14 @@ async def root():
                         information
                     </div>
                 </a>
+
+                <a href="/bridge-download" class="interface-card">
+                    <div class="interface-title">🔒 Secure Bridge App</div>
+                    <div class="interface-desc">
+                        Download the advanced CLI automation bridge for
+                        professional users with top-level security
+                    </div>
+                </a>
             </div>
 
             <div class="status">
@@ -427,6 +435,19 @@ async def original_interface():
         return HTMLResponse("""
         <h1>Original Interface Not Found</h1>
         <p>The original interface file is not available.</p>
+        <a href="/">Back to main interface</a>
+        """)
+
+@app.get("/bridge-download", response_class=HTMLResponse)
+async def bridge_download():
+    """Serve the Secure Bridge App download page"""
+    try:
+        with open("bridge_download.html", "r", encoding="utf-8") as f:
+            return f.read()
+    except FileNotFoundError:
+        return HTMLResponse("""
+        <h1>Bridge Download Not Available</h1>
+        <p>The Secure Bridge App download page is not available.</p>
         <a href="/">Back to main interface</a>
         """)
 
