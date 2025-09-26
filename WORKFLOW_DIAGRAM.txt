@@ -1,0 +1,119 @@
+🔄 SQUASHPLOT CLI BRIDGE WORKFLOW
+=====================================
+
+USER EXPERIENCE FLOW:
+
+1. 🌐 USER VISITS WEBSITE
+   ┌─────────────────────────────────────┐
+   │  SquashPlot Dashboard              │
+   │  ┌─────────────────────────────────┐│
+   │  │ [Start Web Interface] Button    ││
+   │  │ [Basic Plotting] Button         ││
+   │  │ [Check Server] Button           ││
+   │  │ [Custom Command] Input          ││
+   │  └─────────────────────────────────┘│
+   └─────────────────────────────────────┘
+                    │
+                    │ CLICK
+                    ▼
+
+2. 📋 COMMAND TEMPLATE DISPLAYED
+   ┌─────────────────────────────────────┐
+   │  Command Output Panel               │
+   │  ┌─────────────────────────────────┐│
+   │  │ Executing: python main.py --web ││
+   │  │                                 ││
+   │  │ Note: This is a command template││
+   │  │ For full functionality, run this││
+   │  │ command in your local terminal  ││
+   │  │                                 ││
+   │  │ [COPY TO CLIPBOARD]             ││
+   │  └─────────────────────────────────┘│
+   └─────────────────────────────────────┘
+                    │
+                    │ USER COPIES
+                    ▼
+
+3. 💻 USER'S LOCAL TERMINAL
+   ┌─────────────────────────────────────┐
+   │  User's Command Prompt/Terminal     │
+   │  ┌─────────────────────────────────┐│
+   │  │ $ python main.py --web          ││
+   │  │ 🚀 Starting SquashPlot Web...   ││
+   │  │ 📡 Server: http://localhost:8080││
+   │  │ ✅ Dashboard ready!             ││
+   │  └─────────────────────────────────┘│
+   └─────────────────────────────────────┘
+                    │
+                    │ EXECUTES LOCALLY
+                    ▼
+
+4. 🖥️ LOCAL SQUASHPLOT RUNNING
+   ┌─────────────────────────────────────┐
+   │  User's Local Machine               │
+   │  ┌─────────────────────────────────┐│
+   │  │ SquashPlot Application          ││
+   │  │ • Web Dashboard Running         ││
+   │  │ • CLI Commands Available        ││
+   │  │ • Compression Engine Active     ││
+   │  │ • System Monitoring Enabled     ││
+   │  └─────────────────────────────────┘│
+   └─────────────────────────────────────┘
+
+SECURITY FEATURES:
+
+🛡️ NO REMOTE EXECUTION
+   • Commands NEVER run on web server
+   • All execution happens on user's machine
+   • Website only provides templates
+
+🔒 COMMAND VALIDATION (Optional CLI Bridge)
+   • Whitelist of safe commands only
+   • Directory restrictions
+   • Timeout protection
+   • Blocked dangerous operations
+
+⚡ USER CONTROL
+   • Users decide what to execute
+   • Users control their local environment
+   • No automatic code execution
+
+AVAILABLE COMMAND TEMPLATES:
+
+📊 SYSTEM COMMANDS:
+   • python main.py --web     (Start Dashboard)
+   • python main.py --cli     (CLI Mode)
+   • python main.py --demo    (Demo Mode)
+   • python check_server.py   (Server Check)
+
+🌱 PLOTTING COMMANDS:
+   • python squashplot.py -t /tmp/plot1 -d /plots -f FARMER_KEY -p POOL_KEY
+   • python squashplot.py --compress 3 -t /tmp/plot1 -d /plots -f FARMER_KEY -p POOL_KEY
+   • python squashplot.py -t /tmp/plot1 -2 /tmp/plot2 -d /plots -f FARMER_KEY -p POOL_KEY -n 2
+
+🔧 CUSTOM COMMANDS:
+   • Users can enter any custom command
+   • Displayed as template for local execution
+   • Professional command structure guidance
+
+BENEFITS FOR USERS:
+
+✅ PROFESSIONAL TEMPLATES
+   • Ready-to-use commands
+   • Mad Max/BladeBit compatible
+   • Andy's enhanced structures
+
+✅ SECURE EXECUTION
+   • No remote code execution risks
+   • Local control and validation
+   • Safe command templates only
+
+✅ EASY WORKFLOW
+   • Click → Copy → Paste → Execute
+   • Clear instructions provided
+   • Professional command structure
+
+✅ EDUCATIONAL
+   • Learn proper command syntax
+   • Understand plotting parameters
+   • Professional development practices

@@ -408,7 +408,7 @@ async def api_status():
 async def dashboard():
     """Serve the enhanced SquashPlot dashboard"""
     try:
-        with open("squashplot_dashboard.html", "r") as f:
+        with open("squashplot_dashboard.html", "r", encoding="utf-8") as f:
             return f.read()
     except FileNotFoundError:
         return HTMLResponse("""
@@ -421,7 +421,7 @@ async def dashboard():
 async def original_interface():
     """Serve the original SquashPlot interface"""
     try:
-        with open("squashplot_web_interface.html", "r") as f:
+        with open("squashplot_web_interface.html", "r", encoding="utf-8") as f:
             return f.read()
     except FileNotFoundError:
         return HTMLResponse("""
