@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login - Enterprise prime aligned compute Platform</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="login-container">
+    <div class="logo-section">
+      <h1>Enterprise prime aligned compute Platform</h1>
+      <p>Advanced AI-Powered prime aligned compute Processing</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" formControlName="email" (ionInput)="clearError()"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" formControlName="password" (ionInput)="clearError()"></ion-input>
+      </ion-item>
+
+      <ion-button 
+        expand="block" 
+        type="submit" 
+        [disabled]="!loginForm.valid || loading"
+        class="login-button">
+        <ion-spinner *ngIf="loading" name="crescent"></ion-spinner>
+        <span *ngIf="!loading">Sign In</span>
+      </ion-button>
+    </form>
+
+    <ion-item *ngIf="error" lines="none" class="error-message">
+      <ion-icon name="alert-circle" color="danger" slot="start"></ion-icon>
+      <ion-label color="danger">{{ error }}</ion-label>
+    </ion-item>
+
+    <div class="register-link">
+      <p>Don't have an account? <a routerLink="/register">Register here</a></p>
+    </div>
+
+    <!-- Admin Quick Login -->
+    <ion-card class="admin-quick-login">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="shield-checkmark" color="warning"></ion-icon>
+          Admin Quick Access
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Username:</strong> admin</p>
+        <p><strong>Password:</strong> admin123</p>
+        <ion-button 
+          expand="block" 
+          fill="outline" 
+          color="warning"
+          (click)="quickAdminLogin()"
+          [disabled]="loading">
+          <ion-icon name="flash" slot="start"></ion-icon>
+          Quick Admin Login
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

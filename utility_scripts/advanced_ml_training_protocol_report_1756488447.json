@@ -1,0 +1,21 @@
+{
+  "demonstration_timestamp": "2025-08-29T13:27:27.616247",
+  "mastery_result": {
+    "reverse_learning_result": {
+      "complexity_score": 1.0,
+      "identified_domains": [
+        "computer_science",
+        "physics"
+      ],
+      "reverse_learning_path": [
+        "1. Master the complete system overview (Optimization: 3.233)",
+        "2. Understand advanced applications and edge cases (Optimization: 0.912)",
+        "3. Learn intermediate concepts and patterns (Optimization: 0.107)",
+        "4. Grasp fundamental principles and core concepts (Optimization: 0.611)",
+        "5. Master basic building blocks and fundamentals (Optimization: 0.841)",
+        "6. Achieve complete foundational understanding (Optimization: 0.909)"
+      ],
+      "learning_optimization": 0.9089283118982336,
+      "intake_timestamp": "2025-08-29T13:27:27.455192"
+    },
+    "training_plan": 

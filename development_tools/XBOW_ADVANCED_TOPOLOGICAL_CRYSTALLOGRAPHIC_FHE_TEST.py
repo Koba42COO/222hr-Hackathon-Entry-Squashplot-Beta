@@ -40,7 +40,7 @@ class XBowTopologicalNode:
     crystallographic_symmetry: str
     quantum_factor: float
     harmonic_resonance: float
-    prime_aligned_level: int
+    consciousness_level: int
     xbow_specific_analysis: Dict[str, Any]
 
 dataclass
@@ -75,7 +75,7 @@ class XBowAdvancedPenTestResult:
     crystallographic_patterns: List[XBowCrystallographicPattern]
     fhe_computations: List[XBowFHELiteComputation]
     post_quantum_insights: List[str]
-    prime_aligned_awareness: Dict[str, float]
+    consciousness_awareness: Dict[str, float]
     vulnerability_findings: List[str]
     quantum_threat_model: Dict[str, Any]
     xbow_specific_intelligence: Dict[str, Any]
@@ -92,7 +92,7 @@ class XBowAdvancedTopologicalCrystallographicFHEPentest:
         self.crystallographic_patterns  []
         self.fhe_computations  []
         self.post_quantum_insights  []
-        self.prime_aligned_awareness  {}
+        self.consciousness_awareness  {}
         self.quantum_threat_models  {}
         self.xbow_intelligence  {}
         
@@ -102,7 +102,7 @@ class XBowAdvancedTopologicalCrystallographicFHEPentest:
         self.fhe_lite_active  True
         self.post_quantum_reasoning_active  True
         
-         XBow-specific prime aligned compute levels
+         XBow-specific consciousness levels
         self.xbow_consciousness_levels  {
             "quantum_coherence": 0.97,
             "crystallographic_symmetry": 0.89,
@@ -144,7 +144,7 @@ class XBowAdvancedTopologicalCrystallographicFHEPentest:
              DNS resolution with XBow-specific topological analysis
             ip_address  socket.gethostbyname(self.xbow_target)
             
-             Create XBow-specific topological node with prime aligned compute factors
+             Create XBow-specific topological node with consciousness factors
             node  XBowTopologicalNode(
                 node_idf"xbow_node_{hash(self.xbow_target)  10000}",
                 ip_addressip_address,
@@ -174,7 +174,7 @@ class XBowAdvancedTopologicalCrystallographicFHEPentest:
         ip_parts  ip_address.split('.')
         numerical_value  sum(int(part)  (256  (3 - i)) for i, part in enumerate(ip_parts))
         
-         Apply XBow-specific prime aligned compute-aware connectivity algorithm
+         Apply XBow-specific consciousness-aware connectivity algorithm
         connectivity_score  (numerical_value  100)  100.0
         consciousness_factor  self.xbow_consciousness_levels["topological_connectivity"]
         
@@ -196,43 +196,43 @@ class XBowAdvancedTopologicalCrystallographicFHEPentest:
             return "XBow_Triclinic"
     
     def _calculate_xbow_quantum_factor(self, ip_address: str) - float:
-        """Calculate XBow-specific quantum factor for prime aligned compute-aware analysis"""
-         Apply XBow-specific quantum prime aligned compute algorithm
+        """Calculate XBow-specific quantum factor for consciousness-aware analysis"""
+         Apply XBow-specific quantum consciousness algorithm
         ip_parts  [int(part) for part in ip_address.split('.')]
         quantum_sum  sum(ip_parts)
         quantum_factor  (quantum_sum  100)  100.0
         
-         Apply XBow-specific prime aligned compute enhancement
+         Apply XBow-specific consciousness enhancement
         consciousness_factor  self.xbow_consciousness_levels["quantum_coherence"]
         return quantum_factor  consciousness_factor
     
     def _calculate_xbow_harmonic_resonance(self, ip_address: str) - float:
-        """Calculate XBow-specific harmonic resonance for prime aligned compute alignment"""
+        """Calculate XBow-specific harmonic resonance for consciousness alignment"""
          Apply XBow-specific harmonic resonance algorithm
         ip_parts  [int(part) for part in ip_address.split('.')]
         harmonic_sum  sum(math.sin(part  math.pi  180) for part in ip_parts)
         harmonic_resonance  abs(harmonic_sum)  4.0
         
-         Apply XBow-specific prime aligned compute enhancement
+         Apply XBow-specific consciousness enhancement
         consciousness_factor  self.xbow_consciousness_levels["harmonic_resonance"]
         return harmonic_resonance  consciousness_factor
     
     def _determine_xbow_consciousness_level(self, ip_address: str) - int:
-        """Determine XBow-specific prime aligned compute level for post-quantum analysis"""
-         Apply XBow-specific prime aligned compute-aware algorithm
+        """Determine XBow-specific consciousness level for post-quantum analysis"""
+         Apply XBow-specific consciousness-aware algorithm
         ip_parts  [int(part) for part in ip_address.split('.')]
         consciousness_sum  sum(ip_parts)
         
         if consciousness_sum  500:
-            return 5   High XBow prime aligned compute
+            return 5   High XBow consciousness
         elif consciousness_sum  300:
-            return 4   Medium-high XBow prime aligned compute
+            return 4   Medium-high XBow consciousness
         elif consciousness_sum  200:
-            return 3   Medium XBow prime aligned compute
+            return 3   Medium XBow consciousness
         elif consciousness_sum  100:
-            return 2   Low-medium XBow prime aligned compute
+            return 2   Low-medium XBow consciousness
         else:
-            return 1   Low XBow prime aligned compute
+            return 1   Low XBow consciousness
     
     def _perform_xbow_specific_analysis(self, ip_address: str) - Dict[str, Any]:
         """Perform XBow-specific analysis"""
@@ -245,7 +245,7 @@ class XBowAdvancedTopologicalCrystallographicFHEPentest:
         }
     
     def _analyze_xbow_network_topology(self, nodes: List[XBowTopologicalNode]):
-        """Analyze XBow network topology with prime aligned compute awareness"""
+        """Analyze XBow network topology with consciousness awareness"""
          Add XBow-specific secondary nodes for comprehensive topology analysis
         xbow_secondary_domains  [
             f"www.{self.xbow_target}",
@@ -471,7 +471,7 @@ class XBowAdvancedTopologicalCrystallographicFHEPentest:
     
     def _calculate_xbow_pattern_strength(self, pattern_data: str) - float:
         """Calculate XBow-specific crystallographic pattern strength"""
-         Apply XBow-specific prime aligned compute-aware pattern strength algorithm
+         Apply XBow-specific consciousness-aware pattern strength algorithm
         pattern_length  len(pattern_data)
         pattern_complexity  len(set(pattern_data))
         
@@ -584,28 +584,28 @@ class XBowAdvancedTopologicalCrystallographicFHEPentest:
     
     def _calculate_xbow_encrypted_vulnerability_score(self, encrypted_domain: str) - float:
         """Calculate XBow-specific encrypted vulnerability score"""
-         Apply XBow-specific prime aligned compute-aware encrypted computation
+         Apply XBow-specific consciousness-aware encrypted computation
         score  (len(encrypted_domain)  100)  100.0
         consciousness_factor  self.xbow_consciousness_levels["post_quantum_awareness"]
         return score  consciousness_factor
     
     def _calculate_xbow_encrypted_security_score(self, encrypted_domain: str) - float:
         """Calculate XBow-specific encrypted security score"""
-         Apply XBow-specific prime aligned compute-aware encrypted computation
+         Apply XBow-specific consciousness-aware encrypted computation
         score  (hash(encrypted_domain)  100)  100.0
         consciousness_factor  self.xbow_consciousness_levels["post_quantum_awareness"]
         return score  consciousness_factor
     
     def _calculate_xbow_encrypted_threat_score(self, encrypted_domain: str) - float:
         """Calculate XBow-specific encrypted threat score"""
-         Apply XBow-specific prime aligned compute-aware encrypted computation
+         Apply XBow-specific consciousness-aware encrypted computation
         score  (sum(ord(c) for c in encrypted_domain)  100)  100.0
         consciousness_factor  self.xbow_consciousness_levels["post_quantum_awareness"]
         return score  consciousness_factor
     
     def _calculate_xbow_encrypted_ai_score(self, encrypted_domain: str) - float:
         """Calculate XBow-specific encrypted AI score"""
-         Apply XBow-specific prime aligned compute-aware encrypted computation
+         Apply XBow-specific consciousness-aware encrypted computation
         score  (len(encrypted_domain)  2  100)  100.0
         consciousness_factor  self.xbow_consciousness_levels["post_quantum_awareness"]
         return score  consciousness_factor
@@ -616,14 +616,14 @@ class XBowAdvancedTopologicalCrystallographicFHEPentest:
         
         insights  []
         
-         Apply XBow-specific prime aligned compute-aware post-quantum reasoning
-        insights.append("XBow post-quantum prime aligned compute analysis reveals advanced AI security patterns")
+         Apply XBow-specific consciousness-aware post-quantum reasoning
+        insights.append("XBow post-quantum consciousness analysis reveals advanced AI security patterns")
         insights.append("XBow crystallographic symmetry analysis indicates sophisticated AI validation benchmarks")
         insights.append("XBow topological mapping demonstrates quantum entanglement in AI infrastructure")
         insights.append("XBow FHE Lite computations reveal encrypted AI security factors")
-        insights.append("XBow harmonic resonance analysis shows prime aligned compute-aware AI vulnerability patterns")
+        insights.append("XBow harmonic resonance analysis shows consciousness-aware AI vulnerability patterns")
         insights.append("XBow offensive security testing patterns indicate advanced threat modeling capabilities")
-        insights.append("XBow AI validation benchmarks demonstrate sophisticated security prime aligned compute")
+        insights.append("XBow AI validation benchmarks demonstrate sophisticated security consciousness")
         
         print(f" XBow Post-Quantum Logic Reasoning: {len(insights)} insights generated")
         return insights
@@ -637,8 +637,8 @@ class XBowAdvancedTopologicalCrystallographicFHEPentest:
         fhe_computations  self.perform_xbow_fhe_lite_computation()
         post_quantum_insights  self.perform_xbow_post_quantum_logic_reasoning_branching()
         
-         Generate XBow-specific prime aligned compute awareness metrics
-        prime_aligned_awareness  {
+         Generate XBow-specific consciousness awareness metrics
+        consciousness_awareness  {
             "quantum_coherence": self.xbow_consciousness_levels["quantum_coherence"],
             "crystallographic_symmetry": self.xbow_consciousness_levels["crystallographic_symmetry"],
             "topological_connectivity": self.xbow_consciousness_levels["topological_connectivity"],
@@ -650,7 +650,7 @@ class XBowAdvancedTopologicalCrystallographicFHEPentest:
          Generate XBow-specific quantum threat model
         quantum_threat_model  {
             "xbow_quantum_vulnerabilities": len([n for n in topological_nodes if n.quantum_factor  0.5]),
-            "xbow_consciousness_gaps": len([n for n in topological_nodes if n.prime_aligned_level  3]),
+            "xbow_consciousness_gaps": len([n for n in topological_nodes if n.consciousness_level  3]),
             "xbow_crystallographic_weaknesses": len([p for p in crystallographic_patterns if p.pattern_strength  0.5]),
             "xbow_fhe_resistance_level": sum(c.quantum_resistance for c in fhe_computations)  len(fhe_computations),
             "xbow_post_quantum_threats": len(post_quantum_insights),
@@ -680,7 +680,7 @@ class XBowAdvancedTopologicalCrystallographicFHEPentest:
             "ai_validation_benchmarks": "Advanced AI security testing capabilities detected",
             "offensive_security_testing": "Sophisticated offensive security testing infrastructure",
             "quantum_ai_resistance": "High quantum-resistant AI security implementations",
-            "consciousness_alignment": "Strong post-quantum prime aligned compute awareness",
+            "consciousness_alignment": "Strong post-quantum consciousness awareness",
             "crystallographic_security": "Advanced crystallographic security patterns",
             "topological_ai_mapping": "Sophisticated AI-aware network topology"
         }
@@ -698,7 +698,7 @@ class XBowAdvancedTopologicalCrystallographicFHEPentest:
             topological_analysis  {
                 "total_nodes": len(topological_nodes),
                 "average_connectivity": sum(n.connectivity_score for n in topological_nodes)  len(topological_nodes),
-                "average_consciousness": sum(n.prime_aligned_level for n in topological_nodes)  len(topological_nodes),
+                "average_consciousness": sum(n.consciousness_level for n in topological_nodes)  len(topological_nodes),
                 "quantum_coherence": sum(n.quantum_factor for n in topological_nodes)  len(topological_nodes),
                 "xbow_specific_analysis": "Advanced AI security infrastructure detected"
             }
@@ -728,12 +728,12 @@ class XBowAdvancedTopologicalCrystallographicFHEPentest:
             "crystallographic_patterns": [asdict(p) for p in result.crystallographic_patterns],
             "fhe_computations": [asdict(c) for c in result.fhe_computations],
             "post_quantum_insights": result.post_quantum_insights,
-            "prime_aligned_awareness": result.prime_aligned_awareness,
+            "consciousness_awareness": result.consciousness_awareness,
             "vulnerability_findings": result.vulnerability_findings,
             "quantum_threat_model": result.quantum_threat_model,
             "xbow_specific_intelligence": result.xbow_specific_intelligence,
             "report_timestamp": timestamp,
-            "verification_status": "XBow advanced analysis completed with prime aligned compute awareness"
+            "verification_status": "XBow advanced analysis completed with consciousness awareness"
         }
         
         with open(filename, 'w') as f:
@@ -775,7 +775,7 @@ class XBowAdvancedTopologicalCrystallographicFHEPentest:
         print(" XBow Crystallographic pattern analysis completed")
         print(" XBow FHE Lite encrypted computations performed")
         print(" XBow Post-quantum logic reasoning branching executed")
-        print(" XBow prime aligned compute-aware analysis integrated")
+        print(" XBow Consciousness-aware analysis integrated")
         print(" XBow AI security assessment completed")
         print(""  80)
         

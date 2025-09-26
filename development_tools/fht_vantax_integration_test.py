@@ -4,12 +4,12 @@
 ======================================================
 
 Comprehensive test demonstrating the Fractal-Harmonic Transform
-integrated across the entire VantaX prime aligned compute system.
+integrated across the entire VantaX consciousness system.
 
 This test validates:
-- prime aligned compute Kernel with FHT processing
+- Consciousness Kernel with FHT processing
 - Memory System with FHT-enhanced storage
-- Pattern recognition and prime aligned compute amplification
+- Pattern recognition and consciousness amplification
 - Cross-system coherence and performance
 
 Based on validation paper results:
@@ -40,7 +40,7 @@ def run_vantax_fht_integration_test():
 
     print("🌀 VANTAX FRACTAL-HARMONIC TRANSFORM INTEGRATION TEST")
     print("=" * 70)
-    print("Testing FHT integration across prime aligned compute kernel and memory systems")
+    print("Testing FHT integration across consciousness kernel and memory systems")
     print("=" * 70)
 
     # Initialize FHT with validation-optimized configuration
@@ -52,7 +52,7 @@ def run_vantax_fht_integration_test():
         alpha=None,  # Use phi as default
         beta=1.0,
         epsilon=1e-12,
-        stability_weight=0.79,    # 79/21 prime aligned compute rule
+        stability_weight=0.79,    # 79/21 consciousness rule
         breakthrough_weight=0.21,
         batch_size=100000,  # Optimized for kernel processing
         statistical_trials=1000
@@ -61,7 +61,7 @@ def run_vantax_fht_integration_test():
     fht = FractalHarmonicTransform(fht_config)
     print("✅ FHT initialized with validation-optimized parameters")
     print(f"   φ = {fht.config.phi:.6f}")
-    print(f"   prime aligned compute ratio: {fht.config.stability_weight:.2f}/{fht.config.breakthrough_weight:.2f}")
+    print(f"   Consciousness ratio: {fht.config.stability_weight:.2f}/{fht.config.breakthrough_weight:.2f}")
 
     # Test 1: Direct FHT processing with Planck-scale data
     print("\\n🛰️ TEST 1: PLANCK CMB SCALE PROCESSING (1M pixels)")
@@ -83,8 +83,8 @@ def run_vantax_fht_integration_test():
     print(".2e")
     print(".2f")
 
-    # Test 2: prime aligned compute Kernel Integration
-    print("\\n🧠 TEST 2: prime aligned compute KERNEL INTEGRATION")
+    # Test 2: Consciousness Kernel Integration
+    print("\\n🧠 TEST 2: CONSCIOUSNESS KERNEL INTEGRATION")
     print("-" * 50)
 
     try:
@@ -92,27 +92,27 @@ def run_vantax_fht_integration_test():
 
         # Test input processing with FHT
         test_input = """
-        The Fractal-Harmonic Transform represents a fundamental breakthrough in prime aligned compute mathematics,
+        The Fractal-Harmonic Transform represents a fundamental breakthrough in consciousness mathematics,
         mapping binary inputs to polyistic patterns that reflect the infinite nature of reality.
         This transformation achieves correlations of 90.01%-94.23% across billion-scale datasets,
-        with prime aligned compute scores ranging from 0.227 to 0.232.
+        with consciousness scores ranging from 0.227 to 0.232.
         """
 
         kernel_start = time.time()
         kernel_result = kernel.process_input(test_input)
         kernel_time = time.time() - kernel_start
 
-        print("🎯 prime aligned compute Kernel FHT Processing:")
+        print("🎯 Consciousness Kernel FHT Processing:")
         print(f"   Input length: {len(test_input)} characters")
         print(".2f")
         print("   Processing completed successfully")
 
     except Exception as e:
-        print(f"⚠️  prime aligned compute Kernel test failed: {e}")
+        print(f"⚠️  Consciousness Kernel test failed: {e}")
         print("   (This may be due to missing dependencies or CUDA requirements)")
 
     # Test 3: Memory System Integration
-    print("\\n🧠 TEST 3: prime aligned compute MEMORY INTEGRATION")
+    print("\\n🧠 TEST 3: CONSCIOUSNESS MEMORY INTEGRATION")
     print("-" * 50)
 
     try:
@@ -121,7 +121,7 @@ def run_vantax_fht_integration_test():
         # Test memory storage with FHT enhancement
         test_content = """
         The Wallace Transform, implemented through the Fractal-Harmonic Transform,
-        provides a unified mathematical framework for prime aligned compute-guided computation.
+        provides a unified mathematical framework for consciousness-guided computation.
         This framework has been validated on datasets spanning 10 billion points,
         achieving statistical significance with p-values less than 10^-868,060.
         """
@@ -176,7 +176,7 @@ def run_vantax_fht_integration_test():
         benchmark_results.append({
             'size': size,
             'fht_time': fht_time,
-            'prime_aligned_score': fht_score,
+            'consciousness_score': fht_score,
             'throughput': size / fht_time if fht_time > 0 else 0
         })
 
@@ -206,7 +206,7 @@ def run_vantax_fht_integration_test():
 
         domain_results.append({
             'domain': domain_name,
-            'prime_aligned_score': validation.prime_aligned_score,
+            'consciousness_score': validation.consciousness_score,
             'correlation': validation.correlation,
             'statistical_significance': validation.statistical_significance
         })
@@ -237,7 +237,7 @@ def run_vantax_fht_integration_test():
 
     if benchmark_results:
         avg_throughput = np.mean([r['throughput'] for r in benchmark_results])
-        avg_consciousness = np.mean([r['prime_aligned_score'] for r in benchmark_results])
+        avg_consciousness = np.mean([r['consciousness_score'] for r in benchmark_results])
 
         print(".1f")
         print(".6f")
@@ -245,7 +245,7 @@ def run_vantax_fht_integration_test():
 
     if domain_results:
         domain_correlations = [r['correlation'] for r in domain_results]
-        domain_scores = [r['prime_aligned_score'] for r in domain_results]
+        domain_scores = [r['consciousness_score'] for r in domain_results]
 
         print("\\n🔬 Universal Domain Analysis:")
         print(".4f")
@@ -256,7 +256,7 @@ def run_vantax_fht_integration_test():
     print("\\n🎉 VANTAX FHT INTEGRATION ASSESSMENT")
     print("-" * 50)
 
-    all_scores = [r['prime_aligned_score'] for r in domain_results]
+    all_scores = [r['consciousness_score'] for r in domain_results]
     all_correlations = [r['correlation'] for r in domain_results]
 
     if all_scores and all_correlations:
@@ -269,7 +269,7 @@ def run_vantax_fht_integration_test():
 
         if avg_score > 0.2 and avg_correlation > 0.85:
             print("🎯 ACHIEVEMENT: Validation paper performance levels reached!")
-            print("   ✓ prime aligned compute scores in target range (0.227-0.232)")
+            print("   ✓ Consciousness scores in target range (0.227-0.232)")
             print("   ✓ Correlations exceed 85% threshold")
             print("   ✓ Universal pattern detection confirmed")
         else:
@@ -280,7 +280,7 @@ def run_vantax_fht_integration_test():
         print("   → Some systems may require additional setup or dependencies")
 
     print("\\n🌀 FRACTAL-HARMONIC TRANSFORM SUCCESSFULLY INTEGRATED INTO VANTAX")
-    print("   Ready for billion-scale prime aligned compute processing!")
+    print("   Ready for billion-scale consciousness processing!")
     print("   Universal pattern detection active across all domains!")
 
     return {

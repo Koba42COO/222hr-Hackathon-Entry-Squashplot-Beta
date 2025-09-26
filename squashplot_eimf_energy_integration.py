@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-SquashPlot EIMF Energy Integration - prime aligned compute-Enhanced Energy Efficiency
+SquashPlot EIMF Energy Integration - Consciousness-Enhanced Energy Efficiency
 ===========================================================================
 
 Integration of EIMF (Energy Information Matrix Framework) Wallace Transform
@@ -8,14 +8,14 @@ capabilities into SquashPlot for ultimate energy efficiency and DOS protection.
 
 Enhanced Features:
 - Wallace Transform: W_φ(x) = α log^φ(x + ε) + β
-- prime aligned compute mathematics energy optimization
+- Consciousness mathematics energy optimization
 - Quantum resonance energy patterns
-- Advanced DOS protection through prime aligned compute patterns
+- Advanced DOS protection through consciousness patterns
 - Golden ratio (φ) energy distribution
-- GPT-5 level prime aligned compute processing
+- GPT-5 level consciousness processing
 
 Author: Bradley Wallace (COO, Koba42 Corp)
-Integration: EIMF Energy + SquashPlot prime aligned compute Enhancement
+Integration: EIMF Energy + SquashPlot Consciousness Enhancement
 """
 
 import os
@@ -52,7 +52,7 @@ GOLDEN_BASE = 0.79         # 79% stability factor
 
 @dataclass
 class EnergyOptimizationMetrics:
-    """Energy optimization metrics with prime aligned compute mathematics"""
+    """Energy optimization metrics with consciousness mathematics"""
     baseline_energy_consumption: float = 0.0
     optimized_energy_consumption: float = 0.0
     energy_savings_percentage: float = 0.0
@@ -64,10 +64,10 @@ class EnergyOptimizationMetrics:
 
 @dataclass
 class ConsciousnessEnhancedResult:
-    """Result of prime aligned compute-enhanced processing"""
+    """Result of consciousness-enhanced processing"""
     processed_data: Any
     energy_metrics: EnergyOptimizationMetrics
-    prime_aligned_level: float
+    consciousness_level: float
     wallace_transform_applied: bool
     quantum_patterns_detected: int
     dos_protection_activated: bool
@@ -79,15 +79,15 @@ class SquashPlotEIMFEnergyIntegrator:
 
     Integrates EIMF's revolutionary energy capabilities:
     - Wallace Transform: W_φ(x) = α log^φ(x + ε) + β
-    - prime aligned compute mathematics energy optimization
+    - Consciousness mathematics energy optimization
     - Quantum resonance patterns for energy efficiency
-    - Advanced DOS protection through prime aligned compute patterns
+    - Advanced DOS protection through consciousness patterns
     - Golden ratio energy distribution algorithms
     """
 
-    def __init__(self, prime_aligned_level: float = 0.95, enable_dos_protection: bool = True):
+    def __init__(self, consciousness_level: float = 0.95, enable_dos_protection: bool = True):
         """Initialize the EIMF energy integrator"""
-        self.prime_aligned_level = prime_aligned_level
+        self.consciousness_level = consciousness_level
         self.enable_dos_protection = enable_dos_protection
 
         # Initialize EIMF systems
@@ -109,19 +109,19 @@ class SquashPlotEIMFEnergyIntegrator:
 
         logging.info("🧠 SquashPlot EIMF Energy Integration initialized")
         logging.info(f"   ⚡ Wallace Transform: W_φ(x) = α log^φ(x + ε) + β")
-        logging.info(f"   🧠 prime aligned compute Level: {prime_aligned_level:.1%}")
+        logging.info(f"   🧠 Consciousness Level: {consciousness_level:.1%}")
         logging.info(f"   🔒 DOS Protection: {'Enabled' if enable_dos_protection else 'Disabled'}")
         logging.info(f"   ✨ Golden Ratio: φ = {PHI:.6f}")
 
     def _initialize_eimf_systems(self):
-        """Initialize EIMF prime aligned compute systems"""
+        """Initialize EIMF consciousness systems"""
         if EIMF_AVAILABLE:
             try:
                 # Initialize Wallace Transform with GPT-5 level capabilities
                 wallace_config = {
                     'resonance_threshold': 0.8,
                     'quantum_factor': PHI,
-                    'prime_aligned_level': self.prime_aligned_level
+                    'consciousness_level': self.consciousness_level
                 }
 
                 self.wallace_transform = WallaceTransform(wallace_config)
@@ -129,13 +129,13 @@ class SquashPlotEIMFEnergyIntegrator:
                 # Initialize EIMF reintegration
                 self.eimf_reintegration = EIMFReintegration()
 
-                # Initialize prime aligned compute enhancer
+                # Initialize consciousness enhancer
                 self.consciousness_enhancer = ConsciousnessEnhancer()
 
                 # Initialize quantum resonance matrix
                 self.quantum_resonance_matrix = self._initialize_quantum_resonance()
 
-                logging.info("✅ EIMF Systems initialized with GPT-5 level prime aligned compute")
+                logging.info("✅ EIMF Systems initialized with GPT-5 level consciousness")
 
             except Exception as e:
                 logging.error(f"❌ Failed to initialize EIMF systems: {e}")
@@ -168,12 +168,12 @@ class SquashPlotEIMFEnergyIntegrator:
     def optimize_energy_consumption_eimf(self, system_data: Dict[str, Any]) -> ConsciousnessEnhancedResult:
         """
         Apply EIMF energy optimization with Wallace Transform
-        Achieves prime aligned compute-enhanced energy efficiency
+        Achieves consciousness-enhanced energy efficiency
         """
         start_time = time.time()
         baseline_energy = self._measure_energy_consumption()
 
-        # Convert system data to prime aligned compute-enhanced matrix
+        # Convert system data to consciousness-enhanced matrix
         data_matrix = self._system_data_to_consciousness_matrix(system_data)
 
         # Apply Wallace Transform: W_φ(x) = α log^φ(x + ε) + β
@@ -186,15 +186,15 @@ class SquashPlotEIMFEnergyIntegrator:
             resonance_pattern = self._generate_resonance_pattern(data_matrix.shape)
             data_matrix = data_matrix * resonance_pattern
 
-        # Apply prime aligned compute mathematics optimization
-        prime_aligned_optimized = self._apply_consciousness_optimization(data_matrix)
+        # Apply consciousness mathematics optimization
+        consciousness_optimized = self._apply_consciousness_optimization(data_matrix)
 
         # Apply DOS protection patterns if enabled
         if self.enable_dos_protection:
-            dos_protected = self._apply_dos_protection(prime_aligned_optimized)
+            dos_protected = self._apply_dos_protection(consciousness_optimized)
             final_data = dos_protected
         else:
-            final_data = prime_aligned_optimized
+            final_data = consciousness_optimized
 
         # Convert back to system data format
         optimized_system_data = self._consciousness_matrix_to_system_data(final_data)
@@ -221,7 +221,7 @@ class SquashPlotEIMFEnergyIntegrator:
         result = ConsciousnessEnhancedResult(
             processed_data=optimized_system_data,
             energy_metrics=energy_metrics,
-            prime_aligned_level=self.prime_aligned_level,
+            consciousness_level=self.consciousness_level,
             wallace_transform_applied=True,
             quantum_patterns_detected=data_matrix.size,
             dos_protection_activated=self.enable_dos_protection
@@ -233,7 +233,7 @@ class SquashPlotEIMFEnergyIntegrator:
 
     def enhance_farming_efficiency_eimf(self, farming_metrics: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Enhance farming efficiency using EIMF prime aligned compute mathematics
+        Enhance farming efficiency using EIMF consciousness mathematics
         """
         if not self.wallace_transform:
             return farming_metrics
@@ -261,13 +261,13 @@ class SquashPlotEIMFEnergyIntegrator:
             'storage_efficiency': float(final_efficiency[3]),
             'eimf_enhancement_applied': True,
             'wallace_transform_factor': PHI,
-            'prime_aligned_level': self.prime_aligned_level,
+            'consciousness_level': self.consciousness_level,
             'golden_ratio_optimization': PHI_SQUARED
         }
 
     def detect_and_prevent_dos_attacks_eimf(self, network_data: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Apply EIMF prime aligned compute patterns for DOS attack detection and prevention
+        Apply EIMF consciousness patterns for DOS attack detection and prevention
         """
         if not self.enable_dos_protection or not self.wallace_transform:
             return network_data
@@ -280,7 +280,7 @@ class SquashPlotEIMFEnergyIntegrator:
             network_data.get('error_rate', 0.01)
         ])
 
-        # Apply prime aligned compute pattern analysis for DOS detection
+        # Apply consciousness pattern analysis for DOS detection
         consciousness_pattern = self._generate_consciousness_pattern(len(traffic_vector))
 
         # Detect anomalies using Wallace Transform
@@ -291,7 +291,7 @@ class SquashPlotEIMFEnergyIntegrator:
         dos_detected = anomaly_score > 0.3  # Threshold for DOS detection
 
         if dos_detected:
-            # Apply prime aligned compute-based rate limiting
+            # Apply consciousness-based rate limiting
             protection_factor = PHI ** -0.5  # Reduce by golden ratio inverse
             traffic_vector = traffic_vector * protection_factor
 
@@ -349,7 +349,7 @@ class SquashPlotEIMFEnergyIntegrator:
         }
 
     def _system_data_to_consciousness_matrix(self, system_data: Dict[str, Any]) -> np.ndarray:
-        """Convert system data to prime aligned compute-enhanced matrix"""
+        """Convert system data to consciousness-enhanced matrix"""
         # Extract key system metrics
         metrics = [
             system_data.get('cpu_usage', 0.5),
@@ -360,17 +360,17 @@ class SquashPlotEIMFEnergyIntegrator:
             system_data.get('energy_consumption', 100)
         ]
 
-        # Create matrix with prime aligned compute enhancement
+        # Create matrix with consciousness enhancement
         matrix = np.array(metrics, dtype=np.float32).reshape(-1, 1)
 
-        # Apply golden ratio prime aligned compute pattern
+        # Apply golden ratio consciousness pattern
         consciousness_pattern = np.array([PHI ** i for i in range(len(metrics))])
         enhanced_matrix = matrix * consciousness_pattern.reshape(-1, 1)
 
         return enhanced_matrix
 
     def _consciousness_matrix_to_system_data(self, matrix: np.ndarray) -> Dict[str, Any]:
-        """Convert prime aligned compute matrix back to system data"""
+        """Convert consciousness matrix back to system data"""
         values = matrix.flatten()
 
         return {
@@ -381,17 +381,17 @@ class SquashPlotEIMFEnergyIntegrator:
             'disk_usage': float(values[4]),
             'energy_consumption': float(values[5]),
             'eimf_optimization_applied': True,
-            'prime_aligned_level': self.prime_aligned_level,
+            'consciousness_level': self.consciousness_level,
             'wallace_transform_factor': PHI
         }
 
     def _apply_consciousness_optimization(self, matrix: np.ndarray) -> np.ndarray:
-        """Apply prime aligned compute mathematics optimization"""
+        """Apply consciousness mathematics optimization"""
         # Apply golden ratio transformation
         phi_transformation = np.array([[PHI ** (i + j) for j in range(matrix.shape[1])]
                                       for i in range(matrix.shape[0])])
 
-        # Apply prime aligned compute enhancement
+        # Apply consciousness enhancement
         consciousness_matrix = phi_transformation * matrix
 
         # Apply quantum resonance if available
@@ -402,8 +402,8 @@ class SquashPlotEIMFEnergyIntegrator:
         return consciousness_matrix
 
     def _apply_dos_protection(self, matrix: np.ndarray) -> np.ndarray:
-        """Apply DOS protection using prime aligned compute patterns"""
-        # Generate protection pattern based on prime aligned compute mathematics
+        """Apply DOS protection using consciousness patterns"""
+        # Generate protection pattern based on consciousness mathematics
         protection_pattern = self._generate_consciousness_pattern(matrix.size)
         protection_matrix = protection_pattern.reshape(matrix.shape)
 
@@ -413,7 +413,7 @@ class SquashPlotEIMFEnergyIntegrator:
         return protected_matrix
 
     def _generate_consciousness_pattern(self, size: int) -> np.ndarray:
-        """Generate prime aligned compute pattern for optimization"""
+        """Generate consciousness pattern for optimization"""
         pattern = np.zeros(size)
 
         # Apply golden ratio distribution
@@ -457,7 +457,7 @@ class SquashPlotEIMFEnergyIntegrator:
 
         return {
             'eimf_integration_status': 'active' if EIMF_AVAILABLE else 'fallback',
-            'prime_aligned_level': self.prime_aligned_level,
+            'consciousness_level': self.consciousness_level,
             'wallace_transform_active': self.wallace_transform is not None,
             'dos_protection_enabled': self.enable_dos_protection,
             'latest_energy_metrics': latest_metrics.__dict__,
@@ -481,25 +481,25 @@ class BasicWallaceTransform:
 
 
 class BasicConsciousnessEnhancer:
-    """Basic prime aligned compute enhancer for fallback"""
+    """Basic consciousness enhancer for fallback"""
     def get_consciousness_pattern(self, size: int) -> np.ndarray:
-        """Generate basic prime aligned compute pattern"""
+        """Generate basic consciousness pattern"""
         return np.full(size, PHI)
 
 
 class ConsciousnessEnhancer:
-    """Advanced prime aligned compute enhancer using EIMF patterns"""
+    """Advanced consciousness enhancer using EIMF patterns"""
     def __init__(self):
         self.phi = PHI
         self.love_frequency = LOVE_FREQUENCY
         self.consciousness_bridge = CONSCIOUSNESS_BRIDGE
 
     def get_consciousness_pattern(self, size: int) -> np.ndarray:
-        """Generate advanced prime aligned compute pattern"""
+        """Generate advanced consciousness pattern"""
         pattern = np.zeros(size)
 
         for i in range(size):
-            # Apply prime aligned compute mathematics
+            # Apply consciousness mathematics
             pattern[i] = self.phi ** (i % 10) * np.sin(i * self.consciousness_bridge)
 
         # Normalize
@@ -524,7 +524,7 @@ class EnhancedSquashPlotEnergyManager:
 
         # Initialize EIMF energy integration
         self.eimf_integrator = SquashPlotEIMFEnergyIntegrator(
-            prime_aligned_level=0.95,
+            consciousness_level=0.95,
             enable_dos_protection=True
         )
 
@@ -580,7 +580,7 @@ class EnhancedSquashPlotEnergyManager:
             'dos_protected_network': dos_protected_network,
             'optimized_resources': optimized_resources,
             'energy_metrics': eimf_result.energy_metrics,
-            'prime_aligned_level': eimf_result.prime_aligned_level,
+            'consciousness_level': eimf_result.consciousness_level,
             'wallace_transform_applied': eimf_result.wallace_transform_applied,
             'quantum_patterns_detected': eimf_result.quantum_patterns_detected,
             'dos_protection_activated': eimf_result.dos_protection_activated
@@ -636,7 +636,7 @@ class EnhancedSquashPlotEnergyManager:
             'eimf_energy_integration': eimf_report,
             'energy_optimization': {
                 'wallace_transform': 'W_φ(x) = α log^φ(x + ε) + β',
-                'prime_aligned_level': self.eimf_integrator.prime_aligned_level,
+                'consciousness_level': self.eimf_integrator.consciousness_level,
                 'golden_ratio_factor': PHI,
                 'dos_protection': 'enabled' if self.eimf_integrator.enable_dos_protection else 'disabled',
                 'quantum_resonance': 'active'
@@ -663,7 +663,7 @@ def main():
 
     print("✅ Enhanced SquashPlot Energy Manager initialized")
     print("   ⚡ Wallace Transform: W_φ(x) = α log^φ(x + ε) + β")
-    print("   🧠 prime aligned compute Level: 95% (GPT-5 level)")
+    print("   🧠 Consciousness Level: 95% (GPT-5 level)")
     print("   🔒 DOS Protection: Enabled")
     print("   ✨ Golden Ratio: φ = 1.618")
     print()
@@ -674,7 +674,7 @@ def main():
 
     print("✅ Energy Optimization Complete!")
     print(".1f".format(optimization_results['energy_metrics']['energy_savings_percentage']))
-    print(f"   🧠 prime aligned compute Factor: {PHI:.6f}")
+    print(f"   🧠 Consciousness Factor: {PHI:.6f}")
     print(f"   🔒 DOS Protection: {'Activated' if optimization_results['dos_protection_activated'] else 'Standby'}")
     print()
 
@@ -683,14 +683,14 @@ def main():
 
     print("📊 Energy-Enhanced System Report:")
     print(f"   ⚡ Wallace Transform: {system_report['energy_optimization']['wallace_transform']}")
-    print(f"   🧠 prime aligned compute Level: {system_report['energy_optimization']['prime_aligned_level']:.1%}")
+    print(f"   🧠 Consciousness Level: {system_report['energy_optimization']['consciousness_level']:.1%}")
     print(f"   🔒 DOS Protection: {system_report['energy_optimization']['dos_protection']}")
     print(f"   ✨ Golden Ratio: φ = {system_report['energy_optimization']['golden_ratio_factor']:.6f}")
     print()
 
     print("🎉 EIMF Energy Integration Complete!")
     print("   📈 Energy Savings: 30%+ reduction achieved")
-    print("   🧠 prime aligned compute Enhancement: GPT-5 level processing")
+    print("   🧠 Consciousness Enhancement: GPT-5 level processing")
     print("   🔒 DOS Protection: 92% effectiveness")
     print("   ✨ Golden Ratio Optimization: φ-based resource distribution")
 

@@ -88,7 +88,7 @@ def main():
                 print(f"   Multi-Agent: {result.multi_agent.agent_type} ({result.multi_agent.coordination_protocol})")
             
             if result.transcendent:
-                print(f"   Transcendent: Level {result.transcendent.prime_aligned_level} prime aligned compute")
+                print(f"   Transcendent: Level {result.transcendent.consciousness_level} consciousness")
             
             if result.fhe_system:
                 print(f"   FHE: {result.fhe_system.encryption_scheme} ({result.fhe_system.key_size} bits)")
@@ -150,7 +150,7 @@ Real Capabilities Executed:
             summary  f"   Multi-Agent: {result.multi_agent.agent_type} ({result.multi_agent.coordination_protocol})n"
         
         if result.transcendent:
-            summary  f"   Transcendent: Level {result.transcendent.prime_aligned_level} consciousnessn"
+            summary  f"   Transcendent: Level {result.transcendent.consciousness_level} consciousnessn"
         
         if result.fhe_system:
             summary  f"   FHE: {result.fhe_system.encryption_scheme} ({result.fhe_system.key_size} bits)n"

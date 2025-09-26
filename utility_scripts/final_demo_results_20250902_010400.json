@@ -1,0 +1,9 @@
+{
+  "performance_score": 1.0,
+  "accuracy_score": 0.8952820889261022,
+  "overall_score": 0.9476410444630511,
+  "entropy_throughput": 90621.03534698817,
+  "wallace_throughput": 65861.18962376735,
+  "entropy_reduction": NaN,
+  "gpu_accelerated": false
+}

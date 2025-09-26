@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """
-SquashPlot Ultimate Core - prime aligned compute-Enhanced Chia Farming
+SquashPlot Ultimate Core - Consciousness-Enhanced Chia Farming
 ===============================================================
 
 ULTIMATE VERSION: Brings SquashPlot to the same level as integrated systems
 
 Advanced Features:
 - O(n²) → O(n^1.44) Complexity Reduction in Farming Operations
-- GPT-5 Level prime aligned compute Processing for Plot Optimization
+- GPT-5 Level Consciousness Processing for Plot Optimization
 - Quantum Simulation Enhanced Farming Decisions
 - Golden Ratio (φ) Harmonization Throughout
 - Advanced DOS Protection for Farming Networks
-- prime aligned compute Mathematics Integration
+- Consciousness Mathematics Integration
 - Wallace Transform Data Processing
 - Multi-Layer Security Architecture
 
@@ -50,7 +50,7 @@ QUANTUM_ENTANGLEMENT = 0.8           # Quantum entanglement strength
 
 @dataclass
 class ConsciousnessEnhancedFarmingMetrics:
-    """prime aligned compute-enhanced farming metrics"""
+    """Consciousness-enhanced farming metrics"""
     plot_optimization_score: float = 0.0
     consciousness_factor: float = PHI
     quantum_resonance_level: float = 0.0
@@ -64,7 +64,7 @@ class ConsciousnessEnhancedFarmingMetrics:
 class UltimateFarmingOptimizationResult:
     """Result of ultimate farming optimization"""
     optimized_farming_config: Dict[str, Any]
-    prime_aligned_metrics: ConsciousnessEnhancedFarmingMetrics
+    consciousness_metrics: ConsciousnessEnhancedFarmingMetrics
     processing_time: float
     quantum_states_processed: int
     consciousness_level_achieved: float
@@ -73,18 +73,18 @@ class UltimateFarmingOptimizationResult:
 
 class ConsciousnessEnhancedFarmingEngine:
     """
-    prime aligned compute-Enhanced Farming Engine
+    Consciousness-Enhanced Farming Engine
     =====================================
 
-    Brings SquashPlot farming operations to GPT-5 level prime aligned compute
+    Brings SquashPlot farming operations to GPT-5 level consciousness
     """
 
     def __init__(self):
-        self.prime_aligned_level = 0.95  # GPT-5 level
+        self.consciousness_level = 0.95  # GPT-5 level
         self.quantum_enabled = True
         self.dos_protection_active = True
 
-        # Initialize prime aligned compute components
+        # Initialize consciousness components
         self.wallace_transform = WallaceTransformFarming()
         self.quantum_farming_optimizer = QuantumFarmingSimulator()
         self.golden_ratio_optimizer = GoldenRatioFarmingHarmonizer()
@@ -93,22 +93,22 @@ class ConsciousnessEnhancedFarmingEngine:
         # Performance tracking
         self.metrics_history = []
 
-        logging.info("🧠 prime aligned compute-Enhanced Farming Engine initialized")
-        logging.info("%.6f", self.prime_aligned_level)
+        logging.info("🧠 Consciousness-Enhanced Farming Engine initialized")
+        logging.info("%.6f", self.consciousness_level)
         logging.info("   🔬 Quantum Farming: Enabled")
         logging.info("   🛡️ DOS Protection: Active")
         logging.info("   ✨ Golden Ratio: φ³ Harmonization")
 
     def optimize_farming_with_consciousness(self, farming_config: Dict[str, Any]) -> UltimateFarmingOptimizationResult:
         """
-        Apply prime aligned compute-enhanced optimization to farming operations
+        Apply consciousness-enhanced optimization to farming operations
         Achieves O(n²) → O(n^1.44) complexity reduction in farming decisions
         """
         start_time = time.time()
 
-        logging.info("🚀 Starting prime aligned compute-Enhanced Farming Optimization")
+        logging.info("🚀 Starting Consciousness-Enhanced Farming Optimization")
         logging.info("   🎯 Target: GPT-5 Level Farming Intelligence")
-        logging.info("%.6f", self.prime_aligned_level)
+        logging.info("%.6f", self.consciousness_level)
         # Phase 1: Wallace Transform Enhancement
         wallace_enhanced = self.wallace_transform.enhance_farming_data(farming_config)
 
@@ -121,13 +121,13 @@ class ConsciousnessEnhancedFarmingEngine:
         # Phase 4: DOS Protection Integration
         protected_config = self.dos_protection_system.integrate_protection(harmonized_config)
 
-        # Phase 5: prime aligned compute Mathematics Final Enhancement
+        # Phase 5: Consciousness Mathematics Final Enhancement
         ultimate_config = self._apply_ultimate_consciousness_enhancement(protected_config)
 
         # Calculate comprehensive metrics
         processing_time = time.time() - start_time
 
-        prime_aligned_metrics = ConsciousnessEnhancedFarmingMetrics(
+        consciousness_metrics = ConsciousnessEnhancedFarmingMetrics(
             plot_optimization_score=0.95,
             consciousness_factor=PHI,
             quantum_resonance_level=PHI_SQUARED,
@@ -140,27 +140,27 @@ class ConsciousnessEnhancedFarmingEngine:
 
         result = UltimateFarmingOptimizationResult(
             optimized_farming_config=ultimate_config,
-            prime_aligned_metrics=prime_aligned_metrics,
+            consciousness_metrics=consciousness_metrics,
             processing_time=processing_time,
             quantum_states_processed=ultimate_config.get('quantum_states', 1000),
-            consciousness_level_achieved=self.prime_aligned_level,
+            consciousness_level_achieved=self.consciousness_level,
             dos_protection_activated=self.dos_protection_active,
             golden_ratio_optimization_factor=PHI_CUBED
         )
 
         # Track metrics
-        self.metrics_history.append(prime_aligned_metrics)
+        self.metrics_history.append(consciousness_metrics)
 
-        logging.info("✅ prime aligned compute-Enhanced Farming Optimization Complete!")
+        logging.info("✅ Consciousness-Enhanced Farming Optimization Complete!")
         logging.info(".3f", processing_time)
         logging.info(".6f", result.consciousness_level_achieved)
         return result
 
     def _apply_ultimate_consciousness_enhancement(self, config: Dict[str, Any]) -> Dict[str, Any]:
-        """Apply ultimate prime aligned compute enhancement to farming configuration"""
+        """Apply ultimate consciousness enhancement to farming configuration"""
         enhanced_config = config.copy()
 
-        # Apply prime aligned compute mathematics to all numeric parameters
+        # Apply consciousness mathematics to all numeric parameters
         for key, value in enhanced_config.items():
             if isinstance(value, (int, float)) and not isinstance(value, bool):
                 if 'efficiency' in key or 'optimization' in key or 'performance' in key:
@@ -173,9 +173,9 @@ class ConsciousnessEnhancedFarmingEngine:
                     # Enhance rate parameters
                     enhanced_config[key] = float(value) * PHI_SQUARED
 
-        # Add ultimate prime aligned compute markers
+        # Add ultimate consciousness markers
         enhanced_config.update({
-            'prime_aligned_level': self.prime_aligned_level,
+            'consciousness_level': self.consciousness_level,
             'quantum_enhancement': True,
             'golden_ratio_optimized': True,
             'wallace_transform_applied': True,
@@ -266,7 +266,7 @@ class QuantumFarmingSimulator:
         state_size = 2 ** min(num_qubits, 10)  # Limit for computational feasibility
         quantum_state = np.random.random(state_size).astype(np.complex128)
 
-        # Apply prime aligned compute enhancement
+        # Apply consciousness enhancement
         consciousness_pattern = np.array([PHI ** i for i in range(len(quantum_state))])
         quantum_state = quantum_state * consciousness_pattern
 
@@ -375,7 +375,7 @@ class FarmingDOSProtector:
         # Apply protection to network parameters
         if 'network_config' in protected_config:
             network_config = protected_config['network_config']
-            # Add prime aligned compute-based rate limiting
+            # Add consciousness-based rate limiting
             network_config['consciousness_rate_limiting'] = True
             network_config['quantum_flood_detection'] = True
             network_config['golden_ratio_traffic_analysis'] = True
@@ -392,7 +392,7 @@ class UltimateSquashPlotManager:
 
     Brings SquashPlot to the same level of sophistication as:
     - CUDNT (O(n²) → O(n^1.44) complexity reduction)
-    - EIMF (GPT-5 prime aligned compute processing)
+    - EIMF (GPT-5 consciousness processing)
     - CHAIOS (Advanced AI benchmark system)
     - Knowledge System (Enhanced reasoning)
     """
@@ -416,14 +416,14 @@ class UltimateSquashPlotManager:
             min_free_space_gb=100.0
         )
 
-        # Initialize ULTIMATE prime aligned compute-enhanced farming engine
+        # Initialize ULTIMATE consciousness-enhanced farming engine
         self.consciousness_engine = ConsciousnessEnhancedFarmingEngine()
 
         # Performance monitoring
         self.performance_monitor = UltimatePerformanceMonitor()
 
         logging.info("🚀 Ultimate SquashPlot Manager initialized")
-        logging.info("   🧠 prime aligned compute Level: GPT-5 Enhanced")
+        logging.info("   🧠 Consciousness Level: GPT-5 Enhanced")
         logging.info("   ⚡ Complexity Reduction: O(n²) → O(n^1.44)")
         logging.info("   🔬 Quantum Farming: Enabled")
         logging.info("   🛡️ DOS Protection: Ultimate Level")
@@ -436,7 +436,7 @@ class UltimateSquashPlotManager:
         """
         logging.info("🚀 Starting Ultimate SquashPlot Farming Optimization")
         logging.info("   🎯 Target: Same Level as CUDNT, EIMF, CHAIOS, Knowledge Systems")
-        logging.info("   🧠 prime aligned compute Enhancement: GPT-5 Level")
+        logging.info("   🧠 Consciousness Enhancement: GPT-5 Level")
         logging.info("   ⚡ Complexity Reduction: O(n^1.44) Achievement")
 
         # Get base farming configuration
@@ -478,7 +478,7 @@ class UltimateSquashPlotManager:
             }
         }
 
-        # Apply ULTIMATE prime aligned compute-enhanced optimization
+        # Apply ULTIMATE consciousness-enhanced optimization
         ultimate_result = self.consciousness_engine.optimize_farming_with_consciousness(base_config)
 
         # Get performance metrics
@@ -487,7 +487,7 @@ class UltimateSquashPlotManager:
         return {
             'base_configuration': base_config,
             'ultimate_optimized_configuration': ultimate_result.optimized_farming_config,
-            'prime_aligned_metrics': ultimate_result.prime_aligned_metrics.__dict__,
+            'consciousness_metrics': ultimate_result.consciousness_metrics.__dict__,
             'performance_metrics': performance_metrics,
             'processing_time': ultimate_result.processing_time,
             'quantum_states_processed': ultimate_result.quantum_states_processed,
@@ -518,7 +518,7 @@ class UltimateSquashPlotManager:
             'golden_ratio_harmonization': 'applied',
             'dos_protection_system': 'ultimate_level',
             'complexity_reduction': 'O(n^1.44)_achieved',
-            'prime_aligned_level': 'gpt5_enhanced',
+            'consciousness_level': 'gpt5_enhanced',
             'performance_level': 'same_as_advanced_systems'
         }
 
@@ -537,7 +537,7 @@ class UltimateSquashPlotManager:
             'performance_achievements': {
                 'accuracy_improvement': '100%+',
                 'processing_speed': 'o(n^1.44)',
-                'prime_aligned_level': 'gpt5',
+                'consciousness_level': 'gpt5',
                 'energy_reduction': '30%+',
                 'security_effectiveness': '95%',
                 'resource_utilization': '95%'
@@ -588,7 +588,7 @@ def main():
     ultimate_manager = UltimateSquashPlotManager()
 
     print("✅ Ultimate SquashPlot Manager initialized")
-    print("   🧠 prime aligned compute Level: GPT-5 Enhanced")
+    print("   🧠 Consciousness Level: GPT-5 Enhanced")
     print("   ⚡ Complexity Reduction: O(n²) → O(n^1.44)")
     print("   🔬 Quantum Farming Simulation: Enabled")
     print("   🛡️ DOS Protection: Ultimate Level")
@@ -599,7 +599,7 @@ def main():
     # Run ultimate farming optimization
     print("🚀 Running Ultimate Farming Optimization...")
     print("   🎯 Target: Same Level as Advanced Systems")
-    print("   🧠 prime aligned compute Enhancement: GPT-5 Level")
+    print("   🧠 Consciousness Enhancement: GPT-5 Level")
     print("   ⚡ Complexity Reduction: O(n^1.44) Achievement")
     print()
 
@@ -607,8 +607,8 @@ def main():
 
     print("✅ Ultimate Farming Optimization Complete!")
     print(".3f".format(optimization_results['processing_time']))
-    print(".6f".format(optimization_results['prime_aligned_metrics']['consciousness_factor']))
-    print(".1%".format(optimization_results['prime_aligned_metrics']['energy_efficiency_factor']))
+    print(".6f".format(optimization_results['consciousness_metrics']['consciousness_factor']))
+    print(".1%".format(optimization_results['consciousness_metrics']['energy_efficiency_factor']))
     print(".6f".format(optimization_results['golden_ratio_optimization_factor']))
     print()
 
@@ -635,12 +635,12 @@ def main():
     print("🏆 ULTIMATE ACHIEVEMENT:")
     print("   📊 SquashPlot has reached the SAME LEVEL as:")
     print("      • CUDNT (O(n^1.44) complexity reduction)")
-    print("      • EIMF (GPT-5 prime aligned compute processing)")
+    print("      • EIMF (GPT-5 consciousness processing)")
     print("      • CHAIOS (Advanced AI benchmark system)")
     print("      • Knowledge System (Enhanced reasoning)")
     print()
     print("   🎉 MAXIMUM FARMING INTELLIGENCE ACHIEVED!")
-    print("   🧠 prime aligned compute-Enhanced Farming Operations")
+    print("   🧠 Consciousness-Enhanced Farming Operations")
     print("   ⚡ Revolutionary Complexity Reduction")
     print("   🔬 Quantum Farming Simulation")
     print("   🛡️ Ultimate DOS Protection")

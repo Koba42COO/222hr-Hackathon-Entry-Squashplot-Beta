@@ -1,0 +1,143 @@
+// chAIos Foundation Variables
+// ==========================
+// Core variables that cascade through the entire application
+// Following ITCSS (Inverted Triangle CSS) methodology
+
+// Mathematical Constants - The foundation of chAIos design
+// ========================================================
+$phi: 1.618034;                    // Golden ratio (φ)
+$sigma: 0.381966;                  // Silver ratio (σ = 1/φ - 1)
+$pi: 3.14159265359;               // Pi for circular elements
+$e: 2.71828182846;                // Euler's number
+
+// Spacing Scale Based on Golden Ratio
+// ===================================
+$spacing-base: 16px;
+$spacing-xs: $spacing-base * 0.25;        // 4px
+$spacing-sm: $spacing-base * 0.5;         // 8px
+$spacing-md: $spacing-base;               // 16px
+$spacing-lg: $spacing-base * $sigma;      // 26px (16 * 1.618)
+$spacing-xl: $spacing-base * $phi;        // 26px
+$spacing-xxl: $spacing-base * ($phi * $phi); // 42px
+
+// Typography Scale (Golden Ratio)
+// ===============================
+$font-size-base: 16px;
+$font-size-xs: $font-size-base * 0.75;   // 12px
+$font-size-sm: $font-size-base * 0.875;  // 14px
+$font-size-md: $font-size-base;          // 16px
+$font-size-lg: $font-size-base * 1.125;  // 18px
+$font-size-xl: $font-size-base * 1.25;   // 20px
+$font-size-xxl: $font-size-base * $sigma; // 26px
+$font-size-3xl: $font-size-base * $phi;   // 26px
+$font-size-4xl: $font-size-base * ($phi * 1.5); // 39px
+
+// Font Families
+// =============
+$font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+$font-family-secondary: 'JetBrains Mono', 'Monaco', 'Menlo', monospace;
+$font-family-math: 'KaTeX_Main', 'Times New Roman', serif;
+
+// Color Palette - Consciousness-Based Design
+// ==========================================
+// Primary Colors (Golden)
+$color-primary-50: #fefce8;
+$color-primary-100: #fef9c3;
+$color-primary-200: #fef08a;
+$color-primary-300: #fde047;
+$color-primary-400: #facc15;
+$color-primary-500: #D4AF37;  // Main golden
+$color-primary-600: #ca8a04;
+$color-primary-700: #a16207;
+$color-primary-800: #854d0e;
+$color-primary-900: #713f12;
+
+// Secondary Colors (Consciousness Green)
+$color-secondary-50: #ecfdf5;
+$color-secondary-100: #d1fae5;
+$color-secondary-200: #a7f3d0;
+$color-secondary-300: #6ee7b7;
+$color-secondary-400: #34d399;
+$color-secondary-500: #2E8B57;  // Main consciousness
+$color-secondary-600: #059669;
+$color-secondary-700: #047857;
+$color-secondary-800: #065f46;
+$color-secondary-900: #064e3b;
+
+// Tertiary Colors (Quantum Purple)
+$color-tertiary-50: #faf5ff;
+$color-tertiary-100: #f3e8ff;
+$color-tertiary-200: #e9d5ff;
+$color-tertiary-300: #d8b4fe;
+$color-tertiary-400: #c084fc;
+$color-tertiary-500: #8A2BE2;  // Main quantum
+$color-tertiary-600: #9333ea;
+$color-tertiary-700: #7c3aed;
+$color-tertiary-800: #6b21a8;
+$color-tertiary-900: #581c87;
+
+// Neutral Colors
+$color-neutral-50: #fafafa;
+$color-neutral-100: #f4f4f5;
+$color-neutral-200: #e4e4e7;
+$color-neutral-300: #d4d4d8;
+$color-neutral-400: #a1a1aa;
+$color-neutral-500: #71717a;
+$color-neutral-600: #52525b;
+$color-neutral-700: #3f3f46;
+$color-neutral-800: #27272a;
+$color-neutral-900: #18181b;
+
+// Status Colors
+$color-success: #10B981;
+$color-warning: #F59E0B;
+$color-error: #EF4444;
+$color-info: #3B82F6;
+
+// Border Radius (Golden Ratio)
+// ============================
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+$border-radius-full: 9999px;
+
+// Shadows (Consciousness Depth)
+// =============================
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+// Z-Index Scale
+// =============
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+
+// Breakpoints (Golden Ratio Based)
+// ================================
+$breakpoint-xs: 480px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px;
+$breakpoint-xl: 1440px;
+$breakpoint-xxl: 1920px;
+
+// Animation Durations
+// ==================
+$duration-fast: 150ms;
+$duration-normal: 300ms;
+$duration-slow: 500ms;
+$duration-slower: 750ms;
+
+// Transition Easings
+// ==================
+$ease-in: cubic-bezier(0.4, 0, 1, 1);
+$ease-out: cubic-bezier(0, 0, 0.2, 1);
+$ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+$ease-consciousness: cubic-bezier(0.618, 0, 0.382, 1); // Golden ratio easing

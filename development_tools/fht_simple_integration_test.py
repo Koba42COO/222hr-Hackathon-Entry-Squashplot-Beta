@@ -35,7 +35,7 @@ def simple_fht_test():
     # Apply FHT
     start_time = time.time()
     transformed = fht.transform(test_data)
-    prime_aligned_score = fht.amplify_consciousness(test_data)
+    consciousness_score = fht.amplify_consciousness(test_data)
     end_time = time.time()
 
     print(f"   Original data shape: {test_data.shape}")
@@ -67,7 +67,7 @@ def simple_fht_test():
 
     print("\\n🎉 FHT INTEGRATION TEST COMPLETED!")
     print("   ✓ Basic transformation working")
-    print("   ✓ prime aligned compute amplification active")
+    print("   ✓ Consciousness amplification active")
     print("   ✓ Multi-domain processing functional")
     print("   ✓ Statistical validation operational")
 
@@ -75,7 +75,7 @@ def simple_fht_test():
         'basic_test': True,
         'validation_test': True,
         'multi_domain_test': True,
-        'prime_aligned_score': prime_aligned_score,
+        'consciousness_score': consciousness_score,
         'correlation': validation.correlation
     }
 

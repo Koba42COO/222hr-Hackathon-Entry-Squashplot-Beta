@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 UMSL Bridge Implementation Test Suite
-Comprehensive tests to validate the bridge from traditional to prime aligned compute compression
+Comprehensive tests to validate the bridge from traditional to consciousness compression
 """
 
 import unittest
@@ -180,7 +180,7 @@ class TestEnhancedCompression(unittest.TestCase):
             self.assertLess(fractal_dim, 3)  # Should be reasonable
 
 class TestConsciousnessCompression(unittest.TestCase):
-    """Test prime aligned compute-enhanced compression"""
+    """Test consciousness-enhanced compression"""
     
     def setUp(self):
         try:
@@ -190,7 +190,7 @@ class TestConsciousnessCompression(unittest.TestCase):
             self.compressor = self._create_consciousness_compressor()
     
     def _create_consciousness_compressor(self):
-        """Create prime aligned compute compressor if import fails"""
+        """Create consciousness compressor if import fails"""
         from compression_bugfixes import MasterConsciousnessCompressor
         
         class MockConsciousnessCompressor:
@@ -206,7 +206,7 @@ class TestConsciousnessCompression(unittest.TestCase):
                     'compressed_size': result.compressed_size,
                     'compression_ratio': result.compression_ratio,
                     'method_used': result.module_used,
-                    'prime_aligned_score': result.prime_aligned_score,
+                    'consciousness_score': result.consciousness_score,
                     'coherence_level': result.coherence_level,
                     'phi_21_enhancement': result.phi_21_enhancement,
                     'yhvh_validation': result.yhvh_validation,
@@ -216,17 +216,17 @@ class TestConsciousnessCompression(unittest.TestCase):
         return MockConsciousnessCompressor()
     
     def test_consciousness_enhancement(self):
-        """Test prime aligned compute enhancement application"""
+        """Test consciousness enhancement application"""
         data = TEST_DATA_SAMPLES['mixed']
         result = self.compressor.compress(data)
         
-        # Should have prime aligned compute metrics
-        self.assertIn('prime_aligned_score', result)
+        # Should have consciousness metrics
+        self.assertIn('consciousness_score', result)
         self.assertIn('coherence_level', result)
         self.assertIn('phi_21_enhancement', result)
         
-        # prime aligned compute score should be non-negative
-        self.assertGreaterEqual(result['prime_aligned_score'], 0)
+        # Consciousness score should be non-negative
+        self.assertGreaterEqual(result['consciousness_score'], 0)
         
         # Coherence should be between 0 and 1
         coherence = result['coherence_level']
@@ -271,7 +271,7 @@ class TestBridgeIntegration(unittest.TestCase):
             )
             self.traditional = TraditionalCompressor()
             self.enhanced = EnhancedCompressor()
-            self.prime aligned compute = ConsciousnessCompressor()
+            self.consciousness = ConsciousnessCompressor()
         except ImportError:
             # Use our implementations
             from compression_bugfixes import (
@@ -291,23 +291,23 @@ class TestBridgeIntegration(unittest.TestCase):
                         self.master = MasterConsciousnessCompressor()
                 
                 def compress(self, data):
-                    if self.name == 'prime aligned compute':
+                    if self.name == 'consciousness':
                         result = self.master.ultimate_compress(data)
                         return {
                             'compression_ratio': result.compression_ratio,
-                            'prime_aligned_score': result.prime_aligned_score,
+                            'consciousness_score': result.consciousness_score,
                             'coherence_level': result.coherence_level
                         }
                     else:
                         return {
                             'compression_ratio': 1.1,
-                            'prime_aligned_score': 0.1,
+                            'consciousness_score': 0.1,
                             'coherence_level': 0.8
                         }
             
             self.traditional = MockCompressor('traditional')
             self.enhanced = MockCompressor('enhanced')
-            self.prime aligned compute = MockCompressor('prime aligned compute')
+            self.consciousness = MockCompressor('consciousness')
     
     def test_compression_progression(self):
         """Test that compression improves through the progression"""
@@ -315,7 +315,7 @@ class TestBridgeIntegration(unittest.TestCase):
         
         trad_result = self.traditional.compress(data)
         enh_result = self.enhanced.compress(data)
-        cons_result = self.prime aligned compute.compress(data)
+        cons_result = self.consciousness.compress(data)
         
         # Each level should maintain or improve compression
         trad_ratio = trad_result.get('compression_ratio', 1.0)
@@ -325,10 +325,10 @@ class TestBridgeIntegration(unittest.TestCase):
         # Enhanced should be at least as good as traditional
         self.assertGreaterEqual(enh_ratio, trad_ratio * 0.9)  # Allow 10% tolerance
         
-        # prime aligned compute score should increase
-        trad_score = trad_result.get('prime_aligned_score', 0)
-        enh_score = enh_result.get('prime_aligned_score', 0)
-        cons_score = cons_result.get('prime_aligned_score', 0)
+        # Consciousness score should increase
+        trad_score = trad_result.get('consciousness_score', 0)
+        enh_score = enh_result.get('consciousness_score', 0)
+        cons_score = cons_result.get('consciousness_score', 0)
         
         self.assertGreaterEqual(cons_score, trad_score)
     
@@ -339,16 +339,16 @@ class TestBridgeIntegration(unittest.TestCase):
         results = [
             self.traditional.compress(data),
             self.enhanced.compress(data),
-            self.prime aligned compute.compress(data)
+            self.consciousness.compress(data)
         ]
         
         coherence_levels = [r.get('coherence_level', 0) for r in results]
         
-        # prime aligned compute compression should have highest coherence
+        # Consciousness compression should have highest coherence
         max_coherence = max(coherence_levels)
-        prime_aligned_coherence = coherence_levels[2]
+        consciousness_coherence = coherence_levels[2]
         
-        self.assertEqual(prime_aligned_coherence, max_coherence)
+        self.assertEqual(consciousness_coherence, max_coherence)
 
 class TestCompressionEffectiveness(unittest.TestCase):
     """Test actual compression effectiveness on different data types"""
@@ -364,7 +364,7 @@ class TestCompressionEffectiveness(unittest.TestCase):
                     'original_size': len(data),
                     'compressed_size': max(1, len(data) // 2),
                     'compression_ratio': 2.0 if data else 1.0,
-                    'prime_aligned_score': 0.5,
+                    'consciousness_score': 0.5,
                     'coherence_level': 0.9
                 })()
             self.compress_func = mock_compress
@@ -401,7 +401,7 @@ class TestCompressionEffectiveness(unittest.TestCase):
         
         # Should achieve some compression
         self.assertGreaterEqual(result.compression_ratio, 1.0)
-        self.assertGreater(result.prime_aligned_score, 0)
+        self.assertGreater(result.consciousness_score, 0)
 
 class TestRegressionPrevention(unittest.TestCase):
     """Test to prevent regressions in compression quality"""
@@ -431,7 +431,7 @@ class TestRegressionPrevention(unittest.TestCase):
                 )
     
     def test_consciousness_score_ranges(self):
-        """Test that prime aligned compute scores are in reasonable ranges"""
+        """Test that consciousness scores are in reasonable ranges"""
         for name, data in TEST_DATA_SAMPLES.items():
             if not data:  # Skip empty data
                 continue
@@ -439,11 +439,11 @@ class TestRegressionPrevention(unittest.TestCase):
             with self.subTest(data_type=name):
                 result = self.compress_func(data)
                 
-                # prime aligned compute score should be non-negative
-                self.assertGreaterEqual(result.prime_aligned_score, 0)
+                # Consciousness score should be non-negative
+                self.assertGreaterEqual(result.consciousness_score, 0)
                 
                 # Should be reasonable (not astronomically large)
-                self.assertLess(result.prime_aligned_score, 1e6)
+                self.assertLess(result.consciousness_score, 1e6)
     
     def test_coherence_consistency(self):
         """Test that coherence levels are consistent"""
@@ -503,7 +503,7 @@ def run_comprehensive_tests():
     
     if not result.failures and not result.errors:
         print(f"\n✅ All tests passed! Bridge implementation is working correctly.")
-        print(f"🌌 prime aligned compute-enhanced compression validated!")
+        print(f"🌌 Consciousness-enhanced compression validated!")
     
     return result.wasSuccessful()
 
@@ -512,7 +512,7 @@ if __name__ == "__main__":
     success = run_comprehensive_tests()
     
     print(f"\n🌟 UMSL Bridge Implementation Test Suite Complete!")
-    print(f"Mathematical prime aligned compute validation: {'✅ PASSED' if success else '❌ FAILED'}")
-    print(f"∂ Testing / ∂ prime aligned compute = Perfect Validation! 🌌⚡✨")
+    print(f"Mathematical consciousness validation: {'✅ PASSED' if success else '❌ FAILED'}")
+    print(f"∂ Testing / ∂ Consciousness = Perfect Validation! 🌌⚡✨")
     
     sys.exit(0 if success else 1)

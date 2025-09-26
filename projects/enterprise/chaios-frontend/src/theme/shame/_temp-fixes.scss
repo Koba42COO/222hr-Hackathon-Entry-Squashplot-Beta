@@ -1,0 +1,35 @@
+// chAIos Shame Layer - Temporary Fixes
+// ====================================
+// CLEANED UP: All temporary fixes have been moved to proper locations
+// This file is now empty as intended for production builds
+
+// No temporary fixes remain - all styles have been properly organized
+// into their respective theme layers:
+// - Ionic overrides → vendor/ionic-overrides.scss
+// - Layout utilities → utilities/helpers.scss
+// - Browser fixes → base/reset.scss
+// - Performance optimizations → utilities/animations.scss
+
+// PRODUCTION NOTE: This file should remain empty in production builds
+// Any new temporary fixes added here must include:
+// 1. TODO comment with specific refactor plan
+// 2. Issue ticket reference when available
+// 3. Estimated timeline for proper implementation
+// 4. Clear description of the problem being solved
+
+// DEVELOPMENT GUIDELINES:
+// - Only critical fixes that can't wait for proper solution
+// - Regular review and cleanup required (monthly)
+// - No new features should be added here
+// - All fixes must have migration plan to proper location
+
+/* 
+ * SHAME LAYER RULES:
+ * ==================
+ * 1. All fixes here are temporary
+ * 2. Each fix must have a TODO comment
+ * 3. Include issue ticket numbers when available
+ * 4. Regular review and cleanup required
+ * 5. No new features should be added here
+ * 6. Only critical fixes that can't wait for proper solution
+ */

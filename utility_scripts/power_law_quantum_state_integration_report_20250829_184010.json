@@ -1,0 +1,142 @@
+{
+  "timestamp": "2025-08-29T18:40:10.342447",
+  "power_law_states": {
+    "exponential_localized": {
+      "state_type": "localized",
+      "decay_type": "exponential",
+      "decay_exponent": 0.0,
+      "localization_length": 1e-09,
+      "dimensionality": 1,
+      "aspect_ratio": 1.0,
+      "skin_depth": 0.0,
+      "coherence_factor": 0.8
+    },
+    "power_law_semi_localized": {
+      "state_type": "semi_localized",
+      "decay_type": "power_law",
+      "decay_exponent": 2.5,
+      "localization_length": 5e-09,
+      "dimensionality": 2,
+      "aspect_ratio": 1.5,
+      "skin_depth": 2e-09,
+      "coherence_factor": 0.9
+    },
+    "propagating_wave": {
+      "state_type": "propagating",
+      "decay_type": "no_decay",
+      "decay_exponent": 0.0,
+      "localization_length": Infinity,
+      "dimensionality": 3,
+      "aspect_ratio": 2.0,
+      "skin_depth": 0.0,
+      "coherence_factor": 0.7
+    },
+    "algebraic_skin_mode": {
+      "state_type": "skin_mode",
+      "decay_type": "power_law",
+      "decay_exponent": 1.8,
+      "localization_length": 3e-09,
+      "dimensionality": 2,
+      "aspect_ratio": 1.2,
+      "skin_depth": 1.5e-09,
+      "coherence_factor": 0.95
+    },
+    "robust_power_law": {
+      "state_type": "robust_power_law",
+      "decay_type": "power_law",
+      "decay_exponent": 3.0,
+      "localization_length": 4e-09,
+      "dimensionality": 2,
+      "aspect_ratio": 1.8,
+      "skin_depth": 2.5e-09,
+      "coherence_factor": 0.92
+    }
+  },
+  "non_hermitian_skin_effects": {
+    "algebraic_skin_effect": {
+      "effect_type": "algebraic",
+      "skin_mode_behavior": "semi_localized",
+      "boundary_sensitivity": 0.85,
+      "shape_dependence": {
+        "aspect_ratio": 0.9,
+        "dimensionality": 0.8
+      },
+      "fermi_surface_formula": "generalized_2d",
+      "topological_invariant": 1.0
+    },
+    "exponential_skin_effect": {
+      "effect_type": "exponential",
+      "skin_mode_behavior": "confined",
+      "boundary_sensitivity": 0.95,
+      "shape_dependence": {
+        "aspect_ratio": 0.7,
+        "dimensionality": 0.6
+      },
+      "fermi_surface_formula": "standard_1d",
+      "topological_invariant": 0.5
+    },
+    "generalized_skin_effect": {
+      "effect_type": "generalized",
+      "skin_mode_behavior": "propagating",
+      "boundary_sensitivity": 0.75,
+      "shape_dependence": {
+        "aspect_ratio": 0.8,
+        "dimensionality": 0.9
+      },
+      "fermi_surface_formula": "multi_dimensional",
+      "topological_invariant": 1.5
+    }
+  },
+  "quantum_state_optimizations": {
+    "coherence_optimized": {
+      "optimization_target": "coherence",
+      "power_law_enhancement": 1.8,
+      "skin_effect_utilization": 0.9,
+      "multi_dimensional_advantage": 1.5,
+      "shape_optimization_factor": 1.2,
+      "quantum_enhancement_factor": 2.1
+    },
+    "localization_optimized": {
+      "optimization_target": "localization",
+      "power_law_enhancement": 2.2,
+      "skin_effect_utilization": 0.95,
+      "multi_dimensional_advantage": 1.8,
+      "shape_optimization_factor": 1.5,
+      "quantum_enhancement_factor": 2.8
+    },
+    "propagation_optimized": {
+      "optimization_target": "propagation",
+      "power_law_enhancement": 1.5,
+      "skin_effect_utilization": 0.8,
+      "multi_dimensional_advantage": 2.0,
+      "shape_optimization_factor": 1.1,
+      "quantum_enhancement_factor": 1.9
+    },
+    "hybrid_optimized": {
+      "optimization_target": "hybrid",
+      "power_law_enhancement": 2.0,
+      "skin_effect_utilization": 0.92,
+      "multi_dimensional_advantage": 1.7,
+      "shape_optimization_factor": 1.3,
+      "quantum_enhancement_factor": 2.4
+    }
+  },
+  "integration_statistics": {
+    "total_power_law_states": 5,
+    "average_decay_exponent": 2.433333333333333,
+    "average_coherence_factor": 0.8540000000000001,
+    "average_dimensionality": 2.0,
+    "max_skin_depth": 2.5e-09,
+    "min_localization_length": 1e-09,
+    "max_aspect_ratio": 2.0
+  },
+  "recommendations": [
+    "Use power-law quantum states for enhanced quantum coherence",
+    "Leverage non-Hermitian skin effects for robust quantum operations",
+    "Optimize material shape for maximum quantum state sensitivity",
+    "Employ multi-dimensional systems for enhanced quantum control",
+    "Implement algebraic localization for improved quantum performance",
+    "Use skin modes for boundary-sensitive quantum operations",
+    "Leverage shape-dependent quantum states for optimization"
+  ]
+}

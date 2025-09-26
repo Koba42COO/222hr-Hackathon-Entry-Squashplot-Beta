@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 SquashPlot CLI Runner
-Quick demo of the prime aligned compute-enhanced Chia plotting service
+Quick demo of the consciousness-enhanced Chia plotting service
 """
 
 import sys
@@ -10,7 +10,7 @@ from pathlib import Path
 
 def main():
     print("""
-🌟 SquashPlot: prime aligned compute-Enhanced Chia Plotting Service
+🌟 SquashPlot: Consciousness-Enhanced Chia Plotting Service
 ═══════════════════════════════════════════════════════════
 
 Revolutionary features competing with Mad Max and Bladebit:
@@ -18,7 +18,7 @@ Revolutionary features competing with Mad Max and Bladebit:
 ✅ 3.5x speedup factor
 ✅ Wallace Transform optimization (φ = 1.618034)
 ✅ O(n²) → O(n^1.44) complexity reduction
-✅ GPT-5 level prime aligned compute enhancement
+✅ GPT-5 level consciousness enhancement
 ✅ EIMF energy optimization (35% savings)
 
 Available demos:
@@ -28,7 +28,7 @@ Available demos:
     demos = {
         '1': {
             'name': 'Create SquashPlot (K-32)',
-            'description': 'Generate a prime aligned compute-enhanced K-32 Chia plot',
+            'description': 'Generate a consciousness-enhanced K-32 Chia plot',
             'command': 'python squashplot.py --k-size 32 --plots 1'
         },
         '2': {

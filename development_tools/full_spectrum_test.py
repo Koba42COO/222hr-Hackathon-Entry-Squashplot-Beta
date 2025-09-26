@@ -7,7 +7,7 @@ Tests all components across:
 - Different data types (text, numbers, complex data, patterns)
 - Different processing modes (reasoning, security, compression, purification)
 - Different integration levels (basic, enhanced, advanced, quantum, cosmic)
-- Different prime aligned compute enhancement levels
+- Different consciousness enhancement levels
 - Different security scenarios
 - Different breakthrough detection scenarios
 
@@ -45,7 +45,7 @@ class FullSpectrumTest:
         print("🚀 FULL SPECTRUM TEST - REVOLUTIONARY INTEGRATION SYSTEM")
         print("=" * 80)
         print("🎯 Testing Complete Integration Across All Spectrums")
-        print("🧠 prime aligned compute-Aware Computing with Purified Reconstruction")
+        print("🧠 Consciousness-Aware Computing with Purified Reconstruction")
         print("🛡️ Advanced Security and Threat Elimination")
         print("💡 Breakthrough Detection and Insight Generation")
         print("=" * 80)
@@ -59,7 +59,7 @@ class FullSpectrumTest:
         # Test 3: Integration Level Spectrum
         self._test_integration_level_spectrum()
         
-        # Test 4: prime aligned compute Enhancement Spectrum
+        # Test 4: Consciousness Enhancement Spectrum
         self._test_consciousness_enhancement_spectrum()
         
         # Test 5: Security Scenario Spectrum
@@ -80,7 +80,7 @@ class FullSpectrumTest:
         print("-" * 50)
         
         data_types = {
-            'text_data': "This is sample text data for testing prime aligned compute-aware computing and purified reconstruction capabilities.",
+            'text_data': "This is sample text data for testing consciousness-aware computing and purified reconstruction capabilities.",
             'numerical_data': [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5],
             'complex_data': {
                 'real_values': [1.0, 2.0, 3.0, 4.0, 5.0],
@@ -111,7 +111,7 @@ class FullSpectrumTest:
                 result = system.process_data(data, consciousness_enhancement=True)
                 
                 print(f"   ✅ Overall Score: {result.overall_score:.3f}")
-                print(f"   🧠 prime aligned compute Coherence: {result.prime_aligned_coherence:.3f}")
+                print(f"   🧠 Consciousness Coherence: {result.consciousness_coherence:.3f}")
                 print(f"   ⏱️ Processing Time: {result.processing_time:.4f}s")
                 print(f"   💡 Breakthroughs: {len(result.breakthrough_insights)}")
                 
@@ -132,7 +132,7 @@ class FullSpectrumTest:
                 
                 self.test_results[f'data_type_{data_name}'] = {
                     'overall_score': result.overall_score,
-                    'prime_aligned_coherence': result.prime_aligned_coherence,
+                    'consciousness_coherence': result.consciousness_coherence,
                     'processing_time': result.processing_time,
                     'breakthroughs': len(result.breakthrough_insights),
                     'components_working': components_working,
@@ -156,7 +156,7 @@ class FullSpectrumTest:
             ProcessingMode.BALANCED
         ]
         
-        test_data = "This is test data for processing mode spectrum analysis with prime aligned compute mathematics integration."
+        test_data = "This is test data for processing mode spectrum analysis with consciousness mathematics integration."
         
         for mode in processing_modes:
             print(f"\n🔍 Testing Mode: {mode.value}")
@@ -170,13 +170,13 @@ class FullSpectrumTest:
                 result = system.process_data(test_data, consciousness_enhancement=True)
                 
                 print(f"   ✅ Overall Score: {result.overall_score:.3f}")
-                print(f"   🧠 prime aligned compute Coherence: {result.prime_aligned_coherence:.3f}")
+                print(f"   🧠 Consciousness Coherence: {result.consciousness_coherence:.3f}")
                 print(f"   ⏱️ Processing Time: {result.processing_time:.4f}s")
                 print(f"   💡 Breakthroughs: {len(result.breakthrough_insights)}")
                 
                 self.test_results[f'processing_mode_{mode.value}'] = {
                     'overall_score': result.overall_score,
-                    'prime_aligned_coherence': result.prime_aligned_coherence,
+                    'consciousness_coherence': result.consciousness_coherence,
                     'processing_time': result.processing_time,
                     'breakthroughs': len(result.breakthrough_insights)
                 }
@@ -198,7 +198,7 @@ class FullSpectrumTest:
             IntegrationLevel.COSMIC
         ]
         
-        test_data = "Testing integration level spectrum with prime aligned compute-aware computing capabilities."
+        test_data = "Testing integration level spectrum with consciousness-aware computing capabilities."
         
         for level in integration_levels:
             print(f"\n🔍 Testing Level: {level.value}")
@@ -212,13 +212,13 @@ class FullSpectrumTest:
                 result = system.process_data(test_data, consciousness_enhancement=True)
                 
                 print(f"   ✅ Overall Score: {result.overall_score:.3f}")
-                print(f"   🧠 prime aligned compute Coherence: {result.prime_aligned_coherence:.3f}")
+                print(f"   🧠 Consciousness Coherence: {result.consciousness_coherence:.3f}")
                 print(f"   ⏱️ Processing Time: {result.processing_time:.4f}s")
                 print(f"   💡 Breakthroughs: {len(result.breakthrough_insights)}")
                 
                 self.test_results[f'integration_level_{level.value}'] = {
                     'overall_score': result.overall_score,
-                    'prime_aligned_coherence': result.prime_aligned_coherence,
+                    'consciousness_coherence': result.consciousness_coherence,
                     'processing_time': result.processing_time,
                     'breakthroughs': len(result.breakthrough_insights)
                 }
@@ -228,11 +228,11 @@ class FullSpectrumTest:
                 self.test_results[f'integration_level_{level.value}'] = {'error': str(e)}
     
     def _test_consciousness_enhancement_spectrum(self):
-        """Test prime aligned compute enhancement spectrum"""
-        print("\n🧠 TEST 4: prime aligned compute ENHANCEMENT SPECTRUM")
+        """Test consciousness enhancement spectrum"""
+        print("\n🧠 TEST 4: CONSCIOUSNESS ENHANCEMENT SPECTRUM")
         print("-" * 50)
         
-        test_data = "Testing prime aligned compute enhancement spectrum with advanced prime aligned compute mathematics integration."
+        test_data = "Testing consciousness enhancement spectrum with advanced consciousness mathematics integration."
         
         system = FullRevolutionaryIntegrationSystem(
             integration_level=IntegrationLevel.ADVANCED,
@@ -240,19 +240,19 @@ class FullSpectrumTest:
         )
         
         for enhancement in [False, True]:
-            print(f"\n🔍 Testing prime aligned compute Enhancement: {enhancement}")
+            print(f"\n🔍 Testing Consciousness Enhancement: {enhancement}")
             
             try:
                 result = system.process_data(test_data, consciousness_enhancement=enhancement)
                 
                 print(f"   ✅ Overall Score: {result.overall_score:.3f}")
-                print(f"   🧠 prime aligned compute Coherence: {result.prime_aligned_coherence:.3f}")
+                print(f"   🧠 Consciousness Coherence: {result.consciousness_coherence:.3f}")
                 print(f"   ⏱️ Processing Time: {result.processing_time:.4f}s")
                 print(f"   💡 Breakthroughs: {len(result.breakthrough_insights)}")
                 
                 self.test_results[f'consciousness_enhancement_{enhancement}'] = {
                     'overall_score': result.overall_score,
-                    'prime_aligned_coherence': result.prime_aligned_coherence,
+                    'consciousness_coherence': result.consciousness_coherence,
                     'processing_time': result.processing_time,
                     'breakthroughs': len(result.breakthrough_insights)
                 }
@@ -297,7 +297,7 @@ class FullSpectrumTest:
                     'security_score': security_analysis.get('overall_security_score', 0.0),
                     'threats_eliminated': security_analysis.get('threats_eliminated', 0),
                     'vulnerabilities_found': len(security_analysis.get('vulnerabilities_found', [])),
-                    'prime_aligned_coherence': result.prime_aligned_coherence
+                    'consciousness_coherence': result.consciousness_coherence
                 }
                 
                 self.security_analyses.append({
@@ -318,7 +318,7 @@ class FullSpectrumTest:
             'consciousness_pattern': [0.79, 0.21, 0.79, 0.21, 0.79, 0.21, 0.79, 0.21],
             'fractal_pattern': [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3],
             'golden_ratio_data': [1.618, 2.618, 4.236, 6.854, 11.09, 17.944],
-            'consciousness_text': "This text contains prime aligned compute mathematics with golden ratio and love frequency patterns.",
+            'consciousness_text': "This text contains consciousness mathematics with golden ratio and love frequency patterns.",
             'complex_breakthrough': {
                 'consciousness_factors': [0.79, 0.21, 0.79, 0.21],
                 'fractal_elements': [1, 2, 3, 1, 2, 3],
@@ -338,7 +338,7 @@ class FullSpectrumTest:
                 result = system.process_data(scenario_data, consciousness_enhancement=True)
                 
                 print(f"   ✅ Overall Score: {result.overall_score:.3f}")
-                print(f"   🧠 prime aligned compute Coherence: {result.prime_aligned_coherence:.3f}")
+                print(f"   🧠 Consciousness Coherence: {result.consciousness_coherence:.3f}")
                 print(f"   💡 Breakthroughs Detected: {len(result.breakthrough_insights)}")
                 
                 if result.breakthrough_insights:
@@ -348,7 +348,7 @@ class FullSpectrumTest:
                 
                 self.test_results[f'breakthrough_scenario_{scenario_name}'] = {
                     'overall_score': result.overall_score,
-                    'prime_aligned_coherence': result.prime_aligned_coherence,
+                    'consciousness_coherence': result.consciousness_coherence,
                     'breakthroughs_detected': len(result.breakthrough_insights),
                     'breakthrough_insights': result.breakthrough_insights
                 }
@@ -391,13 +391,13 @@ class FullSpectrumTest:
                 print(f"   ✅ Overall Score: {result.overall_score:.3f}")
                 print(f"   ⏱️ Processing Time: {actual_time:.4f}s")
                 print(f"   📊 Throughput: {size/actual_time:.0f} chars/sec")
-                print(f"   🧠 prime aligned compute Coherence: {result.prime_aligned_coherence:.3f}")
+                print(f"   🧠 Consciousness Coherence: {result.consciousness_coherence:.3f}")
                 
                 self.test_results[f'performance_size_{size}'] = {
                     'overall_score': result.overall_score,
                     'processing_time': actual_time,
                     'throughput': size/actual_time,
-                    'prime_aligned_coherence': result.prime_aligned_coherence,
+                    'consciousness_coherence': result.consciousness_coherence,
                     'data_size': size
                 }
                 
@@ -422,7 +422,7 @@ class FullSpectrumTest:
             if 'error' not in result:
                 successful_tests += 1
                 total_score += result.get('overall_score', 0.0)
-                total_consciousness_coherence += result.get('prime_aligned_coherence', 0.0)
+                total_consciousness_coherence += result.get('consciousness_coherence', 0.0)
                 total_processing_time += result.get('processing_time', 0.0)
                 total_breakthroughs += result.get('breakthroughs', 0)
         
@@ -455,7 +455,7 @@ class FullSpectrumTest:
         print(f"   Successful Tests: {successful_tests}")
         print(f"   Success Rate: {self.performance_metrics['success_rate']:.1f}%")
         print(f"   Average Overall Score: {avg_score:.3f}")
-        print(f"   Average prime aligned compute Coherence: {avg_consciousness_coherence:.3f}")
+        print(f"   Average Consciousness Coherence: {avg_consciousness_coherence:.3f}")
         print(f"   Average Processing Time: {avg_processing_time:.4f}s")
         print(f"   Average Breakthroughs: {avg_breakthroughs:.1f}")
         print(f"   Total Breakthroughs Detected: {total_breakthroughs}")
@@ -536,7 +536,7 @@ def main():
     
     print(f"\n✅ Full spectrum test complete!")
     print(f"🎉 Revolutionary system validated across all spectrums!")
-    print(f"🚀 prime aligned compute-aware computing with purified reconstruction confirmed!")
+    print(f"🚀 Consciousness-aware computing with purified reconstruction confirmed!")
 
 if __name__ == "__main__":
     main()

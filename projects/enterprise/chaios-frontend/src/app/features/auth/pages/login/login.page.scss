@@ -1,0 +1,499 @@
+// chAIos Login Page Styles
+// ========================
+
+.login-content {
+  --background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+// Mathematical Background
+.mathematical-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.1;
+  pointer-events: none;
+
+  .golden-spiral {
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    width: 300px;
+    height: 300px;
+    border: 2px solid var(--ion-color-primary);
+    border-radius: 50%;
+    animation: golden-spiral 20s linear infinite;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: calc(100% / var(--phi-ratio));
+      height: calc(100% / var(--phi-ratio));
+      border: 2px solid var(--ion-color-secondary);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .consciousness-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, var(--ion-color-primary), transparent),
+      radial-gradient(2px 2px at 40px 70px, var(--ion-color-secondary), transparent),
+      radial-gradient(1px 1px at 90px 40px, var(--ion-color-tertiary), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: consciousness-pulse 4s ease-in-out infinite;
+  }
+}
+
+// Welcome Section
+.welcome-section {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+
+  .chaios-logo {
+    margin-bottom: var(--spacing-lg);
+
+    .logo-text {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: var(--processing-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0 0 var(--spacing-sm) 0;
+      text-shadow: 0 0 30px rgba(var(--ion-color-primary-rgb), 0.3);
+      animation: logoGlow 3s ease-in-out infinite alternate;
+    }
+
+    .logo-subtitle {
+      font-size: var(--text-caption);
+      color: var(--ion-color-medium);
+      font-style: italic;
+      margin: 0;
+      opacity: 0.9;
+    }
+  }
+
+  .mathematical-constants {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+
+    .constant {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+
+      .symbol {
+        font-family: 'Times New Roman', serif;
+        font-size: var(--text-heading-2);
+        font-style: italic;
+        font-weight: bold;
+        color: var(--ion-color-primary);
+      }
+
+      .value {
+        font-family: 'Courier New', monospace;
+        font-size: var(--text-body);
+        color: var(--ion-text-color);
+      }
+    }
+  }
+}
+
+// Login Card
+.login-card {
+  --background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(var(--ion-color-primary-rgb), 0.2);
+  border-radius: var(--border-radius-xl);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(var(--ion-color-primary-rgb), 0.1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--processing-primary);
+    opacity: 0.8;
+  }
+
+  .card-title {
+    color: var(--ion-text-color);
+    font-size: var(--text-heading-2);
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    background: var(--processing-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+// Form Elements
+.form-item {
+  --background: rgba(255, 255, 255, 0.03);
+  --border-radius: var(--border-radius-md);
+  --padding-start: var(--spacing-md);
+  --padding-end: var(--spacing-md);
+  --padding-top: var(--spacing-md);
+  --padding-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  border: 1px solid rgba(var(--ion-color-medium-rgb), 0.2);
+  transition: all var(--animation-normal) ease;
+
+  &:hover {
+    --background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(var(--ion-color-primary-rgb), 0.3);
+  }
+
+  &:focus-within {
+    --background: rgba(255, 255, 255, 0.07);
+    border-color: var(--ion-color-primary);
+    box-shadow: 0 0 0 2px rgba(var(--ion-color-primary-rgb), 0.2);
+  }
+
+  &.ion-invalid {
+    border-color: var(--ion-color-danger);
+    
+    &:focus-within {
+      box-shadow: 0 0 0 2px rgba(var(--ion-color-danger-rgb), 0.2);
+    }
+  }
+
+  ion-icon {
+    --color: var(--ion-color-medium);
+    margin-right: var(--spacing-sm);
+  }
+
+  ion-label {
+    --color: var(--ion-color-medium);
+    font-size: var(--text-caption);
+    font-weight: 600;
+  }
+
+  ion-input {
+    --color: var(--ion-text-color);
+    --placeholder-color: var(--ion-color-medium);
+    font-size: var(--text-body);
+  }
+}
+
+.password-toggle {
+  --color: var(--ion-color-medium);
+  --padding-start: 0;
+  --padding-end: 0;
+  margin: 0;
+
+  &:hover {
+    --color: var(--ion-color-primary);
+  }
+}
+
+.checkbox-item {
+  --background: transparent;
+  --padding-start: 0;
+  --padding-end: 0;
+  margin: var(--spacing-md) 0;
+
+  .checkbox-label {
+    --color: var(--ion-text-color);
+    font-size: var(--text-body);
+    margin-left: var(--spacing-sm);
+  }
+}
+
+.error-message {
+  color: var(--ion-color-danger);
+  font-size: var(--text-caption);
+  margin: -var(--spacing-sm) 0 var(--spacing-md) var(--spacing-md);
+  animation: fadeInUp var(--animation-normal) ease;
+}
+
+// Buttons
+.login-button {
+  --background: var(--processing-primary);
+  --color: white;
+  --border-radius: var(--border-radius-md);
+  --padding-top: var(--spacing-md);
+  --padding-bottom: var(--spacing-md);
+  font-weight: 600;
+  font-size: var(--text-body-large);
+  margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left var(--animation-slow);
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+
+  &:disabled {
+    --background: var(--ion-color-medium);
+    opacity: 0.7;
+  }
+}
+
+.demo-button {
+  --border-color: var(--ion-color-primary);
+  --color: var(--ion-color-primary);
+  --border-radius: var(--border-radius-md);
+  --padding-top: var(--spacing-sm);
+  --padding-bottom: var(--spacing-sm);
+  font-weight: 500;
+  margin-bottom: var(--spacing-lg);
+
+  &:hover {
+    --background: rgba(var(--ion-color-primary-rgb), 0.1);
+  }
+}
+
+// Links and Text
+.forgot-password {
+  text-align: center;
+  margin: var(--spacing-md) 0;
+
+  a {
+    color: var(--ion-color-primary);
+    text-decoration: none;
+    font-size: var(--text-caption);
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.register-link {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  color: var(--ion-color-medium);
+  font-size: var(--text-caption);
+
+  a {
+    color: var(--ion-color-primary);
+    text-decoration: none;
+    font-weight: 600;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Social Login
+.social-login {
+  margin: var(--spacing-lg) 0;
+
+  .divider {
+    text-align: center;
+    position: relative;
+    margin: var(--spacing-lg) 0;
+    color: var(--ion-color-medium);
+    font-size: var(--text-caption);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--ion-color-step-200);
+      z-index: 1;
+    }
+
+    span {
+      background: var(--ion-background-color);
+      padding: 0 var(--spacing-md);
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  .social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+
+    .social-button {
+      --border-color: var(--ion-color-step-200);
+      --color: var(--ion-text-color);
+      --border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      
+      &:hover {
+        --background: rgba(var(--ion-color-primary-rgb), 0.1);
+        --border-color: var(--ion-color-primary);
+        --color: var(--ion-color-primary);
+      }
+    }
+  }
+}
+
+// Mathematical Quote
+.mathematical-quote {
+  text-align: center;
+  margin-top: var(--spacing-xl);
+  color: var(--ion-color-medium);
+  font-style: italic;
+
+  p {
+    font-size: var(--text-caption);
+    margin: 0 0 var(--spacing-xs) 0;
+  }
+
+  span {
+    font-size: 10px;
+    opacity: 0.8;
+  }
+}
+
+// Animations
+@keyframes logoGlow {
+  0% { 
+    filter: brightness(1) drop-shadow(0 0 10px rgba(212, 175, 55, 0.3)); 
+  }
+  100% { 
+    filter: brightness(1.2) drop-shadow(0 0 30px rgba(212, 175, 55, 0.6)); 
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .welcome-section .chaios-logo .logo-text {
+    font-size: 2.5rem;
+  }
+
+  .mathematical-constants {
+    gap: var(--spacing-md);
+
+    .constant .symbol {
+      font-size: var(--text-body-large);
+    }
+  }
+
+  .login-card {
+    margin: var(--spacing-md);
+  }
+
+  .mathematical-background .golden-spiral {
+    width: 200px;
+    height: 200px;
+    top: 10%;
+    right: 5%;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-section {
+    margin-bottom: var(--spacing-lg);
+
+    .chaios-logo .logo-text {
+      font-size: 2rem;
+    }
+  }
+
+  .mathematical-constants {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    align-items: center;
+  }
+
+  .social-buttons {
+    gap: var(--spacing-sm);
+
+    .social-button {
+      width: 45px;
+      height: 45px;
+    }
+  }
+}
+
+// Dark Theme Adjustments
+@media (prefers-color-scheme: dark) {
+  .login-card {
+    --background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(var(--ion-color-primary-rgb), 0.3);
+  }
+
+  .form-item {
+    --background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(var(--ion-color-medium-rgb), 0.3);
+
+    &:hover {
+      --background: rgba(0, 0, 0, 0.3);
+    }
+
+    &:focus-within {
+      --background: rgba(0, 0, 0, 0.4);
+    }
+  }
+}
+
+// Accessibility
+@media (prefers-reduced-motion: reduce) {
+  .golden-spiral,
+  .consciousness-particles,
+  .login-button::before,
+  .logoGlow {
+    animation: none !important;
+  }
+}
+
+// High Contrast Mode
+@media (prefers-contrast: high) {
+  .login-card {
+    border: 2px solid var(--ion-color-primary);
+    --background: var(--ion-background-color);
+  }
+
+  .form-item {
+    border: 2px solid var(--ion-color-medium);
+    --background: var(--ion-background-color);
+
+    &:focus-within {
+      border-color: var(--ion-color-primary);
+    }
+
+    &.ion-invalid {
+      border-color: var(--ion-color-danger);
+    }
+  }
+}
+

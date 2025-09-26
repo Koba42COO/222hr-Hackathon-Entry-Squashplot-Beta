@@ -1,0 +1,2461 @@
+{
+  "total_articles": 5,
+  "breakthrough_articles": 4,
+  "high_quantum_articles": 5,
+  "high_tech_articles": 5,
+  "high_koba42_articles": 5,
+  "article_analyses": [
+    {
+      "article_id": "bfb9b89a347a",
+      "title": "Innovative Software Framework for Quantum Programming",
+      "url": "https://example.com/quantum-software-1",
+      "source": "infoq",
+      "field": "software",
+      "subfield": "quantum_programming",
+      "publication_date": "2024-01-05",
+      "authors": [
+        "Dr. Emily Johnson",
+        "Dr. Carlos Mendez"
+      ],
+      "summary": "A comprehensive quantum software development kit enables developers to write and test quantum algorithms easily, democratizing quantum computing access.",
+      "content": "A comprehensive quantum software development kit has been released that democratizes access to quantum computing. This innovative framework provides developers with intuitive tools to write, test, and optimize quantum algorithms, accelerating the development of quantum applications across various industries.",
+      "tags": [
+        "quantum software",
+        "SDK",
+        "quantum programming",
+        "development tools",
+        "quantum computing"
+      ],
+      "research_impact": 7.5,
+      "quantum_relevance": 7.8,
+      "technology_relevance": 8.5,
+      "relevance_score": 7.933333333333334,
+      "scraped_timestamp": "2025-08-29T21:57:04.522802",
+      "processing_status": "stored",
+      "key_insights": [
+        "High technology relevance",
+        "Quantum computing/technology focus",
+        "Algorithm/optimization focus",
+        "Software/programming focus"
+      ],
+      "koba42_integration_potential": 10.0,
+      "analysis": {
+        "breakthrough_detection": {
+          "breakthrough_keywords_found": [],
+          "breakthrough_score": 0,
+          "is_breakthrough": false,
+          "breakthrough_intensity": 0.0
+        },
+        "quantum_analysis": {
+          "quantum_keywords_found": [
+            "quantum",
+            "quantum_computing",
+            "quantum_algorithm",
+            "quantum_software",
+            "quantum_programming"
+          ],
+          "quantum_score": 5,
+          "quantum_intensity": 18.51851851851852,
+          "is_quantum_focused": true
+        },
+        "technology_analysis": {
+          "technology_keywords_found": [
+            "software",
+            "programming",
+            "algorithm",
+            "computing",
+            "application",
+            "development"
+          ],
+          "technology_score": 6,
+          "technology_intensity": 23.076923076923077,
+          "is_technology_focused": true
+        },
+        "content_quality": {
+          "content_length": 309,
+          "summary_length": 152,
+          "title_length": 53,
+          "content_completeness": 30.9,
+          "summary_quality": 76.0,
+          "overall_quality_score": 53.449999999999996
+        },
+        "koba42_potential": {
+          "enhanced_koba42_score": 10.0,
+          "integration_priority": "high",
+          "recommended_actions": [
+            "Integrate quantum physics insights into optimization algorithms",
+            "Apply technology insights to KOBA42 framework"
+          ]
+        },
+        "recommendations": [
+          "High quantum relevance - prioritize for quantum optimization",
+          "High technology relevance - integrate into tech framework"
+        ]
+      }
+    },
+    {
+      "article_id": "2a1830b48e62",
+      "title": "Advanced AI Algorithm Discovers New Quantum Materials",
+      "url": "https://example.com/ai-quantum-materials-1",
+      "source": "phys_org",
+      "field": "materials_science",
+      "subfield": "quantum_materials",
+      "publication_date": "2024-01-08",
+      "authors": [
+        "Dr. Wei Zhang",
+        "Prof. Lisa Anderson"
+      ],
+      "summary": "Artificial intelligence has identified previously unknown quantum materials with exceptional properties, accelerating the discovery of next-generation quantum technologies.",
+      "content": "Artificial intelligence has made a remarkable breakthrough in materials science by discovering new quantum materials with exceptional properties. This pioneering research combines machine learning algorithms with quantum physics to predict and identify materials that could revolutionize quantum computing, sensing, and communication technologies.",
+      "tags": [
+        "artificial intelligence",
+        "quantum materials",
+        "machine learning",
+        "materials discovery",
+        "quantum technology"
+      ],
+      "research_impact": 8.2,
+      "quantum_relevance": 8.8,
+      "technology_relevance": 8.8,
+      "relevance_score": 8.6,
+      "scraped_timestamp": "2025-08-29T21:57:03.993570",
+      "processing_status": "stored",
+      "key_insights": [
+        "High quantum physics relevance",
+        "High technology relevance",
+        "Breakthrough research",
+        "Quantum computing/technology focus",
+        "Algorithm/optimization focus",
+        "Materials science focus"
+      ],
+      "koba42_integration_potential": 10.0,
+      "analysis": {
+        "breakthrough_detection": {
+          "breakthrough_keywords_found": [
+            "breakthrough",
+            "discovery",
+            "advance",
+            "new",
+            "pioneering",
+            "remarkable",
+            "next-generation"
+          ],
+          "breakthrough_score": 7,
+          "is_breakthrough": true,
+          "breakthrough_intensity": 22.58064516129032
+        },
+        "quantum_analysis": {
+          "quantum_keywords_found": [
+            "quantum",
+            "quantum_computing",
+            "quantum_physics",
+            "quantum_material",
+            "quantum_technology"
+          ],
+          "quantum_score": 5,
+          "quantum_intensity": 18.51851851851852,
+          "is_quantum_focused": true
+        },
+        "technology_analysis": {
+          "technology_keywords_found": [
+            "algorithm",
+            "technology",
+            "artificial_intelligence",
+            "machine_learning",
+            "computing",
+            "tech"
+          ],
+          "technology_score": 6,
+          "technology_intensity": 23.076923076923077,
+          "is_technology_focused": true
+        },
+        "content_quality": {
+          "content_length": 347,
+          "summary_length": 172,
+          "title_length": 53,
+          "content_completeness": 34.699999999999996,
+          "summary_quality": 86.0,
+          "overall_quality_score": 60.349999999999994
+        },
+        "koba42_potential": {
+          "enhanced_koba42_score": 10.0,
+          "integration_priority": "high",
+          "recommended_actions": [
+            "High-priority integration due to breakthrough content",
+            "Integrate quantum physics insights into optimization algorithms",
+            "Apply technology insights to KOBA42 framework"
+          ]
+        },
+        "recommendations": [
+          "Consider for immediate KOBA42 integration",
+          "High quantum relevance - prioritize for quantum optimization",
+          "High technology relevance - integrate into tech framework"
+        ]
+      }
+    },
+    {
+      "article_id": "402bd58901d1",
+      "title": "Revolutionary Quantum Internet Protocol Achieves Secure Communication",
+      "url": "https://example.com/quantum-internet-1",
+      "source": "infoq",
+      "field": "technology",
+      "subfield": "quantum_networking",
+      "publication_date": "2024-01-10",
+      "authors": [
+        "Dr. Alex Thompson",
+        "Dr. Maria Garcia"
+      ],
+      "summary": "Researchers demonstrate a new quantum internet protocol that enables secure quantum communication over unprecedented distances, bringing quantum internet closer to reality.",
+      "content": "A groundbreaking quantum internet protocol has been developed that enables secure quantum communication over unprecedented distances. This revolutionary technology uses quantum entanglement to create unhackable communication channels, marking a major milestone in the development of quantum internet infrastructure.",
+      "tags": [
+        "quantum internet",
+        "quantum communication",
+        "cryptography",
+        "entanglement",
+        "security"
+      ],
+      "research_impact": 8.5,
+      "quantum_relevance": 9.0,
+      "technology_relevance": 8.8,
+      "relevance_score": 8.766666666666667,
+      "scraped_timestamp": "2025-08-29T21:57:03.120892",
+      "processing_status": "stored",
+      "key_insights": [
+        "High quantum physics relevance",
+        "High technology relevance",
+        "Breakthrough research",
+        "Quantum computing/technology focus",
+        "Breakthrough/revolutionary research"
+      ],
+      "koba42_integration_potential": 10.0,
+      "analysis": {
+        "breakthrough_detection": {
+          "breakthrough_keywords_found": [
+            "revolutionary",
+            "groundbreaking",
+            "milestone",
+            "new",
+            "major",
+            "unprecedented",
+            "revolutionary"
+          ],
+          "breakthrough_score": 7,
+          "is_breakthrough": true,
+          "breakthrough_intensity": 22.58064516129032
+        },
+        "quantum_analysis": {
+          "quantum_keywords_found": [
+            "quantum",
+            "entanglement",
+            "quantum_internet"
+          ],
+          "quantum_score": 3,
+          "quantum_intensity": 11.11111111111111,
+          "is_quantum_focused": true
+        },
+        "technology_analysis": {
+          "technology_keywords_found": [
+            "technology",
+            "development",
+            "tech"
+          ],
+          "technology_score": 3,
+          "technology_intensity": 11.538461538461538,
+          "is_technology_focused": true
+        },
+        "content_quality": {
+          "content_length": 315,
+          "summary_length": 172,
+          "title_length": 69,
+          "content_completeness": 31.5,
+          "summary_quality": 86.0,
+          "overall_quality_score": 58.75
+        },
+        "koba42_potential": {
+          "enhanced_koba42_score": 10.0,
+          "integration_priority": "high",
+          "recommended_actions": [
+            "High-priority integration due to breakthrough content",
+            "Integrate quantum physics insights into optimization algorithms",
+            "Apply technology insights to KOBA42 framework"
+          ]
+        },
+        "recommendations": [
+          "Consider for immediate KOBA42 integration"
+        ]
+      }
+    },
+    {
+      "article_id": "5d1a6c85c4c8",
+      "title": "Novel Machine Learning Framework for Quantum Chemistry Simulations",
+      "url": "https://example.com/ml-quantum-chemistry-1",
+      "source": "nature",
+      "field": "chemistry",
+      "subfield": "quantum_chemistry",
+      "publication_date": "2024-01-12",
+      "authors": [
+        "Dr. Elena Petrova",
+        "Dr. James Wilson"
+      ],
+      "summary": "A new machine learning approach accelerates quantum chemistry calculations by orders of magnitude while maintaining accuracy, enabling faster drug discovery and materials design.",
+      "content": "Scientists have developed an innovative machine learning framework that dramatically accelerates quantum chemistry simulations. This cutting-edge technology combines artificial intelligence with quantum mechanics to predict molecular properties with unprecedented speed and accuracy. The breakthrough has immediate applications in pharmaceutical research, materials science, and chemical engineering.",
+      "tags": [
+        "machine learning",
+        "quantum chemistry",
+        "simulation",
+        "drug discovery",
+        "materials science"
+      ],
+      "research_impact": 8.8,
+      "quantum_relevance": 7.5,
+      "technology_relevance": 9.2,
+      "relevance_score": 8.5,
+      "scraped_timestamp": "2025-08-29T21:57:02.120241",
+      "processing_status": "stored",
+      "key_insights": [
+        "High technology relevance",
+        "Breakthrough research",
+        "Quantum computing/technology focus",
+        "Materials science focus"
+      ],
+      "koba42_integration_potential": 10.0,
+      "analysis": {
+        "breakthrough_detection": {
+          "breakthrough_keywords_found": [
+            "breakthrough",
+            "discovery",
+            "novel",
+            "new",
+            "cutting-edge",
+            "unprecedented"
+          ],
+          "breakthrough_score": 6,
+          "is_breakthrough": true,
+          "breakthrough_intensity": 19.35483870967742
+        },
+        "quantum_analysis": {
+          "quantum_keywords_found": [
+            "quantum",
+            "quantum_mechanics",
+            "quantum_chemistry"
+          ],
+          "quantum_score": 3,
+          "quantum_intensity": 11.11111111111111,
+          "is_quantum_focused": true
+        },
+        "technology_analysis": {
+          "technology_keywords_found": [
+            "technology",
+            "artificial_intelligence",
+            "machine_learning",
+            "application",
+            "tech"
+          ],
+          "technology_score": 5,
+          "technology_intensity": 19.230769230769234,
+          "is_technology_focused": true
+        },
+        "content_quality": {
+          "content_length": 400,
+          "summary_length": 178,
+          "title_length": 66,
+          "content_completeness": 40.0,
+          "summary_quality": 89.0,
+          "overall_quality_score": 64.5
+        },
+        "koba42_potential": {
+          "enhanced_koba42_score": 10.0,
+          "integration_priority": "high",
+          "recommended_actions": [
+            "High-priority integration due to breakthrough content",
+            "Integrate quantum physics insights into optimization algorithms",
+            "Apply technology insights to KOBA42 framework"
+          ]
+        },
+        "recommendations": [
+          "Consider for immediate KOBA42 integration",
+          "High technology relevance - integrate into tech framework"
+        ]
+      }
+    },
+    {
+      "article_id": "13e15489e5c4",
+      "title": "Breakthrough in Quantum Computing: New Algorithm Achieves Quantum Advantage",
+      "url": "https://example.com/quantum-breakthrough-1",
+      "source": "phys_org",
+      "field": "physics",
+      "subfield": "quantum_physics",
+      "publication_date": "2024-01-15",
+      "authors": [
+        "Dr. Sarah Chen",
+        "Prof. Michael Rodriguez"
+      ],
+      "summary": "Researchers have developed a novel quantum algorithm that demonstrates quantum advantage for optimization problems, marking a significant breakthrough in quantum computing technology.",
+      "content": "A team of physicists has made a significant breakthrough in quantum computing technology. The new algorithm leverages quantum entanglement and superposition to solve complex optimization problems that would take classical computers years to complete. This revolutionary development opens new possibilities for quantum computing applications in cryptography, materials science, and artificial intelligence.",
+      "tags": [
+        "quantum computing",
+        "quantum algorithm",
+        "breakthrough",
+        "optimization",
+        "quantum advantage"
+      ],
+      "research_impact": 9.2,
+      "quantum_relevance": 9.8,
+      "technology_relevance": 8.5,
+      "relevance_score": 9.166666666666666,
+      "scraped_timestamp": "2025-08-29T21:57:01.443991",
+      "processing_status": "stored",
+      "key_insights": [
+        "High quantum physics relevance",
+        "High technology relevance",
+        "Breakthrough research",
+        "Quantum computing/technology focus",
+        "Algorithm/optimization focus",
+        "Breakthrough/revolutionary research"
+      ],
+      "koba42_integration_potential": 10.0,
+      "analysis": {
+        "breakthrough_detection": {
+          "breakthrough_keywords_found": [
+            "breakthrough",
+            "novel",
+            "revolutionary",
+            "new",
+            "significant",
+            "revolutionary"
+          ],
+          "breakthrough_score": 6,
+          "is_breakthrough": true,
+          "breakthrough_intensity": 19.35483870967742
+        },
+        "quantum_analysis": {
+          "quantum_keywords_found": [
+            "quantum",
+            "entanglement",
+            "superposition",
+            "quantum_computing",
+            "quantum_algorithm",
+            "quantum_advantage"
+          ],
+          "quantum_score": 6,
+          "quantum_intensity": 22.22222222222222,
+          "is_quantum_focused": true
+        },
+        "technology_analysis": {
+          "technology_keywords_found": [
+            "algorithm",
+            "computer",
+            "technology",
+            "artificial_intelligence",
+            "computing",
+            "application",
+            "development",
+            "tech"
+          ],
+          "technology_score": 8,
+          "technology_intensity": 30.76923076923077,
+          "is_technology_focused": true
+        },
+        "content_quality": {
+          "content_length": 405,
+          "summary_length": 183,
+          "title_length": 75,
+          "content_completeness": 40.5,
+          "summary_quality": 91.5,
+          "overall_quality_score": 66.0
+        },
+        "koba42_potential": {
+          "enhanced_koba42_score": 10.0,
+          "integration_priority": "high",
+          "recommended_actions": [
+            "High-priority integration due to breakthrough content",
+            "Integrate quantum physics insights into optimization algorithms",
+            "Apply technology insights to KOBA42 framework"
+          ]
+        },
+        "recommendations": [
+          "Consider for immediate KOBA42 integration",
+          "High quantum relevance - prioritize for quantum optimization",
+          "High technology relevance - integrate into tech framework"
+        ]
+      }
+    }
+  ],
+  "breakthrough_findings": {
+    "total_breakthroughs": 4,
+    "breakthrough_keywords": {
+      "new": 4,
+      "revolutionary": 4,
+      "breakthrough": 3,
+      "discovery": 2,
+      "unprecedented": 2,
+      "novel": 2,
+      "advance": 1,
+      "pioneering": 1,
+      "remarkable": 1,
+      "next-generation": 1,
+      "groundbreaking": 1,
+      "milestone": 1,
+      "major": 1,
+      "cutting-edge": 1,
+      "significant": 1
+    },
+    "sources": {
+      "phys_org": 2,
+      "infoq": 1,
+      "nature": 1
+    },
+    "fields": {
+      "materials_science": 1,
+      "technology": 1,
+      "chemistry": 1,
+      "physics": 1
+    },
+    "top_breakthroughs": [
+      {
+        "article_id": "2a1830b48e62",
+        "title": "Advanced AI Algorithm Discovers New Quantum Materials",
+        "url": "https://example.com/ai-quantum-materials-1",
+        "source": "phys_org",
+        "field": "materials_science",
+        "subfield": "quantum_materials",
+        "publication_date": "2024-01-08",
+        "authors": [
+          "Dr. Wei Zhang",
+          "Prof. Lisa Anderson"
+        ],
+        "summary": "Artificial intelligence has identified previously unknown quantum materials with exceptional properties, accelerating the discovery of next-generation quantum technologies.",
+        "content": "Artificial intelligence has made a remarkable breakthrough in materials science by discovering new quantum materials with exceptional properties. This pioneering research combines machine learning algorithms with quantum physics to predict and identify materials that could revolutionize quantum computing, sensing, and communication technologies.",
+        "tags": [
+          "artificial intelligence",
+          "quantum materials",
+          "machine learning",
+          "materials discovery",
+          "quantum technology"
+        ],
+        "research_impact": 8.2,
+        "quantum_relevance": 8.8,
+        "technology_relevance": 8.8,
+        "relevance_score": 8.6,
+        "scraped_timestamp": "2025-08-29T21:57:03.993570",
+        "processing_status": "stored",
+        "key_insights": [
+          "High quantum physics relevance",
+          "High technology relevance",
+          "Breakthrough research",
+          "Quantum computing/technology focus",
+          "Algorithm/optimization focus",
+          "Materials science focus"
+        ],
+        "koba42_integration_potential": 10.0,
+        "analysis": {
+          "breakthrough_detection": {
+            "breakthrough_keywords_found": [
+              "breakthrough",
+              "discovery",
+              "advance",
+              "new",
+              "pioneering",
+              "remarkable",
+              "next-generation"
+            ],
+            "breakthrough_score": 7,
+            "is_breakthrough": true,
+            "breakthrough_intensity": 22.58064516129032
+          },
+          "quantum_analysis": {
+            "quantum_keywords_found": [
+              "quantum",
+              "quantum_computing",
+              "quantum_physics",
+              "quantum_material",
+              "quantum_technology"
+            ],
+            "quantum_score": 5,
+            "quantum_intensity": 18.51851851851852,
+            "is_quantum_focused": true
+          },
+          "technology_analysis": {
+            "technology_keywords_found": [
+              "algorithm",
+              "technology",
+              "artificial_intelligence",
+              "machine_learning",
+              "computing",
+              "tech"
+            ],
+            "technology_score": 6,
+            "technology_intensity": 23.076923076923077,
+            "is_technology_focused": true
+          },
+          "content_quality": {
+            "content_length": 347,
+            "summary_length": 172,
+            "title_length": 53,
+            "content_completeness": 34.699999999999996,
+            "summary_quality": 86.0,
+            "overall_quality_score": 60.349999999999994
+          },
+          "koba42_potential": {
+            "enhanced_koba42_score": 10.0,
+            "integration_priority": "high",
+            "recommended_actions": [
+              "High-priority integration due to breakthrough content",
+              "Integrate quantum physics insights into optimization algorithms",
+              "Apply technology insights to KOBA42 framework"
+            ]
+          },
+          "recommendations": [
+            "Consider for immediate KOBA42 integration",
+            "High quantum relevance - prioritize for quantum optimization",
+            "High technology relevance - integrate into tech framework"
+          ]
+        }
+      },
+      {
+        "article_id": "402bd58901d1",
+        "title": "Revolutionary Quantum Internet Protocol Achieves Secure Communication",
+        "url": "https://example.com/quantum-internet-1",
+        "source": "infoq",
+        "field": "technology",
+        "subfield": "quantum_networking",
+        "publication_date": "2024-01-10",
+        "authors": [
+          "Dr. Alex Thompson",
+          "Dr. Maria Garcia"
+        ],
+        "summary": "Researchers demonstrate a new quantum internet protocol that enables secure quantum communication over unprecedented distances, bringing quantum internet closer to reality.",
+        "content": "A groundbreaking quantum internet protocol has been developed that enables secure quantum communication over unprecedented distances. This revolutionary technology uses quantum entanglement to create unhackable communication channels, marking a major milestone in the development of quantum internet infrastructure.",
+        "tags": [
+          "quantum internet",
+          "quantum communication",
+          "cryptography",
+          "entanglement",
+          "security"
+        ],
+        "research_impact": 8.5,
+        "quantum_relevance": 9.0,
+        "technology_relevance": 8.8,
+        "relevance_score": 8.766666666666667,
+        "scraped_timestamp": "2025-08-29T21:57:03.120892",
+        "processing_status": "stored",
+        "key_insights": [
+          "High quantum physics relevance",
+          "High technology relevance",
+          "Breakthrough research",
+          "Quantum computing/technology focus",
+          "Breakthrough/revolutionary research"
+        ],
+        "koba42_integration_potential": 10.0,
+        "analysis": {
+          "breakthrough_detection": {
+            "breakthrough_keywords_found": [
+              "revolutionary",
+              "groundbreaking",
+              "milestone",
+              "new",
+              "major",
+              "unprecedented",
+              "revolutionary"
+            ],
+            "breakthrough_score": 7,
+            "is_breakthrough": true,
+            "breakthrough_intensity": 22.58064516129032
+          },
+          "quantum_analysis": {
+            "quantum_keywords_found": [
+              "quantum",
+              "entanglement",
+              "quantum_internet"
+            ],
+            "quantum_score": 3,
+            "quantum_intensity": 11.11111111111111,
+            "is_quantum_focused": true
+          },
+          "technology_analysis": {
+            "technology_keywords_found": [
+              "technology",
+              "development",
+              "tech"
+            ],
+            "technology_score": 3,
+            "technology_intensity": 11.538461538461538,
+            "is_technology_focused": true
+          },
+          "content_quality": {
+            "content_length": 315,
+            "summary_length": 172,
+            "title_length": 69,
+            "content_completeness": 31.5,
+            "summary_quality": 86.0,
+            "overall_quality_score": 58.75
+          },
+          "koba42_potential": {
+            "enhanced_koba42_score": 10.0,
+            "integration_priority": "high",
+            "recommended_actions": [
+              "High-priority integration due to breakthrough content",
+              "Integrate quantum physics insights into optimization algorithms",
+              "Apply technology insights to KOBA42 framework"
+            ]
+          },
+          "recommendations": [
+            "Consider for immediate KOBA42 integration"
+          ]
+        }
+      },
+      {
+        "article_id": "5d1a6c85c4c8",
+        "title": "Novel Machine Learning Framework for Quantum Chemistry Simulations",
+        "url": "https://example.com/ml-quantum-chemistry-1",
+        "source": "nature",
+        "field": "chemistry",
+        "subfield": "quantum_chemistry",
+        "publication_date": "2024-01-12",
+        "authors": [
+          "Dr. Elena Petrova",
+          "Dr. James Wilson"
+        ],
+        "summary": "A new machine learning approach accelerates quantum chemistry calculations by orders of magnitude while maintaining accuracy, enabling faster drug discovery and materials design.",
+        "content": "Scientists have developed an innovative machine learning framework that dramatically accelerates quantum chemistry simulations. This cutting-edge technology combines artificial intelligence with quantum mechanics to predict molecular properties with unprecedented speed and accuracy. The breakthrough has immediate applications in pharmaceutical research, materials science, and chemical engineering.",
+        "tags": [
+          "machine learning",
+          "quantum chemistry",
+          "simulation",
+          "drug discovery",
+          "materials science"
+        ],
+        "research_impact": 8.8,
+        "quantum_relevance": 7.5,
+        "technology_relevance": 9.2,
+        "relevance_score": 8.5,
+        "scraped_timestamp": "2025-08-29T21:57:02.120241",
+        "processing_status": "stored",
+        "key_insights": [
+          "High technology relevance",
+          "Breakthrough research",
+          "Quantum computing/technology focus",
+          "Materials science focus"
+        ],
+        "koba42_integration_potential": 10.0,
+        "analysis": {
+          "breakthrough_detection": {
+            "breakthrough_keywords_found": [
+              "breakthrough",
+              "discovery",
+              "novel",
+              "new",
+              "cutting-edge",
+              "unprecedented"
+            ],
+            "breakthrough_score": 6,
+            "is_breakthrough": true,
+            "breakthrough_intensity": 19.35483870967742
+          },
+          "quantum_analysis": {
+            "quantum_keywords_found": [
+              "quantum",
+              "quantum_mechanics",
+              "quantum_chemistry"
+            ],
+            "quantum_score": 3,
+            "quantum_intensity": 11.11111111111111,
+            "is_quantum_focused": true
+          },
+          "technology_analysis": {
+            "technology_keywords_found": [
+              "technology",
+              "artificial_intelligence",
+              "machine_learning",
+              "application",
+              "tech"
+            ],
+            "technology_score": 5,
+            "technology_intensity": 19.230769230769234,
+            "is_technology_focused": true
+          },
+          "content_quality": {
+            "content_length": 400,
+            "summary_length": 178,
+            "title_length": 66,
+            "content_completeness": 40.0,
+            "summary_quality": 89.0,
+            "overall_quality_score": 64.5
+          },
+          "koba42_potential": {
+            "enhanced_koba42_score": 10.0,
+            "integration_priority": "high",
+            "recommended_actions": [
+              "High-priority integration due to breakthrough content",
+              "Integrate quantum physics insights into optimization algorithms",
+              "Apply technology insights to KOBA42 framework"
+            ]
+          },
+          "recommendations": [
+            "Consider for immediate KOBA42 integration",
+            "High technology relevance - integrate into tech framework"
+          ]
+        }
+      },
+      {
+        "article_id": "13e15489e5c4",
+        "title": "Breakthrough in Quantum Computing: New Algorithm Achieves Quantum Advantage",
+        "url": "https://example.com/quantum-breakthrough-1",
+        "source": "phys_org",
+        "field": "physics",
+        "subfield": "quantum_physics",
+        "publication_date": "2024-01-15",
+        "authors": [
+          "Dr. Sarah Chen",
+          "Prof. Michael Rodriguez"
+        ],
+        "summary": "Researchers have developed a novel quantum algorithm that demonstrates quantum advantage for optimization problems, marking a significant breakthrough in quantum computing technology.",
+        "content": "A team of physicists has made a significant breakthrough in quantum computing technology. The new algorithm leverages quantum entanglement and superposition to solve complex optimization problems that would take classical computers years to complete. This revolutionary development opens new possibilities for quantum computing applications in cryptography, materials science, and artificial intelligence.",
+        "tags": [
+          "quantum computing",
+          "quantum algorithm",
+          "breakthrough",
+          "optimization",
+          "quantum advantage"
+        ],
+        "research_impact": 9.2,
+        "quantum_relevance": 9.8,
+        "technology_relevance": 8.5,
+        "relevance_score": 9.166666666666666,
+        "scraped_timestamp": "2025-08-29T21:57:01.443991",
+        "processing_status": "stored",
+        "key_insights": [
+          "High quantum physics relevance",
+          "High technology relevance",
+          "Breakthrough research",
+          "Quantum computing/technology focus",
+          "Algorithm/optimization focus",
+          "Breakthrough/revolutionary research"
+        ],
+        "koba42_integration_potential": 10.0,
+        "analysis": {
+          "breakthrough_detection": {
+            "breakthrough_keywords_found": [
+              "breakthrough",
+              "novel",
+              "revolutionary",
+              "new",
+              "significant",
+              "revolutionary"
+            ],
+            "breakthrough_score": 6,
+            "is_breakthrough": true,
+            "breakthrough_intensity": 19.35483870967742
+          },
+          "quantum_analysis": {
+            "quantum_keywords_found": [
+              "quantum",
+              "entanglement",
+              "superposition",
+              "quantum_computing",
+              "quantum_algorithm",
+              "quantum_advantage"
+            ],
+            "quantum_score": 6,
+            "quantum_intensity": 22.22222222222222,
+            "is_quantum_focused": true
+          },
+          "technology_analysis": {
+            "technology_keywords_found": [
+              "algorithm",
+              "computer",
+              "technology",
+              "artificial_intelligence",
+              "computing",
+              "application",
+              "development",
+              "tech"
+            ],
+            "technology_score": 8,
+            "technology_intensity": 30.76923076923077,
+            "is_technology_focused": true
+          },
+          "content_quality": {
+            "content_length": 405,
+            "summary_length": 183,
+            "title_length": 75,
+            "content_completeness": 40.5,
+            "summary_quality": 91.5,
+            "overall_quality_score": 66.0
+          },
+          "koba42_potential": {
+            "enhanced_koba42_score": 10.0,
+            "integration_priority": "high",
+            "recommended_actions": [
+              "High-priority integration due to breakthrough content",
+              "Integrate quantum physics insights into optimization algorithms",
+              "Apply technology insights to KOBA42 framework"
+            ]
+          },
+          "recommendations": [
+            "Consider for immediate KOBA42 integration",
+            "High quantum relevance - prioritize for quantum optimization",
+            "High technology relevance - integrate into tech framework"
+          ]
+        }
+      }
+    ]
+  },
+  "quantum_findings": {
+    "total_quantum_articles": 5,
+    "quantum_keywords": {
+      "quantum": 5,
+      "quantum_computing": 3,
+      "quantum_algorithm": 2,
+      "entanglement": 2,
+      "quantum_software": 1,
+      "quantum_programming": 1,
+      "quantum_physics": 1,
+      "quantum_material": 1,
+      "quantum_technology": 1,
+      "quantum_internet": 1,
+      "quantum_mechanics": 1,
+      "quantum_chemistry": 1,
+      "superposition": 1,
+      "quantum_advantage": 1
+    },
+    "quantum_topics": {
+      "quantum_algorithms": 2,
+      "quantum_materials": 1,
+      "quantum_computing": 1
+    },
+    "koba42_quantum_opportunities": [
+      {
+        "article_id": "bfb9b89a347a",
+        "title": "Innovative Software Framework for Quantum Programming",
+        "url": "https://example.com/quantum-software-1",
+        "source": "infoq",
+        "field": "software",
+        "subfield": "quantum_programming",
+        "publication_date": "2024-01-05",
+        "authors": [
+          "Dr. Emily Johnson",
+          "Dr. Carlos Mendez"
+        ],
+        "summary": "A comprehensive quantum software development kit enables developers to write and test quantum algorithms easily, democratizing quantum computing access.",
+        "content": "A comprehensive quantum software development kit has been released that democratizes access to quantum computing. This innovative framework provides developers with intuitive tools to write, test, and optimize quantum algorithms, accelerating the development of quantum applications across various industries.",
+        "tags": [
+          "quantum software",
+          "SDK",
+          "quantum programming",
+          "development tools",
+          "quantum computing"
+        ],
+        "research_impact": 7.5,
+        "quantum_relevance": 7.8,
+        "technology_relevance": 8.5,
+        "relevance_score": 7.933333333333334,
+        "scraped_timestamp": "2025-08-29T21:57:04.522802",
+        "processing_status": "stored",
+        "key_insights": [
+          "High technology relevance",
+          "Quantum computing/technology focus",
+          "Algorithm/optimization focus",
+          "Software/programming focus"
+        ],
+        "koba42_integration_potential": 10.0,
+        "analysis": {
+          "breakthrough_detection": {
+            "breakthrough_keywords_found": [],
+            "breakthrough_score": 0,
+            "is_breakthrough": false,
+            "breakthrough_intensity": 0.0
+          },
+          "quantum_analysis": {
+            "quantum_keywords_found": [
+              "quantum",
+              "quantum_computing",
+              "quantum_algorithm",
+              "quantum_software",
+              "quantum_programming"
+            ],
+            "quantum_score": 5,
+            "quantum_intensity": 18.51851851851852,
+            "is_quantum_focused": true
+          },
+          "technology_analysis": {
+            "technology_keywords_found": [
+              "software",
+              "programming",
+              "algorithm",
+              "computing",
+              "application",
+              "development"
+            ],
+            "technology_score": 6,
+            "technology_intensity": 23.076923076923077,
+            "is_technology_focused": true
+          },
+          "content_quality": {
+            "content_length": 309,
+            "summary_length": 152,
+            "title_length": 53,
+            "content_completeness": 30.9,
+            "summary_quality": 76.0,
+            "overall_quality_score": 53.449999999999996
+          },
+          "koba42_potential": {
+            "enhanced_koba42_score": 10.0,
+            "integration_priority": "high",
+            "recommended_actions": [
+              "Integrate quantum physics insights into optimization algorithms",
+              "Apply technology insights to KOBA42 framework"
+            ]
+          },
+          "recommendations": [
+            "High quantum relevance - prioritize for quantum optimization",
+            "High technology relevance - integrate into tech framework"
+          ]
+        }
+      },
+      {
+        "article_id": "2a1830b48e62",
+        "title": "Advanced AI Algorithm Discovers New Quantum Materials",
+        "url": "https://example.com/ai-quantum-materials-1",
+        "source": "phys_org",
+        "field": "materials_science",
+        "subfield": "quantum_materials",
+        "publication_date": "2024-01-08",
+        "authors": [
+          "Dr. Wei Zhang",
+          "Prof. Lisa Anderson"
+        ],
+        "summary": "Artificial intelligence has identified previously unknown quantum materials with exceptional properties, accelerating the discovery of next-generation quantum technologies.",
+        "content": "Artificial intelligence has made a remarkable breakthrough in materials science by discovering new quantum materials with exceptional properties. This pioneering research combines machine learning algorithms with quantum physics to predict and identify materials that could revolutionize quantum computing, sensing, and communication technologies.",
+        "tags": [
+          "artificial intelligence",
+          "quantum materials",
+          "machine learning",
+          "materials discovery",
+          "quantum technology"
+        ],
+        "research_impact": 8.2,
+        "quantum_relevance": 8.8,
+        "technology_relevance": 8.8,
+        "relevance_score": 8.6,
+        "scraped_timestamp": "2025-08-29T21:57:03.993570",
+        "processing_status": "stored",
+        "key_insights": [
+          "High quantum physics relevance",
+          "High technology relevance",
+          "Breakthrough research",
+          "Quantum computing/technology focus",
+          "Algorithm/optimization focus",
+          "Materials science focus"
+        ],
+        "koba42_integration_potential": 10.0,
+        "analysis": {
+          "breakthrough_detection": {
+            "breakthrough_keywords_found": [
+              "breakthrough",
+              "discovery",
+              "advance",
+              "new",
+              "pioneering",
+              "remarkable",
+              "next-generation"
+            ],
+            "breakthrough_score": 7,
+            "is_breakthrough": true,
+            "breakthrough_intensity": 22.58064516129032
+          },
+          "quantum_analysis": {
+            "quantum_keywords_found": [
+              "quantum",
+              "quantum_computing",
+              "quantum_physics",
+              "quantum_material",
+              "quantum_technology"
+            ],
+            "quantum_score": 5,
+            "quantum_intensity": 18.51851851851852,
+            "is_quantum_focused": true
+          },
+          "technology_analysis": {
+            "technology_keywords_found": [
+              "algorithm",
+              "technology",
+              "artificial_intelligence",
+              "machine_learning",
+              "computing",
+              "tech"
+            ],
+            "technology_score": 6,
+            "technology_intensity": 23.076923076923077,
+            "is_technology_focused": true
+          },
+          "content_quality": {
+            "content_length": 347,
+            "summary_length": 172,
+            "title_length": 53,
+            "content_completeness": 34.699999999999996,
+            "summary_quality": 86.0,
+            "overall_quality_score": 60.349999999999994
+          },
+          "koba42_potential": {
+            "enhanced_koba42_score": 10.0,
+            "integration_priority": "high",
+            "recommended_actions": [
+              "High-priority integration due to breakthrough content",
+              "Integrate quantum physics insights into optimization algorithms",
+              "Apply technology insights to KOBA42 framework"
+            ]
+          },
+          "recommendations": [
+            "Consider for immediate KOBA42 integration",
+            "High quantum relevance - prioritize for quantum optimization",
+            "High technology relevance - integrate into tech framework"
+          ]
+        }
+      },
+      {
+        "article_id": "402bd58901d1",
+        "title": "Revolutionary Quantum Internet Protocol Achieves Secure Communication",
+        "url": "https://example.com/quantum-internet-1",
+        "source": "infoq",
+        "field": "technology",
+        "subfield": "quantum_networking",
+        "publication_date": "2024-01-10",
+        "authors": [
+          "Dr. Alex Thompson",
+          "Dr. Maria Garcia"
+        ],
+        "summary": "Researchers demonstrate a new quantum internet protocol that enables secure quantum communication over unprecedented distances, bringing quantum internet closer to reality.",
+        "content": "A groundbreaking quantum internet protocol has been developed that enables secure quantum communication over unprecedented distances. This revolutionary technology uses quantum entanglement to create unhackable communication channels, marking a major milestone in the development of quantum internet infrastructure.",
+        "tags": [
+          "quantum internet",
+          "quantum communication",
+          "cryptography",
+          "entanglement",
+          "security"
+        ],
+        "research_impact": 8.5,
+        "quantum_relevance": 9.0,
+        "technology_relevance": 8.8,
+        "relevance_score": 8.766666666666667,
+        "scraped_timestamp": "2025-08-29T21:57:03.120892",
+        "processing_status": "stored",
+        "key_insights": [
+          "High quantum physics relevance",
+          "High technology relevance",
+          "Breakthrough research",
+          "Quantum computing/technology focus",
+          "Breakthrough/revolutionary research"
+        ],
+        "koba42_integration_potential": 10.0,
+        "analysis": {
+          "breakthrough_detection": {
+            "breakthrough_keywords_found": [
+              "revolutionary",
+              "groundbreaking",
+              "milestone",
+              "new",
+              "major",
+              "unprecedented",
+              "revolutionary"
+            ],
+            "breakthrough_score": 7,
+            "is_breakthrough": true,
+            "breakthrough_intensity": 22.58064516129032
+          },
+          "quantum_analysis": {
+            "quantum_keywords_found": [
+              "quantum",
+              "entanglement",
+              "quantum_internet"
+            ],
+            "quantum_score": 3,
+            "quantum_intensity": 11.11111111111111,
+            "is_quantum_focused": true
+          },
+          "technology_analysis": {
+            "technology_keywords_found": [
+              "technology",
+              "development",
+              "tech"
+            ],
+            "technology_score": 3,
+            "technology_intensity": 11.538461538461538,
+            "is_technology_focused": true
+          },
+          "content_quality": {
+            "content_length": 315,
+            "summary_length": 172,
+            "title_length": 69,
+            "content_completeness": 31.5,
+            "summary_quality": 86.0,
+            "overall_quality_score": 58.75
+          },
+          "koba42_potential": {
+            "enhanced_koba42_score": 10.0,
+            "integration_priority": "high",
+            "recommended_actions": [
+              "High-priority integration due to breakthrough content",
+              "Integrate quantum physics insights into optimization algorithms",
+              "Apply technology insights to KOBA42 framework"
+            ]
+          },
+          "recommendations": [
+            "Consider for immediate KOBA42 integration"
+          ]
+        }
+      },
+      {
+        "article_id": "5d1a6c85c4c8",
+        "title": "Novel Machine Learning Framework for Quantum Chemistry Simulations",
+        "url": "https://example.com/ml-quantum-chemistry-1",
+        "source": "nature",
+        "field": "chemistry",
+        "subfield": "quantum_chemistry",
+        "publication_date": "2024-01-12",
+        "authors": [
+          "Dr. Elena Petrova",
+          "Dr. James Wilson"
+        ],
+        "summary": "A new machine learning approach accelerates quantum chemistry calculations by orders of magnitude while maintaining accuracy, enabling faster drug discovery and materials design.",
+        "content": "Scientists have developed an innovative machine learning framework that dramatically accelerates quantum chemistry simulations. This cutting-edge technology combines artificial intelligence with quantum mechanics to predict molecular properties with unprecedented speed and accuracy. The breakthrough has immediate applications in pharmaceutical research, materials science, and chemical engineering.",
+        "tags": [
+          "machine learning",
+          "quantum chemistry",
+          "simulation",
+          "drug discovery",
+          "materials science"
+        ],
+        "research_impact": 8.8,
+        "quantum_relevance": 7.5,
+        "technology_relevance": 9.2,
+        "relevance_score": 8.5,
+        "scraped_timestamp": "2025-08-29T21:57:02.120241",
+        "processing_status": "stored",
+        "key_insights": [
+          "High technology relevance",
+          "Breakthrough research",
+          "Quantum computing/technology focus",
+          "Materials science focus"
+        ],
+        "koba42_integration_potential": 10.0,
+        "analysis": {
+          "breakthrough_detection": {
+            "breakthrough_keywords_found": [
+              "breakthrough",
+              "discovery",
+              "novel",
+              "new",
+              "cutting-edge",
+              "unprecedented"
+            ],
+            "breakthrough_score": 6,
+            "is_breakthrough": true,
+            "breakthrough_intensity": 19.35483870967742
+          },
+          "quantum_analysis": {
+            "quantum_keywords_found": [
+              "quantum",
+              "quantum_mechanics",
+              "quantum_chemistry"
+            ],
+            "quantum_score": 3,
+            "quantum_intensity": 11.11111111111111,
+            "is_quantum_focused": true
+          },
+          "technology_analysis": {
+            "technology_keywords_found": [
+              "technology",
+              "artificial_intelligence",
+              "machine_learning",
+              "application",
+              "tech"
+            ],
+            "technology_score": 5,
+            "technology_intensity": 19.230769230769234,
+            "is_technology_focused": true
+          },
+          "content_quality": {
+            "content_length": 400,
+            "summary_length": 178,
+            "title_length": 66,
+            "content_completeness": 40.0,
+            "summary_quality": 89.0,
+            "overall_quality_score": 64.5
+          },
+          "koba42_potential": {
+            "enhanced_koba42_score": 10.0,
+            "integration_priority": "high",
+            "recommended_actions": [
+              "High-priority integration due to breakthrough content",
+              "Integrate quantum physics insights into optimization algorithms",
+              "Apply technology insights to KOBA42 framework"
+            ]
+          },
+          "recommendations": [
+            "Consider for immediate KOBA42 integration",
+            "High technology relevance - integrate into tech framework"
+          ]
+        }
+      },
+      {
+        "article_id": "13e15489e5c4",
+        "title": "Breakthrough in Quantum Computing: New Algorithm Achieves Quantum Advantage",
+        "url": "https://example.com/quantum-breakthrough-1",
+        "source": "phys_org",
+        "field": "physics",
+        "subfield": "quantum_physics",
+        "publication_date": "2024-01-15",
+        "authors": [
+          "Dr. Sarah Chen",
+          "Prof. Michael Rodriguez"
+        ],
+        "summary": "Researchers have developed a novel quantum algorithm that demonstrates quantum advantage for optimization problems, marking a significant breakthrough in quantum computing technology.",
+        "content": "A team of physicists has made a significant breakthrough in quantum computing technology. The new algorithm leverages quantum entanglement and superposition to solve complex optimization problems that would take classical computers years to complete. This revolutionary development opens new possibilities for quantum computing applications in cryptography, materials science, and artificial intelligence.",
+        "tags": [
+          "quantum computing",
+          "quantum algorithm",
+          "breakthrough",
+          "optimization",
+          "quantum advantage"
+        ],
+        "research_impact": 9.2,
+        "quantum_relevance": 9.8,
+        "technology_relevance": 8.5,
+        "relevance_score": 9.166666666666666,
+        "scraped_timestamp": "2025-08-29T21:57:01.443991",
+        "processing_status": "stored",
+        "key_insights": [
+          "High quantum physics relevance",
+          "High technology relevance",
+          "Breakthrough research",
+          "Quantum computing/technology focus",
+          "Algorithm/optimization focus",
+          "Breakthrough/revolutionary research"
+        ],
+        "koba42_integration_potential": 10.0,
+        "analysis": {
+          "breakthrough_detection": {
+            "breakthrough_keywords_found": [
+              "breakthrough",
+              "novel",
+              "revolutionary",
+              "new",
+              "significant",
+              "revolutionary"
+            ],
+            "breakthrough_score": 6,
+            "is_breakthrough": true,
+            "breakthrough_intensity": 19.35483870967742
+          },
+          "quantum_analysis": {
+            "quantum_keywords_found": [
+              "quantum",
+              "entanglement",
+              "superposition",
+              "quantum_computing",
+              "quantum_algorithm",
+              "quantum_advantage"
+            ],
+            "quantum_score": 6,
+            "quantum_intensity": 22.22222222222222,
+            "is_quantum_focused": true
+          },
+          "technology_analysis": {
+            "technology_keywords_found": [
+              "algorithm",
+              "computer",
+              "technology",
+              "artificial_intelligence",
+              "computing",
+              "application",
+              "development",
+              "tech"
+            ],
+            "technology_score": 8,
+            "technology_intensity": 30.76923076923077,
+            "is_technology_focused": true
+          },
+          "content_quality": {
+            "content_length": 405,
+            "summary_length": 183,
+            "title_length": 75,
+            "content_completeness": 40.5,
+            "summary_quality": 91.5,
+            "overall_quality_score": 66.0
+          },
+          "koba42_potential": {
+            "enhanced_koba42_score": 10.0,
+            "integration_priority": "high",
+            "recommended_actions": [
+              "High-priority integration due to breakthrough content",
+              "Integrate quantum physics insights into optimization algorithms",
+              "Apply technology insights to KOBA42 framework"
+            ]
+          },
+          "recommendations": [
+            "Consider for immediate KOBA42 integration",
+            "High quantum relevance - prioritize for quantum optimization",
+            "High technology relevance - integrate into tech framework"
+          ]
+        }
+      }
+    ]
+  },
+  "technology_findings": {
+    "total_tech_articles": 5,
+    "technology_keywords": {
+      "technology": 4,
+      "tech": 4,
+      "algorithm": 3,
+      "computing": 3,
+      "application": 3,
+      "development": 3,
+      "artificial_intelligence": 3,
+      "machine_learning": 2,
+      "software": 1,
+      "programming": 1,
+      "computer": 1
+    },
+    "tech_topics": {
+      "software": 1,
+      "artificial_intelligence": 1,
+      "algorithms": 2,
+      "computing": 1
+    },
+    "koba42_tech_opportunities": [
+      {
+        "article_id": "bfb9b89a347a",
+        "title": "Innovative Software Framework for Quantum Programming",
+        "url": "https://example.com/quantum-software-1",
+        "source": "infoq",
+        "field": "software",
+        "subfield": "quantum_programming",
+        "publication_date": "2024-01-05",
+        "authors": [
+          "Dr. Emily Johnson",
+          "Dr. Carlos Mendez"
+        ],
+        "summary": "A comprehensive quantum software development kit enables developers to write and test quantum algorithms easily, democratizing quantum computing access.",
+        "content": "A comprehensive quantum software development kit has been released that democratizes access to quantum computing. This innovative framework provides developers with intuitive tools to write, test, and optimize quantum algorithms, accelerating the development of quantum applications across various industries.",
+        "tags": [
+          "quantum software",
+          "SDK",
+          "quantum programming",
+          "development tools",
+          "quantum computing"
+        ],
+        "research_impact": 7.5,
+        "quantum_relevance": 7.8,
+        "technology_relevance": 8.5,
+        "relevance_score": 7.933333333333334,
+        "scraped_timestamp": "2025-08-29T21:57:04.522802",
+        "processing_status": "stored",
+        "key_insights": [
+          "High technology relevance",
+          "Quantum computing/technology focus",
+          "Algorithm/optimization focus",
+          "Software/programming focus"
+        ],
+        "koba42_integration_potential": 10.0,
+        "analysis": {
+          "breakthrough_detection": {
+            "breakthrough_keywords_found": [],
+            "breakthrough_score": 0,
+            "is_breakthrough": false,
+            "breakthrough_intensity": 0.0
+          },
+          "quantum_analysis": {
+            "quantum_keywords_found": [
+              "quantum",
+              "quantum_computing",
+              "quantum_algorithm",
+              "quantum_software",
+              "quantum_programming"
+            ],
+            "quantum_score": 5,
+            "quantum_intensity": 18.51851851851852,
+            "is_quantum_focused": true
+          },
+          "technology_analysis": {
+            "technology_keywords_found": [
+              "software",
+              "programming",
+              "algorithm",
+              "computing",
+              "application",
+              "development"
+            ],
+            "technology_score": 6,
+            "technology_intensity": 23.076923076923077,
+            "is_technology_focused": true
+          },
+          "content_quality": {
+            "content_length": 309,
+            "summary_length": 152,
+            "title_length": 53,
+            "content_completeness": 30.9,
+            "summary_quality": 76.0,
+            "overall_quality_score": 53.449999999999996
+          },
+          "koba42_potential": {
+            "enhanced_koba42_score": 10.0,
+            "integration_priority": "high",
+            "recommended_actions": [
+              "Integrate quantum physics insights into optimization algorithms",
+              "Apply technology insights to KOBA42 framework"
+            ]
+          },
+          "recommendations": [
+            "High quantum relevance - prioritize for quantum optimization",
+            "High technology relevance - integrate into tech framework"
+          ]
+        }
+      },
+      {
+        "article_id": "2a1830b48e62",
+        "title": "Advanced AI Algorithm Discovers New Quantum Materials",
+        "url": "https://example.com/ai-quantum-materials-1",
+        "source": "phys_org",
+        "field": "materials_science",
+        "subfield": "quantum_materials",
+        "publication_date": "2024-01-08",
+        "authors": [
+          "Dr. Wei Zhang",
+          "Prof. Lisa Anderson"
+        ],
+        "summary": "Artificial intelligence has identified previously unknown quantum materials with exceptional properties, accelerating the discovery of next-generation quantum technologies.",
+        "content": "Artificial intelligence has made a remarkable breakthrough in materials science by discovering new quantum materials with exceptional properties. This pioneering research combines machine learning algorithms with quantum physics to predict and identify materials that could revolutionize quantum computing, sensing, and communication technologies.",
+        "tags": [
+          "artificial intelligence",
+          "quantum materials",
+          "machine learning",
+          "materials discovery",
+          "quantum technology"
+        ],
+        "research_impact": 8.2,
+        "quantum_relevance": 8.8,
+        "technology_relevance": 8.8,
+        "relevance_score": 8.6,
+        "scraped_timestamp": "2025-08-29T21:57:03.993570",
+        "processing_status": "stored",
+        "key_insights": [
+          "High quantum physics relevance",
+          "High technology relevance",
+          "Breakthrough research",
+          "Quantum computing/technology focus",
+          "Algorithm/optimization focus",
+          "Materials science focus"
+        ],
+        "koba42_integration_potential": 10.0,
+        "analysis": {
+          "breakthrough_detection": {
+            "breakthrough_keywords_found": [
+              "breakthrough",
+              "discovery",
+              "advance",
+              "new",
+              "pioneering",
+              "remarkable",
+              "next-generation"
+            ],
+            "breakthrough_score": 7,
+            "is_breakthrough": true,
+            "breakthrough_intensity": 22.58064516129032
+          },
+          "quantum_analysis": {
+            "quantum_keywords_found": [
+              "quantum",
+              "quantum_computing",
+              "quantum_physics",
+              "quantum_material",
+              "quantum_technology"
+            ],
+            "quantum_score": 5,
+            "quantum_intensity": 18.51851851851852,
+            "is_quantum_focused": true
+          },
+          "technology_analysis": {
+            "technology_keywords_found": [
+              "algorithm",
+              "technology",
+              "artificial_intelligence",
+              "machine_learning",
+              "computing",
+              "tech"
+            ],
+            "technology_score": 6,
+            "technology_intensity": 23.076923076923077,
+            "is_technology_focused": true
+          },
+          "content_quality": {
+            "content_length": 347,
+            "summary_length": 172,
+            "title_length": 53,
+            "content_completeness": 34.699999999999996,
+            "summary_quality": 86.0,
+            "overall_quality_score": 60.349999999999994
+          },
+          "koba42_potential": {
+            "enhanced_koba42_score": 10.0,
+            "integration_priority": "high",
+            "recommended_actions": [
+              "High-priority integration due to breakthrough content",
+              "Integrate quantum physics insights into optimization algorithms",
+              "Apply technology insights to KOBA42 framework"
+            ]
+          },
+          "recommendations": [
+            "Consider for immediate KOBA42 integration",
+            "High quantum relevance - prioritize for quantum optimization",
+            "High technology relevance - integrate into tech framework"
+          ]
+        }
+      },
+      {
+        "article_id": "402bd58901d1",
+        "title": "Revolutionary Quantum Internet Protocol Achieves Secure Communication",
+        "url": "https://example.com/quantum-internet-1",
+        "source": "infoq",
+        "field": "technology",
+        "subfield": "quantum_networking",
+        "publication_date": "2024-01-10",
+        "authors": [
+          "Dr. Alex Thompson",
+          "Dr. Maria Garcia"
+        ],
+        "summary": "Researchers demonstrate a new quantum internet protocol that enables secure quantum communication over unprecedented distances, bringing quantum internet closer to reality.",
+        "content": "A groundbreaking quantum internet protocol has been developed that enables secure quantum communication over unprecedented distances. This revolutionary technology uses quantum entanglement to create unhackable communication channels, marking a major milestone in the development of quantum internet infrastructure.",
+        "tags": [
+          "quantum internet",
+          "quantum communication",
+          "cryptography",
+          "entanglement",
+          "security"
+        ],
+        "research_impact": 8.5,
+        "quantum_relevance": 9.0,
+        "technology_relevance": 8.8,
+        "relevance_score": 8.766666666666667,
+        "scraped_timestamp": "2025-08-29T21:57:03.120892",
+        "processing_status": "stored",
+        "key_insights": [
+          "High quantum physics relevance",
+          "High technology relevance",
+          "Breakthrough research",
+          "Quantum computing/technology focus",
+          "Breakthrough/revolutionary research"
+        ],
+        "koba42_integration_potential": 10.0,
+        "analysis": {
+          "breakthrough_detection": {
+            "breakthrough_keywords_found": [
+              "revolutionary",
+              "groundbreaking",
+              "milestone",
+              "new",
+              "major",
+              "unprecedented",
+              "revolutionary"
+            ],
+            "breakthrough_score": 7,
+            "is_breakthrough": true,
+            "breakthrough_intensity": 22.58064516129032
+          },
+          "quantum_analysis": {
+            "quantum_keywords_found": [
+              "quantum",
+              "entanglement",
+              "quantum_internet"
+            ],
+            "quantum_score": 3,
+            "quantum_intensity": 11.11111111111111,
+            "is_quantum_focused": true
+          },
+          "technology_analysis": {
+            "technology_keywords_found": [
+              "technology",
+              "development",
+              "tech"
+            ],
+            "technology_score": 3,
+            "technology_intensity": 11.538461538461538,
+            "is_technology_focused": true
+          },
+          "content_quality": {
+            "content_length": 315,
+            "summary_length": 172,
+            "title_length": 69,
+            "content_completeness": 31.5,
+            "summary_quality": 86.0,
+            "overall_quality_score": 58.75
+          },
+          "koba42_potential": {
+            "enhanced_koba42_score": 10.0,
+            "integration_priority": "high",
+            "recommended_actions": [
+              "High-priority integration due to breakthrough content",
+              "Integrate quantum physics insights into optimization algorithms",
+              "Apply technology insights to KOBA42 framework"
+            ]
+          },
+          "recommendations": [
+            "Consider for immediate KOBA42 integration"
+          ]
+        }
+      },
+      {
+        "article_id": "5d1a6c85c4c8",
+        "title": "Novel Machine Learning Framework for Quantum Chemistry Simulations",
+        "url": "https://example.com/ml-quantum-chemistry-1",
+        "source": "nature",
+        "field": "chemistry",
+        "subfield": "quantum_chemistry",
+        "publication_date": "2024-01-12",
+        "authors": [
+          "Dr. Elena Petrova",
+          "Dr. James Wilson"
+        ],
+        "summary": "A new machine learning approach accelerates quantum chemistry calculations by orders of magnitude while maintaining accuracy, enabling faster drug discovery and materials design.",
+        "content": "Scientists have developed an innovative machine learning framework that dramatically accelerates quantum chemistry simulations. This cutting-edge technology combines artificial intelligence with quantum mechanics to predict molecular properties with unprecedented speed and accuracy. The breakthrough has immediate applications in pharmaceutical research, materials science, and chemical engineering.",
+        "tags": [
+          "machine learning",
+          "quantum chemistry",
+          "simulation",
+          "drug discovery",
+          "materials science"
+        ],
+        "research_impact": 8.8,
+        "quantum_relevance": 7.5,
+        "technology_relevance": 9.2,
+        "relevance_score": 8.5,
+        "scraped_timestamp": "2025-08-29T21:57:02.120241",
+        "processing_status": "stored",
+        "key_insights": [
+          "High technology relevance",
+          "Breakthrough research",
+          "Quantum computing/technology focus",
+          "Materials science focus"
+        ],
+        "koba42_integration_potential": 10.0,
+        "analysis": {
+          "breakthrough_detection": {
+            "breakthrough_keywords_found": [
+              "breakthrough",
+              "discovery",
+              "novel",
+              "new",
+              "cutting-edge",
+              "unprecedented"
+            ],
+            "breakthrough_score": 6,
+            "is_breakthrough": true,
+            "breakthrough_intensity": 19.35483870967742
+          },
+          "quantum_analysis": {
+            "quantum_keywords_found": [
+              "quantum",
+              "quantum_mechanics",
+              "quantum_chemistry"
+            ],
+            "quantum_score": 3,
+            "quantum_intensity": 11.11111111111111,
+            "is_quantum_focused": true
+          },
+          "technology_analysis": {
+            "technology_keywords_found": [
+              "technology",
+              "artificial_intelligence",
+              "machine_learning",
+              "application",
+              "tech"
+            ],
+            "technology_score": 5,
+            "technology_intensity": 19.230769230769234,
+            "is_technology_focused": true
+          },
+          "content_quality": {
+            "content_length": 400,
+            "summary_length": 178,
+            "title_length": 66,
+            "content_completeness": 40.0,
+            "summary_quality": 89.0,
+            "overall_quality_score": 64.5
+          },
+          "koba42_potential": {
+            "enhanced_koba42_score": 10.0,
+            "integration_priority": "high",
+            "recommended_actions": [
+              "High-priority integration due to breakthrough content",
+              "Integrate quantum physics insights into optimization algorithms",
+              "Apply technology insights to KOBA42 framework"
+            ]
+          },
+          "recommendations": [
+            "Consider for immediate KOBA42 integration",
+            "High technology relevance - integrate into tech framework"
+          ]
+        }
+      },
+      {
+        "article_id": "13e15489e5c4",
+        "title": "Breakthrough in Quantum Computing: New Algorithm Achieves Quantum Advantage",
+        "url": "https://example.com/quantum-breakthrough-1",
+        "source": "phys_org",
+        "field": "physics",
+        "subfield": "quantum_physics",
+        "publication_date": "2024-01-15",
+        "authors": [
+          "Dr. Sarah Chen",
+          "Prof. Michael Rodriguez"
+        ],
+        "summary": "Researchers have developed a novel quantum algorithm that demonstrates quantum advantage for optimization problems, marking a significant breakthrough in quantum computing technology.",
+        "content": "A team of physicists has made a significant breakthrough in quantum computing technology. The new algorithm leverages quantum entanglement and superposition to solve complex optimization problems that would take classical computers years to complete. This revolutionary development opens new possibilities for quantum computing applications in cryptography, materials science, and artificial intelligence.",
+        "tags": [
+          "quantum computing",
+          "quantum algorithm",
+          "breakthrough",
+          "optimization",
+          "quantum advantage"
+        ],
+        "research_impact": 9.2,
+        "quantum_relevance": 9.8,
+        "technology_relevance": 8.5,
+        "relevance_score": 9.166666666666666,
+        "scraped_timestamp": "2025-08-29T21:57:01.443991",
+        "processing_status": "stored",
+        "key_insights": [
+          "High quantum physics relevance",
+          "High technology relevance",
+          "Breakthrough research",
+          "Quantum computing/technology focus",
+          "Algorithm/optimization focus",
+          "Breakthrough/revolutionary research"
+        ],
+        "koba42_integration_potential": 10.0,
+        "analysis": {
+          "breakthrough_detection": {
+            "breakthrough_keywords_found": [
+              "breakthrough",
+              "novel",
+              "revolutionary",
+              "new",
+              "significant",
+              "revolutionary"
+            ],
+            "breakthrough_score": 6,
+            "is_breakthrough": true,
+            "breakthrough_intensity": 19.35483870967742
+          },
+          "quantum_analysis": {
+            "quantum_keywords_found": [
+              "quantum",
+              "entanglement",
+              "superposition",
+              "quantum_computing",
+              "quantum_algorithm",
+              "quantum_advantage"
+            ],
+            "quantum_score": 6,
+            "quantum_intensity": 22.22222222222222,
+            "is_quantum_focused": true
+          },
+          "technology_analysis": {
+            "technology_keywords_found": [
+              "algorithm",
+              "computer",
+              "technology",
+              "artificial_intelligence",
+              "computing",
+              "application",
+              "development",
+              "tech"
+            ],
+            "technology_score": 8,
+            "technology_intensity": 30.76923076923077,
+            "is_technology_focused": true
+          },
+          "content_quality": {
+            "content_length": 405,
+            "summary_length": 183,
+            "title_length": 75,
+            "content_completeness": 40.5,
+            "summary_quality": 91.5,
+            "overall_quality_score": 66.0
+          },
+          "koba42_potential": {
+            "enhanced_koba42_score": 10.0,
+            "integration_priority": "high",
+            "recommended_actions": [
+              "High-priority integration due to breakthrough content",
+              "Integrate quantum physics insights into optimization algorithms",
+              "Apply technology insights to KOBA42 framework"
+            ]
+          },
+          "recommendations": [
+            "Consider for immediate KOBA42 integration",
+            "High quantum relevance - prioritize for quantum optimization",
+            "High technology relevance - integrate into tech framework"
+          ]
+        }
+      }
+    ]
+  },
+  "koba42_opportunities": {
+    "total_high_potential": 5,
+    "priority_articles": [
+      {
+        "article_id": "bfb9b89a347a",
+        "title": "Innovative Software Framework for Quantum Programming",
+        "url": "https://example.com/quantum-software-1",
+        "source": "infoq",
+        "field": "software",
+        "subfield": "quantum_programming",
+        "publication_date": "2024-01-05",
+        "authors": [
+          "Dr. Emily Johnson",
+          "Dr. Carlos Mendez"
+        ],
+        "summary": "A comprehensive quantum software development kit enables developers to write and test quantum algorithms easily, democratizing quantum computing access.",
+        "content": "A comprehensive quantum software development kit has been released that democratizes access to quantum computing. This innovative framework provides developers with intuitive tools to write, test, and optimize quantum algorithms, accelerating the development of quantum applications across various industries.",
+        "tags": [
+          "quantum software",
+          "SDK",
+          "quantum programming",
+          "development tools",
+          "quantum computing"
+        ],
+        "research_impact": 7.5,
+        "quantum_relevance": 7.8,
+        "technology_relevance": 8.5,
+        "relevance_score": 7.933333333333334,
+        "scraped_timestamp": "2025-08-29T21:57:04.522802",
+        "processing_status": "stored",
+        "key_insights": [
+          "High technology relevance",
+          "Quantum computing/technology focus",
+          "Algorithm/optimization focus",
+          "Software/programming focus"
+        ],
+        "koba42_integration_potential": 10.0,
+        "analysis": {
+          "breakthrough_detection": {
+            "breakthrough_keywords_found": [],
+            "breakthrough_score": 0,
+            "is_breakthrough": false,
+            "breakthrough_intensity": 0.0
+          },
+          "quantum_analysis": {
+            "quantum_keywords_found": [
+              "quantum",
+              "quantum_computing",
+              "quantum_algorithm",
+              "quantum_software",
+              "quantum_programming"
+            ],
+            "quantum_score": 5,
+            "quantum_intensity": 18.51851851851852,
+            "is_quantum_focused": true
+          },
+          "technology_analysis": {
+            "technology_keywords_found": [
+              "software",
+              "programming",
+              "algorithm",
+              "computing",
+              "application",
+              "development"
+            ],
+            "technology_score": 6,
+            "technology_intensity": 23.076923076923077,
+            "is_technology_focused": true
+          },
+          "content_quality": {
+            "content_length": 309,
+            "summary_length": 152,
+            "title_length": 53,
+            "content_completeness": 30.9,
+            "summary_quality": 76.0,
+            "overall_quality_score": 53.449999999999996
+          },
+          "koba42_potential": {
+            "enhanced_koba42_score": 10.0,
+            "integration_priority": "high",
+            "recommended_actions": [
+              "Integrate quantum physics insights into optimization algorithms",
+              "Apply technology insights to KOBA42 framework"
+            ]
+          },
+          "recommendations": [
+            "High quantum relevance - prioritize for quantum optimization",
+            "High technology relevance - integrate into tech framework"
+          ]
+        }
+      },
+      {
+        "article_id": "2a1830b48e62",
+        "title": "Advanced AI Algorithm Discovers New Quantum Materials",
+        "url": "https://example.com/ai-quantum-materials-1",
+        "source": "phys_org",
+        "field": "materials_science",
+        "subfield": "quantum_materials",
+        "publication_date": "2024-01-08",
+        "authors": [
+          "Dr. Wei Zhang",
+          "Prof. Lisa Anderson"
+        ],
+        "summary": "Artificial intelligence has identified previously unknown quantum materials with exceptional properties, accelerating the discovery of next-generation quantum technologies.",
+        "content": "Artificial intelligence has made a remarkable breakthrough in materials science by discovering new quantum materials with exceptional properties. This pioneering research combines machine learning algorithms with quantum physics to predict and identify materials that could revolutionize quantum computing, sensing, and communication technologies.",
+        "tags": [
+          "artificial intelligence",
+          "quantum materials",
+          "machine learning",
+          "materials discovery",
+          "quantum technology"
+        ],
+        "research_impact": 8.2,
+        "quantum_relevance": 8.8,
+        "technology_relevance": 8.8,
+        "relevance_score": 8.6,
+        "scraped_timestamp": "2025-08-29T21:57:03.993570",
+        "processing_status": "stored",
+        "key_insights": [
+          "High quantum physics relevance",
+          "High technology relevance",
+          "Breakthrough research",
+          "Quantum computing/technology focus",
+          "Algorithm/optimization focus",
+          "Materials science focus"
+        ],
+        "koba42_integration_potential": 10.0,
+        "analysis": {
+          "breakthrough_detection": {
+            "breakthrough_keywords_found": [
+              "breakthrough",
+              "discovery",
+              "advance",
+              "new",
+              "pioneering",
+              "remarkable",
+              "next-generation"
+            ],
+            "breakthrough_score": 7,
+            "is_breakthrough": true,
+            "breakthrough_intensity": 22.58064516129032
+          },
+          "quantum_analysis": {
+            "quantum_keywords_found": [
+              "quantum",
+              "quantum_computing",
+              "quantum_physics",
+              "quantum_material",
+              "quantum_technology"
+            ],
+            "quantum_score": 5,
+            "quantum_intensity": 18.51851851851852,
+            "is_quantum_focused": true
+          },
+          "technology_analysis": {
+            "technology_keywords_found": [
+              "algorithm",
+              "technology",
+              "artificial_intelligence",
+              "machine_learning",
+              "computing",
+              "tech"
+            ],
+            "technology_score": 6,
+            "technology_intensity": 23.076923076923077,
+            "is_technology_focused": true
+          },
+          "content_quality": {
+            "content_length": 347,
+            "summary_length": 172,
+            "title_length": 53,
+            "content_completeness": 34.699999999999996,
+            "summary_quality": 86.0,
+            "overall_quality_score": 60.349999999999994
+          },
+          "koba42_potential": {
+            "enhanced_koba42_score": 10.0,
+            "integration_priority": "high",
+            "recommended_actions": [
+              "High-priority integration due to breakthrough content",
+              "Integrate quantum physics insights into optimization algorithms",
+              "Apply technology insights to KOBA42 framework"
+            ]
+          },
+          "recommendations": [
+            "Consider for immediate KOBA42 integration",
+            "High quantum relevance - prioritize for quantum optimization",
+            "High technology relevance - integrate into tech framework"
+          ]
+        }
+      },
+      {
+        "article_id": "402bd58901d1",
+        "title": "Revolutionary Quantum Internet Protocol Achieves Secure Communication",
+        "url": "https://example.com/quantum-internet-1",
+        "source": "infoq",
+        "field": "technology",
+        "subfield": "quantum_networking",
+        "publication_date": "2024-01-10",
+        "authors": [
+          "Dr. Alex Thompson",
+          "Dr. Maria Garcia"
+        ],
+        "summary": "Researchers demonstrate a new quantum internet protocol that enables secure quantum communication over unprecedented distances, bringing quantum internet closer to reality.",
+        "content": "A groundbreaking quantum internet protocol has been developed that enables secure quantum communication over unprecedented distances. This revolutionary technology uses quantum entanglement to create unhackable communication channels, marking a major milestone in the development of quantum internet infrastructure.",
+        "tags": [
+          "quantum internet",
+          "quantum communication",
+          "cryptography",
+          "entanglement",
+          "security"
+        ],
+        "research_impact": 8.5,
+        "quantum_relevance": 9.0,
+        "technology_relevance": 8.8,
+        "relevance_score": 8.766666666666667,
+        "scraped_timestamp": "2025-08-29T21:57:03.120892",
+        "processing_status": "stored",
+        "key_insights": [
+          "High quantum physics relevance",
+          "High technology relevance",
+          "Breakthrough research",
+          "Quantum computing/technology focus",
+          "Breakthrough/revolutionary research"
+        ],
+        "koba42_integration_potential": 10.0,
+        "analysis": {
+          "breakthrough_detection": {
+            "breakthrough_keywords_found": [
+              "revolutionary",
+              "groundbreaking",
+              "milestone",
+              "new",
+              "major",
+              "unprecedented",
+              "revolutionary"
+            ],
+            "breakthrough_score": 7,
+            "is_breakthrough": true,
+            "breakthrough_intensity": 22.58064516129032
+          },
+          "quantum_analysis": {
+            "quantum_keywords_found": [
+              "quantum",
+              "entanglement",
+              "quantum_internet"
+            ],
+            "quantum_score": 3,
+            "quantum_intensity": 11.11111111111111,
+            "is_quantum_focused": true
+          },
+          "technology_analysis": {
+            "technology_keywords_found": [
+              "technology",
+              "development",
+              "tech"
+            ],
+            "technology_score": 3,
+            "technology_intensity": 11.538461538461538,
+            "is_technology_focused": true
+          },
+          "content_quality": {
+            "content_length": 315,
+            "summary_length": 172,
+            "title_length": 69,
+            "content_completeness": 31.5,
+            "summary_quality": 86.0,
+            "overall_quality_score": 58.75
+          },
+          "koba42_potential": {
+            "enhanced_koba42_score": 10.0,
+            "integration_priority": "high",
+            "recommended_actions": [
+              "High-priority integration due to breakthrough content",
+              "Integrate quantum physics insights into optimization algorithms",
+              "Apply technology insights to KOBA42 framework"
+            ]
+          },
+          "recommendations": [
+            "Consider for immediate KOBA42 integration"
+          ]
+        }
+      },
+      {
+        "article_id": "5d1a6c85c4c8",
+        "title": "Novel Machine Learning Framework for Quantum Chemistry Simulations",
+        "url": "https://example.com/ml-quantum-chemistry-1",
+        "source": "nature",
+        "field": "chemistry",
+        "subfield": "quantum_chemistry",
+        "publication_date": "2024-01-12",
+        "authors": [
+          "Dr. Elena Petrova",
+          "Dr. James Wilson"
+        ],
+        "summary": "A new machine learning approach accelerates quantum chemistry calculations by orders of magnitude while maintaining accuracy, enabling faster drug discovery and materials design.",
+        "content": "Scientists have developed an innovative machine learning framework that dramatically accelerates quantum chemistry simulations. This cutting-edge technology combines artificial intelligence with quantum mechanics to predict molecular properties with unprecedented speed and accuracy. The breakthrough has immediate applications in pharmaceutical research, materials science, and chemical engineering.",
+        "tags": [
+          "machine learning",
+          "quantum chemistry",
+          "simulation",
+          "drug discovery",
+          "materials science"
+        ],
+        "research_impact": 8.8,
+        "quantum_relevance": 7.5,
+        "technology_relevance": 9.2,
+        "relevance_score": 8.5,
+        "scraped_timestamp": "2025-08-29T21:57:02.120241",
+        "processing_status": "stored",
+        "key_insights": [
+          "High technology relevance",
+          "Breakthrough research",
+          "Quantum computing/technology focus",
+          "Materials science focus"
+        ],
+        "koba42_integration_potential": 10.0,
+        "analysis": {
+          "breakthrough_detection": {
+            "breakthrough_keywords_found": [
+              "breakthrough",
+              "discovery",
+              "novel",
+              "new",
+              "cutting-edge",
+              "unprecedented"
+            ],
+            "breakthrough_score": 6,
+            "is_breakthrough": true,
+            "breakthrough_intensity": 19.35483870967742
+          },
+          "quantum_analysis": {
+            "quantum_keywords_found": [
+              "quantum",
+              "quantum_mechanics",
+              "quantum_chemistry"
+            ],
+            "quantum_score": 3,
+            "quantum_intensity": 11.11111111111111,
+            "is_quantum_focused": true
+          },
+          "technology_analysis": {
+            "technology_keywords_found": [
+              "technology",
+              "artificial_intelligence",
+              "machine_learning",
+              "application",
+              "tech"
+            ],
+            "technology_score": 5,
+            "technology_intensity": 19.230769230769234,
+            "is_technology_focused": true
+          },
+          "content_quality": {
+            "content_length": 400,
+            "summary_length": 178,
+            "title_length": 66,
+            "content_completeness": 40.0,
+            "summary_quality": 89.0,
+            "overall_quality_score": 64.5
+          },
+          "koba42_potential": {
+            "enhanced_koba42_score": 10.0,
+            "integration_priority": "high",
+            "recommended_actions": [
+              "High-priority integration due to breakthrough content",
+              "Integrate quantum physics insights into optimization algorithms",
+              "Apply technology insights to KOBA42 framework"
+            ]
+          },
+          "recommendations": [
+            "Consider for immediate KOBA42 integration",
+            "High technology relevance - integrate into tech framework"
+          ]
+        }
+      },
+      {
+        "article_id": "13e15489e5c4",
+        "title": "Breakthrough in Quantum Computing: New Algorithm Achieves Quantum Advantage",
+        "url": "https://example.com/quantum-breakthrough-1",
+        "source": "phys_org",
+        "field": "physics",
+        "subfield": "quantum_physics",
+        "publication_date": "2024-01-15",
+        "authors": [
+          "Dr. Sarah Chen",
+          "Prof. Michael Rodriguez"
+        ],
+        "summary": "Researchers have developed a novel quantum algorithm that demonstrates quantum advantage for optimization problems, marking a significant breakthrough in quantum computing technology.",
+        "content": "A team of physicists has made a significant breakthrough in quantum computing technology. The new algorithm leverages quantum entanglement and superposition to solve complex optimization problems that would take classical computers years to complete. This revolutionary development opens new possibilities for quantum computing applications in cryptography, materials science, and artificial intelligence.",
+        "tags": [
+          "quantum computing",
+          "quantum algorithm",
+          "breakthrough",
+          "optimization",
+          "quantum advantage"
+        ],
+        "research_impact": 9.2,
+        "quantum_relevance": 9.8,
+        "technology_relevance": 8.5,
+        "relevance_score": 9.166666666666666,
+        "scraped_timestamp": "2025-08-29T21:57:01.443991",
+        "processing_status": "stored",
+        "key_insights": [
+          "High quantum physics relevance",
+          "High technology relevance",
+          "Breakthrough research",
+          "Quantum computing/technology focus",
+          "Algorithm/optimization focus",
+          "Breakthrough/revolutionary research"
+        ],
+        "koba42_integration_potential": 10.0,
+        "analysis": {
+          "breakthrough_detection": {
+            "breakthrough_keywords_found": [
+              "breakthrough",
+              "novel",
+              "revolutionary",
+              "new",
+              "significant",
+              "revolutionary"
+            ],
+            "breakthrough_score": 6,
+            "is_breakthrough": true,
+            "breakthrough_intensity": 19.35483870967742
+          },
+          "quantum_analysis": {
+            "quantum_keywords_found": [
+              "quantum",
+              "entanglement",
+              "superposition",
+              "quantum_computing",
+              "quantum_algorithm",
+              "quantum_advantage"
+            ],
+            "quantum_score": 6,
+            "quantum_intensity": 22.22222222222222,
+            "is_quantum_focused": true
+          },
+          "technology_analysis": {
+            "technology_keywords_found": [
+              "algorithm",
+              "computer",
+              "technology",
+              "artificial_intelligence",
+              "computing",
+              "application",
+              "development",
+              "tech"
+            ],
+            "technology_score": 8,
+            "technology_intensity": 30.76923076923077,
+            "is_technology_focused": true
+          },
+          "content_quality": {
+            "content_length": 405,
+            "summary_length": 183,
+            "title_length": 75,
+            "content_completeness": 40.5,
+            "summary_quality": 91.5,
+            "overall_quality_score": 66.0
+          },
+          "koba42_potential": {
+            "enhanced_koba42_score": 10.0,
+            "integration_priority": "high",
+            "recommended_actions": [
+              "High-priority integration due to breakthrough content",
+              "Integrate quantum physics insights into optimization algorithms",
+              "Apply technology insights to KOBA42 framework"
+            ]
+          },
+          "recommendations": [
+            "Consider for immediate KOBA42 integration",
+            "High quantum relevance - prioritize for quantum optimization",
+            "High technology relevance - integrate into tech framework"
+          ]
+        }
+      }
+    ],
+    "integration_opportunities": [
+      {
+        "title": "Innovative Software Framework for Quantum Programming",
+        "koba42_score": 10.0,
+        "breakthrough_score": 0,
+        "quantum_score": 5,
+        "tech_score": 6,
+        "recommended_actions": [
+          "Integrate quantum physics insights into optimization algorithms",
+          "Apply technology insights to KOBA42 framework"
+        ]
+      },
+      {
+        "title": "Advanced AI Algorithm Discovers New Quantum Materials",
+        "koba42_score": 10.0,
+        "breakthrough_score": 7,
+        "quantum_score": 5,
+        "tech_score": 6,
+        "recommended_actions": [
+          "High-priority integration due to breakthrough content",
+          "Integrate quantum physics insights into optimization algorithms",
+          "Apply technology insights to KOBA42 framework"
+        ]
+      },
+      {
+        "title": "Revolutionary Quantum Internet Protocol Achieves Secure Communication",
+        "koba42_score": 10.0,
+        "breakthrough_score": 7,
+        "quantum_score": 3,
+        "tech_score": 3,
+        "recommended_actions": [
+          "High-priority integration due to breakthrough content",
+          "Integrate quantum physics insights into optimization algorithms",
+          "Apply technology insights to KOBA42 framework"
+        ]
+      },
+      {
+        "title": "Novel Machine Learning Framework for Quantum Chemistry Simulations",
+        "koba42_score": 10.0,
+        "breakthrough_score": 6,
+        "quantum_score": 3,
+        "tech_score": 5,
+        "recommended_actions": [
+          "High-priority integration due to breakthrough content",
+          "Integrate quantum physics insights into optimization algorithms",
+          "Apply technology insights to KOBA42 framework"
+        ]
+      },
+      {
+        "title": "Breakthrough in Quantum Computing: New Algorithm Achieves Quantum Advantage",
+        "koba42_score": 10.0,
+        "breakthrough_score": 6,
+        "quantum_score": 6,
+        "tech_score": 8,
+        "recommended_actions": [
+          "High-priority integration due to breakthrough content",
+          "Integrate quantum physics insights into optimization algorithms",
+          "Apply technology insights to KOBA42 framework"
+        ]
+      }
+    ],
+    "research_directions": [
+      "quantum_optimization",
+      "technology_integration",
+      "breakthrough_research"
+    ]
+  },
+  "recommendations": [
+    "Found 4 breakthrough articles - prioritize for immediate KOBA42 integration",
+    "Found 5 quantum-focused articles - integrate quantum insights into optimization algorithms",
+    "Found 5 technology-focused articles - apply technology insights to KOBA42 framework",
+    "Found 5 high-potential articles for KOBA42 integration",
+    "Implement regular scraping sessions to build comprehensive research database",
+    "Focus on high-impact sources (Nature, Science, Physical Review Letters)",
+    "Monitor emerging quantum technologies and applications",
+    "Track breakthrough research for immediate integration opportunities",
+    "Develop automated KOBA42 integration pipeline for high-potential articles"
+  ]
+}

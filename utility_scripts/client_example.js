@@ -1,0 +1,321 @@
+// ⚠️  SECURITY WARNING: DO NOT USE THESE PLACEHOLDER VALUES IN PRODUCTION!
+// Client-side JavaScript example for Dracattus NFT Upgrade System
+// This file demonstrates how to call the NFT upgrade Parse Cloud functions
+
+// Initialize Parse with your app credentials
+Parse.initialize(
+    'YOUR_PARSE_APP_ID',           // ⚠️  Replace with your actual Parse App ID
+    'YOUR_PARSE_JAVASCRIPT_KEY'    // ⚠️  Replace with your actual Parse JavaScript Key
+);
+
+Parse.serverURL = 'https://your-parse-server.com/parse'; // ⚠️  Replace with your actual Parse Server URL
+
+/**
+ * Check if an NFT can be upgraded
+ * @param {string} encodedId - The NFT's encoded ID
+ * @param {boolean} useMasterKey - For admin access (optional)
+ * @returns {Promise<Object>} Upgrade availability and details
+ */
+async function checkUpgradeAvailability(encodedId, useMasterKey = false) {
+    try {
+        const result = await Parse.Cloud.run('canUpgrade', {
+            encoded_id: encodedId,
+            useMasterKey: useMasterKey
+        });
+        
+        console.log('Upgrade availability check result:', result);
+        return result;
+        
+    } catch (error) {
+        console.error('Error checking upgrade availability:', error);
+        throw error;
+    }
+}
+
+/**
+ * Execute NFT upgrade
+ * @param {string} encodedId - The NFT's encoded ID
+ * @param {string} wallet - Wallet address
+ * @param {string} signature - Wallet signature
+ * @param {string} publicKey - Public key
+ * @returns {Promise<Object>} Upgrade result
+ */
+async function executeUpgrade(encodedId, wallet, signature, publicKey) {
+    try {
+        const timestamp = Date.now();
+        const action = 'upgrade';
+        
+        const result = await Parse.Cloud.run('doUpgrade', {
+            encoded_id: encodedId,
+            timestamp: timestamp,
+            action: action,
+            signature: signature,
+            publicKey: publicKey,
+            wallet: wallet
+        });
+        
+        console.log('Upgrade execution result:', result);
+        return result;
+        
+    } catch (error) {
+        console.error('Error executing upgrade:', error);
+        throw error;
+    }
+}
+
+/**
+ * Get NFT details
+ * @param {string} encodedId - The NFT's encoded ID
+ * @returns {Promise<Object>} NFT details
+ */
+async function getNFTDetails(encodedId) {
+    try {
+        const query = new Parse.Query('DRACATTUS');
+        query.equalTo('encoded_id', encodedId);
+        
+        const nft = await query.first();
+        
+        if (!nft) {
+            throw new Error('NFT not found');
+        }
+        
+        return {
+            encoded_id: nft.get('encoded_id'),
+            name: nft.get('name'),
+            version: nft.get('version'),
+            owner_wallet: nft.get('owner_wallet'),
+            attributes: nft.get('attributes'),
+            last_upgrade: nft.get('last_upgrade'),
+            upgrade_history: nft.get('upgrade_history')
+        };
+        
+    } catch (error) {
+        console.error('Error getting NFT details:', error);
+        throw error;
+    }
+}
+
+/**
+ * Get upgrade history for an NFT
+ * @param {string} encodedId - The NFT's encoded ID
+ * @returns {Promise<Array>} Upgrade history
+ */
+async function getUpgradeHistory(encodedId) {
+    try {
+        const query = new Parse.Query('UPGRADE_HISTORY');
+        query.equalTo('encoded_id', encodedId);
+        query.descending('timestamp');
+        
+        const history = await query.find();
+        
+        return history.map(entry => ({
+            from_version: entry.get('from_version'),
+            to_version: entry.get('to_version'),
+            timestamp: entry.get('timestamp'),
+            wallet: entry.get('wallet'),
+            changes_applied: entry.get('changes_applied')
+        }));
+        
+    } catch (error) {
+        console.error('Error getting upgrade history:', error);
+        throw error;
+    }
+}
+
+/**
+ * Get available upgrades for an NFT
+ * @param {string} currentVersion - Current NFT version
+ * @returns {Promise<Array>} Available upgrades
+ */
+async function getAvailableUpgrades(currentVersion) {
+    try {
+        const query = new Parse.Query('UPGRADE_CONFIG');
+        query.equalTo('from_version', currentVersion);
+        query.ascending('version');
+        
+        const upgrades = await query.find();
+        
+        return upgrades.map(upgrade => ({
+            version: upgrade.get('version'),
+            requirements: upgrade.get('requirements'),
+            changes: upgrade.get('changes'),
+            cooldown_period: upgrade.get('cooldown_period')
+        }));
+        
+    } catch (error) {
+        console.error('Error getting available upgrades:', error);
+        throw error;
+    }
+}
+
+/**
+ * Example usage of the NFT upgrade system
+ */
+async function exampleUsage() {
+    try {
+        const encodedId = 'dracattus_12345';
+        const wallet = '0x1234567890abcdef...';
+        const signature = '0xabcdef123456...'; // Generated by wallet
+        const publicKey = '0x9876543210fedcba...';
+        
+        console.log('=== Dracattus NFT Upgrade System Example ===');
+        
+        // 1. Get NFT details
+        console.log('\n1. Getting NFT details...');
+        const nftDetails = await getNFTDetails(encodedId);
+        console.log('NFT Details:', nftDetails);
+        
+        // 2. Check upgrade availability
+        console.log('\n2. Checking upgrade availability...');
+        const availability = await checkUpgradeAvailability(encodedId);
+        console.log('Upgrade Availability:', availability);
+        
+        if (availability.success && availability.data.canUpgrade) {
+            // 3. Get available upgrades
+            console.log('\n3. Getting available upgrades...');
+            const upgrades = await getAvailableUpgrades(nftDetails.version);
+            console.log('Available Upgrades:', upgrades);
+            
+            // 4. Execute upgrade
+            console.log('\n4. Executing upgrade...');
+            const upgradeResult = await executeUpgrade(encodedId, wallet, signature, publicKey);
+            console.log('Upgrade Result:', upgradeResult);
+            
+            if (upgradeResult.success) {
+                // 5. Get upgrade history
+                console.log('\n5. Getting upgrade history...');
+                const history = await getUpgradeHistory(encodedId);
+                console.log('Upgrade History:', history);
+            }
+        } else {
+            console.log('NFT cannot be upgraded at this time');
+        }
+        
+    } catch (error) {
+        console.error('Example usage error:', error);
+    }
+}
+
+/**
+ * Batch upgrade multiple NFTs
+ * @param {Array} nftList - Array of NFT upgrade requests
+ * @returns {Promise<Array>} Results for each NFT
+ */
+async function batchUpgrade(nftList) {
+    const results = [];
+    
+    for (const nftRequest of nftList) {
+        try {
+            const { encodedId, wallet, signature, publicKey } = nftRequest;
+            
+            // Check availability first
+            const availability = await checkUpgradeAvailability(encodedId);
+            
+            if (availability.success && availability.data.canUpgrade) {
+                // Execute upgrade
+                const result = await executeUpgrade(encodedId, wallet, signature, publicKey);
+                results.push({
+                    encodedId,
+                    success: true,
+                    result: result
+                });
+            } else {
+                results.push({
+                    encodedId,
+                    success: false,
+                    error: availability.error || 'Cannot upgrade'
+                });
+            }
+            
+        } catch (error) {
+            results.push({
+                encodedId: nftRequest.encodedId,
+                success: false,
+                error: error.message
+            });
+        }
+    }
+    
+    return results;
+}
+
+/**
+ * Monitor upgrade status
+ * @param {string} encodedId - The NFT's encoded ID
+ * @param {number} interval - Polling interval in milliseconds (default: 5000)
+ * @param {number} timeout - Timeout in milliseconds (default: 300000)
+ * @returns {Promise<Object>} Final status
+ */
+async function monitorUpgradeStatus(encodedId, interval = 5000, timeout = 300000) {
+    const startTime = Date.now();
+    
+    return new Promise((resolve, reject) => {
+        const checkStatus = async () => {
+            try {
+                const nftDetails = await getNFTDetails(encodedId);
+                const history = await getUpgradeHistory(encodedId);
+                
+                // Check if upgrade was completed recently
+                const recentUpgrade = history.find(entry => 
+                    Date.now() - entry.timestamp.getTime() < interval
+                );
+                
+                if (recentUpgrade) {
+                    resolve({
+                        status: 'completed',
+                        nftDetails: nftDetails,
+                        lastUpgrade: recentUpgrade
+                    });
+                    return;
+                }
+                
+                // Check timeout
+                if (Date.now() - startTime > timeout) {
+                    resolve({
+                        status: 'timeout',
+                        nftDetails: nftDetails
+                    });
+                    return;
+                }
+                
+                // Continue polling
+                setTimeout(checkStatus, interval);
+                
+            } catch (error) {
+                reject(error);
+            }
+        };
+        
+        checkStatus();
+    });
+}
+
+// Export functions for use in other modules
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        checkUpgradeAvailability,
+        executeUpgrade,
+        getNFTDetails,
+        getUpgradeHistory,
+        getAvailableUpgrades,
+        batchUpgrade,
+        monitorUpgradeStatus,
+        exampleUsage
+    };
+}
+
+// Example usage when loaded in browser
+if (typeof window !== 'undefined') {
+    window.DracattusNFTUpgrade = {
+        checkUpgradeAvailability,
+        executeUpgrade,
+        getNFTDetails,
+        getUpgradeHistory,
+        getAvailableUpgrades,
+        batchUpgrade,
+        monitorUpgradeStatus,
+        exampleUsage
+    };
+    
+    console.log('Dracattus NFT Upgrade System loaded. Use DracattusNFTUpgrade.exampleUsage() to see it in action.');
+}

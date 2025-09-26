@@ -1,0 +1,172 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>chAIos Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="login-content">
+  <div class="login-container">
+    <!-- Mathematical Background -->
+    <div class="mathematical-background">
+      <div class="golden-spiral"></div>
+      <div class="prime aligned compute-particles"></div>
+    </div>
+
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="12" size-md="6" size-lg="4">
+          
+          <!-- Logo and Welcome Section -->
+          <div class="welcome-section">
+            <div class="chaios-logo">
+              <h1 class="logo-text">chAIos</h1>
+              <p class="logo-subtitle">Chiral Harmonic Aligned Intelligence Optimisation System</p>
+            </div>
+            
+            <div class="mathematical-constants">
+              <div class="constant">
+                <span class="symbol">φ</span>
+                <span class="value">1.618034</span>
+              </div>
+              <div class="constant">
+                <span class="symbol">σ</span>
+                <span class="value">0.381966</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Login Form -->
+          <ion-card class="login-card">
+            <ion-card-header>
+              <ion-card-title class="card-title">
+                Access prime aligned compute Matrix
+              </ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                
+                <!-- Email Field -->
+                <ion-item 
+                  class="form-item" 
+                  [class.ion-invalid]="isFieldInvalid('email')"
+                  lines="none">
+                  <ion-icon name="mail-outline" slot="start"></ion-icon>
+                  <ion-label position="stacked">Email</ion-label>
+                  <ion-input
+                    type="email"
+                    formControlName="email"
+                    placeholder="Enter your email"
+                    autocomplete="email"
+                    [clearInput]="true">
+                  </ion-input>
+                </ion-item>
+                <div class="error-message" *ngIf="isFieldInvalid('email')">
+                  {{ getFieldError('email') }}
+                </div>
+
+                <!-- Password Field -->
+                <ion-item 
+                  class="form-item" 
+                  [class.ion-invalid]="isFieldInvalid('password')"
+                  lines="none">
+                  <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+                  <ion-label position="stacked">Password</ion-label>
+                  <ion-input
+                    [type]="showPassword ? 'text' : 'password'"
+                    formControlName="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password">
+                  </ion-input>
+                  <ion-button 
+                    fill="clear" 
+                    slot="end" 
+                    (click)="togglePasswordVisibility()"
+                    class="password-toggle">
+                    <ion-icon [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+                  </ion-button>
+                </ion-item>
+                <div class="error-message" *ngIf="isFieldInvalid('password')">
+                  {{ getFieldError('password') }}
+                </div>
+
+                <!-- Remember Me -->
+                <ion-item class="checkbox-item" lines="none">
+                  <ion-checkbox formControlName="rememberMe" slot="start"></ion-checkbox>
+                  <ion-label class="checkbox-label">Remember me</ion-label>
+                </ion-item>
+
+                <!-- Login Button -->
+                <ion-button 
+                  type="submit"
+                  expand="block" 
+                  class="login-button"
+                  [disabled]="isLoading">
+                  <ion-spinner name="crescent" *ngIf="isLoading"></ion-spinner>
+                  <span *ngIf="!isLoading">Activate prime aligned compute</span>
+                  <span *ngIf="isLoading">Initializing Matrix...</span>
+                </ion-button>
+
+                <!-- Demo Login Button -->
+                <ion-button 
+                  expand="block" 
+                  fill="outline"
+                  class="demo-button"
+                  (click)="loginDemo()"
+                  [disabled]="isLoading">
+                  <span>Demo Mode</span>
+                </ion-button>
+
+              </form>
+
+              <!-- Forgot Password Link -->
+              <div class="forgot-password">
+                <ion-text>
+                  <a routerLink="/auth/forgot-password">Forgot password?</a>
+                </ion-text>
+              </div>
+
+              <!-- Social Login Section -->
+              <div class="social-login">
+                <div class="divider">
+                  <span>or continue with</span>
+                </div>
+
+                <div class="social-buttons">
+                  <ion-button fill="outline" class="social-button" (click)="loginWithGoogle()">
+                    <ion-icon name="logo-google" slot="icon-only"></ion-icon>
+                  </ion-button>
+                  
+                  <ion-button fill="outline" class="social-button" (click)="loginWithApple()">
+                    <ion-icon name="logo-apple" slot="icon-only"></ion-icon>
+                  </ion-button>
+                  
+                  <ion-button fill="outline" class="social-button" (click)="loginWithGithub()">
+                    <ion-icon name="logo-github" slot="icon-only"></ion-icon>
+                  </ion-button>
+                </div>
+              </div>
+
+              <!-- Register Link -->
+              <div class="register-link">
+                <ion-text>
+                  Don't have an account? 
+                  <a routerLink="/auth/register">Create one here</a>
+                </ion-text>
+              </div>
+
+            </ion-card-content>
+          </ion-card>
+
+          <!-- Mathematical Quote -->
+          <div class="mathematical-quote">
+            <p>"Mathematics is the language with which God has written the universe"</p>
+            <span>- Galileo Galilei</span>
+          </div>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+

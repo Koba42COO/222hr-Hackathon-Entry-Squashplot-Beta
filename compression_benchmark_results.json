@@ -1,0 +1,194 @@
+{
+  "timestamp": 1758326792.910363,
+  "benchmark_results": {
+    "random": {
+      "LZ4 (Basic)": {
+        "algorithm": "LZ4 (Basic)",
+        "data_type": "random",
+        "original_size": 10485760,
+        "compressed_size": 10486419,
+        "compression_ratio": 1.000062847137451,
+        "space_saved_percent": -0.006284713745108306,
+        "compression_time": 0.20506596565246582,
+        "throughput_bps": 51133594.82465594,
+        "success": true
+      },
+      "Zstandard": {
+        "algorithm": "Zstandard",
+        "data_type": "random",
+        "original_size": 10485760,
+        "compressed_size": 10486010,
+        "compression_ratio": 1.0000238418579102,
+        "space_saved_percent": -0.002384185791015625,
+        "compression_time": 1.115164041519165,
+        "throughput_bps": 9402885.682823367,
+        "success": true
+      },
+      "Brotli": {
+        "algorithm": "Brotli",
+        "data_type": "random",
+        "original_size": 10485760,
+        "compressed_size": 10485793,
+        "compression_ratio": 1.0000031471252442,
+        "space_saved_percent": -0.0003147125244185034,
+        "compression_time": 5.8496787548065186,
+        "throughput_bps": 1792536.0416388921,
+        "success": true
+      },
+      "Multi-Stage (Pro)": {
+        "algorithm": "Multi-Stage (Pro)",
+        "data_type": "random",
+        "original_size": 10485760,
+        "compressed_size": 10486046,
+        "compression_ratio": 1.0000272750854493,
+        "space_saved_percent": -0.002727508544930757,
+        "compression_time": 7.3237738609313965,
+        "throughput_bps": 1431742.7325188438,
+        "success": true
+      }
+    },
+    "repetitive": {
+      "LZ4 (Basic)": {
+        "algorithm": "LZ4 (Basic)",
+        "data_type": "repetitive",
+        "original_size": 10485760,
+        "compressed_size": 43274,
+        "compression_ratio": 0.004126930236816406,
+        "space_saved_percent": 99.58730697631836,
+        "compression_time": 0.0992579460144043,
+        "throughput_bps": 105641517.08799523,
+        "success": true
+      },
+      "Zstandard": {
+        "algorithm": "Zstandard",
+        "data_type": "repetitive",
+        "original_size": 10485760,
+        "compressed_size": 936,
+        "compression_ratio": 8.9263916015625e-05,
+        "space_saved_percent": 99.99107360839844,
+        "compression_time": 0.011475086212158203,
+        "throughput_bps": 913784855.828797,
+        "success": true
+      },
+      "Brotli": {
+        "algorithm": "Brotli",
+        "data_type": "repetitive",
+        "original_size": 10485760,
+        "compressed_size": 61,
+        "compression_ratio": 5.817413330078125e-06,
+        "space_saved_percent": 99.99941825866699,
+        "compression_time": 0.10427069664001465,
+        "throughput_bps": 100562865.09910986,
+        "success": true
+      },
+      "Multi-Stage (Pro)": {
+        "algorithm": "Multi-Stage (Pro)",
+        "data_type": "repetitive",
+        "original_size": 10485760,
+        "compressed_size": 130,
+        "compression_ratio": 1.239776611328125e-05,
+        "space_saved_percent": 99.99876022338867,
+        "compression_time": 0.012066125869750977,
+        "throughput_bps": 869024582.8022684,
+        "success": true
+      }
+    },
+    "mixed": {
+      "LZ4 (Basic)": {
+        "algorithm": "LZ4 (Basic)",
+        "data_type": "mixed",
+        "original_size": 3058560,
+        "compressed_size": 1771306,
+        "compression_ratio": 0.5791307020297133,
+        "space_saved_percent": 42.086929797028674,
+        "compression_time": 0.025590896606445312,
+        "throughput_bps": 119517500.57986137,
+        "success": true
+      },
+      "Zstandard": {
+        "algorithm": "Zstandard",
+        "data_type": "mixed",
+        "original_size": 3058560,
+        "compressed_size": 1760098,
+        "compression_ratio": 0.5754662324754133,
+        "space_saved_percent": 42.453376752458674,
+        "compression_time": 0.11949801445007324,
+        "throughput_bps": 25595069.6258462,
+        "success": true
+      },
+      "Brotli": {
+        "algorithm": "Brotli",
+        "data_type": "mixed",
+        "original_size": 3058560,
+        "compressed_size": 1758860,
+        "compression_ratio": 0.5750614668340657,
+        "space_saved_percent": 42.49385331659343,
+        "compression_time": 2.7556159496307373,
+        "throughput_bps": 1109936.9636069417,
+        "success": true
+      },
+      "Multi-Stage (Pro)": {
+        "algorithm": "Multi-Stage (Pro)",
+        "data_type": "mixed",
+        "original_size": 3058560,
+        "compressed_size": 1760106,
+        "compression_ratio": 0.5754688480853735,
+        "space_saved_percent": 42.45311519146265,
+        "compression_time": 0.8640072345733643,
+        "throughput_bps": 3539970.3585934415,
+        "success": true
+      }
+    },
+    "chia_like": {
+      "LZ4 (Basic)": {
+        "algorithm": "LZ4 (Basic)",
+        "data_type": "chia_like",
+        "original_size": 11264000,
+        "compressed_size": 10542630,
+        "compression_ratio": 0.9359579190340909,
+        "space_saved_percent": 6.404208096590914,
+        "compression_time": 0.17115283012390137,
+        "throughput_bps": 65812525.51795806,
+        "success": true
+      },
+      "Zstandard": {
+        "algorithm": "Zstandard",
+        "data_type": "chia_like",
+        "original_size": 11264000,
+        "compressed_size": 10501566,
+        "compression_ratio": 0.9323123224431819,
+        "space_saved_percent": 6.768767755681814,
+        "compression_time": 1.0371811389923096,
+        "throughput_bps": 10860205.200938888,
+        "success": true
+      },
+      "Brotli": {
+        "algorithm": "Brotli",
+        "data_type": "chia_like",
+        "original_size": 11264000,
+        "compressed_size": 10492880,
+        "compression_ratio": 0.9315411931818182,
+        "space_saved_percent": 6.845880681818183,
+        "compression_time": 18.297152996063232,
+        "throughput_bps": 615614.8993465558,
+        "success": true
+      },
+      "Multi-Stage (Pro)": {
+        "algorithm": "Multi-Stage (Pro)",
+        "data_type": "chia_like",
+        "original_size": 11264000,
+        "compressed_size": 10501602,
+        "compression_ratio": 0.9323155184659091,
+        "space_saved_percent": 6.76844815340909,
+        "compression_time": 6.97893214225769,
+        "throughput_bps": 1614000.5047184892,
+        "success": true
+      }
+    }
+  },
+  "metadata": {
+    "zstd_available": true,
+    "brotli_available": true,
+    "lz4_available": true
+  }
+}

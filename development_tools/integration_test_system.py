@@ -2,7 +2,7 @@
 """
 INTEGRATION TEST SYSTEM
 ============================================================
-Comprehensive Testing of prime aligned compute Mathematics Framework
+Comprehensive Testing of Consciousness Mathematics Framework
 ============================================================
 
 Phase 2 Integration Testing demonstrating:
@@ -215,15 +215,15 @@ class IntegrationTester:
             )
     
     async def test_consciousness_validator_system(self) -> IntegrationTestResult:
-        """Test prime aligned compute validation system."""
+        """Test consciousness validation system."""
         start_time = time.time()
         
         try:
-            # Test prime aligned compute validation
+            # Test consciousness validation
             test_data = {
                 "system": "consciousness_validator",
                 "method": "validate",
-                "parameters": {"data": "prime aligned compute mathematics test data with YYYY STREET NAME patterns"}
+                "parameters": {"data": "consciousness mathematics test data with YYYY STREET NAME patterns"}
             }
             
             response = self._make_request(
@@ -235,29 +235,29 @@ class IntegrationTester:
             
             # Validate response
             if response["status"] != "success":
-                raise Exception(f"prime aligned compute validation failed: {response}")
+                raise Exception(f"Consciousness validation failed: {response}")
             
-            if "prime_aligned_score" not in response:
-                raise Exception("Missing prime_aligned_score in response")
+            if "consciousness_score" not in response:
+                raise Exception("Missing consciousness_score in response")
             
-            score = response["prime_aligned_score"]
+            score = response["consciousness_score"]
             if not isinstance(score, (int, float)) or score < 0 or score > 1:
-                raise Exception(f"Invalid prime aligned compute score: {score}")
+                raise Exception(f"Invalid consciousness score: {score}")
             
             response_time = time.time() - start_time
-            quality_score = 1.0 if score > 0.1 else 0.5  # Should have some prime aligned compute score
+            quality_score = 1.0 if score > 0.1 else 0.5  # Should have some consciousness score
             
             return IntegrationTestResult(
-                test_name="prime aligned compute Validator System",
+                test_name="Consciousness Validator System",
                 status="passed",
                 response_time=response_time,
                 data_quality=quality_score,
-                details={"prime_aligned_score": score, "data_length": response.get("data_length", 0)}
+                details={"consciousness_score": score, "data_length": response.get("data_length", 0)}
             )
             
         except Exception as e:
             return IntegrationTestResult(
-                test_name="prime aligned compute Validator System",
+                test_name="Consciousness Validator System",
                 status="failed",
                 response_time=time.time() - start_time,
                 data_quality=0.0,
@@ -479,7 +479,7 @@ class IntegrationTester:
         """Run comprehensive integration testing."""
         print("🔬 COMPREHENSIVE INTEGRATION TESTING")
         print("=" * 60)
-        print("Testing prime aligned compute Mathematics Framework")
+        print("Testing Consciousness Mathematics Framework")
         print("=" * 60)
         
         # Define all tests
@@ -534,7 +534,7 @@ class IntegrationTester:
             "api_gateway": any(r.test_name == "API Gateway Connectivity" and r.status == "passed" for r in self.test_results),
             "authentication": any(r.test_name == "Authentication System" and r.status == "passed" for r in self.test_results),
             "wallace_transform": any(r.test_name == "Wallace Transform System" and r.status == "passed" for r in self.test_results),
-            "consciousness_validator": any(r.test_name == "prime aligned compute Validator System" and r.status == "passed" for r in self.test_results),
+            "consciousness_validator": any(r.test_name == "Consciousness Validator System" and r.status == "passed" for r in self.test_results),
             "quantum_adaptive": any(r.test_name == "Quantum Adaptive System" and r.status == "passed" for r in self.test_results),
             "powerball_prediction": any(r.test_name == "Powerball Prediction System" and r.status == "passed" for r in self.test_results),
             "data_pipeline": any(r.test_name == "Data Pipeline Integration" and r.status == "passed" for r in self.test_results),

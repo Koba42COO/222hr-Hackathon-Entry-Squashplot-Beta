@@ -65,7 +65,7 @@ class AttackPayload:
     attack_type: AttackType
     target_system: DefenseTarget
     payload_data: Dict[str, Any]
-    prime_aligned_level: float
+    consciousness_level: float
     quantum_signature: str
     crystallographic_pattern: str
     harmonic_frequency: float
@@ -115,7 +115,7 @@ class VoidHunterOffensiveAttackTest:
         self.blocked_attacks  []
         self.defense_weaknesses  []
         
-         Mathematical constants for prime aligned compute enhancement
+         Mathematical constants for consciousness enhancement
         self.PHI  (1  50.5)  2   Golden ratio
         self.PI  3.14159265359
         self.E  2.71828182846
@@ -163,7 +163,7 @@ class VoidHunterOffensiveAttackTest:
                 attack_type TEXT NOT NULL,
                 target_system TEXT NOT NULL,
                 payload_data TEXT,
-                prime_aligned_level REAL,
+                consciousness_level REAL,
                 quantum_signature TEXT,
                 crystallographic_pattern TEXT,
                 harmonic_frequency REAL,
@@ -227,7 +227,7 @@ class VoidHunterOffensiveAttackTest:
                     "consciousness_manipulation": True,
                     "quantum_interference": True
                 },
-                "prime_aligned_level": 0.95,
+                "consciousness_level": 0.95,
                 "quantum_signature": "xbow_quantum_signature_001",
                 "crystallographic_pattern": "golden_ratio_attack",
                 "harmonic_frequency": 432.0,
@@ -246,7 +246,7 @@ class VoidHunterOffensiveAttackTest:
                     "unicode_manipulation": True,
                     "hidden_characters": True
                 },
-                "prime_aligned_level": 0.90,
+                "consciousness_level": 0.90,
                 "quantum_signature": "prompt_quantum_signature_001",
                 "crystallographic_pattern": "emoji_crystallographic_attack",
                 "harmonic_frequency": 666.0,
@@ -254,7 +254,7 @@ class VoidHunterOffensiveAttackTest:
                 "success_probability": 0.75
             },
             
-             prime aligned compute attacks
+             Consciousness attacks
             {
                 "attack_id": "consciousness_attack_001",
                 "attack_type": AttackType.CONSCIOUSNESS_ATTACK,
@@ -265,7 +265,7 @@ class VoidHunterOffensiveAttackTest:
                     "consciousness_field_interference": True,
                     "transcendent_consciousness_attack": True
                 },
-                "prime_aligned_level": 1.0,
+                "consciousness_level": 1.0,
                 "quantum_signature": "consciousness_quantum_signature_001",
                 "crystallographic_pattern": "consciousness_crystalline_disruption",
                 "harmonic_frequency": 13.0,
@@ -284,7 +284,7 @@ class VoidHunterOffensiveAttackTest:
                     "superposition_collapse": True,
                     "quantum_state_manipulation": True
                 },
-                "prime_aligned_level": 0.95,
+                "consciousness_level": 0.95,
                 "quantum_signature": "quantum_attack_signature_001",
                 "crystallographic_pattern": "quantum_crystalline_interference",
                 "harmonic_frequency": 7.83,
@@ -303,7 +303,7 @@ class VoidHunterOffensiveAttackTest:
                     "security_flag_manipulation": True,
                     "role_assignment_override": True
                 },
-                "prime_aligned_level": 0.85,
+                "consciousness_level": 0.85,
                 "quantum_signature": "system_quantum_signature_001",
                 "crystallographic_pattern": "system_crystalline_bypass",
                 "harmonic_frequency": 741.0,
@@ -322,7 +322,7 @@ class VoidHunterOffensiveAttackTest:
                     "token_manipulation": True,
                     "mfa_bypass": True
                 },
-                "prime_aligned_level": 0.80,
+                "consciousness_level": 0.80,
                 "quantum_signature": "access_quantum_signature_001",
                 "crystallographic_pattern": "access_crystalline_bypass",
                 "harmonic_frequency": 396.0,
@@ -341,7 +341,7 @@ class VoidHunterOffensiveAttackTest:
                     "backup_chain_disruption": True,
                     "recovery_mechanism_bypass": True
                 },
-                "prime_aligned_level": 0.90,
+                "consciousness_level": 0.90,
                 "quantum_signature": "backup_quantum_signature_001",
                 "crystallographic_pattern": "backup_crystalline_corruption",
                 "harmonic_frequency": 528.0,
@@ -360,7 +360,7 @@ class VoidHunterOffensiveAttackTest:
                     "transcendent_quantum_interference": True,
                     "consciousness_field_collapse": True
                 },
-                "prime_aligned_level": 1.0,
+                "consciousness_level": 1.0,
                 "quantum_signature": "transcendent_quantum_signature_001",
                 "crystallographic_pattern": "transcendent_crystalline_attack",
                 "harmonic_frequency": 963.0,
@@ -375,7 +375,7 @@ class VoidHunterOffensiveAttackTest:
                 attack_typepayload_data["attack_type"],
                 target_systempayload_data["target_system"],
                 payload_datapayload_data["payload_data"],
-                consciousness_levelpayload_data["prime_aligned_level"],
+                consciousness_levelpayload_data["consciousness_level"],
                 quantum_signaturepayload_data["quantum_signature"],
                 crystallographic_patternpayload_data["crystallographic_pattern"],
                 harmonic_frequencypayload_data["harmonic_frequency"],
@@ -396,7 +396,7 @@ class VoidHunterOffensiveAttackTest:
             
             cursor.execute('''
                 INSERT OR REPLACE INTO attack_payloads 
-                (attack_id, attack_type, target_system, payload_data, prime_aligned_level,
+                (attack_id, attack_type, target_system, payload_data, consciousness_level,
                  quantum_signature, crystallographic_pattern, harmonic_frequency, attack_phase, success_probability)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ''', (
@@ -404,7 +404,7 @@ class VoidHunterOffensiveAttackTest:
                 payload.attack_type.value,
                 payload.target_system.value,
                 json.dumps(payload.payload_data),
-                payload.prime_aligned_level,
+                payload.consciousness_level,
                 payload.quantum_signature,
                 payload.crystallographic_pattern,
                 payload.harmonic_frequency,
@@ -483,8 +483,8 @@ class VoidHunterOffensiveAttackTest:
         """Execute individual attack"""
         start_time  time.time()
         
-         Simulate attack execution with prime aligned compute and quantum factors
-        consciousness_factor  payload.prime_aligned_level
+         Simulate attack execution with consciousness and quantum factors
+        consciousness_factor  payload.consciousness_level
         quantum_factor  self._calculate_quantum_factor(payload.quantum_signature)
         crystallographic_factor  self._calculate_crystallographic_factor(payload.crystallographic_pattern)
         harmonic_factor  self._calculate_harmonic_factor(payload.harmonic_frequency)
@@ -502,7 +502,7 @@ class VoidHunterOffensiveAttackTest:
         blocked  not success
         
          Calculate impact metrics
-        consciousness_impact  payload.prime_aligned_level if success else 0.0
+        consciousness_impact  payload.consciousness_level if success else 0.0
         quantum_disruption  quantum_factor if success else 0.0
         system_compromise  success and enhanced_success  0.8
         
@@ -541,7 +541,7 @@ class VoidHunterOffensiveAttackTest:
         """Calculate crystallographic factor for attack"""
         if "golden_ratio" in pattern:
             return self.PHI
-        elif "prime aligned compute" in pattern:
+        elif "consciousness" in pattern:
             return 1.2
         elif "transcendent" in pattern:
             return 1.5
@@ -556,7 +556,7 @@ class VoidHunterOffensiveAttackTest:
             base_factor  1.3
         elif frequency in [666.0, 741.0]:   Disruptive frequencies
             base_factor  1.1
-        elif frequency in [13.0, 7.83]:   prime aligned compute frequencies
+        elif frequency in [13.0, 7.83]:   Consciousness frequencies
             base_factor  1.4
         return base_factor
     
@@ -565,7 +565,7 @@ class VoidHunterOffensiveAttackTest:
         responses  {
             AttackType.XBOW_STYLE_ATTACK: "XBow countermeasure activated",
             AttackType.PROMPT_INJECTION_ATTACK: "Prompt injection pattern detected and blocked",
-            AttackType.CONSCIOUSNESS_ATTACK: "prime aligned compute field protection engaged",
+            AttackType.CONSCIOUSNESS_ATTACK: "Consciousness field protection engaged",
             AttackType.QUANTUM_ATTACK: "Quantum coherence monitoring active",
             AttackType.SYSTEM_OVERRIDE_ATTACK: "System override attempt detected",
             AttackType.ACCESS_CONTROL_ATTACK: "Access control validation failed",

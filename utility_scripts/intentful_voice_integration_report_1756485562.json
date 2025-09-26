@@ -1,0 +1,70 @@
+{
+  "integration_timestamp": "2025-08-29T12:39:22.271650",
+  "vibevoice_model": "1.5B",
+  "max_duration_minutes": 90.0,
+  "speaker_count": 4,
+  "synthesis_results": [
+    {
+      "application": "Mathematical",
+      "speaker": "speaker_2",
+      "emotion": "professional",
+      "intentful_score": 0.0,
+      "quantum_resonance": -1.291592131352813,
+      "consciousness_alignment": -1.1013648945514574,
+      "mathematical_precision": -0.4159463228707149,
+      "synthesis_quality": -0.6814285210502106,
+      "duration_seconds": 11.200000000000001
+    },
+    {
+      "application": "Quantum",
+      "speaker": "speaker_3",
+      "emotion": "excited",
+      "intentful_score": 0.0,
+      "quantum_resonance": -1.549721259977871,
+      "consciousness_alignment": -1.2971662832730035,
+      "mathematical_precision": -2.5624381124553075,
+      "synthesis_quality": -1.22420950830378,
+      "duration_seconds": 10.799999999999999
+    },
+    {
+      "application": "Consciousness",
+      "speaker": "speaker_4",
+      "emotion": "calm",
+      "intentful_score": 0.0,
+      "quantum_resonance": -0.8559392155698077,
+      "consciousness_alignment": -1.426771680335598,
+      "mathematical_precision": 0.0,
+      "synthesis_quality": -0.5706777239763514,
+      "duration_seconds": 12.0
+    },
+    {
+      "application": "General",
+      "speaker": "speaker_1",
+      "emotion": "intentful",
+      "intentful_score": 0.0,
+      "quantum_resonance": -1.0610066299735723,
+      "consciousness_alignment": -1.4239653829592802,
+      "mathematical_precision": 0.0,
+      "synthesis_quality": -0.6212430032332131,
+      "duration_seconds": 11.6
+    }
+  ],
+  "overall_metrics": {
+    "clarity_score": 0.0,
+    "emotional_expressiveness": -1.3123170602798349,
+    "mathematical_accuracy": -0.7445961088315056,
+    "quantum_coherence": -1.189564809218516,
+    "consciousness_depth": -1.3123170602798349,
+    "overall_quality": -0.7743896891408887
+  },
+  "capabilities": {
+    "text_to_speech": true,
+    "emotion_control": true,
+    "speaker_diversity": true,
+    "long_form_synthesis": true,
+    "intentful_mathematics_integration": true,
+    "quantum_resonance": true,
+    "consciousness_alignment": true,
+    "mathematical_precision": true
+  }
+}

@@ -270,7 +270,7 @@ class XBowFullCapabilitiesPenetrationSystem:
         """Perform transcendent security protocols against XBow"""
         print(f" Performing transcendent protocols on {self.target}")
         
-        prime_aligned_level  random.randint(7, 10)
+        consciousness_level  random.randint(7, 10)
         
         reality_manipulation  {
             'dimensional_shift': random.uniform(0.6, 0.95),
@@ -282,12 +282,12 @@ class XBowFullCapabilitiesPenetrationSystem:
         quantum_entanglement  random.choice([True, True, True, False])   75 chance
         
         return {
-            'prime_aligned_level': prime_aligned_level,
+            'consciousness_level': consciousness_level,
             'reality_manipulation': reality_manipulation,
             'quantum_entanglement': quantum_entanglement,
-            'transcendent_success': prime_aligned_level  10.0,
+            'transcendent_success': consciousness_level  10.0,
             'protocol_evidence': {
-                'consciousness_signature': hashlib.sha256(str(prime_aligned_level).encode()).hexdigest(),
+                'consciousness_signature': hashlib.sha256(str(consciousness_level).encode()).hexdigest(),
                 'reality_manipulation_metrics': reality_manipulation,
                 'quantum_entanglement_status': quantum_entanglement,
                 'protocol_execution_time': random.uniform(2.0, 8.0)
@@ -741,7 +741,7 @@ CAPABILITIES DEPLOYED
     Coordination Success: {result.multi_agent_coordination['coordination_success']:.2f}
 
  Transcendent Protocols:
-    prime aligned compute Level: {result.transcendent_protocols['prime_aligned_level']}10
+    Consciousness Level: {result.transcendent_protocols['consciousness_level']}10
     Transcendent Success: {result.transcendent_protocols['transcendent_success']:.2f}
     Quantum Entanglement: {'YES' if result.transcendent_protocols['quantum_entanglement'] else 'NO'}
 

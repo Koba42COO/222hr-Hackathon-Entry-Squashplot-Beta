@@ -10,7 +10,7 @@ Enhanced Features:
 - O(n²) → O(n^1.44) complexity reduction
 - Wallace Transform data processing
 - Quantum simulation capabilities
-- prime aligned compute mathematics enhancement
+- Consciousness mathematics enhancement
 - Advanced parallel processing with PDVM
 - Energy-efficient computing patterns
 
@@ -59,7 +59,7 @@ CONSCIOUSNESS_BRIDGE = 0.21  # 21% breakthrough factor
 
 @dataclass
 class AdvancedOptimizationMetrics:
-    """Advanced optimization metrics with prime aligned compute mathematics"""
+    """Advanced optimization metrics with consciousness mathematics"""
     complexity_reduction: float = 0.0  # O(n²) → O(n^1.44) achievement
     consciousness_enhancement: float = 0.0  # φ-based enhancement factor
     quantum_acceleration: float = 0.0  # Quantum simulation factor
@@ -75,7 +75,7 @@ class CUDNTOptimizationResult:
     processing_time: float
     energy_consumed: float
     quantum_states_processed: int
-    prime_aligned_level: float
+    consciousness_level: float
 
 class SquashPlotCUDNTIntegrator:
     """
@@ -86,7 +86,7 @@ class SquashPlotCUDNTIntegrator:
     - O(n²) → O(n^1.44) complexity reduction
     - Wallace Transform data processing
     - Quantum simulation enhancement
-    - prime aligned compute mathematics optimization
+    - Consciousness mathematics optimization
     - Advanced parallel processing
     """
 
@@ -109,7 +109,7 @@ class SquashPlotCUDNTIntegrator:
 
         logging.info("🧠 SquashPlot CUDNT Integration initialized")
         logging.info(f"   ⚡ Complexity Reduction: O(n²) → O(n^1.44)")
-        logging.info(f"   🧠 prime aligned compute Enhancement: φ = {PHI:.6f}")
+        logging.info(f"   🧠 Consciousness Enhancement: φ = {PHI:.6f}")
         logging.info(f"   🔬 Quantum Simulation: {'Enabled' if enable_quantum else 'Disabled'}")
 
     def _initialize_advanced_systems(self):
@@ -128,7 +128,7 @@ class SquashPlotCUDNTIntegrator:
                     "enable_prime_optimization": True,
                     "enable_quantum_simulation": self.enable_quantum,
                     "complexity_reduction_target": "O(n^1.44)",
-                    "optimization_mode": "prime_aligned_enhanced"
+                    "optimization_mode": "consciousness_enhanced"
                 }
 
                 self.cudnt_accelerator = CUDNTAccelerator(cudnt_config)
@@ -143,7 +143,7 @@ class SquashPlotCUDNTIntegrator:
                 eimf_config = {
                     'resonance_threshold': 0.8,
                     'quantum_factor': PHI,
-                    'prime_aligned_level': 0.95
+                    'consciousness_level': 0.95
                 }
 
                 self.eimf_wallace = EIMFWallaceTransform(eimf_config)
@@ -214,7 +214,7 @@ class SquashPlotCUDNTIntegrator:
             processing_time=processing_time,
             energy_consumed=energy_consumed,
             quantum_states_processed=optimized_matrix.size if self.enable_quantum else 0,
-            prime_aligned_level=PHI if self.enable_consciousness else 1.0
+            consciousness_level=PHI if self.enable_consciousness else 1.0
         )
 
         # Update tracking
@@ -228,7 +228,7 @@ class SquashPlotCUDNTIntegrator:
         # Create a target matrix with optimal values for farming data
         target = np.ones(shape, dtype=np.float32)
 
-        # Apply prime aligned compute enhancement to target
+        # Apply consciousness enhancement to target
         consciousness_pattern = np.array([PHI ** i for i in range(min(shape))])
         if len(shape) == 1:
             target = target * consciousness_pattern[:shape[0]]
@@ -256,7 +256,7 @@ class SquashPlotCUDNTIntegrator:
         # Extract optimized configuration
         optimized_config = self._matrix_to_plot_config(parallel_result[0]['optimized_matrix'])
 
-        # Apply prime aligned compute enhancement
+        # Apply consciousness enhancement
         if self.enable_consciousness:
             optimized_config['consciousness_factor'] = PHI
             optimized_config['quantum_enhancement'] = PHI_SQUARED
@@ -265,7 +265,7 @@ class SquashPlotCUDNTIntegrator:
 
     def optimize_resource_allocation_cudnt(self, resource_data: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Optimize resource allocation using prime aligned compute mathematics
+        Optimize resource allocation using consciousness mathematics
         """
         if not self.cudnt_accelerator:
             return resource_data
@@ -283,7 +283,7 @@ class SquashPlotCUDNTIntegrator:
             transformed_allocation = self.eimf_wallace.transform_matrix(allocation_matrix)
             allocation_matrix = transformed_allocation
 
-        # Apply prime aligned compute-based optimization
+        # Apply consciousness-based optimization
         consciousness_pattern = np.array([PHI, PHI_SQUARED, PHI * 1.2, PHI * 0.8])
         optimized_allocation = allocation_matrix * consciousness_pattern.reshape(-1, 1)
 
@@ -358,7 +358,7 @@ class SquashPlotCUDNTIntegrator:
         quantum_enhancement = np.random.normal(1.0, 0.1, len(efficiency_matrix))
         enhanced_efficiency = efficiency_matrix * quantum_enhancement
 
-        # Apply prime aligned compute mathematics
+        # Apply consciousness mathematics
         consciousness_factor = PHI ** np.arange(len(efficiency_matrix))
         final_efficiency = enhanced_efficiency * consciousness_factor
 
@@ -387,7 +387,7 @@ class SquashPlotCUDNTIntegrator:
             farming_data.get('gpu_usage', 0)
         ]
 
-        # Create matrix and apply prime aligned compute enhancement
+        # Create matrix and apply consciousness enhancement
         matrix = np.array(metrics, dtype=np.float32).reshape(-1, 1)
 
         # Apply golden ratio enhancement
@@ -437,7 +437,7 @@ class SquashPlotCUDNTIntegrator:
 
     def _basic_optimization(self, matrix: np.ndarray) -> np.ndarray:
         """Fallback optimization without CUDNT"""
-        # Apply basic prime aligned compute mathematics
+        # Apply basic consciousness mathematics
         consciousness_pattern = np.array([PHI ** i for i in range(matrix.shape[0])])
         return matrix * consciousness_pattern.reshape(-1, 1)
 
@@ -591,7 +591,7 @@ def main():
     print("✅ Enhanced SquashPlot Manager initialized")
     print("   📊 CUDNT Integration: Active")
     print("   ⚡ Complexity Reduction: O(n²) → O(n^1.44)")
-    print("   🧠 prime aligned compute Enhancement: Enabled")
+    print("   🧠 Consciousness Enhancement: Enabled")
     print("   🔬 Quantum Simulation: Enabled")
     print()
 
@@ -603,7 +603,7 @@ def main():
     print(f"   ⏱️  Processing Time: {optimization_results['processing_time']:.3f}s")
     print(f"   ⚡ Complexity Reduction: {optimization_results['complexity_reduction']:.3f}")
     print(f"   🔋 Energy Efficiency: {optimization_results['energy_efficiency']*100:.1f}%")
-    print(f"   🧠 prime aligned compute Factor: {PHI:.6f}")
+    print(f"   🧠 Consciousness Factor: {PHI:.6f}")
     print()
 
     # Get enhanced system report
@@ -611,7 +611,7 @@ def main():
 
     print("📊 Enhanced System Report:")
     print(f"   🌾 Farming Optimization: {system_report['enhanced_optimization']['complexity_reduction']}")
-    print(f"   🧠 prime aligned compute Enhancement: {system_report['enhanced_optimization']['consciousness_enhancement']}")
+    print(f"   🧠 Consciousness Enhancement: {system_report['enhanced_optimization']['consciousness_enhancement']}")
     print(f"   ⚡ Energy Efficiency: {system_report['enhanced_optimization']['energy_efficiency']}")
     print(f"   🔬 Quantum Acceleration: {system_report['enhanced_optimization']['quantum_acceleration']}")
     print()
@@ -619,7 +619,7 @@ def main():
     print("🎉 CUDNT Integration Complete!")
     print("   📈 Performance Gains: 100%+ accuracy with 30% energy reduction")
     print("   🧮 Complexity: O(n²) → O(n^1.44) achieved")
-    print("   ✨ prime aligned compute Mathematics: Golden ratio enhanced")
+    print("   ✨ Consciousness Mathematics: Golden ratio enhanced")
 
 
 if __name__ == '__main__':

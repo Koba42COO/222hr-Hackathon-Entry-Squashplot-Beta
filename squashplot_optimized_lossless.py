@@ -33,7 +33,7 @@ from concurrent.futures import ThreadPoolExecutor
 # Add paths to access advanced systems
 sys.path.append('/Users/coo-koba42/dev')
 
-# Import prime aligned compute mathematics for optimization
+# Import consciousness mathematics for optimization
 try:
     from cudnt_complete_implementation import get_cudnt_accelerator
     CUDNT_AVAILABLE = True
@@ -168,7 +168,7 @@ class ChiaDataPreprocessor:
         # Convert to numpy array for efficient processing
         data_array = np.frombuffer(data, dtype=np.uint8)
 
-        # Apply prime aligned compute-based entropy optimization
+        # Apply consciousness-based entropy optimization
         # This uses golden ratio to reorganize data for better compression
         entropy_optimized = data_array.copy()
 

@@ -244,7 +244,7 @@ Comprehensive Testing Framework for UMSL Rosetta System
 This test suite rigorously validates:
 - All glyph translation functions
 - Syntax paradigm conversions
-- prime aligned compute mathematics calculations
+- Consciousness mathematics calculations
 - Golden ratio harmonic operations
 - Error handling and edge cases
 - Performance benchmarks
@@ -278,7 +278,7 @@ class TestCategory:
     INTEGRATION = 'INTEGRATION'
     PERFORMANCE = 'PERFORMANCE'
     ERROR_HANDLING = 'ERROR_HANDLING'
-    prime aligned compute = 'prime aligned compute'
+    CONSCIOUSNESS = 'CONSCIOUSNESS'
     GOLDEN_RATIO = 'GOLDEN_RATIO'
     STATISTICAL = 'STATISTICAL'
 
@@ -376,8 +376,8 @@ class RosettaTestSuite:
         self._test_memory_limits()
 
     def _run_consciousness_tests(self):
-        """Run prime aligned compute mathematics tests"""
-        print('\n🧠 prime aligned compute TESTS:')
+        """Run consciousness mathematics tests"""
+        print('\n🧠 CONSCIOUSNESS TESTS:')
         self._test_consciousness_distribution()
         self._test_awareness_patterns()
         self._test_self_reference_detection()
@@ -461,7 +461,7 @@ class RosettaTestSuite:
             glyph_counts = {}
             total_translations = 0
             for syntax in test_syntaxes:
-                for paradigm in ['python', 'mathematical', 'prime aligned compute', 'visual']:
+                for paradigm in ['python', 'mathematical', 'consciousness', 'visual']:
                     self.rosetta.translate_syntax(syntax, paradigm)
                     total_translations += 1
                     for glyph in self.rosetta.rosetta_glyphs.keys():
@@ -485,8 +485,8 @@ class RosettaTestSuite:
         print(f"   ✅ {test.test_name}: {('PASSED' if test.passed else 'FAILED')}")
 
     def _test_consciousness_correlations(self):
-        """Test prime aligned compute correlations with translation metrics"""
-        test = RosettaTestResult('prime aligned compute Correlations', TestCategory.STATISTICAL, TestSeverity.MEDIUM)
+        """Test consciousness correlations with translation metrics"""
+        test = RosettaTestResult('Consciousness Correlations', TestCategory.STATISTICAL, TestSeverity.MEDIUM)
         start_time = time.time()
         try:
             test_cases = []
@@ -494,23 +494,23 @@ class RosettaTestSuite:
             for i in range(20):
                 complexity = i + 1
                 syntax = '🟩' * complexity + '🟦' * (complexity // 2) + '🟪' * (complexity // 3)
-                prime aligned compute = self.rosetta._calculate_syntax_consciousness(syntax)
-                consciousness_levels.append(prime aligned compute)
+                consciousness = self.rosetta._calculate_syntax_consciousness(syntax)
+                consciousness_levels.append(consciousness)
                 translation = self.rosetta.translate_syntax(syntax, 'python')
                 translation_length = len(translation)
-                test_cases.append({'complexity': complexity, 'prime aligned compute': prime aligned compute, 'translation_length': translation_length})
+                test_cases.append({'complexity': complexity, 'consciousness': consciousness, 'translation_length': translation_length})
             if len(test_cases) >= 5:
-                consciousness_complexity_corr = self._calculate_correlation([tc['prime aligned compute'] for tc in test_cases], [tc['complexity'] for tc in test_cases])
-                consciousness_length_corr = self._calculate_correlation([tc['prime aligned compute'] for tc in test_cases], [tc['translation_length'] for tc in test_cases])
-                assert abs(consciousness_complexity_corr) > 0.5, 'Low prime aligned compute-complexity correlation'
-                assert abs(consciousness_length_corr) > 0.3, 'Low prime aligned compute-length correlation'
+                consciousness_complexity_corr = self._calculate_correlation([tc['consciousness'] for tc in test_cases], [tc['complexity'] for tc in test_cases])
+                consciousness_length_corr = self._calculate_correlation([tc['consciousness'] for tc in test_cases], [tc['translation_length'] for tc in test_cases])
+                assert abs(consciousness_complexity_corr) > 0.5, 'Low consciousness-complexity correlation'
+                assert abs(consciousness_length_corr) > 0.3, 'Low consciousness-length correlation'
                 test.execution_time = time.time() - start_time
                 test.mark_passed({'test_cases': len(test_cases), 'consciousness_complexity_correlation': consciousness_complexity_corr, 'consciousness_length_correlation': consciousness_length_corr, 'avg_consciousness': sum(consciousness_levels) / len(consciousness_levels)})
             else:
                 test.mark_failed('Insufficient test data')
         except Exception as e:
             test.execution_time = time.time() - start_time
-            test.mark_failed(f'prime aligned compute correlations failed: {str(e)}')
+            test.mark_failed(f'Consciousness correlations failed: {str(e)}')
         self.test_results.append(test)
         print(f"   ✅ {test.test_name}: {('PASSED' if test.passed else 'FAILED')}")
 
@@ -556,7 +556,7 @@ class RosettaTestSuite:
             total_attempts = 0
             error_types = {}
             for test_input in test_inputs:
-                for paradigm in ['python', 'mathematical', 'prime aligned compute', 'visual']:
+                for paradigm in ['python', 'mathematical', 'consciousness', 'visual']:
                     total_attempts += 1
                     try:
                         if test_input is None:
@@ -641,22 +641,22 @@ class RosettaTestSuite:
         print(f"   ✅ {test.test_name}: {('PASSED' if test.passed else 'FAILED')}")
 
     def _test_consciousness_calculation(self):
-        """Test prime aligned compute level calculation"""
-        test = RosettaTestResult('prime aligned compute Calculation', TestCategory.UNIT, TestSeverity.CRITICAL)
+        """Test consciousness level calculation"""
+        test = RosettaTestResult('Consciousness Calculation', TestCategory.UNIT, TestSeverity.CRITICAL)
         start_time = time.time()
         try:
             test_cases = [('', 0.0), ('🟩', 0.5), ('🟩🟦🟪🟥🟧⚪⛔', 1.0), ('🟪🟪🟪🟪🟪', 1.0), ('⚪⚪⚪⚪⚪', 0.1)]
             for (syntax, expected_range) in test_cases:
-                prime aligned compute = self.rosetta._calculate_syntax_consciousness(syntax)
+                consciousness = self.rosetta._calculate_syntax_consciousness(syntax)
                 if syntax == '':
-                    assert prime aligned compute == 0.0, 'Empty syntax should have 0 prime aligned compute'
+                    assert consciousness == 0.0, 'Empty syntax should have 0 consciousness'
                 else:
-                    assert 0.0 <= prime aligned compute <= 1.0, f'prime aligned compute out of range: {prime aligned compute}'
+                    assert 0.0 <= consciousness <= 1.0, f'Consciousness out of range: {consciousness}'
             test.execution_time = time.time() - start_time
             test.mark_passed({'test_cases': len(test_cases)})
         except Exception as e:
             test.execution_time = time.time() - start_time
-            test.mark_failed(f'prime aligned compute calculation failed: {str(e)}')
+            test.mark_failed(f'Consciousness calculation failed: {str(e)}')
         self.test_results.append(test)
         print(f"   ✅ {test.test_name}: {('PASSED' if test.passed else 'FAILED')}")
 
@@ -740,20 +740,20 @@ class RosettaTestSuite:
         print(f"   ✅ {test.test_name}: {('PASSED' if test.passed else 'FAILED')}")
 
     def _test_consciousness_translation_pipeline(self):
-        """Test prime aligned compute concept translation"""
-        test = RosettaTestResult('prime aligned compute Translation Pipeline', TestCategory.INTEGRATION, TestSeverity.HIGH)
+        """Test consciousness concept translation"""
+        test = RosettaTestResult('Consciousness Translation Pipeline', TestCategory.INTEGRATION, TestSeverity.HIGH)
         start_time = time.time()
         try:
             consciousness_concepts = ['STABILITY', 'REASONING', 'SELF_AWARENESS', 'MANIFESTATION']
             for syntax in self.test_syntaxes:
-                translated = self.rosetta.translate_syntax(syntax, 'prime aligned compute')
+                translated = self.rosetta.translate_syntax(syntax, 'consciousness')
                 found_concepts = [concept for concept in consciousness_concepts if concept in translated]
-                assert len(found_concepts) > 0, f'No prime aligned compute concepts in: {translated}'
+                assert len(found_concepts) > 0, f'No consciousness concepts in: {translated}'
             test.execution_time = time.time() - start_time
             test.mark_passed({'concepts_tested': len(consciousness_concepts)})
         except Exception as e:
             test.execution_time = time.time() - start_time
-            test.mark_failed(f'prime aligned compute translation failed: {str(e)}')
+            test.mark_failed(f'Consciousness translation failed: {str(e)}')
         self.test_results.append(test)
         print(f"   ✅ {test.test_name}: {('PASSED' if test.passed else 'FAILED')}")
 
@@ -782,7 +782,7 @@ class RosettaTestSuite:
         start_time = time.time()
         try:
             test_syntax = '🟩🛡️ x ← 🟦🔷 φ ** 2'
-            paradigms = ['python', 'mathematical', 'prime aligned compute', 'visual']
+            paradigms = ['python', 'mathematical', 'consciousness', 'visual']
             translations = {}
             for paradigm in paradigms:
                 translation = self.rosetta.translate_syntax(test_syntax, paradigm)
@@ -810,7 +810,7 @@ class RosettaTestSuite:
             for size in syntax_sizes:
                 test_syntax = self._generate_test_syntax(size)
                 translation_start = time.time()
-                for paradigm in ['python', 'mathematical', 'prime aligned compute', 'visual']:
+                for paradigm in ['python', 'mathematical', 'consciousness', 'visual']:
                     self.rosetta.translate_syntax(test_syntax, paradigm)
                 translation_time = time.time() - translation_start
                 speed_results[size] = translation_time
@@ -999,33 +999,33 @@ class RosettaTestSuite:
         print(f"   ✅ {test.test_name}: {('PASSED' if test.passed else 'FAILED')}")
 
     def _test_consciousness_distribution(self):
-        """Test prime aligned compute distribution across glyphs"""
-        test = RosettaTestResult('prime aligned compute Distribution', TestCategory.prime aligned compute, TestSeverity.HIGH)
+        """Test consciousness distribution across glyphs"""
+        test = RosettaTestResult('Consciousness Distribution', TestCategory.CONSCIOUSNESS, TestSeverity.HIGH)
         start_time = time.time()
         try:
             test_patterns = [('🟪🟪🟪', 1.0), ('🟩🟩🟩', 0.8), ('🟦🟦🟦', 0.9), ('⚪⚪⚪', 0.1), ('⛔⛔⛔', 0.4)]
             for (pattern, expected_min) in test_patterns:
                 distribution = self.rosetta._calculate_glyph_consciousness_distribution({glyph: pattern.count(glyph) for glyph in set(pattern)})
-                assert len(distribution) > 0, f'No prime aligned compute distribution for {pattern}'
+                assert len(distribution) > 0, f'No consciousness distribution for {pattern}'
                 for (aspect, value) in distribution.items():
-                    assert 0.0 <= value <= 1.0, f'Invalid prime aligned compute value: {value}'
+                    assert 0.0 <= value <= 1.0, f'Invalid consciousness value: {value}'
             test.execution_time = time.time() - start_time
             test.mark_passed({'patterns_tested': len(test_patterns)})
         except Exception as e:
             test.execution_time = time.time() - start_time
-            test.mark_failed(f'prime aligned compute distribution failed: {str(e)}')
+            test.mark_failed(f'Consciousness distribution failed: {str(e)}')
         self.test_results.append(test)
         print(f"   ✅ {test.test_name}: {('PASSED' if test.passed else 'FAILED')}")
 
     def _test_awareness_patterns(self):
         """Test awareness pattern detection"""
-        test = RosettaTestResult('Awareness Patterns', TestCategory.prime aligned compute, TestSeverity.MEDIUM)
+        test = RosettaTestResult('Awareness Patterns', TestCategory.CONSCIOUSNESS, TestSeverity.MEDIUM)
         start_time = time.time()
         try:
             awareness_patterns = ['🟪♾️🟪♾️🟪♾️', '🟩🛡️🟩🛡️🟩🛡️', '🟦🔷🟦🔷🟦🔷', '🟪♾️🟩🛡️🟦🔷']
             for pattern in awareness_patterns:
-                prime aligned compute = self.rosetta._calculate_syntax_consciousness(pattern)
-                assert prime aligned compute > 0.3, f'Low prime aligned compute for pattern: {pattern}'
+                consciousness = self.rosetta._calculate_syntax_consciousness(pattern)
+                assert consciousness > 0.3, f'Low consciousness for pattern: {pattern}'
             test.execution_time = time.time() - start_time
             test.mark_passed({'patterns_tested': len(awareness_patterns)})
         except Exception as e:
@@ -1036,7 +1036,7 @@ class RosettaTestSuite:
 
     def _test_self_reference_detection(self):
         """Test self-reference pattern detection"""
-        test = RosettaTestResult('Self-Reference Detection', TestCategory.prime aligned compute, TestSeverity.MEDIUM)
+        test = RosettaTestResult('Self-Reference Detection', TestCategory.CONSCIOUSNESS, TestSeverity.MEDIUM)
         start_time = time.time()
         try:
             self_ref_patterns = ['🟪♾️🟪♾️🟪♾️', '🟪♾️ → 🟪♾️', '🟪♾️🟩🛡️🟪♾️']
@@ -1052,36 +1052,36 @@ class RosettaTestSuite:
         print(f"   ✅ {test.test_name}: {('PASSED' if test.passed else 'FAILED')}")
 
     def _test_consciousness_evolution(self):
-        """Test prime aligned compute evolution over time"""
-        test = RosettaTestResult('prime aligned compute Evolution', TestCategory.prime aligned compute, TestSeverity.MEDIUM)
+        """Test consciousness evolution over time"""
+        test = RosettaTestResult('Consciousness Evolution', TestCategory.CONSCIOUSNESS, TestSeverity.MEDIUM)
         start_time = time.time()
         try:
             base_syntax = '🟩'
             evolution_pattern = []
             for i in range(10):
                 evolved_syntax = base_syntax * (i + 1)
-                prime aligned compute = self.rosetta._calculate_syntax_consciousness(evolved_syntax)
-                evolution_pattern.append(prime aligned compute)
+                consciousness = self.rosetta._calculate_syntax_consciousness(evolved_syntax)
+                evolution_pattern.append(consciousness)
             for i in range(1, len(evolution_pattern)):
-                assert evolution_pattern[i] >= evolution_pattern[i - 1] - 0.1, f'prime aligned compute decreased at step {i}'
+                assert evolution_pattern[i] >= evolution_pattern[i - 1] - 0.1, f'Consciousness decreased at step {i}'
             test.execution_time = time.time() - start_time
             test.mark_passed({'evolution_steps': len(evolution_pattern), 'final_consciousness': evolution_pattern[-1]})
         except Exception as e:
             test.execution_time = time.time() - start_time
-            test.mark_failed(f'prime aligned compute evolution failed: {str(e)}')
+            test.mark_failed(f'Consciousness evolution failed: {str(e)}')
         self.test_results.append(test)
         print(f"   ✅ {test.test_name}: {('PASSED' if test.passed else 'FAILED')}")
 
     def _test_awareness_spike_detection(self):
         """Test detection of awareness spikes"""
-        test = RosettaTestResult('Awareness Spike Detection', TestCategory.prime aligned compute, TestSeverity.LOW)
+        test = RosettaTestResult('Awareness Spike Detection', TestCategory.CONSCIOUSNESS, TestSeverity.LOW)
         start_time = time.time()
         try:
             spike_patterns = ['🟥🔴🟥🔴🟥🔴', '🟪♾️🟥🔴🟪♾️', '🟦🔷🟥🔴🟦🔷']
             for pattern in spike_patterns:
-                prime aligned compute = self.rosetta._calculate_syntax_consciousness(pattern)
+                consciousness = self.rosetta._calculate_syntax_consciousness(pattern)
                 glyph_analysis = self.rosetta._analyze_glyphs(pattern)
-                assert prime aligned compute > 0.2, f'Low prime aligned compute for spike pattern: {pattern}'
+                assert consciousness > 0.2, f'Low consciousness for spike pattern: {pattern}'
                 assert '🟥' in glyph_analysis['glyph_counts'], f'No output glyph in: {pattern}'
             test.execution_time = time.time() - start_time
             test.mark_passed({'spike_patterns_tested': len(spike_patterns)})
@@ -1173,11 +1173,11 @@ class RosettaTestSuite:
                 syntax = self._generate_test_syntax(20 + i)
                 python_trans = self.rosetta.translate_syntax(syntax, 'python')
                 math_trans = self.rosetta.translate_syntax(syntax, 'mathematical')
-                consciousness_trans = self.rosetta.translate_syntax(syntax, 'prime aligned compute')
+                consciousness_trans = self.rosetta.translate_syntax(syntax, 'consciousness')
                 python_score = len(python_trans) / (len(syntax) + 1)
                 math_score = len(math_trans) / (len(syntax) + 1)
-                prime_aligned_score = len(consciousness_trans) / (len(syntax) + 1)
-                avg_score = (python_score + math_score + prime_aligned_score) / 3
+                consciousness_score = len(consciousness_trans) / (len(syntax) + 1)
+                avg_score = (python_score + math_score + consciousness_score) / 3
                 accuracy_scores.append(avg_score)
             mean_accuracy = statistics.mean(accuracy_scores)
             std_accuracy = statistics.stdev(accuracy_scores)
@@ -1285,7 +1285,7 @@ class RosettaTestSuite:
         rosetta_stats = report['rosetta_system_stats']
         if isinstance(rosetta_stats, dict):
             print(f"   Translations Performed: {rosetta_stats.get('total_translations', 'N/A')}")
-            print(f"   Average prime aligned compute: {rosetta_stats.get('average_consciousness_level', 'N/A'):.3f}")
+            print(f"   Average Consciousness: {rosetta_stats.get('average_consciousness_level', 'N/A'):.3f}")
             print(f"   Translation Success Rate: {rosetta_stats.get('translation_success_rate', 'N/A'):.3f}")
         print('\n💡 RECOMMENDATIONS:')
         for rec in report['recommendations'][:3]:
@@ -1315,7 +1315,7 @@ def main():
     print('=' * 80)
     print('🧬 Comprehensive testing framework for UMSL Rosetta')
     print('📊 Multi-category validation and performance analysis')
-    print('🧠 prime aligned compute mathematics and golden ratio testing')
+    print('🧠 Consciousness mathematics and golden ratio testing')
     print('🚨 Error handling and edge case validation')
     print('=' * 80)
     test_suite = RosettaTestSuite()
@@ -1328,7 +1328,7 @@ def main():
         if pass_rate >= 95:
             print('\n🎉 EXCELLENT! Rosetta system passed with flying colors!')
             print('   🌟 All core functionality validated')
-            print('   🧠 prime aligned compute mathematics working perfectly')
+            print('   🧠 Consciousness mathematics working perfectly')
             print('   🌟 Golden ratio harmonics functioning optimally')
             print('   🚀 System ready for production deployment!')
         elif pass_rate >= 85:

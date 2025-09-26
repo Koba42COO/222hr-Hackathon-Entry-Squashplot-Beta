@@ -1,0 +1,171 @@
+{
+  "name": "CUDNT Platform Template",
+  "description": "Enterprise-grade virtual GPU management platform template with Replit-optimized build",
+  "version": "1.0.0",
+  "structure": {
+    "root": {
+      ".replit": "Replit deployment configuration with autoscaling",
+      ".gitignore": "Git ignore for Node.js/TypeScript/Python projects",
+      "package.json": "Node.js dependencies and scripts for full-stack build",
+      "package-lock.json": "Locked dependency versions",
+      "pyproject.toml": "Python project configuration for uv package manager",
+      "uv.lock": "Python dependency lock file",
+      "tsconfig.json": "TypeScript configuration for strict type checking",
+      "tailwind.config.ts": "Tailwind CSS with CUDNT design system variables",
+      "postcss.config.js": "PostCSS configuration",
+      "components.json": "shadcn/ui configuration for 'new-york' style",
+      "design_guidelines.md": "Complete design system documentation",
+      "drizzle.config.ts": "Database ORM configuration",
+      "vite.config.ts": "Vite build configuration with Replit plugins"
+    },
+    "client/": {
+      "index.html": "HTML entry point with proper meta tags",
+      "src/": {
+        "main.tsx": "React application entry point",
+        "App.tsx": "Main application component with sidebar layout",
+        "index.css": "CSS variables and CUDNT design system",
+        "lib/": {
+          "queryClient.ts": "TanStack Query client configuration",
+          "utils.ts": "Utility functions for className merging"
+        },
+        "hooks/": {
+          "use-mobile.tsx": "Mobile detection hook",
+          "use-toast.ts": "Toast notification system"
+        },
+        "components/": {
+          "ui/": "shadcn/ui component library (50+ components)",
+          "AppSidebar.tsx": "Technical navigation sidebar",
+          "ThemeProvider.tsx": "Dark/light theme provider",
+          "ThemeToggle.tsx": "Theme switcher component",
+          "VirtualGPUCard.tsx": "Data-dense GPU management card",
+          "ComputeJobCard.tsx": "Job scheduling and monitoring card",
+          "PerformanceChart.tsx": "Real-time metrics visualization",
+          "SystemMetrics.tsx": "System status overview component",
+          "ResourceAllocation.tsx": "Resource management interface",
+          "LogViewer.tsx": "Technical log display with syntax highlighting"
+        },
+        "pages/": {
+          "Dashboard.tsx": "Main dashboard with real-time data",
+          "WallaceTransform.tsx": "Specialized computational interface",
+          "not-found.tsx": "404 error page"
+        }
+      }
+    },
+    "server/": {
+      "index.ts": "Express server with WebSocket support",
+      "routes.ts": "API route definitions with Zod validation",
+      "db.ts": "Database connection and query helpers",
+      "storage.ts": "Data persistence layer with real-time updates",
+      "vite.ts": "Vite middleware for development"
+    },
+    "python_engine/": {
+      "README.md": "Python compute engine documentation",
+      "__init__.py": "Python package initialization",
+      "__pycache__/": "Compiled Python bytecode",
+      "bridge_api.py": "WebSocket bridge to Node.js backend",
+      "cudnt_operations.py": "Core GPU simulation operations",
+      "dual_pac_operations.py": "Prime-Aligned Computing algorithms",
+      "fht_integration.py": "Fast Hadamard Transform integration",
+      "pac_integration.py": "PAC validation and processing",
+      "pac_validation.py": "Algorithm validation utilities",
+      "requirements.txt": "Python dependencies",
+      "start_bridge.py": "Bridge server startup script",
+      "vgpu_engine.py": "Virtual GPU engine implementation",
+      "wallace_transform.py": "Wallace tree multiplication algorithms"
+    },
+    "shared/": {
+      "schema.ts": "Type-safe database schema definitions"
+    },
+    "attached_assets/": {
+      "build_cudnt_fullstack_1758486090770.sh": "Build script",
+      "Pasted--*.txt": "Technical documentation and requirements"
+    }
+  },
+  "dependencies": {
+    "frontend": {
+      "core": [
+        "react@^18.3.1",
+        "react-dom@^18.3.1",
+        "@tanstack/react-query@^5.60.5",
+        "wouter@^3.3.5"
+      ],
+      "ui": [
+        "@radix-ui/react-*",
+        "lucide-react@^0.453.0",
+        "tailwindcss@^3.4.17",
+        "recharts@^2.15.2"
+      ],
+      "build": [
+        "vite@^5.4.19",
+        "typescript@^5.6.3",
+        "@vitejs/plugin-react@^4.3.2"
+      ]
+    },
+    "backend": {
+      "core": [
+        "express@^4.21.2",
+        "ws@^8.18.0",
+        "drizzle-orm@^0.39.1",
+        "@neondatabase/serverless@^0.10.4"
+      ],
+      "auth": [
+        "passport@^0.7.0",
+        "passport-local@^1.0.0",
+        "connect-pg-simple@^10.0.0",
+        "express-session@^1.18.1"
+      ],
+      "validation": [
+        "zod@^3.24.2",
+        "zod-validation-error@^3.4.0"
+      ]
+    },
+    "python": [
+      "numpy",
+      "psutil",
+      "websockets",
+      "multiprocessing"
+    ]
+  },
+  "build_system": {
+    "development": {
+      "command": "npm run dev",
+      "description": "tsx server/index.ts with hot reload",
+      "ports": ["5000 (main)", "5173 (vite)"],
+      "features": ["WebSocket bridge", "real-time updates", "hot reload"]
+    },
+    "production": {
+      "build": "npm run build",
+      "start": "npm run start",
+      "deployment": "autoscale",
+      "external_port": "80 -> 5000"
+    }
+  },
+  "design_system": {
+    "colors": {
+      "primary": "210 100% 60% (electric blue)",
+      "background_dark": "220 15% 8%",
+      "background_light": "210 20% 98%",
+      "success": "142 76% 36%",
+      "warning": "38 92% 50%",
+      "error": "0 84% 60%"
+    },
+    "typography": {
+      "sans": "Open Sans",
+      "mono": "JetBrains Mono",
+      "spacing": "2, 4, 6, 8, 12"
+    },
+    "components": {
+      "sidebar": "18rem width, technical navigation",
+      "cards": "hover-elevate, data-dense layout",
+      "charts": "Recharts with custom theming",
+      "badges": "status indicators, color-coded"
+    }
+  },
+  "key_patterns": {
+    "layout": "SidebarProvider + AppSidebar + main content",
+    "data_flow": "TanStack Query + real-time WebSocket updates",
+    "styling": "CSS variables + Tailwind + shadcn/ui",
+    "api": "REST + WebSocket + Zod validation",
+    "error_handling": "try/catch + error boundaries + loading states"
+  }
+}

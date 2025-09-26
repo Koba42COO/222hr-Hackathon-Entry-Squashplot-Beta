@@ -1,0 +1,41 @@
+{
+  "coordinator_id": "revolutionary_coordinator_1756856048",
+  "start_time": "2025-09-02T19:34:08.245304",
+  "end_time": "2025-09-02T20:58:55.609013",
+  "total_uptime": 5087.36371,
+  "learning_cycles_completed": 3180,
+  "breakthroughs_detected": 0,
+  "final_system_health": {
+    "orchestrator": {
+      "status": "running",
+      "pid": 76260,
+      "start_time": "2025-09-02 19:34:08.248655",
+      "restarts": 0
+    },
+    "knowledge_manager": {
+      "status": "running",
+      "pid": 76261,
+      "start_time": "2025-09-02 19:34:08.250764",
+      "restarts": 0
+    },
+    "scraper_system": {
+      "status": "running",
+      "pid": 76262,
+      "start_time": "2025-09-02 19:34:08.252190",
+      "restarts": 0
+    },
+    "backend": {
+      "status": "running",
+      "pid": 76263,
+      "start_time": "2025-09-02 19:34:08.253475",
+      "restarts": 0
+    },
+    "frontend": {
+      "status": "running",
+      "pid": 76264,
+      "start_time": "2025-09-02 19:34:08.255014",
+      "restarts": 0
+    }
+  },
+  "shutdown_reason": "graceful_shutdown"
+}

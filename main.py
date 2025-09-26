@@ -5,10 +5,8 @@ SquashPlot - Advanced Chia Plot Compression Tool
 
 Professional Chia plotting solution featuring:
 - Advanced Multi-Stage Compression (Zstandard, Brotli, LZ4)
-- prime aligned compute-Enhanced Compression Technology
-- Wallace Transform with Golden Ratio Optimization
-- CUDNT Complexity Reduction (O(n²) → O(n^1.44))
-- Black Glass UI/UX Professional Web Dashboard
+- Chia Blockchain Integration
+- Professional Web Dashboard
 - Mad Max/BladeBit Compatible CLI
 - GPU Optimization & Resource Management
 """
@@ -25,7 +23,7 @@ def main():
     """Main entry point"""
     print("🗜️ SquashPlot - Advanced Chia Plot Compression")
     print("=" * 60)
-    print("🧠 prime aligned compute Enhancement | ⚡ Golden Ratio Optimization | 🎨 Black Glass UI/UX")
+    print("🔧 Multi-Stage Compression | 🌱 Chia Integration | 📊 Professional Dashboard")
     print("=" * 60)
 
     parser = argparse.ArgumentParser(description="SquashPlot - Advanced Chia Plot Compression Tool")
@@ -35,8 +33,8 @@ def main():
                        help='Start command-line interface')
     parser.add_argument('--demo', action='store_true',
                        help='Run interactive demo')
-    parser.add_argument('--port', type=int, default=8080,
-                       help='Port for web server (default: 8080 - Replit optimized)')
+    parser.add_argument('--port', type=int, default=5000,
+                       help='Port for web server (default: 5000)')
 
     args = parser.parse_args()
 
@@ -51,41 +49,29 @@ def main():
     elif args.demo:
         run_demo()
 
-def start_web_interface(port=8080):  # Replit default port
-    """Start the web interface using Replit template structure"""
+def start_web_interface(port=5000):
+    """Start the web interface"""
     print("🚀 Starting SquashPlot Web Dashboard...")
-    print(f"📡 Replit URL: https://your-replit-name.replit.dev")
-    print(f"🔗 Local access: http://localhost:{port}")
-    print("📊 SquashPlot CLI Integration: Available via dashboard")
+    print(f"📡 Server will be available at: https://your-replit-url.replit.dev")
+    print(f"🔗 Or locally at: http://localhost:{port}")
     print()
 
     try:
-        # Import and start the main SquashPlot web interface
-        from squashplot_api_server import app
+        # Import and start SquashPlot web server
+        from src.web_server import app
 
-        print("✅ SquashPlot API Server started successfully!")
-        print(f"🌐 Dashboard: http://localhost:{port}")
-        print(f"📖 API Docs: http://localhost:{port}/docs")
-        print("💻 CLI Commands: Available in Black Glass UI/UX dashboard")
+        print("✅ SquashPlot Web Server started successfully!")
+        print(f"🌐 Dashboard available at: http://localhost:{port}")
+        print("📊 Access the web interface to manage Chia plotting operations")
         print()
 
-        # Start the server with uvicorn for FastAPI
-        import uvicorn
-        print("🚀 Starting FastAPI server with uvicorn...")
-        uvicorn.run("squashplot_api_server:app", host='0.0.0.0', port=port, reload=True)
+        # Start the web server
+        app.run(host='127.0.0.1', port=port, debug=True)
 
-    except ImportError:
-        print("❌ Enhanced API server not available, trying basic server...")
-        try:
-            from squashplot_dashboard import app
-            app.run(host='0.0.0.0', port=port, debug=True)
-        except ImportError:
-            print("❌ No web server available, falling back to CLI mode...")
-            start_cli_interface()
     except Exception as e:
-        print(f"❌ Failed to start web server: {e}")
-        print("💡 Make sure port is available and dependencies are installed")
-        print("🔧 Falling back to CLI mode...")
+        print(f"❌ Failed to start SquashPlot web server: {e}")
+        print("💡 Make sure the port is available and dependencies are installed")
+        print("🔧 Falling back to basic SquashPlot CLI mode...")
         start_cli_interface()
 
 def start_cli_interface():

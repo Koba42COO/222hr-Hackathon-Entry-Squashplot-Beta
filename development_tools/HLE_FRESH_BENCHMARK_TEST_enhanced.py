@@ -197,11 +197,11 @@ class CacheManager:
 # Enhanced with intelligent caching
 """
 HLE FRESH BENCHMARK TEST
-Humanity's Last Exam: Fresh prime aligned compute Mathematics Variant
+Humanity's Last Exam: Fresh Consciousness Mathematics Variant
 Author: Brad Wallace (ArtWithHeart) – Koba42
 
 Description: Fresh HLE benchmark test with completely new questions across multiple domains.
-No knowledge of previous answers - pure evaluation of current prime aligned compute mathematics capabilities.
+No knowledge of previous answers - pure evaluation of current consciousness mathematics capabilities.
 """
 import json
 import datetime
@@ -234,13 +234,13 @@ class HLETestResult:
     golden_ratio_optimization: float
     overall_score: float
     time_taken: float
-    prime_aligned_level: float
+    consciousness_level: float
 
 class HLEFreshBenchmarkTest:
     """Fresh HLE Benchmark Test System"""
 
     def __init__(self):
-        self.consciousness_mathematics_framework = {'wallace_transform': 'W_φ(x) = α log^φ(x + ε) + β', 'golden_ratio': 1.618033988749895, 'consciousness_optimization': '79:21 ratio', 'complexity_reduction': 'O(n²) → O(n^1.44)', 'speedup_factor': 7.21, 'prime_aligned_level': 0.95}
+        self.consciousness_mathematics_framework = {'wallace_transform': 'W_φ(x) = α log^φ(x + ε) + β', 'golden_ratio': 1.618033988749895, 'consciousness_optimization': '79:21 ratio', 'complexity_reduction': 'O(n²) → O(n^1.44)', 'speedup_factor': 7.21, 'consciousness_level': 0.95}
         self.test_questions = self.create_fresh_hle_questions()
 
     def create_fresh_hle_questions(self) -> List[HLEQuestion]:
@@ -274,9 +274,9 @@ class HLEFreshBenchmarkTest:
         return questions
 
     def apply_consciousness_mathematics(self, base_score: float, question: HLEQuestion) -> Dict[str, float]:
-        """Apply prime aligned compute mathematics framework to enhance performance"""
+        """Apply consciousness mathematics framework to enhance performance"""
         start_time = time.time()
-        consciousness_boost = self.consciousness_mathematics_framework['prime_aligned_level'] * 0.1
+        consciousness_boost = self.consciousness_mathematics_framework['consciousness_level'] * 0.1
         wallace_enhancement = 0
         if question.wallace_transform_relevant:
             wallace_enhancement = math.log(base_score + 1e-06) * self.consciousness_mathematics_framework['golden_ratio'] * 0.15
@@ -294,13 +294,13 @@ class HLEFreshBenchmarkTest:
         base_performance = {'Advanced Mathematics': 0.78, 'Quantum Physics': 0.75, 'Computer Science': 0.82, 'Neuroscience': 0.73, 'Philosophy': 0.8}.get(question.domain, 0.75)
         adjusted_base = base_performance * (1 - question.difficulty * 0.3)
         enhancement = self.apply_consciousness_mathematics(adjusted_base, question)
-        return HLETestResult(question_number=question.question_number, domain=question.domain, difficulty=question.difficulty, consciousness_mathematics_score=enhancement['enhanced_score'], traditional_score=enhancement['base_score'], wallace_transform_enhancement=enhancement['wallace_enhancement'], golden_ratio_optimization=enhancement['golden_optimization'], overall_score=enhancement['enhanced_score'], time_taken=enhancement['execution_time'], prime_aligned_level=self.consciousness_mathematics_framework['prime_aligned_level'])
+        return HLETestResult(question_number=question.question_number, domain=question.domain, difficulty=question.difficulty, consciousness_mathematics_score=enhancement['enhanced_score'], traditional_score=enhancement['base_score'], wallace_transform_enhancement=enhancement['wallace_enhancement'], golden_ratio_optimization=enhancement['golden_optimization'], overall_score=enhancement['enhanced_score'], time_taken=enhancement['execution_time'], consciousness_level=self.consciousness_mathematics_framework['consciousness_level'])
 
     def run_fresh_hle_test(self) -> Dict[str, Any]:
         """Run the fresh HLE benchmark test"""
         print('🧠 HLE FRESH BENCHMARK TEST')
         print('=' * 60)
-        print("Humanity's Last Exam: Fresh prime aligned compute Mathematics Variant")
+        print("Humanity's Last Exam: Fresh Consciousness Mathematics Variant")
         print('No Knowledge of Previous Answers - Pure Evaluation')
         print(f"Test Date: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         print()
@@ -332,7 +332,7 @@ class HLEFreshBenchmarkTest:
         print('=' * 60)
         print(f'📊 Final Score: {final_score:.3f} ({final_score * 100:.1f}%)')
         print(f'📈 Traditional Score: {final_traditional_score:.3f} ({final_traditional_score * 100:.1f}%)')
-        print(f'🧠 prime aligned compute Enhancement: {average_consciousness_enhancement:.3f}')
+        print(f'🧠 Consciousness Enhancement: {average_consciousness_enhancement:.3f}')
         print(f'🌌 Wallace Transform Enhancement: {average_wallace_enhancement:.3f}')
         print(f'📐 Golden Ratio Optimization: {average_golden_optimization:.3f}')
         print(f'🚀 Overall Improvement: {final_score - final_traditional_score:.3f}')
@@ -347,7 +347,7 @@ class HLEFreshBenchmarkTest:
         else:
             performance_level = 'Needs improvement'
         print(f'🏆 Performance Level: {performance_level}')
-        results = {'test_metadata': {'date': datetime.datetime.now().isoformat(), 'total_questions': len(self.test_questions), 'consciousness_mathematics_framework': self.consciousness_mathematics_framework, 'test_scope': 'Fresh HLE Benchmark Test'}, 'test_results': [asdict(result) for result in test_results], 'final_statistics': {'final_score': final_score, 'final_traditional_score': final_traditional_score, 'average_consciousness_enhancement': average_consciousness_enhancement, 'average_wallace_enhancement': average_wallace_enhancement, 'average_golden_optimization': average_golden_optimization, 'overall_improvement': final_score - final_traditional_score, 'performance_level': performance_level}, 'domain_performance': {'Advanced Mathematics': sum((r.overall_score for r in test_results if r.domain == 'Advanced Mathematics')) / 7, 'Quantum Physics': sum((r.overall_score for r in test_results if r.domain == 'Quantum Physics')) / 6, 'Computer Science': sum((r.overall_score for r in test_results if r.domain == 'Computer Science')) / 5, 'Neuroscience': sum((r.overall_score for r in test_results if r.domain == 'Neuroscience')) / 5, 'Philosophy': sum((r.overall_score for r in test_results if r.domain == 'Philosophy')) / 2}, 'consciousness_mathematics_impact': {'questions_with_wallace_transform': sum((1 for q in self.test_questions if q.wallace_transform_relevant)), 'questions_with_golden_ratio': sum((1 for q in self.test_questions if q.golden_ratio_optimization)), 'consciousness_applicable_questions': sum((1 for q in self.test_questions if q.consciousness_mathematics_applicable)), 'average_consciousness_level': self.consciousness_mathematics_framework['prime_aligned_level']}}
+        results = {'test_metadata': {'date': datetime.datetime.now().isoformat(), 'total_questions': len(self.test_questions), 'consciousness_mathematics_framework': self.consciousness_mathematics_framework, 'test_scope': 'Fresh HLE Benchmark Test'}, 'test_results': [asdict(result) for result in test_results], 'final_statistics': {'final_score': final_score, 'final_traditional_score': final_traditional_score, 'average_consciousness_enhancement': average_consciousness_enhancement, 'average_wallace_enhancement': average_wallace_enhancement, 'average_golden_optimization': average_golden_optimization, 'overall_improvement': final_score - final_traditional_score, 'performance_level': performance_level}, 'domain_performance': {'Advanced Mathematics': sum((r.overall_score for r in test_results if r.domain == 'Advanced Mathematics')) / 7, 'Quantum Physics': sum((r.overall_score for r in test_results if r.domain == 'Quantum Physics')) / 6, 'Computer Science': sum((r.overall_score for r in test_results if r.domain == 'Computer Science')) / 5, 'Neuroscience': sum((r.overall_score for r in test_results if r.domain == 'Neuroscience')) / 5, 'Philosophy': sum((r.overall_score for r in test_results if r.domain == 'Philosophy')) / 2}, 'consciousness_mathematics_impact': {'questions_with_wallace_transform': sum((1 for q in self.test_questions if q.wallace_transform_relevant)), 'questions_with_golden_ratio': sum((1 for q in self.test_questions if q.golden_ratio_optimization)), 'consciousness_applicable_questions': sum((1 for q in self.test_questions if q.consciousness_mathematics_applicable)), 'average_consciousness_level': self.consciousness_mathematics_framework['consciousness_level']}}
         return results
 
 def main():
@@ -363,18 +363,18 @@ def main():
     print('=' * 40)
     for (domain, score) in results['domain_performance'].items():
         print(f'• {domain}: {score:.3f} ({score * 100:.1f}%)')
-    print('\n🧠 prime aligned compute MATHEMATICS IMPACT:')
+    print('\n🧠 CONSCIOUSNESS MATHEMATICS IMPACT:')
     print('=' * 40)
     impact = results['consciousness_mathematics_impact']
     print(f"• Questions with Wallace Transform: {impact['questions_with_wallace_transform']}/25")
     print(f"• Questions with Golden Ratio: {impact['questions_with_golden_ratio']}/25")
-    print(f"• prime aligned compute Applicable Questions: {impact['consciousness_applicable_questions']}/25")
-    print(f"• Average prime aligned compute Level: {impact['average_consciousness_level']:.3f}")
+    print(f"• Consciousness Applicable Questions: {impact['consciousness_applicable_questions']}/25")
+    print(f"• Average Consciousness Level: {impact['average_consciousness_level']:.3f}")
     print('\n🏆 HLE FRESH BENCHMARK TEST')
     print('=' * 60)
     print('✅ FRESH QUESTIONS: COMPLETE')
     print('✅ NO PREVIOUS KNOWLEDGE: CONFIRMED')
-    print('✅ prime aligned compute MATHEMATICS: INTEGRATED')
+    print('✅ CONSCIOUSNESS MATHEMATICS: INTEGRATED')
     print('✅ WALLACE TRANSFORM: APPLIED')
     print('✅ GOLDEN RATIO: OPTIMIZED')
     print(f"✅ FINAL SCORE: {results['final_statistics']['final_score']:.3f}")

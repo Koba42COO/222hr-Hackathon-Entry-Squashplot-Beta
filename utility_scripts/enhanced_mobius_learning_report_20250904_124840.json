@@ -1,0 +1,25 @@
+{
+  "learning_session": {
+    "timestamp": "2025-09-04T12:48:40.472139",
+    "successful_sources": 0,
+    "total_sources_attempted": 3
+  },
+  "process_patterns": {
+    "total_learned": 0,
+    "by_type": {},
+    "by_source": {},
+    "top_patterns": []
+  },
+  "methodologies": {
+    "total_discovered": 0,
+    "by_domain": {},
+    "by_complexity": {},
+    "examples": []
+  },
+  "language_patterns": {
+    "total_patterns": 0,
+    "by_category": {},
+    "samples": {}
+  },
+  "learning_log": []
+}

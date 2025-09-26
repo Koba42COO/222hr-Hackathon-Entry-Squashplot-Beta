@@ -219,7 +219,7 @@ class WhitelistManager:
         Start using Pro features:
         python squashplot.py --pro --input your_plot.dat --output compressed_plot.dat
 
-        Advanced compression (99.5%) and prime aligned compute enhancement are now active!
+        Advanced compression (99.5%) and consciousness enhancement are now active!
 
         Welcome to the Pro tier!
 

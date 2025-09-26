@@ -156,11 +156,12 @@ class ResourceMonitor:
 
 
 class PlotterToolManager:
-    """Manages Mad Max and BladeBit tool detection and validation"""
+    """Manages Mad Max, BladeBit, and Dr. Plotter tool detection and validation"""
     
     def __init__(self):
         self.madmax_path = None
         self.bladebit_path = None
+        self.drplotter_path = None
         self.chia_path = None
         self._discover_tools()
         
@@ -171,6 +172,9 @@ class PlotterToolManager:
         
         # Try to find BladeBit (multiple possible locations)
         self.bladebit_path = self._find_executable("bladebit") or self._find_bladebit_alt()
+        
+        # Try to find Dr. Plotter
+        self.drplotter_path = self._find_executable("dr_plotter") or self._find_drplotter_alt()
         
         # Try to find Chia CLI
         self.chia_path = self._find_executable("chia")
@@ -196,11 +200,30 @@ class PlotterToolManager:
                 
         return None
         
+    def _find_drplotter_alt(self) -> Optional[str]:
+        """Find Dr. Plotter using alternative methods"""
+        # Common installation paths for Dr. Plotter
+        common_paths = [
+            "/usr/local/bin/dr_plotter",
+            "/opt/dr-plotter/dr_plotter",
+            "./dr_plotter",
+            "~/dr-plotter/dr_plotter",
+            "~/chia-blockchain/dr_plotter"
+        ]
+        
+        for path in common_paths:
+            expanded_path = os.path.expanduser(path)
+            if os.path.isfile(expanded_path) and os.access(expanded_path, os.X_OK):
+                return expanded_path
+                
+        return None
+        
     def validate_tools(self) -> Dict[str, bool]:
         """Validate tool availability and versions with proper probing"""
         validation = {
             'madmax_available': False,
             'bladebit_available': False,
+            'drplotter_available': False,
             'chia_available': False,
             'compression_supported': False,
             'bladebit_compress_command': False
@@ -251,6 +274,18 @@ class PlotterToolManager:
                     )
                     validation['bladebit_compress_command'] = compress_help.returncode == 0
                     
+            except:
+                pass
+                
+        # Validate Dr. Plotter
+        if self.drplotter_path:
+            try:
+                result = subprocess.run(
+                    [self.drplotter_path, '--help'], 
+                    capture_output=True, 
+                    timeout=10
+                )
+                validation['drplotter_available'] = result.returncode == 0
             except:
                 pass
                 
@@ -593,6 +628,8 @@ class EnhancedPipelineOrchestrator:
             return self._execute_bladebit_direct(config)
         elif strategy == "madmax_only":
             return self._execute_madmax_only(config)
+        elif strategy == "drplotter_direct":
+            return self._execute_drplotter_direct(config)
         else:
             return PlotResult(
                 success=False,
@@ -688,12 +725,19 @@ class EnhancedPipelineOrchestrator:
             if validation['bladebit_available']:
                 return "bladebit_direct"
             raise RuntimeError("BladeBit not available but bladebit-only mode requested")
+            
+        if config.mode == "drplotter-only":
+            if validation['drplotter_available']:
+                return "drplotter_direct"
+            raise RuntimeError("Dr. Plotter not available but drplotter-only mode requested")
         
         # Auto strategy selection based on compression needs
         if config.compression == 0:
-            # No compression: prefer Mad Max for speed
+            # No compression: prefer Mad Max for speed, then Dr. Plotter, then BladeBit
             if validation['madmax_available']:
                 return "madmax_only"
+            elif validation['drplotter_available']:
+                return "drplotter_direct"
             elif validation['bladebit_available']:
                 return "bladebit_direct"  # BladeBit can do uncompressed plots too
                 
@@ -877,6 +921,51 @@ class EnhancedPipelineOrchestrator:
             cmd.extend(["-n", str(config.count)])
             
         return self._execute_command(cmd, "Mad Max")
+        
+    def _execute_drplotter_direct(self, config: PlotConfig) -> PlotResult:
+        """Execute Dr. Plotter plotting directly"""
+        
+        self.logger.info("🔬 Starting Dr. Plotter plotting")
+        return self._execute_drplotter_plotting(config)
+        
+    def _execute_drplotter_plotting(self, config: PlotConfig) -> PlotResult:
+        """Execute Dr. Plotter plotting"""
+        
+        if not self.tool_manager.drplotter_path:
+            return PlotResult(
+                success=False,
+                error_message="Dr. Plotter not available"
+            )
+            
+        cmd = [self.tool_manager.drplotter_path]
+        
+        # Add Dr. Plotter specific parameters
+        if config.tmp_dir:
+            cmd.extend(["--tmp", config.tmp_dir])
+        if config.tmp_dir2:
+            cmd.extend(["--tmp2", config.tmp_dir2])
+        if config.final_dir:
+            cmd.extend(["--final", config.final_dir])
+        if config.farmer_key:
+            cmd.extend(["--farmer", config.farmer_key])
+        if config.pool_key:
+            cmd.extend(["--pool", config.pool_key])
+        if config.contract:
+            cmd.extend(["--contract", config.contract])
+            
+        # Add threading and performance options
+        cmd.extend(["--threads", str(config.threads)])
+        cmd.extend(["--buckets", str(config.buckets)])
+        cmd.extend(["--k", str(config.k_size)])
+        
+        if config.count > 1:
+            cmd.extend(["--count", str(config.count)])
+            
+        # Dr. Plotter specific compression options
+        if config.compression > 0:
+            cmd.extend(["--compress", str(config.compression)])
+            
+        return self._execute_command(cmd, "Dr. Plotter")
         
     def _execute_bladebit_compression(self, input_plot: str, output_dir: str, 
                                     compression_level: int) -> PlotResult:

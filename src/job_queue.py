@@ -268,6 +268,8 @@ class JobQueue:
                 result = plotter.run_madmax_plotting(config, progress_callback)
             elif job.plotter_mode == "bladebit":
                 result = plotter.run_bladebit_plotting(config, progress_callback)
+            elif job.plotter_mode == "drplotter":
+                result = plotter.run_drplotter_plotting(config, progress_callback)
             else:  # hybrid
                 result = plotter.run_hybrid_plotting(config, progress_callback)
             

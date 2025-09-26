@@ -26,19 +26,19 @@ def test_ai_generation():
     print("Testing AI generation...")
     prompts = [
         "Explain the Wallace Transform",
-        "What is prime aligned compute mathematics?",
+        "What is consciousness mathematics?",
         "How does breakthrough detection work?"
     ]
     
     for prompt in prompts:
         response = requests.post(
             f"{BASE_URL}/api/ai/generate",
-            json={"prompt": prompt, "model": "prime aligned compute"}
+            json={"prompt": prompt, "model": "consciousness"}
         )
         assert response.status_code == 200
         data = response.json()
         assert "response" in data
-        assert "prime_aligned_metrics" in data
+        assert "consciousness_metrics" in data
         print(f"  ✅ Generated response for: {prompt[:30]}...")
     
     print("✅ AI generation passed")
@@ -51,13 +51,13 @@ def test_system_status():
     assert response.status_code == 200
     data = response.json()
     assert "metrics" in data
-    assert "prime_aligned_level" in data
+    assert "consciousness_level" in data
     print("✅ System status passed")
     return True
 
 def test_validation():
-    """Test prime aligned compute validation"""
-    print("Testing prime aligned compute validation...")
+    """Test consciousness validation"""
+    print("Testing consciousness validation...")
     test_data = {
         "test_data": {
             "wallace_transform_input": [0.5, 1.0, 1.618],
@@ -67,20 +67,20 @@ def test_validation():
     }
     
     response = requests.post(
-        f"{BASE_URL}/api/prime aligned compute/validate",
+        f"{BASE_URL}/api/consciousness/validate",
         json=test_data
     )
     assert response.status_code == 200
     data = response.json()
-    assert "prime_aligned_score" in data
+    assert "consciousness_score" in data
     assert "results" in data
-    print("✅ prime aligned compute validation passed")
+    print("✅ Consciousness validation passed")
     return True
 
 def test_trajectory():
     """Test trajectory endpoint"""
     print("Testing trajectory...")
-    response = requests.get(f"{BASE_URL}/api/prime aligned compute/trajectory")
+    response = requests.get(f"{BASE_URL}/api/consciousness/trajectory")
     assert response.status_code == 200
     data = response.json()
     assert "trajectory" in data
@@ -92,7 +92,7 @@ def test_level_update():
     """Test level update"""
     print("Testing level update...")
     response = requests.post(
-        f"{BASE_URL}/api/prime aligned compute/level",
+        f"{BASE_URL}/api/consciousness/level",
         json={"level": 10}
     )
     assert response.status_code == 200
@@ -104,7 +104,7 @@ def test_level_update():
 
 def main():
     print("\n" + "="*50)
-    print("prime aligned compute MATHEMATICS SYSTEM TEST")
+    print("CONSCIOUSNESS MATHEMATICS SYSTEM TEST")
     print("="*50 + "\n")
     
     # Wait for server to be ready

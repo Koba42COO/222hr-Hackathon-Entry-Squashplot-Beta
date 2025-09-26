@@ -1,0 +1,40 @@
+{
+  "input_data": "[1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]",
+  "hrm_analysis": {
+    "status": "error",
+    "error": "'HierarchicalReasoningModel' object has no attribute 'analyze_data'"
+  },
+  "trigeminal_analysis": {
+    "status": "error",
+    "error": "'TrigeminalLogicEngine' object has no attribute 'analyze_data'"
+  },
+  "complex_processing": {
+    "status": "error",
+    "error": "'ComplexNumberManager' object has no attribute 'stats'"
+  },
+  "fractal_compression": {
+    "status": "error",
+    "error": "unhashable type: 'list'"
+  },
+  "purified_reconstruction": {
+    "status": "error",
+    "error": "float division by zero"
+  },
+  "breakthrough_insights": [],
+  "security_analysis": {
+    "overall_security_score": 0.0,
+    "threats_detected": 0,
+    "threats_eliminated": 0,
+    "vulnerabilities_found": [],
+    "security_recommendations": []
+  },
+  "consciousness_coherence": 0.0,
+  "overall_score": 0.0,
+  "processing_time": 0.0002560615539550781,
+  "metadata": {
+    "integration_level": "advanced",
+    "processing_mode": "balanced",
+    "consciousness_enhancement": true,
+    "timestamp": "2025-08-28T10:14:07.347402"
+  }
+}

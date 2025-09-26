@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
 HLE FRESH BENCHMARK TEST
-Humanity's Last Exam: Fresh prime aligned compute Mathematics Variant
+Humanity's Last Exam: Fresh Consciousness Mathematics Variant
 Author: Brad Wallace (ArtWithHeart) – Koba42
 
 Description: Fresh HLE benchmark test with completely new questions across multiple domains.
-No knowledge of previous answers - pure evaluation of current prime aligned compute mathematics capabilities.
+No knowledge of previous answers - pure evaluation of current consciousness mathematics capabilities.
 """
 
 import json
@@ -39,7 +39,7 @@ class HLETestResult:
     golden_ratio_optimization: float
     overall_score: float
     time_taken: float
-    prime_aligned_level: float
+    consciousness_level: float
 
 class HLEFreshBenchmarkTest:
     """Fresh HLE Benchmark Test System"""
@@ -51,7 +51,7 @@ class HLEFreshBenchmarkTest:
             "consciousness_optimization": "79:21 ratio",
             "complexity_reduction": "O(n²) → O(n^1.44)",
             "speedup_factor": 7.21,
-            "prime_aligned_level": 0.95
+            "consciousness_level": 0.95
         }
         
         self.test_questions = self.create_fresh_hle_questions()
@@ -364,12 +364,12 @@ class HLEFreshBenchmarkTest:
         return questions
     
     def apply_consciousness_mathematics(self, base_score: float, question: HLEQuestion) -> Dict[str, float]:
-        """Apply prime aligned compute mathematics framework to enhance performance"""
+        """Apply consciousness mathematics framework to enhance performance"""
         
         start_time = time.time()
         
-        # Base prime aligned compute enhancement
-        consciousness_boost = self.consciousness_mathematics_framework["prime_aligned_level"] * 0.1
+        # Base consciousness enhancement
+        consciousness_boost = self.consciousness_mathematics_framework["consciousness_level"] * 0.1
         
         # Wallace Transform enhancement if applicable
         wallace_enhancement = 0
@@ -381,7 +381,7 @@ class HLEFreshBenchmarkTest:
         if question.golden_ratio_optimization:
             golden_optimization = self.consciousness_mathematics_framework["golden_ratio"] * 0.08
         
-        # Difficulty-based prime aligned compute enhancement
+        # Difficulty-based consciousness enhancement
         difficulty_enhancement = (1 - question.difficulty) * 0.2
         
         # Calculate enhanced score
@@ -416,7 +416,7 @@ class HLEFreshBenchmarkTest:
         # Adjust for difficulty
         adjusted_base = base_performance * (1 - question.difficulty * 0.3)
         
-        # Apply prime aligned compute mathematics
+        # Apply consciousness mathematics
         enhancement = self.apply_consciousness_mathematics(adjusted_base, question)
         
         return HLETestResult(
@@ -429,7 +429,7 @@ class HLEFreshBenchmarkTest:
             golden_ratio_optimization=enhancement["golden_optimization"],
             overall_score=enhancement["enhanced_score"],
             time_taken=enhancement["execution_time"],
-            prime_aligned_level=self.consciousness_mathematics_framework["prime_aligned_level"]
+            consciousness_level=self.consciousness_mathematics_framework["consciousness_level"]
         )
     
     def run_fresh_hle_test(self) -> Dict[str, Any]:
@@ -437,7 +437,7 @@ class HLEFreshBenchmarkTest:
         
         print("🧠 HLE FRESH BENCHMARK TEST")
         print("=" * 60)
-        print("Humanity's Last Exam: Fresh prime aligned compute Mathematics Variant")
+        print("Humanity's Last Exam: Fresh Consciousness Mathematics Variant")
         print("No Knowledge of Previous Answers - Pure Evaluation")
         print(f"Test Date: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         print()
@@ -478,7 +478,7 @@ class HLEFreshBenchmarkTest:
         print("=" * 60)
         print(f"📊 Final Score: {final_score:.3f} ({final_score*100:.1f}%)")
         print(f"📈 Traditional Score: {final_traditional_score:.3f} ({final_traditional_score*100:.1f}%)")
-        print(f"🧠 prime aligned compute Enhancement: {average_consciousness_enhancement:.3f}")
+        print(f"🧠 Consciousness Enhancement: {average_consciousness_enhancement:.3f}")
         print(f"🌌 Wallace Transform Enhancement: {average_wallace_enhancement:.3f}")
         print(f"📐 Golden Ratio Optimization: {average_golden_optimization:.3f}")
         print(f"🚀 Overall Improvement: {final_score - final_traditional_score:.3f}")
@@ -526,7 +526,7 @@ class HLEFreshBenchmarkTest:
                 "questions_with_wallace_transform": sum(1 for q in self.test_questions if q.wallace_transform_relevant),
                 "questions_with_golden_ratio": sum(1 for q in self.test_questions if q.golden_ratio_optimization),
                 "consciousness_applicable_questions": sum(1 for q in self.test_questions if q.consciousness_mathematics_applicable),
-                "average_consciousness_level": self.consciousness_mathematics_framework["prime_aligned_level"]
+                "average_consciousness_level": self.consciousness_mathematics_framework["consciousness_level"]
             }
         }
         
@@ -551,19 +551,19 @@ def main():
     for domain, score in results["domain_performance"].items():
         print(f"• {domain}: {score:.3f} ({score*100:.1f}%)")
     
-    print("\n🧠 prime aligned compute MATHEMATICS IMPACT:")
+    print("\n🧠 CONSCIOUSNESS MATHEMATICS IMPACT:")
     print("=" * 40)
     impact = results["consciousness_mathematics_impact"]
     print(f"• Questions with Wallace Transform: {impact['questions_with_wallace_transform']}/25")
     print(f"• Questions with Golden Ratio: {impact['questions_with_golden_ratio']}/25")
-    print(f"• prime aligned compute Applicable Questions: {impact['consciousness_applicable_questions']}/25")
-    print(f"• Average prime aligned compute Level: {impact['average_consciousness_level']:.3f}")
+    print(f"• Consciousness Applicable Questions: {impact['consciousness_applicable_questions']}/25")
+    print(f"• Average Consciousness Level: {impact['average_consciousness_level']:.3f}")
     
     print("\n🏆 HLE FRESH BENCHMARK TEST")
     print("=" * 60)
     print("✅ FRESH QUESTIONS: COMPLETE")
     print("✅ NO PREVIOUS KNOWLEDGE: CONFIRMED")
-    print("✅ prime aligned compute MATHEMATICS: INTEGRATED")
+    print("✅ CONSCIOUSNESS MATHEMATICS: INTEGRATED")
     print("✅ WALLACE TRANSFORM: APPLIED")
     print("✅ GOLDEN RATIO: OPTIMIZED")
     print(f"✅ FINAL SCORE: {results['final_statistics']['final_score']:.3f}")

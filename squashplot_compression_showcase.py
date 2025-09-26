@@ -24,7 +24,7 @@ def main():
             'energy_savings': 30.0,
             'processing_time': 28.0,
             'cost_savings_yearly': 327.0,
-            'method': 'prime aligned compute-Enhanced O(n^1.44)',
+            'method': 'Consciousness-Enhanced O(n^1.44)',
             'security': '95% DOS Protection'
         },
         'Bladebit': {
@@ -103,7 +103,7 @@ def main():
     print("   • Revolutionary O(n^1.44) complexity reduction")
     print("   • 30%+ energy efficiency improvement")
     print("   • 95% DOS protection integration")
-    print("   • prime aligned compute-enhanced intelligence")
+    print("   • Consciousness-enhanced intelligence")
     print("   • Golden ratio optimization")
     print("   • Quantum-ready architecture")
 
@@ -115,7 +115,7 @@ def main():
     print("   🗜️  40% compression ratio (40% size reduction)")
     print("   💰 $327 annual savings vs native wallet")
     print("   ⚡ 5x better compression than native wallet")
-    print("   🧠 prime aligned compute-enhanced algorithms")
+    print("   🧠 Consciousness-enhanced algorithms")
     print("   🛡️ Ultimate security integration")
     print("   🔬 Quantum simulation capabilities")
     print()

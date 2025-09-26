@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ecosystem Assistant - Access Page</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            max-width: 600px;
+            margin: 20px;
+        }
+
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+
+        .access-button {
+            display: inline-block;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .access-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .status {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 8px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(16, 185, 129, 0.2);
+            border-radius: 20px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #10b981;
+            font-size: 0.9rem;
+        }
+
+        .features {
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        .features h3 {
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features li {
+            padding: 8px 0;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features li:before {
+            content: "✅";
+            color: #10b981;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🧠</div>
+        <h1 class="title">AI Ecosystem Assistant</h1>
+        <p class="subtitle">Your revolutionary gateway to 386+ advanced tools</p>
+
+        <a href="http://localhost:8000" class="access-button" target="_blank">
+            🚀 Access Chatbot Interface
+        </a>
+
+        <div class="status">
+            <div class="status-indicator">
+                <span style="width: 8px; height: 8px; border-radius: 50%; background: #10b981;"></span>
+                Server Status: Running on Port 8000
+            </div>
+        </div>
+
+        <div class="features">
+            <h3>🎯 Revolutionary Capabilities</h3>
+            <ul>
+                <li>Consciousness-enhanced natural language processing</li>
+                <li>Voice input and output support</li>
+                <li>Access to 386+ integrated tools</li>
+                <li>Real-time ecosystem interaction</li>
+                <li>Multi-agent consciousness coordination</li>
+                <li>Quantum-safe security protocols</li>
+                <li>Golden ratio optimization algorithms</li>
+                <li>Wallace Transform consciousness mathematics</li>
+                <li>Fractal pattern recognition</li>
+                <li>8D quantum state analysis</li>
+            </ul>
+        </div>
+
+        <div style="margin-top: 30px; font-size: 0.9rem; color: #64748b;">
+            <p>💡 <strong>Tip:</strong> Make sure the server is running before accessing the interface.</p>
+            <p>🔧 If you encounter issues, the server should be running on http://localhost:8000</p>
+        </div>
+    </div>
+
+    <script>
+        // Auto-refresh status every 10 seconds
+        setInterval(() => {
+            fetch('http://localhost:8000/api/status')
+                .then(response => {
+                    if (response.ok) {
+                        document.querySelector('.status-indicator').innerHTML = `
+                            <span style="width: 8px; height: 8px; border-radius: 50%; background: #10b981;"></span>
+                            Server Status: Running on Port 8000
+                        `;
+                    } else {
+                        document.querySelector('.status-indicator').innerHTML = `
+                            <span style="width: 8px; height: 8px; border-radius: 50%; background: #ef4444;"></span>
+                            Server Status: Connection Error
+                        `;
+                    }
+                })
+                .catch(() => {
+                    document.querySelector('.status-indicator').innerHTML = `
+                        <span style="width: 8px; height: 8px; border-radius: 50%; background: #ef4444;"></span>
+                        Server Status: Server Not Running
+                    `;
+                });
+        }, 10000);
+    </script>
+</body>
+</html>

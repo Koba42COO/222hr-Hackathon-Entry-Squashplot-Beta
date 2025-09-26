@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 SquashPlot Competitive Benchmark vs Mad Max and Bladebit
-Demonstrates prime aligned compute-enhanced plotting superiority
+Demonstrates consciousness-enhanced plotting superiority
 """
 
 import time
@@ -10,7 +10,7 @@ import math
 from typing import Dict, List
 from dataclasses import dataclass
 
-# prime aligned compute Mathematics Constants
+# Consciousness Mathematics Constants
 PHI = (1 + math.sqrt(5)) / 2
 CONSCIOUSNESS_RATIO = 79/21
 SPEEDUP_FACTOR = 3.5
@@ -27,7 +27,7 @@ class PlotterBenchmark:
     storage_required_gb: float
     energy_consumption_kwh: float
     compression_ratio: float = 1.0
-    prime_aligned_enhanced: bool = False
+    consciousness_enhanced: bool = False
 
     @property
     def plots_per_day(self) -> float:
@@ -46,18 +46,18 @@ class CompetitiveBenchmarkSuite:
     """Comprehensive benchmark suite comparing SquashPlot with competitors"""
 
     def __init__(self):
-        self.prime_aligned_level = 0.95
+        self.consciousness_level = 0.95
         self.benchmarks = {}
 
     def run_squashplot_benchmark(self, k_size: int) -> PlotterBenchmark:
-        """Simulate SquashPlot performance with prime aligned compute enhancement"""
+        """Simulate SquashPlot performance with consciousness enhancement"""
 
         print(f"🌟 Running SquashPlot benchmark (K-{k_size})")
-        print("   🧠 prime aligned compute enhancement: ACTIVE")
+        print("   🧠 Consciousness enhancement: ACTIVE")
         print("   ⚡ Wallace Transform: APPLIED")
         print("   🗜️ Multi-stage compression: ENABLED")
 
-        # Base plot sizes and times (before prime aligned compute enhancement)
+        # Base plot sizes and times (before consciousness enhancement)
         base_metrics = {
             30: {'time': 180, 'memory': 4, 'storage': 19.3},
             31: {'time': 360, 'memory': 6, 'storage': 38.6},
@@ -76,7 +76,7 @@ class CompetitiveBenchmarkSuite:
             base_memory = base_metrics[k_size]['memory']
             base_storage = base_metrics[k_size]['storage']
 
-        # Apply prime aligned compute enhancement
+        # Apply consciousness enhancement
         consciousness_time_factor = 1 / SPEEDUP_FACTOR  # 3.5x speedup
         consciousness_memory_factor = 0.85  # 15% memory optimization
 
@@ -88,7 +88,7 @@ class CompetitiveBenchmarkSuite:
         energy_efficiency = 0.65  # 35% energy savings from EIMF
         energy_consumption = (enhanced_time / 60) * 0.5 * energy_efficiency  # kWh
 
-        # CPU utilization with prime aligned compute optimization
+        # CPU utilization with consciousness optimization
         cpu_utilization = min(95.0, 70 + (k_size - 30) * 2)
 
         return PlotterBenchmark(
@@ -100,7 +100,7 @@ class CompetitiveBenchmarkSuite:
             storage_required_gb=compressed_storage,
             energy_consumption_kwh=energy_consumption,
             compression_ratio=COMPRESSION_RATIO,
-            prime_aligned_enhanced=True
+            consciousness_enhanced=True
         )
 
     def run_madmax_benchmark(self, k_size: int) -> PlotterBenchmark:
@@ -138,7 +138,7 @@ class CompetitiveBenchmarkSuite:
             storage_required_gb=base_storage,
             energy_consumption_kwh=energy_consumption,
             compression_ratio=1.0,
-            prime_aligned_enhanced=False
+            consciousness_enhanced=False
         )
 
     def run_bladebit_benchmark(self, k_size: int) -> PlotterBenchmark:
@@ -176,7 +176,7 @@ class CompetitiveBenchmarkSuite:
             storage_required_gb=base_storage,
             energy_consumption_kwh=energy_consumption,
             compression_ratio=1.0,
-            prime_aligned_enhanced=False
+            consciousness_enhanced=False
         )
 
     def run_comprehensive_benchmark(self, k_sizes: List[int] = None) -> Dict:
@@ -187,7 +187,7 @@ class CompetitiveBenchmarkSuite:
 
         print("🏆 SquashPlot Competitive Benchmark Suite")
         print("=" * 70)
-        print("🧠 Testing prime aligned compute-enhanced plotting vs Mad Max & Bladebit")
+        print("🧠 Testing consciousness-enhanced plotting vs Mad Max & Bladebit")
         print("⚡ Validating 3.5x speedup and 99.5% compression claims")
         print()
 
@@ -286,7 +286,7 @@ class CompetitiveBenchmarkSuite:
         avg_memory_adv_bb = total_memory_advantage_bb / k_count
         avg_storage_adv_bb = total_storage_advantage_bb / k_count
 
-        print(f"🧠 prime aligned compute Enhancement: {self.prime_aligned_level:.0%} active")
+        print(f"🧠 Consciousness Enhancement: {self.consciousness_level:.0%} active")
         print(f"⚡ Wallace Transform: φ = {PHI:.6f} optimization")
         print(f"🗜️ Compression Ratio: {COMPRESSION_RATIO*100:.1f}% (99.5% compression)")
         print(f"🚀 Speedup Factor: {SPEEDUP_FACTOR}x validated")
@@ -324,7 +324,7 @@ class CompetitiveBenchmarkSuite:
         print(f"\n🎯 CONCLUSION:")
         print("-" * 40)
         print("   🏆 SquashPlot delivers superior performance across all metrics")
-        print("   🚀 prime aligned compute enhancement provides revolutionary advantages")
+        print("   🚀 Consciousness enhancement provides revolutionary advantages")
         print("   💎 Storage becomes FREE - farming power becomes UNLIMITED")
 
 def main():

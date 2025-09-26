@@ -20,7 +20,7 @@ PHI_CUBED = PHI_SQUARED * PHI        # φ³
 
 class SquashPlotCompressionEngine:
     """
-    Advanced Compression Engine with prime aligned compute Mathematics
+    Advanced Compression Engine with Consciousness Mathematics
     """
 
     def __init__(self):
@@ -33,7 +33,7 @@ class SquashPlotCompressionEngine:
         """Apply advanced SquashPlot compression"""
         start_time = time.time()
 
-        # Apply prime aligned compute-enhanced compression
+        # Apply consciousness-enhanced compression
         compressed_size = original_size_gb * self.compression_ratio
 
         # Apply golden ratio optimization
@@ -214,7 +214,7 @@ def main():
     squashplot_result = results['squashplot']
     print("🏆 Choose SquashPlot for:")
     print(".1f".format(squashplot_result['compression_percentage']))
-    print("   • prime aligned compute-enhanced compression")
+    print("   • Consciousness-enhanced compression")
     print("   • O(n^1.44) complexity reduction")
     print("   • 30%+ energy savings")
     print("   • 95% DOS protection")
@@ -223,12 +223,12 @@ def main():
     print()
     print("💡 SquashPlot delivers 5x better compression than native wallet!")
     print("⚡ SquashPlot saves $327/year vs native wallet!")
-    print("🧠 SquashPlot includes prime aligned compute-enhanced intelligence!")
+    print("🧠 SquashPlot includes consciousness-enhanced intelligence!")
 
     print("\n" + "=" * 50)
     print("🎉 CONCLUSION:")
     print("🗜️ SquashPlot: THE COMPRESSION CHAMPION!")
-    print("🚀 40%+ compression with prime aligned compute enhancement!")
+    print("🚀 40%+ compression with consciousness enhancement!")
     print("⚡ Revolutionary O(n^1.44) complexity reduction!")
     print("🛡️ Ultimate security with 95% DOS protection!")
 

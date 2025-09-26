@@ -331,7 +331,7 @@ class RosettaStressTest:
         for i, test_input in enumerate(test_inputs):
             try:
                 # Try all translation paradigms
-                for paradigm in ['python', 'mathematical', 'prime aligned compute', 'visual']:
+                for paradigm in ['python', 'mathematical', 'consciousness', 'visual']:
                     if test_input is None:
                         continue
 

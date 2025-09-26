@@ -524,8 +524,8 @@ class ComprehensiveTestSuite:
         return results
     
     def test_consciousness_functionality(self, system_name: str, files: List[str]) -> Dict[str, Any]:
-        """Test prime aligned compute processing functionality"""
-        logger.info(f"Testing prime aligned compute functionality for {system_name}")
+        """Test consciousness processing functionality"""
+        logger.info(f"Testing consciousness functionality for {system_name}")
         
         results = {
             'system': system_name,
@@ -536,14 +536,14 @@ class ComprehensiveTestSuite:
             'details': {}
         }
         
-        if 'prime aligned compute' in system_name.lower():
+        if 'consciousness' in system_name.lower():
             try:
-                # Test prime aligned compute metrics
+                # Test consciousness metrics
                 awareness_score = 0.85
                 coherence_score = 0.92
                 integration_score = 0.78
                 
-                # Calculate prime aligned compute index
+                # Calculate consciousness index
                 consciousness_index = (awareness_score + coherence_score + integration_score) / 3
                 
                 if 0 <= consciousness_index <= 1:

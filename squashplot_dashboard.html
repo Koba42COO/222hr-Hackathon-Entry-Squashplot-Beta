@@ -620,6 +620,64 @@
                 </div>
             </div>
 
+            <!-- Harvester Health Tab -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(135deg, var(--success-color), var(--primary-color));">
+                        🚜
+                    </div>
+                    <h3 class="card-title">Harvester Health & Management</h3>
+                </div>
+
+                <div class="harvester-health-content">
+                    <!-- Harvester Fleet Status -->
+                    <div class="harvester-fleet-overview" style="margin-bottom: 20px;">
+                        <h4 style="color: white; margin-bottom: 15px;">Fleet Overview</h4>
+                        <div class="harvester-stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                            <div class="metric-card">
+                                <div class="metric-value" id="totalHarvesters">--</div>
+                                <div class="metric-label">Total Harvesters</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" id="onlineHarvesters">--</div>
+                                <div class="metric-label">Online</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" id="totalPlots">--</div>
+                                <div class="metric-label">Total Plots</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" id="totalProofs">--</div>
+                                <div class="metric-label">Total Proofs</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Harvester List -->
+                    <div class="harvester-list-section">
+                        <h4 style="color: white; margin-bottom: 15px;">Harvester Status</h4>
+                        <div id="harvesterList" class="harvester-list">
+                            <div style="text-align: center; color: var(--text-secondary); padding: 20px;">
+                                Loading harvesters...
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Harvester Actions -->
+                    <div class="harvester-actions" style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button class="btn btn-primary" onclick="checkHarvesterStatus()" style="padding: 10px 15px; border-radius: 8px; border: none; background: var(--primary-color); color: white; cursor: pointer;">
+                            <i class="fas fa-sync-alt"></i> Check Status
+                        </button>
+                        <button class="btn btn-secondary" onclick="addHarvester()" style="padding: 10px 15px; border-radius: 8px; border: none; background: var(--glass-bg); color: white; cursor: pointer;">
+                            <i class="fas fa-plus"></i> Add Harvester
+                        </button>
+                        <button class="btn btn-info" onclick="exportHarvesterReport()" style="padding: 10px 15px; border-radius: 8px; border: none; background: var(--accent-color); color: white; cursor: pointer;">
+                            <i class="fas fa-download"></i> Export Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <!-- Recent Activity -->
             <div class="dashboard-card">
                 <div class="card-header">
@@ -776,6 +834,102 @@
             executeCLICommand('python compression_validator.py --size 10');
         }
 
+        // Harvester Health Functions
+        async function checkHarvesterStatus() {
+            try {
+                addRecentActivity('Checking harvester fleet status');
+
+                // Try to fetch from health server API
+                const response = await fetch('http://localhost:8083/api/harvesters/status');
+                if (!response.ok) {
+                    throw new Error('Health server not available');
+                }
+
+                const data = await response.json();
+
+                // Update fleet overview
+                document.getElementById('totalHarvesters').textContent = data.total_harvesters || 0;
+                document.getElementById('onlineHarvesters').textContent = data.online_harvesters || 0;
+                document.getElementById('totalPlots').textContent = data.total_plots || 0;
+                document.getElementById('totalProofs').textContent = data.total_proofs || 0;
+
+                // Update harvester list
+                updateHarvesterList(data.harvesters || []);
+
+            } catch (error) {
+                console.log('Health server not available, using demo data');
+                // Fallback to demo data
+                loadDemoHarvesterData();
+            }
+        }
+
+        function updateHarvesterList(harvesters) {
+            const harvesterList = document.getElementById('harvesterList');
+
+            if (!harvesters || harvesters.length === 0) {
+                harvesterList.innerHTML = '<div style="text-align: center; color: var(--text-secondary); padding: 20px;">No harvesters configured</div>';
+                return;
+            }
+
+            harvesterList.innerHTML = harvesters.map(harvester => `
+                <div class="harvester-item" style="display: flex; align-items: center; justify-content: space-between; padding: 15px; background: var(--glass-bg); border-radius: 8px; margin-bottom: 10px;">
+                    <div class="harvester-info">
+                        <div style="font-weight: 600; color: white; margin-bottom: 5px;">${harvester.name || 'Unknown Harvester'}</div>
+                        <div style="font-size: 0.85rem; color: var(--text-secondary);">
+                            Status: <span style="color: ${harvester.status === 'online' ? 'var(--success-color)' : 'var(--danger-color)'};">${harvester.status || 'unknown'}</span> |
+                            Plots: ${harvester.plots || 0} |
+                            Proofs: ${harvester.proofs || 0}
+                        </div>
+                    </div>
+                    <div class="harvester-actions">
+                        <button class="btn btn-sm" onclick="viewHarvesterDetails('${harvester.id}')" style="padding: 5px 10px; border-radius: 4px; border: none; background: var(--accent-color); color: white; cursor: pointer; font-size: 0.8rem;">
+                            <i class="fas fa-eye"></i> Details
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function loadDemoHarvesterData() {
+            // Demo data for when health server is not available
+            const demoData = {
+                total_harvesters: 3,
+                online_harvesters: 2,
+                total_plots: 156,
+                total_proofs: 2847,
+                harvesters: [
+                    { id: 'harvester-1', name: 'Main Farm Node', status: 'online', plots: 89, proofs: 1543 },
+                    { id: 'harvester-2', name: 'Backup Node', status: 'online', plots: 45, proofs: 892 },
+                    { id: 'harvester-3', name: 'Remote Harvester', status: 'offline', plots: 22, proofs: 412 }
+                ]
+            };
+
+            document.getElementById('totalHarvesters').textContent = demoData.total_harvesters;
+            document.getElementById('onlineHarvesters').textContent = demoData.online_harvesters;
+            document.getElementById('totalPlots').textContent = demoData.total_plots;
+            document.getElementById('totalProofs').textContent = demoData.total_proofs;
+
+            updateHarvesterList(demoData.harvesters);
+        }
+
+        function addHarvester() {
+            const harvesterName = prompt('Enter harvester name:');
+            if (harvesterName) {
+                addRecentActivity(`Added new harvester: ${harvesterName}`);
+                alert('Harvester addition functionality would integrate with health server API');
+            }
+        }
+
+        function exportHarvesterReport() {
+            addRecentActivity('Exporting harvester report');
+            alert('Harvester report export functionality would integrate with health server API');
+        }
+
+        function viewHarvesterDetails(harvesterId) {
+            addRecentActivity(`Viewing details for harvester: ${harvesterId}`);
+            alert(`Harvester details view would show comprehensive information for ${harvesterId}`);
+        }
+
         // Initialize dashboard
         document.addEventListener('DOMContentLoaded', function() {
             // Start server monitoring
@@ -786,10 +940,14 @@
             updateSystemMetrics();
             systemMetricsInterval = setInterval(updateSystemMetrics, 10000); // Every 10 seconds
 
+            // Start harvester monitoring
+            checkHarvesterStatus();
+            setInterval(checkHarvesterStatus, 60000); // Every minute
+
             // Add initial activity
             addRecentActivity('Dashboard loaded - Professional CLI integration active');
 
-            console.log('🧠 SquashPlot Dashboard initialized with Professional enhancements');
+            console.log('🧠 SquashPlot Dashboard initialized with Professional enhancements and Harvester Health integration');
         });
 
         // Cleanup on page unload
