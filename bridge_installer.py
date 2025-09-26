@@ -40,12 +40,90 @@ class BridgeInstaller:
             safe_message = message.encode('ascii', 'replace').decode('ascii')
             print(safe_message)
     
+    def check_dependencies(self):
+        """Check for required dependencies"""
+        self.safe_print("Checking system dependencies...")
+        
+        # Check Python installation
+        python_version = sys.version_info
+        if python_version.major < 3 or (python_version.major == 3 and python_version.minor < 8):
+            self.safe_print(f"[ERROR] Python 3.8+ required. Found: {python_version.major}.{python_version.minor}")
+            self.safe_print("Please install Python 3.8 or later from https://python.org")
+            return False
+        
+        self.safe_print(f"[OK] Python {python_version.major}.{python_version.minor} detected")
+        
+        # Check required Python packages
+        required_packages = ["cryptography", "requests"]
+        missing_packages = []
+        
+        for package in required_packages:
+            try:
+                __import__(package)
+                self.safe_print(f"[OK] {package} package available")
+            except ImportError:
+                missing_packages.append(package)
+                self.safe_print(f"[MISSING] {package} package not found")
+        
+        if missing_packages:
+            self.safe_print(f"[INFO] Installing missing packages: {', '.join(missing_packages)}")
+            try:
+                import subprocess
+                for package in missing_packages:
+                    subprocess.run([sys.executable, "-m", "pip", "install", package], 
+                                 check=True, capture_output=True)
+                    self.safe_print(f"[OK] Installed {package}")
+            except subprocess.CalledProcessError as e:
+                self.safe_print(f"[ERROR] Failed to install packages: {e}")
+                self.safe_print("Please install manually: pip install " + " ".join(missing_packages))
+                return False
+        
+        return True
+    
+    def run_system_scan(self):
+        """Run comprehensive system scan before installation"""
+        self.safe_print("Running system scan...")
+        
+        try:
+            # Import and run system scanner
+            from system_scanner import SystemScanner
+            scanner = SystemScanner()
+            scan_results = scanner.run_comprehensive_scan()
+            
+            # Check if system is ready
+            critical_issues = len([r for r in scan_results.get("recommendations", []) if r.get("type") == "critical"])
+            
+            if critical_issues > 0:
+                self.safe_print(f"[WARNING] {critical_issues} critical issues found")
+                response = input("Continue with installation despite issues? (yes/no): ")
+                if response.lower() != 'yes':
+                    self.safe_print("Installation cancelled due to system issues.")
+                    return False
+            
+            return True
+            
+        except ImportError:
+            self.safe_print("[WARNING] System scanner not available - skipping scan")
+            return True
+        except Exception as e:
+            self.safe_print(f"[WARNING] System scan failed: {str(e)}")
+            return True
+    
     def install_bridge_app(self):
         """Install bridge app with startup integration"""
         self.safe_print("SquashPlot Bridge App Installer")
         self.safe_print("=" * 50)
         
         try:
+            # Run system scan first
+            if not self.run_system_scan():
+                return False
+            
+            # Check dependencies
+            if not self.check_dependencies():
+                self.safe_print("[ERROR] Dependency check failed. Please install required dependencies.")
+                return False
+            
             # Create installation directory
             self.install_dir.mkdir(parents=True, exist_ok=True)
             self.safe_print(f"[OK] Created installation directory: {self.install_dir}")

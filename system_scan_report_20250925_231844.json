@@ -1,0 +1,77 @@
+{
+  "timestamp": "2025-09-25T23:18:40.289994",
+  "system_info": {
+    "os": "Windows",
+    "os_version": "10",
+    "architecture": "AMD64",
+    "processor": "Intel64 Family 6 Model 141 Stepping 1, GenuineIntel",
+    "python_version": "3.11.5",
+    "memory_total_gb": 63.71,
+    "memory_available_gb": 49.13,
+    "disk_free_gb": 1130.14,
+    "cpu_count": 16,
+    "cpu_percent": 10.5
+  },
+  "python_info": {
+    "version": "3.11.5",
+    "executable": "C:\\Users\\andyz\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "path": [
+      "C:\\Users\\andyz\\Desktop\\SquashPlot\\222hr-Hackathon-Entry-Squashplot-Beta",
+      "C:\\Users\\andyz\\AppData\\Local\\Programs\\Python\\Python311\\python311.zip",
+      "C:\\Users\\andyz\\AppData\\Local\\Programs\\Python\\Python311\\DLLs",
+      "C:\\Users\\andyz\\AppData\\Local\\Programs\\Python\\Python311\\Lib",
+      "C:\\Users\\andyz\\AppData\\Local\\Programs\\Python\\Python311",
+      "C:\\Users\\andyz\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages"
+    ],
+    "pip_available": true,
+    "pip_version": "pip 25.2 from C:\\Users\\andyz\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\pip (python 3.11)",
+    "requirements_met": true
+  },
+  "packages": {
+    "cryptography": {
+      "required": true,
+      "version": "46.0.1",
+      "installed": true
+    },
+    "requests": {
+      "required": true,
+      "version": "2.31.0",
+      "installed": true
+    },
+    "psutil": {
+      "required": true,
+      "version": "5.9.6",
+      "installed": true
+    },
+    "fastapi": {
+      "required": false,
+      "version": "0.117.1",
+      "installed": true
+    },
+    "uvicorn": {
+      "required": false,
+      "version": "0.37.0",
+      "installed": true
+    }
+  },
+  "network": {
+    "internet_available": true,
+    "pip_connectivity": true,
+    "github_connectivity": true,
+    "python_org_connectivity": true
+  },
+  "security": {
+    "firewall_detected": false,
+    "antivirus_detected": false,
+    "admin_privileges": false,
+    "install_path_writable": true
+  },
+  "recommendations": [],
+  "installation_plan": {
+    "python_installation_needed": false,
+    "pip_installation_needed": false,
+    "packages_to_install": [],
+    "estimated_time": "5-15 minutes",
+    "complexity": "low"
+  }
+}

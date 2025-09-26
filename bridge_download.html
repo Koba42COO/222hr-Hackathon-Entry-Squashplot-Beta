@@ -322,6 +322,9 @@
             </p>
             
             <div class="download-buttons">
+                <a href="/download/system_scanner.py" class="download-btn" download="system_scanner.py" style="background: linear-gradient(135deg, #ffa502, #ff6348);">
+                    🔍 Download System Scanner
+                </a>
                 <a href="/download/bridge_installer.py" class="download-btn" download="bridge_installer.py">
                     🚀 Download Installer
                 </a>
@@ -336,6 +339,9 @@
                 </a>
                 <a href="#" class="download-btn" onclick="runUninstaller()" style="background: linear-gradient(135deg, #ff4757, #ff6b7a);">
                     ⚠️ Uninstall Instructions
+                </a>
+                <a href="#" class="download-btn" onclick="runSystemScanner()" style="background: linear-gradient(135deg, #ffa502, #ff6348);">
+                    🔍 System Scanner Instructions
                 </a>
             </div>
             
@@ -466,6 +472,20 @@ python bridge_installer.py --status
                   '   - Clean up system integration\n' +
                   '   - Remove desktop shortcuts\n\n' +
                   'This will completely remove the bridge app from your system.');
+        }
+        
+        function runSystemScanner() {
+            alert('System Scanner Instructions:\n\n' +
+                  '1. Download system_scanner.py\n' +
+                  '2. Run: python system_scanner.py\n' +
+                  '3. The scanner will:\n' +
+                  '   - Check Python installation and version\n' +
+                  '   - Scan for required packages\n' +
+                  '   - Test network connectivity\n' +
+                  '   - Analyze system requirements\n' +
+                  '   - Generate installation plan\n' +
+                  '   - Provide recommendations\n\n' +
+                  'This helps identify what needs to be installed before running the main installer.');
         }
         
         // Auto-check installation status on page load

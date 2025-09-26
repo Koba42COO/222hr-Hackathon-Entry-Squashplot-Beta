@@ -552,6 +552,21 @@ async def download_uninstaller():
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error serving uninstaller: {str(e)}")
 
+@app.get("/download/system_scanner.py")
+async def download_system_scanner():
+    """Download the system scanner script"""
+    try:
+        if os.path.exists("system_scanner.py"):
+            return FileResponse(
+                "system_scanner.py",
+                media_type="application/octet-stream",
+                filename="system_scanner.py"
+            )
+        else:
+            raise HTTPException(status_code=404, detail="System scanner not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error serving system scanner: {str(e)}")
+
 # Replit-specific optimizations
 if Config.REPLIT_MODE:
     print("🔧 Running in Replit mode - optimizing for Replit environment")
