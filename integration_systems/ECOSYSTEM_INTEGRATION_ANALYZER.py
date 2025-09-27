@@ -28,7 +28,9 @@ from collections import defaultdict
 class EcosystemIntegrationAnalyzer:
     """Comprehensive ecosystem integration analyzer"""
 
-    def __init__(self, dev_directory: str = "/Users/coo-koba42/dev"):
+    def __init__(self, dev_directory: str = None):
+        if dev_directory is None:
+            dev_directory = str(Path(__file__).parent.parent)
         self.dev_directory = Path(dev_directory)
         self.system_connections = []
         self.integration_requirements = []
@@ -713,7 +715,7 @@ class EcosystemIntegrationAnalyzer:
         visualization.append("")
 
         # Save visualization
-        with open('/Users/coo-koba42/dev/ecosystem_integration_map.txt', 'w') as f:
+        with open('ecosystem_integration_map.txt', 'w') as f:
             f.write('\n'.join(visualization))
 
         print("📊 Text-based ecosystem visualization saved to: ecosystem_integration_map.txt")
@@ -744,7 +746,7 @@ class EcosystemIntegrationAnalyzer:
             category = system_info.get('category', 'general_system')
             report['categories'][category] = report['categories'].get(category, 0) + 1
 
-        with open('/Users/coo-koba42/dev/ecosystem_integration_report.json', 'w') as f:
+        with open('ecosystem_integration_report.json', 'w') as f:
             json.dump(report, f, indent=2)
 
         print("📋 Detailed analysis saved to: ecosystem_integration_report.json")

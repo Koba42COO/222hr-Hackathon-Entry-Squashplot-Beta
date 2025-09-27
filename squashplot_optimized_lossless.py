@@ -29,9 +29,12 @@ from dataclasses import dataclass
 import threading
 import concurrent.futures
 from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
 
 # Add paths to access advanced systems
-sys.path.append('/Users/coo-koba42/dev')
+# Use dynamic path resolution to avoid hardcoded personal paths
+project_root = Path(__file__).parent
+sys.path.insert(0, str(project_root))
 
 # Import consciousness mathematics for optimization
 try:

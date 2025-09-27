@@ -47,9 +47,12 @@ from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
 import multiprocessing as mp
 import threading
+from pathlib import Path
 
 # Add paths to access all advanced systems
-sys.path.append('/Users/coo-koba42/dev')
+# Use dynamic path resolution to avoid hardcoded personal paths
+project_root = Path(__file__).parent
+sys.path.insert(0, str(project_root))
 
 # Import ALL available advanced systems
 try:

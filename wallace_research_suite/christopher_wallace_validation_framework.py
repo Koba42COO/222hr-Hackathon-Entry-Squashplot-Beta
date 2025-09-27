@@ -886,7 +886,7 @@ def main():
         print(f"    Avg Metric: {stats['avg_metric']:.4f}")
 
     # Save dedication
-    dedication_path = Path("/Users/coo-koba42/dev/wallace_dedication.txt")
+    dedication_path = Path("wallace_dedication.txt")
     with open(dedication_path, 'w') as f:
         f.write(results['dedication_documentation'])
 
