@@ -1,0 +1,141 @@
+{
+  "timestamp": 1758950373.128104,
+  "total_tests": 22,
+  "passed_tests": 20,
+  "failed_tests": 2,
+  "success_rate": 90.9090909090909,
+  "results": [
+    {
+      "test": "File exists: SquashPlotBridge.py",
+      "status": "PASS",
+      "message": "File found",
+      "timestamp": 1758950370.0223348
+    },
+    {
+      "test": "File exists: SquashPlotBridge.html",
+      "status": "PASS",
+      "message": "File found",
+      "timestamp": 1758950370.0223348
+    },
+    {
+      "test": "File exists: PROFESSIONAL_SUMMARY.md",
+      "status": "PASS",
+      "message": "File found",
+      "timestamp": 1758950370.0223348
+    },
+    {
+      "test": "File exists: SIMPLE_SUMMARY.md",
+      "status": "PASS",
+      "message": "File found",
+      "timestamp": 1758950370.0223348
+    },
+    {
+      "test": "Standard library imports",
+      "status": "PASS",
+      "message": "All imports successful",
+      "timestamp": 1758950370.0322726
+    },
+    {
+      "test": "Bridge initialization",
+      "status": "PASS",
+      "message": "Bridge class created successfully",
+      "timestamp": 1758950370.040528
+    },
+    {
+      "test": "Method exists: start",
+      "status": "PASS",
+      "message": "Method found",
+      "timestamp": 1758950370.040528
+    },
+    {
+      "test": "Method exists: stop",
+      "status": "PASS",
+      "message": "Method found",
+      "timestamp": 1758950370.040528
+    },
+    {
+      "test": "Method exists: is_running",
+      "status": "PASS",
+      "message": "Method found",
+      "timestamp": 1758950370.040528
+    },
+    {
+      "test": "HTML element: <title>SquashPlot Bridge - Pro...",
+      "status": "PASS",
+      "message": "Element found",
+      "timestamp": 1758950370.040528
+    },
+    {
+      "test": "HTML element: class SquashPlotBridgeInterfac...",
+      "status": "PASS",
+      "message": "Element found",
+      "timestamp": 1758950370.040528
+    },
+    {
+      "test": "HTML element: executeDemo...",
+      "status": "PASS",
+      "message": "Element found",
+      "timestamp": 1758950370.040528
+    },
+    {
+      "test": "HTML element: checkBridgeStatus...",
+      "status": "PASS",
+      "message": "Element found",
+      "timestamp": 1758950370.041524
+    },
+    {
+      "test": "HTML element: testConnection...",
+      "status": "PASS",
+      "message": "Element found",
+      "timestamp": 1758950370.041524
+    },
+    {
+      "test": "Bridge server startup",
+      "status": "PASS",
+      "message": "Server process running",
+      "timestamp": 1758950373.051133
+    },
+    {
+      "test": "HTTP status endpoint",
+      "status": "PASS",
+      "message": "Status: active",
+      "timestamp": 1758950373.0626657
+    },
+    {
+      "test": "Web interface serving",
+      "status": "FAIL",
+      "message": "Status code: 404",
+      "timestamp": 1758950373.081685
+    },
+    {
+      "test": "Command execution",
+      "status": "PASS",
+      "message": "Hello world command executed",
+      "timestamp": 1758950373.0920966
+    },
+    {
+      "test": "Bridge server shutdown",
+      "status": "PASS",
+      "message": "Server stopped cleanly",
+      "timestamp": 1758950373.099098
+    },
+    {
+      "test": "Security: Command whitelist",
+      "status": "FAIL",
+      "message": "Unauthorized command allowed",
+      "timestamp": 1758950373.1271021
+    },
+    {
+      "test": "Documentation: PROFESSIONAL_SUMMARY.md",
+      "status": "PASS",
+      "message": "Document has content",
+      "timestamp": 1758950373.128104
+    },
+    {
+      "test": "Documentation: SIMPLE_SUMMARY.md",
+      "status": "PASS",
+      "message": "Document has content",
+      "timestamp": 1758950373.128104
+    }
+  ]
+}

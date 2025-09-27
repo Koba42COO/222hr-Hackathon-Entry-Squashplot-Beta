@@ -1,0 +1,50 @@
+{
+  "name": "Universal SquashPlot Bridge",
+  "version": "1.0.0",
+  "platform": "universal",
+  "created": 1758937973.5436208,
+  "created_date": "2025-09-26 18:52:53",
+  "files": [
+    "ultimate_security_interface.html",
+    "universal_secure_bridge.py",
+    "universal_secure_installer.py",
+    "working_ultimate_bridge.py",
+    "config/security_config.json",
+    "config/universal_config.json",
+    "docs/android_guide.md",
+    "docs/ios_guide.md",
+    "docs/linux_guide.md",
+    "docs/macos_guide.md",
+    "docs/README.md",
+    "docs/windows_guide.md",
+    "platforms/windows/bridge_installer.py",
+    "platforms/windows/test_working_bridge.py",
+    "scripts/install_mobile.sh",
+    "scripts/install_unix.sh",
+    "scripts/install_windows.bat"
+  ],
+  "features": [
+    "cross_platform_compatibility",
+    "mobile_support",
+    "session_security",
+    "command_sanitization",
+    "rate_limiting",
+    "encryption",
+    "auto_startup",
+    "web_interface"
+  ],
+  "supported_platforms": [
+    "windows",
+    "macos",
+    "linux",
+    "ios",
+    "android"
+  ],
+  "requirements": {
+    "python": "3.8+",
+    "packages": [
+      "cryptography",
+      "numpy"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "max_command_length": 500,
+  "max_execution_time": 30,
+  "max_requests_per_minute": 10,
+  "session_timeout": 900,
+  "max_auth_attempts": 3,
+  "lockout_duration": 300,
+  "dangerous_patterns": [
+    "[;&|`$]",
+    "\\.\\./",
+    "~",
+    "rm\\s+-rf",
+    "sudo",
+    "su\\s+",
+    "chmod\\s+777",
+    "mkdir\\s+-p\\s+/"
+  ]
+}

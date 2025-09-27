@@ -28,9 +28,12 @@ class SecurityConfig:
     MAX_EXECUTION_TIME = 30  # seconds
     MAX_MEMORY_MB = 100
     MAX_REQUESTS_PER_MINUTE = 10
-    SESSION_TIMEOUT = 3600  # 1 hour
+    SESSION_TIMEOUT = 900  # 15 minutes default (configurable)
     MAX_AUTH_ATTEMPTS = 3
     LOCKOUT_DURATION = 300  # 5 minutes
+    SESSION_WARNING_TIME = 300  # 5 minutes before timeout
+    CSRF_TOKEN_LENGTH = 32
+    MAX_SESSIONS_PER_IP = 3
     DANGEROUS_PATTERNS = [
         r'[;&|`$]',  # Command injection
         r'\.\./',    # Path traversal
@@ -64,6 +67,136 @@ class SecurityConfig:
         'echo'
     ]
 
+class SessionManager:
+    """Advanced session management with timeout and security features"""
+    
+    def __init__(self):
+        self.sessions: Dict[str, Dict] = {}
+        self.session_timeout = SecurityConfig.SESSION_TIMEOUT
+        self.warning_time = SecurityConfig.SESSION_WARNING_TIME
+        self.max_sessions_per_ip = SecurityConfig.MAX_SESSIONS_PER_IP
+        self.ip_sessions: Dict[str, List[str]] = {}
+        
+    def create_session(self, client_ip: str, user_agent: str = "") -> str:
+        """Create a new secure session"""
+        session_id = secrets.token_urlsafe(32)
+        csrf_token = secrets.token_urlsafe(SecurityConfig.CSRF_TOKEN_LENGTH)
+        
+        # Check session limits per IP
+        if client_ip not in self.ip_sessions:
+            self.ip_sessions[client_ip] = []
+        
+        # Remove old sessions for this IP if at limit
+        if len(self.ip_sessions[client_ip]) >= self.max_sessions_per_ip:
+            oldest_session = self.ip_sessions[client_ip][0]
+            if oldest_session in self.sessions:
+                del self.sessions[oldest_session]
+            self.ip_sessions[client_ip].remove(oldest_session)
+        
+        # Create new session
+        self.sessions[session_id] = {
+            'created': time.time(),
+            'last_activity': time.time(),
+            'client_ip': client_ip,
+            'user_agent': user_agent,
+            'csrf_token': csrf_token,
+            'command_count': 0,
+            'is_active': True,
+            'warning_sent': False
+        }
+        
+        # Track session for this IP
+        self.ip_sessions[client_ip].append(session_id)
+        
+        return session_id
+    
+    def validate_session(self, session_id: str, client_ip: str, csrf_token: str = None) -> Tuple[bool, str]:
+        """Validate session with comprehensive security checks"""
+        if not session_id or session_id not in self.sessions:
+            return False, "Invalid session"
+        
+        session = self.sessions[session_id]
+        
+        # Check if session is active
+        if not session['is_active']:
+            return False, "Session inactive"
+        
+        # Check IP address
+        if session['client_ip'] != client_ip:
+            return False, "IP address mismatch"
+        
+        # Check session timeout
+        current_time = time.time()
+        if current_time - session['last_activity'] > self.session_timeout:
+            self._expire_session(session_id)
+            return False, "Session expired"
+        
+        # Check CSRF token if provided
+        if csrf_token and session['csrf_token'] != csrf_token:
+            return False, "Invalid CSRF token"
+        
+        # Update last activity
+        session['last_activity'] = current_time
+        
+        # Check if warning should be sent
+        time_remaining = self.session_timeout - (current_time - session['last_activity'])
+        if time_remaining <= self.warning_time and not session['warning_sent']:
+            session['warning_sent'] = True
+            return True, "warning_soon"
+        
+        return True, "valid"
+    
+    def get_session_info(self, session_id: str) -> Optional[Dict]:
+        """Get session information"""
+        if session_id in self.sessions:
+            session = self.sessions[session_id].copy()
+            # Calculate time remaining
+            current_time = time.time()
+            time_remaining = self.session_timeout - (current_time - session['last_activity'])
+            session['time_remaining'] = max(0, time_remaining)
+            return session
+        return None
+    
+    def extend_session(self, session_id: str) -> bool:
+        """Extend session timeout"""
+        if session_id in self.sessions:
+            self.sessions[session_id]['last_activity'] = time.time()
+            self.sessions[session_id]['warning_sent'] = False
+            return True
+        return False
+    
+    def _expire_session(self, session_id: str):
+        """Expire a session"""
+        if session_id in self.sessions:
+            session = self.sessions[session_id]
+            client_ip = session['client_ip']
+            
+            # Remove from IP tracking
+            if client_ip in self.ip_sessions and session_id in self.ip_sessions[client_ip]:
+                self.ip_sessions[client_ip].remove(session_id)
+            
+            # Mark as inactive
+            self.sessions[session_id]['is_active'] = False
+    
+    def cleanup_expired_sessions(self):
+        """Clean up expired sessions"""
+        current_time = time.time()
+        expired_sessions = []
+        
+        for session_id, session in self.sessions.items():
+            if current_time - session['last_activity'] > self.session_timeout:
+                expired_sessions.append(session_id)
+        
+        for session_id in expired_sessions:
+            self._expire_session(session_id)
+    
+    def get_active_sessions_count(self, client_ip: str = None) -> int:
+        """Get count of active sessions"""
+        if client_ip:
+            return len([s for s in self.ip_sessions.get(client_ip, []) 
+                       if s in self.sessions and self.sessions[s]['is_active']])
+        return len([s for s in self.sessions.values() if s['is_active']])
+
 class SecureAuthentication:
     """Secure authentication system with token validation"""
     
@@ -71,13 +204,14 @@ class SecureAuthentication:
         self.auth_tokens: Dict[str, Dict] = {}
         self.failed_attempts: Dict[str, List[float]] = {}
         self.master_key = self._generate_master_key()
+        self.session_manager = SessionManager()
         
     def _generate_master_key(self) -> str:
         """Generate a secure master key for token validation"""
         return secrets.token_urlsafe(32)
     
     def generate_auth_token(self, client_ip: str) -> str:
-        """Generate a secure authentication token"""
+        """Generate a secure authentication token (legacy method)"""
         token = secrets.token_urlsafe(32)
         self.auth_tokens[token] = {
             'created': time.time(),
@@ -88,8 +222,19 @@ class SecureAuthentication:
         }
         return token
     
+    def create_session(self, client_ip: str, user_agent: str = "") -> Dict:
+        """Create a new secure session"""
+        session_id = self.session_manager.create_session(client_ip, user_agent)
+        session_info = self.session_manager.get_session_info(session_id)
+        return {
+            'session_id': session_id,
+            'csrf_token': session_info['csrf_token'],
+            'timeout': SecurityConfig.SESSION_TIMEOUT,
+            'warning_time': SecurityConfig.SESSION_WARNING_TIME
+        }
+    
     def validate_auth(self, token: str, client_ip: str) -> Tuple[bool, str]:
-        """Validate authentication token with security checks"""
+        """Validate authentication token with security checks (legacy method)"""
         if not token or token not in self.auth_tokens:
             return False, "Invalid token"
         
@@ -115,6 +260,18 @@ class SecureAuthentication:
         # Update last activity
         auth_data['last_activity'] = time.time()
         return True, "Valid token"
+    
+    def validate_session(self, session_id: str, client_ip: str, csrf_token: str = None) -> Tuple[bool, str]:
+        """Validate session with comprehensive security checks"""
+        return self.session_manager.validate_session(session_id, client_ip, csrf_token)
+    
+    def extend_session(self, session_id: str) -> bool:
+        """Extend session timeout"""
+        return self.session_manager.extend_session(session_id)
+    
+    def get_session_info(self, session_id: str) -> Optional[Dict]:
+        """Get session information"""
+        return self.session_manager.get_session_info(session_id)
     
     def record_failed_attempt(self, client_ip: str):
         """Record failed authentication attempt"""
@@ -374,8 +531,12 @@ class SecureBridgeApp:
             'successful_commands': 0,
             'blocked_commands': 0,
             'auth_failures': 0,
-            'rate_limited': 0
+            'rate_limited': 0,
+            'active_sessions': 0
         }
+        
+        # Start session cleanup thread
+        self._start_session_cleanup()
     
     def _setup_logging(self):
         """Setup secure logging configuration"""
@@ -388,6 +549,20 @@ class SecureBridgeApp:
             ]
         )
         self.logger = logging.getLogger('SecureBridge')
+    
+    def _start_session_cleanup(self):
+        """Start background thread for session cleanup"""
+        def cleanup_worker():
+            while self.running:
+                try:
+                    self.auth.session_manager.cleanup_expired_sessions()
+                    self.stats['active_sessions'] = self.auth.session_manager.get_active_sessions_count()
+                    time.sleep(60)  # Cleanup every minute
+                except Exception as e:
+                    self.logger.error(f"Session cleanup error: {e}")
+        
+        cleanup_thread = threading.Thread(target=cleanup_worker, daemon=True)
+        cleanup_thread.start()
     
     def start_server(self):
         """Start the secure bridge server"""
@@ -456,76 +631,92 @@ class SecureBridgeApp:
                 threading.Timer(1.0, self.stop_server).start()
                 return
             
+            # Handle session creation request
+            if data.strip() == "CREATE_SESSION":
+                user_agent = "Bridge Client"  # Could be passed in request
+                session_data = self.auth.create_session(client_ip, user_agent)
+                client_socket.send(json.dumps({
+                    'success': True,
+                    'session': session_data
+                }).encode())
+                self.audit_logger.log_security_event('session_created', {
+                    'client_ip': client_ip,
+                    'session_id': session_data['session_id']
+                })
+                return
+            
             # Parse JSON request
             try:
                 request_data = json.loads(data)
-                auth_token = request_data.get('auth_token', '')
-                command = request_data.get('command', '')
+                request_type = request_data.get('type', 'command')
                 
-                # Validate authentication
-                auth_valid, auth_message = self.auth.validate_auth(auth_token, client_ip)
-                if not auth_valid:
-                    self.auth.record_failed_attempt(client_ip)
-                    self.stats['auth_failures'] += 1
-                    self.audit_logger.log_security_event('authentication_failure', {
-                        'client_ip': client_ip,
-                        'session_id': session_id,
-                        'error': auth_message
-                    })
-                    client_socket.send(json.dumps({
-                        'error': 'Authentication failed',
-                        'message': auth_message
-                    }).encode())
+                # Handle session-based authentication
+                if request_type == 'session_auth':
+                    session_id = request_data.get('session_id', '')
+                    csrf_token = request_data.get('csrf_token', '')
+                    
+                    # Validate session
+                    session_valid, session_message = self.auth.validate_session(session_id, client_ip, csrf_token)
+                    if not session_valid:
+                        self.auth.record_failed_attempt(client_ip)
+                        self.stats['auth_failures'] += 1
+                        self.audit_logger.log_security_event('session_validation_failure', {
+                            'client_ip': client_ip,
+                            'session_id': session_id,
+                            'error': session_message
+                        })
+                        client_socket.send(json.dumps({
+                            'error': 'Session validation failed',
+                            'message': session_message,
+                            'requires_login': True
+                        }).encode())
+                        return
+                    
+                    # Check for session warning
+                    if session_message == "warning_soon":
+                        client_socket.send(json.dumps({
+                            'success': True,
+                            'warning': 'Session will expire soon',
+                            'time_remaining': self.auth.get_session_info(session_id)['time_remaining']
+                        }).encode())
+                        return
+                    
+                    # Session is valid, proceed with command execution
+                    command = request_data.get('command', '')
+                    self._execute_secure_command(client_socket, client_ip, session_id, command)
                     return
                 
-                # Check rate limiting
-                rate_ok, rate_message = self.rate_limiter.is_allowed(client_ip)
-                if not rate_ok:
-                    self.stats['rate_limited'] += 1
-                    self.audit_logger.log_security_event('rate_limit_exceeded', {
-                        'client_ip': client_ip,
-                        'session_id': session_id
-                    })
-                    client_socket.send(json.dumps({
-                        'error': 'Rate limit exceeded',
-                        'message': rate_message
-                    }).encode())
+                # Legacy token-based authentication
+                elif request_type == 'token_auth':
+                    auth_token = request_data.get('auth_token', '')
+                    command = request_data.get('command', '')
+                    
+                    # Validate authentication
+                    auth_valid, auth_message = self.auth.validate_auth(auth_token, client_ip)
+                    if not auth_valid:
+                        self.auth.record_failed_attempt(client_ip)
+                        self.stats['auth_failures'] += 1
+                        self.audit_logger.log_security_event('authentication_failure', {
+                            'client_ip': client_ip,
+                            'session_id': session_id,
+                            'error': auth_message
+                        })
+                        client_socket.send(json.dumps({
+                            'error': 'Authentication failed',
+                            'message': auth_message
+                        }).encode())
+                        return
+                    
+                    # Execute command with legacy auth
+                    self._execute_secure_command(client_socket, client_ip, session_id, command)
                     return
                 
-                # Sanitize command
-                is_valid, validation_message, clean_command = self.sanitizer.sanitize_command(command)
-                if not is_valid:
-                    self.stats['blocked_commands'] += 1
-                    self.audit_logger.log_security_event('dangerous_command_blocked', {
-                        'client_ip': client_ip,
-                        'session_id': session_id,
-                        'command': command,
-                        'reason': validation_message
-                    })
+                else:
                     client_socket.send(json.dumps({
-                        'error': 'Command blocked',
-                        'message': validation_message
+                        'error': 'Invalid request type',
+                        'message': 'Request type must be session_auth or token_auth'
                     }).encode())
                     return
-                
-                # Execute command
-                result = self.executor.execute_command(clean_command)
-                self.stats['total_requests'] += 1
-                if result['success']:
-                    self.stats['successful_commands'] += 1
-                
-                # Log execution
-                self.audit_logger.log_security_event('command_execution', {
-                    'client_ip': client_ip,
-                    'session_id': session_id,
-                    'command': clean_command,
-                    'success': result['success'],
-                    'error': result.get('error', ''),
-                    'auth_token': auth_token
-                })
-                
-                # Send response
-                client_socket.send(json.dumps(result).encode())
                 
             except json.JSONDecodeError:
                 self.audit_logger.log_security_event('invalid_request', {
@@ -546,6 +737,64 @@ class SecureBridgeApp:
             })
         finally:
             client_socket.close()
+    
+    def _execute_secure_command(self, client_socket, client_ip: str, session_id: str, command: str):
+        """Execute command with comprehensive security checks"""
+        try:
+            # Check rate limiting
+            rate_ok, rate_message = self.rate_limiter.is_allowed(client_ip)
+            if not rate_ok:
+                self.stats['rate_limited'] += 1
+                self.audit_logger.log_security_event('rate_limit_exceeded', {
+                    'client_ip': client_ip,
+                    'session_id': session_id
+                })
+                client_socket.send(json.dumps({
+                    'error': 'Rate limit exceeded',
+                    'message': rate_message
+                }).encode())
+                return
+            
+            # Sanitize command
+            is_valid, validation_message, clean_command = self.sanitizer.sanitize_command(command)
+            if not is_valid:
+                self.stats['blocked_commands'] += 1
+                self.audit_logger.log_security_event('dangerous_command_blocked', {
+                    'client_ip': client_ip,
+                    'session_id': session_id,
+                    'command': command,
+                    'reason': validation_message
+                })
+                client_socket.send(json.dumps({
+                    'error': 'Command blocked',
+                    'message': validation_message
+                }).encode())
+                return
+            
+            # Execute command
+            result = self.executor.execute_command(clean_command)
+            self.stats['total_requests'] += 1
+            if result['success']:
+                self.stats['successful_commands'] += 1
+            
+            # Log execution
+            self.audit_logger.log_security_event('command_execution', {
+                'client_ip': client_ip,
+                'session_id': session_id,
+                'command': clean_command,
+                'success': result['success'],
+                'error': result.get('error', '')
+            })
+            
+            # Send response
+            client_socket.send(json.dumps(result).encode())
+            
+        except Exception as e:
+            self.logger.error(f"Error executing command: {e}")
+            client_socket.send(json.dumps({
+                'error': 'Command execution failed',
+                'message': str(e)
+            }).encode())
     
     def stop_server(self):
         """Stop the bridge server"""

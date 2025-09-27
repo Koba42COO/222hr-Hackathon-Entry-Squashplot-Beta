@@ -1,0 +1,70 @@
+{
+  "version": "1.0.0",
+  "platform": "universal",
+  "security_level": "ultimate",
+  "features": {
+    "cross_platform_compatibility": true,
+    "mobile_support": true,
+    "session_security": true,
+    "command_sanitization": true,
+    "rate_limiting": true,
+    "encryption": true,
+    "auto_startup": true,
+    "web_interface": true
+  },
+  "platforms": {
+    "windows": {
+      "port": 8443,
+      "commands": [
+        "dir",
+        "type",
+        "echo",
+        "where",
+        "whoami"
+      ],
+      "installer": "universal_secure_installer.py"
+    },
+    "darwin": {
+      "port": 8444,
+      "commands": [
+        "ls",
+        "pwd",
+        "cat",
+        "echo",
+        "whoami"
+      ],
+      "installer": "universal_secure_installer.py"
+    },
+    "linux": {
+      "port": 8445,
+      "commands": [
+        "ls",
+        "pwd",
+        "cat",
+        "grep",
+        "find"
+      ],
+      "installer": "universal_secure_installer.py"
+    },
+    "ios": {
+      "port": 8446,
+      "commands": [
+        "ls",
+        "pwd",
+        "cat",
+        "echo"
+      ],
+      "installer": "universal_secure_installer.py"
+    },
+    "android": {
+      "port": 8447,
+      "commands": [
+        "ls",
+        "pwd",
+        "cat",
+        "echo"
+      ],
+      "installer": "universal_secure_installer.py"
+    }
+  }
+}

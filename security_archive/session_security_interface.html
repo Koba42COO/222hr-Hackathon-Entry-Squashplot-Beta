@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SquashPlot Bridge - Secure Session Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .session-info {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #28a745;
+        }
+
+        .session-info h3 {
+            color: #28a745;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .session-info h3::before {
+            content: "🔒";
+            margin-right: 10px;
+        }
+
+        .time-display {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .time-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .time-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #28a745, #ffc107, #dc3545);
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .session-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-active {
+            background: #28a745;
+            animation: pulse 2s infinite;
+        }
+
+        .status-warning {
+            background: #ffc107;
+            animation: blink 1s infinite;
+        }
+
+        .status-expired {
+            background: #dc3545;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal h2 {
+            color: #dc3545;
+            margin-bottom: 20px;
+        }
+
+        .modal p {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .command-interface {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+        }
+
+        .command-interface h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .command-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1em;
+            margin-bottom: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        .command-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .command-output {
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            min-height: 100px;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            margin-top: 15px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .warning-banner {
+            background: linear-gradient(135deg, #ffc107, #ff8c00);
+            color: #333;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ SquashPlot Bridge</h1>
+            <p>Secure Session Management</p>
+        </div>
+
+        <div id="sessionInfo" class="session-info hidden">
+            <h3>
+                <span class="status-indicator" id="statusIndicator"></span>
+                Session Status
+            </h3>
+            <div class="time-display">
+                Time Remaining: <span id="timeRemaining">--:--</span>
+            </div>
+            <div class="time-bar">
+                <div class="time-progress" id="timeProgress"></div>
+            </div>
+            <div class="session-controls">
+                <button class="btn btn-primary" onclick="extendSession()">Extend Session</button>
+                <button class="btn btn-secondary" onclick="showSessionInfo()">Session Details</button>
+                <button class="btn btn-danger" onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <div id="loginForm" class="session-info">
+            <h3>🔐 Create Secure Session</h3>
+            <p>Create a secure session to execute SquashPlot commands safely.</p>
+            <div style="margin-top: 20px;">
+                <button class="btn btn-primary" onclick="createSession()" style="width: 100%;">
+                    Create New Session
+                </button>
+            </div>
+        </div>
+
+        <div id="warningBanner" class="warning-banner hidden">
+            ⚠️ Your session will expire soon! Please extend your session to continue.
+        </div>
+
+        <div id="commandInterface" class="command-interface hidden">
+            <h3>💻 Command Interface</h3>
+            <input type="text" id="commandInput" class="command-input" placeholder="Enter SquashPlot command..." onkeypress="handleCommandKeypress(event)">
+            <button class="btn btn-primary" onclick="executeCommand()">Execute Command</button>
+            <div id="commandOutput" class="command-output"></div>
+        </div>
+    </div>
+
+    <!-- Session Expired Modal -->
+    <div id="sessionExpiredModal" class="modal">
+        <div class="modal-content">
+            <h2>⏰ Session Expired</h2>
+            <p>Your session has expired for security reasons. Please create a new session to continue using the bridge.</p>
+            <div class="modal-buttons">
+                <button class="btn btn-primary" onclick="createSession()">Create New Session</button>
+                <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSession = null;
+        let sessionTimer = null;
+        let warningTimer = null;
+
+        // Session management functions
+        async function createSession() {
+            try {
+                const response = await fetch('http://127.0.0.1:8443', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        type: 'create_session'
+                    })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    currentSession = data.session;
+                    startSessionTimer();
+                    showSessionInterface();
+                    hideLoginForm();
+                } else {
+                    alert('Failed to create session. Please check if the bridge is running.');
+                }
+            } catch (error) {
+                console.error('Session creation error:', error);
+                alert('Cannot connect to bridge. Please ensure it is running on port 8443.');
+            }
+        }
+
+        function startSessionTimer() {
+            if (sessionTimer) clearInterval(sessionTimer);
+            if (warningTimer) clearTimeout(warningTimer);
+
+            const sessionTimeout = currentSession.timeout * 1000; // Convert to milliseconds
+            const warningTime = currentSession.warning_time * 1000;
+
+            // Update display every second
+            sessionTimer = setInterval(updateSessionDisplay, 1000);
+
+            // Set warning timer
+            warningTime > 0 && (warningTimer = setTimeout(() => {
+                showWarningBanner();
+            }, sessionTimeout - warningTime));
+
+            // Set session expiry timer
+            setTimeout(() => {
+                expireSession();
+            }, sessionTimeout);
+        }
+
+        function updateSessionDisplay() {
+            if (!currentSession) return;
+
+            const now = Date.now();
+            const sessionStart = currentSession.created || now;
+            const elapsed = (now - sessionStart) / 1000;
+            const remaining = Math.max(0, currentSession.timeout - elapsed);
+
+            const minutes = Math.floor(remaining / 60);
+            const seconds = Math.floor(remaining % 60);
+            document.getElementById('timeRemaining').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            const progress = (remaining / currentSession.timeout) * 100;
+            document.getElementById('timeProgress').style.width = `${progress}%`;
+
+            // Update status indicator
+            const statusIndicator = document.getElementById('statusIndicator');
+            if (remaining <= 0) {
+                statusIndicator.className = 'status-indicator status-expired';
+            } else if (remaining <= currentSession.warning_time) {
+                statusIndicator.className = 'status-indicator status-warning';
+            } else {
+                statusIndicator.className = 'status-indicator status-active';
+            }
+        }
+
+        async function extendSession() {
+            if (!currentSession) return;
+
+            try {
+                const response = await fetch('http://127.0.0.1:8443', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        type: 'extend_session',
+                        session_id: currentSession.session_id,
+                        csrf_token: currentSession.csrf_token
+                    })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.success) {
+                        currentSession.created = Date.now();
+                        hideWarningBanner();
+                        alert('Session extended successfully!');
+                    }
+                }
+            } catch (error) {
+                console.error('Session extension error:', error);
+                alert('Failed to extend session.');
+            }
+        }
+
+        async function executeCommand() {
+            if (!currentSession) {
+                alert('No active session. Please create a session first.');
+                return;
+            }
+
+            const command = document.getElementById('commandInput').value.trim();
+            if (!command) return;
+
+            try {
+                const response = await fetch('http://127.0.0.1:8443', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        type: 'session_auth',
+                        session_id: currentSession.session_id,
+                        csrf_token: currentSession.csrf_token,
+                        command: command
+                    })
+                });
+
+                const data = await response.json();
+                displayCommandResult(command, data);
+                document.getElementById('commandInput').value = '';
+            } catch (error) {
+                console.error('Command execution error:', error);
+                displayCommandResult(command, { error: 'Connection failed', message: 'Cannot connect to bridge' });
+            }
+        }
+
+        function displayCommandResult(command, result) {
+            const output = document.getElementById('commandOutput');
+            const timestamp = new Date().toLocaleTimeString();
+            
+            let resultText = `[${timestamp}] $ ${command}\n`;
+            
+            if (result.error) {
+                resultText += `❌ Error: ${result.message || result.error}\n`;
+            } else if (result.success) {
+                resultText += `✅ Success\n`;
+                if (result.output) {
+                    resultText += result.output + '\n';
+                }
+            } else {
+                resultText += `⚠️ Warning: ${result.message || 'Unknown result'}\n`;
+            }
+            
+            output.textContent += resultText + '\n';
+            output.scrollTop = output.scrollHeight;
+        }
+
+        function handleCommandKeypress(event) {
+            if (event.key === 'Enter') {
+                executeCommand();
+            }
+        }
+
+        function showSessionInterface() {
+            document.getElementById('sessionInfo').classList.remove('hidden');
+            document.getElementById('commandInterface').classList.remove('hidden');
+        }
+
+        function hideLoginForm() {
+            document.getElementById('loginForm').classList.add('hidden');
+        }
+
+        function showWarningBanner() {
+            document.getElementById('warningBanner').classList.remove('hidden');
+        }
+
+        function hideWarningBanner() {
+            document.getElementById('warningBanner').classList.add('hidden');
+        }
+
+        function expireSession() {
+            currentSession = null;
+            if (sessionTimer) clearInterval(sessionTimer);
+            if (warningTimer) clearTimeout(warningTimer);
+            
+            document.getElementById('sessionExpiredModal').style.display = 'block';
+            document.getElementById('sessionInfo').classList.add('hidden');
+            document.getElementById('commandInterface').classList.add('hidden');
+            document.getElementById('loginForm').classList.remove('hidden');
+            hideWarningBanner();
+        }
+
+        function logout() {
+            currentSession = null;
+            if (sessionTimer) clearInterval(sessionTimer);
+            if (warningTimer) clearTimeout(warningTimer);
+            
+            document.getElementById('sessionInfo').classList.add('hidden');
+            document.getElementById('commandInterface').classList.add('hidden');
+            document.getElementById('loginForm').classList.remove('hidden');
+            hideWarningBanner();
+        }
+
+        function showSessionInfo() {
+            if (currentSession) {
+                alert(`Session ID: ${currentSession.session_id}\nCSRF Token: ${currentSession.csrf_token}\nTimeout: ${currentSession.timeout} seconds`);
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('sessionExpiredModal').style.display = 'none';
+        }
+
+        // Initialize interface
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if bridge is running
+            fetch('http://127.0.0.1:8443', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ type: 'ping' })
+            }).catch(() => {
+                alert('Bridge is not running. Please start the SquashPlot Bridge first.');
+            });
+        });
+    </script>
+</body>
+</html>
