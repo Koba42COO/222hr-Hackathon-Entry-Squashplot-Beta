@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete System Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0a0a0a;
+            color: white;
+            padding: 20px;
+        }
+        .test-section {
+            background: rgba(13, 13, 13, 0.85);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .status {
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-weight: 600;
+        }
+        .success { background: rgba(0, 255, 136, 0.2); color: #00ff88; }
+        .error { background: rgba(255, 71, 87, 0.2); color: #ff4757; }
+        .info { background: rgba(0, 212, 255, 0.2); color: #00d4ff; }
+        .test-button {
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            font-weight: 600;
+        }
+        .test-button:hover {
+            transform: translateY(-2px);
+        }
+        .log {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            max-height: 300px;
+            overflow-y: auto;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>SquashPlot Complete System Test</h1>
+    
+    <div class="test-section">
+        <h2>System Status</h2>
+        <div id="systemStatus">
+            <div class="status info">Testing system components...</div>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test Actions</h2>
+        <button class="test-button" onclick="testDashboard()">Test Dashboard</button>
+        <button class="test-button" onclick="testBridgeAPI()">Test Bridge API</button>
+        <button class="test-button" onclick="testInstallerAPI()">Test Installer API</button>
+        <button class="test-button" onclick="openDashboard()">Open Dashboard</button>
+        <button class="test-button" onclick="clearLog()">Clear Log</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test Log</h2>
+        <div class="log" id="logOutput">
+            <div>System test initialized...</div>
+        </div>
+    </div>
+    
+    <script>
+        function log(message, type = 'info') {
+            const logDiv = document.getElementById('logOutput');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.innerHTML = `[${timestamp}] ${message}`;
+            logDiv.appendChild(logEntry);
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+        
+        function updateStatus(message, type = 'info') {
+            const statusDiv = document.getElementById('systemStatus');
+            statusDiv.innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+        
+        async function testDashboard() {
+            try {
+                log('Testing dashboard access...');
+                const response = await fetch('/');
+                
+                if (response.ok) {
+                    const html = await response.text();
+                    if (html.includes('SquashPlot') && html.includes('installer-modal')) {
+                        log('✅ Dashboard loaded successfully with installer modal', 'success');
+                        updateStatus('Dashboard: ✅ Working', 'success');
+                    } else {
+                        log('⚠️ Dashboard loaded but missing components', 'warning');
+                        updateStatus('Dashboard: ⚠️ Partial', 'warning');
+                    }
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                log(`❌ Dashboard test failed: ${error.message}`, 'error');
+                updateStatus('Dashboard: ❌ Failed', 'error');
+            }
+        }
+        
+        async function testBridgeAPI() {
+            try {
+                log('Testing bridge API...');
+                const response = await fetch('/api/bridge', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ command: 'PING' })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.status === 'success' && data.response === 'PONG') {
+                        log('✅ Bridge API working correctly', 'success');
+                        updateStatus('Bridge API: ✅ Working', 'success');
+                    } else {
+                        log(`⚠️ Bridge API responded with unexpected data: ${JSON.stringify(data)}`, 'warning');
+                        updateStatus('Bridge API: ⚠️ Partial', 'warning');
+                    }
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                log(`❌ Bridge API test failed: ${error.message}`, 'error');
+                updateStatus('Bridge API: ❌ Failed', 'error');
+            }
+        }
+        
+        async function testInstallerAPI() {
+            try {
+                log('Testing installer API...');
+                const response = await fetch('/download/installers');
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.installers && Object.keys(data.installers).length > 0) {
+                        const platforms = Object.keys(data.installers);
+                        log(`✅ Installer API working - platforms: ${platforms.join(', ')}`, 'success');
+                        updateStatus(`Installer API: ✅ Working (${platforms.length} platforms)`, 'success');
+                    } else {
+                        log('⚠️ Installer API responded but no installers found', 'warning');
+                        updateStatus('Installer API: ⚠️ No Data', 'warning');
+                    }
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                log(`❌ Installer API test failed: ${error.message}`, 'error');
+                updateStatus('Installer API: ❌ Failed', 'error');
+            }
+        }
+        
+        function openDashboard() {
+            log('Opening main dashboard...');
+            window.open('/', '_blank');
+        }
+        
+        function clearLog() {
+            document.getElementById('logOutput').innerHTML = '<div>Log cleared...</div>';
+        }
+        
+        // Auto-run tests on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            log('Starting complete system test...');
+            setTimeout(() => testDashboard(), 500);
+            setTimeout(() => testBridgeAPI(), 1000);
+            setTimeout(() => testInstallerAPI(), 1500);
+        });
+    </script>
+</body>
+</html>
+
+
+

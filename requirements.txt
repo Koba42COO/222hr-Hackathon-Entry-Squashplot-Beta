@@ -1,81 +1,10 @@
-# SquashPlot Requirements for Replit
-# ================================
-
-# Core Python dependencies
-numpy>=1.21.0
-psutil>=5.8.0
-
-# Compression libraries
-# Note: zlib, bz2, lzma are built into Python 3.6+
-
-# Andy's Enhanced Authentication & Database System (Latest Update)
-Flask==2.3.3
-Flask-CORS==4.0.0
-Flask-SQLAlchemy==3.0.5
-Flask-Login>=0.6.3
-Flask-Dance>=7.0.0
-PyMySQL>=1.1.0
-PyJWT>=2.9.0
-Werkzeug==2.3.7
-SQLAlchemy==2.0.21
-
-# Andy's Enhanced API Server (FastAPI + Flask)
-fastapi>=0.75.0
-uvicorn[standard]>=0.17.0
-python-multipart>=0.0.5
-pydantic>=1.8.0
-websockets>=10.0
-
-# Data processing
-pandas>=1.3.0
-matplotlib>=3.4.0
-
-# HTTP client for API calls
-requests>=2.25.0
-
-# Task scheduling
-schedule>=1.1.0
-
-# Logging and utilities
-colorama>=0.4.4
-tqdm>=4.62.0
-
-# Development and testing
-pytest>=6.2.0
-pytest-asyncio>=0.15.0
-pytest-mock>=3.6.0
-
-# Replit-specific dependencies
-replit>=3.2.0
-
-# Optional: GPU support
-# GPUtil>=1.4.0
-
-# Optional: Advanced AI/ML features
-# scipy>=1.7.0
-# scikit-learn>=1.0.0
-# tensorflow>=2.8.0
-# torch>=1.10.0
-
-# Code quality (for development)
-black>=21.0.0
-flake8>=4.0.0
-mypy>=0.910
-flask
-flask-cors
-brotli
-lz4
-zstandard
-flask
-flask-cors
-aiofiles
-chia-py-rpc
-cryptography
-reportlab
-requests
-flask-dance
-flask-login
-oauthlib
-pyjwt
-flask-sqlalchemy
-psycopg2-binary
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+requests>=2.31.0
+numpy>=1.24.0
+pandas>=2.0.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+scikit-learn>=1.3.0
+python-multipart>=0.0.6
+jinja2>=3.1.0

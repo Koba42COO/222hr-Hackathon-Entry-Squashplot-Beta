@@ -421,3 +421,6 @@ python SquashPlotBridgeEXEInstaller.py
 **Version**: 2.0.0-Developer  
 **Last Updated**: September 26, 2025  
 **For Developers**: Technical implementation details
+
+
+

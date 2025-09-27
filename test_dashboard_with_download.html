@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Dashboard with Download</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0a0a0a;
+            color: white;
+            padding: 20px;
+        }
+        .status-widget {
+            background: rgba(13, 13, 13, 0.85);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 10px 0;
+            max-width: 500px;
+        }
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ff4757;
+            animation: pulse 2s infinite;
+        }
+        .status-indicator.online {
+            background: #2ecc71;
+            animation: none;
+        }
+        .status-indicator.checking {
+            background: #ffa502;
+            animation: spin 1s linear infinite;
+        }
+        .status-text {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .test-button {
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            font-weight: 600;
+        }
+        .test-button:hover {
+            transform: translateY(-2px);
+        }
+        .control-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            color: #b0b0b0;
+            font-size: 14px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 2px;
+        }
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: scale(1.1);
+        }
+        .control-btn.download-btn {
+            color: #00d4ff;
+        }
+        .control-btn.download-btn:hover {
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+        }
+        .log {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Dashboard with Download Feature</h1>
+    <p>This page tests the bridge status bar and download functionality.</p>
+    
+    <!-- Bridge Status Widget -->
+    <div class="status-widget" id="bridgeStatusWidget">
+        <div class="status-indicator" id="bridgeIndicator"></div>
+        <span class="status-text" id="bridgeStatusText">Checking bridge...</span>
+        <div style="margin-left: auto; display: flex; gap: 5px;">
+            <button class="control-btn" onclick="checkBridgeStatus()" title="Refresh bridge status">
+                🔄
+            </button>
+            <button class="control-btn download-btn" onclick="downloadInstaller()" title="Download EXE Installer">
+                📥
+            </button>
+        </div>
+    </div>
+    
+    <div>
+        <button class="test-button" onclick="testServerEndpoint()">Test Server Bridge Endpoint</button>
+        <button class="test-button" onclick="testDownloadEndpoint()">Test Download Endpoint</button>
+        <button class="test-button" onclick="clearLog()">Clear Log</button>
+    </div>
+    
+    <div class="log" id="logOutput">
+        <div>Log output will appear here...</div>
+    </div>
+    
+    <script>
+        function log(message) {
+            const logDiv = document.getElementById('logOutput');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.innerHTML = `[${timestamp}] ${message}`;
+            logDiv.appendChild(logEntry);
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+        
+        async function checkBridgeStatus() {
+            const bridgeIndicator = document.getElementById('bridgeIndicator');
+            const bridgeStatusText = document.getElementById('bridgeStatusText');
+            const bridgeWidget = document.getElementById('bridgeStatusWidget');
+
+            try {
+                log('Checking bridge status...');
+                bridgeIndicator.className = 'status-indicator checking';
+                bridgeStatusText.textContent = 'Checking bridge...';
+
+                // Use the server's bridge endpoint (works on all platforms)
+                const response = await fetch('/api/bridge', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ command: 'PING' }),
+                    signal: AbortSignal.timeout(3000)
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    log(`Bridge response: ${JSON.stringify(data)}`);
+                    
+                    if (data.status === 'success' && data.response === 'PONG') {
+                        bridgeIndicator.className = 'status-indicator online';
+                        bridgeStatusText.textContent = 'Bridge Connected';
+                        bridgeWidget.classList.add('connected');
+                        bridgeWidget.classList.remove('disconnected');
+                        log('✅ Bridge connected via server endpoint');
+                    } else {
+                        throw new Error(`Bridge error: ${data.response}`);
+                    }
+                } else {
+                    throw new Error(`HTTP error: ${response.status}`);
+                }
+            } catch (error) {
+                log(`❌ Bridge connection failed: ${error.message}`);
+                bridgeIndicator.className = 'status-indicator';
+                bridgeStatusText.textContent = 'Copy-Paste Mode';
+                bridgeWidget.classList.add('disconnected');
+                bridgeWidget.classList.remove('connected');
+            }
+        }
+        
+        async function downloadInstaller() {
+            try {
+                log('Starting installer download...');
+                
+                const response = await fetch('/download/exe-installer', {
+                    method: 'GET',
+                });
+                
+                if (response.ok) {
+                    // Get filename from Content-Disposition header or use default
+                    const contentDisposition = response.headers.get('Content-Disposition');
+                    let filename = 'SquashPlotInstaller.py';
+                    
+                    if (contentDisposition) {
+                        const filenameMatch = contentDisposition.match(/filename="(.+)"/);
+                        if (filenameMatch) {
+                            filename = filenameMatch[1];
+                        }
+                    }
+                    
+                    log(`Downloading installer: ${filename}`);
+                    
+                    // Create blob and download
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(url);
+                    
+                    log('✅ Installer downloaded successfully!');
+                } else {
+                    throw new Error(`Download failed: ${response.status}`);
+                }
+            } catch (error) {
+                log(`❌ Download failed: ${error.message}`);
+            }
+        }
+        
+        async function testServerEndpoint() {
+            try {
+                log('Testing server bridge endpoint...');
+                const response = await fetch('/api/bridge', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ command: 'STATUS' })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    log(`Server endpoint response: ${JSON.stringify(data)}`);
+                } else {
+                    log(`Server endpoint failed: ${response.status}`);
+                }
+            } catch (error) {
+                log(`Server endpoint error: ${error.message}`);
+            }
+        }
+        
+        async function testDownloadEndpoint() {
+            try {
+                log('Testing download endpoint...');
+                const response = await fetch('/download/exe-installer', {
+                    method: 'HEAD'  // Just check if endpoint exists
+                });
+                
+                if (response.ok) {
+                    log(`Download endpoint available: ${response.status}`);
+                } else {
+                    log(`Download endpoint failed: ${response.status}`);
+                }
+            } catch (error) {
+                log(`Download endpoint error: ${error.message}`);
+            }
+        }
+        
+        function clearLog() {
+            document.getElementById('logOutput').innerHTML = '<div>Log cleared...</div>';
+        }
+        
+        // Auto-check bridge status on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            log('Page loaded - testing functionality...');
+            checkBridgeStatus();
+        });
+    </script>
+</body>
+</html>
+
+
+

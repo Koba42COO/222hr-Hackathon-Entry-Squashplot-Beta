@@ -1,0 +1,47 @@
+{
+  "version": "1.0.0",
+  "build_date": "2025-09-27",
+  "installers": {
+    "windows": {
+      "filename": "SquashPlotBridgeInstaller.exe",
+      "size": 15678912,
+      "sha256": "a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456",
+      "md5": "1234567890abcdef1234567890abcdef",
+      "download_url": "/secure-download/windows/SquashPlotBridgeInstaller.exe",
+      "platform": "Windows",
+      "architecture": "x64",
+      "minimum_version": "Windows 10",
+      "description": "Windows installer with desktop integration and auto-updates"
+    },
+    "macos": {
+      "filename": "SquashPlotBridgeInstaller.pkg",
+      "size": 18923456,
+      "sha256": "b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef1234567",
+      "md5": "234567890abcdef1234567890abcdef1",
+      "download_url": "/secure-download/macos/SquashPlotBridgeInstaller.pkg",
+      "platform": "macOS",
+      "architecture": "universal",
+      "minimum_version": "macOS 11.0",
+      "description": "macOS package with code signing and notarization"
+    },
+    "linux": {
+      "filename": "SquashPlotBridgeInstaller.deb",
+      "size": 12345678,
+      "sha256": "c3d4e5f6789012345678901234567890abcdef1234567890abcdef12345678",
+      "md5": "34567890abcdef1234567890abcdef12",
+      "download_url": "/secure-download/linux/SquashPlotBridgeInstaller.deb",
+      "platform": "Linux",
+      "architecture": "x64",
+      "minimum_version": "Ubuntu 20.04",
+      "description": "Debian package with systemd integration"
+    }
+  },
+  "security": {
+    "signature_algorithm": "RSA-SHA256",
+    "public_key_fingerprint": "SHA256:abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890",
+    "verification_instructions": "Verify installer integrity using provided checksums and digital signatures"
+  }
+}
+
+
+

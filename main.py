@@ -23,9 +23,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 def main():
     """Main entry point"""
-    print("🗜️ SquashPlot - Advanced Chia Plot Compression")
+    print("SquashPlot - Advanced Chia Plot Compression")
     print("=" * 60)
-    print("🧠 prime aligned compute Enhancement | ⚡ Golden Ratio Optimization | 🎨 Black Glass UI/UX")
+    print("prime aligned compute Enhancement | Golden Ratio Optimization | Black Glass UI/UX")
     print("=" * 60)
 
     parser = argparse.ArgumentParser(description="SquashPlot - Advanced Chia Plot Compression Tool")
@@ -51,46 +51,78 @@ def main():
     elif args.demo:
         run_demo()
 
+def start_bridge_server():
+    """Start the bridge server for developer purposes"""
+    print("Starting Bridge Server for Developer Mode...")
+    try:
+        import subprocess
+        import threading
+        import time
+        
+        # Start bridge in background thread
+        def run_bridge():
+            try:
+                subprocess.run([sys.executable, "universal_bridge.py"], 
+                             stdout=subprocess.DEVNULL, 
+                             stderr=subprocess.DEVNULL)
+            except Exception as e:
+                print(f"Bridge server error: {e}")
+        
+        bridge_thread = threading.Thread(target=run_bridge, daemon=True)
+        bridge_thread.start()
+        
+        # Give bridge time to start
+        time.sleep(2)
+        print("Bridge server started on port 8443")
+        return True
+        
+    except Exception as e:
+        print(f"Failed to start bridge server: {e}")
+        return False
+
 def start_web_interface(port=8080):  # Replit default port
     """Start the web interface using Replit template structure"""
-    print("🚀 Starting SquashPlot Web Dashboard...")
-    print(f"📡 Replit URL: https://your-replit-name.replit.dev")
-    print(f"🔗 Local access: http://localhost:{port}")
-    print("📊 Andy's CLI Integration: Available via dashboard")
+    print("Starting SquashPlot Web Dashboard...")
+    print(f"Replit URL: https://your-replit-name.replit.dev")
+    print(f"Local access: http://localhost:{port}")
+    print("Andy's CLI Integration: Available via dashboard")
     print()
+    
+    # Start bridge server first for developer purposes
+    bridge_started = start_bridge_server()
 
     try:
         # Import and start the enhanced API server (Andy's integration)
         from squashplot_api_server import app
 
-        print("✅ SquashPlot API Server started successfully!")
-        print(f"🌐 Dashboard: http://localhost:{port}")
-        print(f"📖 API Docs: http://localhost:{port}/docs")
-        print("💻 CLI Commands: Available in dashboard")
+        print("SquashPlot API Server started successfully!")
+        print(f"Dashboard: http://localhost:{port}")
+        print(f"API Docs: http://localhost:{port}/docs")
+        print("CLI Commands: Available in dashboard")
         print()
 
         # Start the server with uvicorn for FastAPI
         import uvicorn
-        print("🚀 Starting FastAPI server with uvicorn...")
-        uvicorn.run(app, host='0.0.0.0', port=port, reload=True)
+        print("Starting FastAPI server with uvicorn...")
+        uvicorn.run("squashplot_api_server:app", host='0.0.0.0', port=port, reload=True)
 
     except ImportError:
-        print("❌ Enhanced API server not available, trying basic server...")
+        print("Enhanced API server not available, trying basic server...")
         try:
             from squashplot_dashboard import app
             app.run(host='0.0.0.0', port=port, debug=True)
         except ImportError:
-            print("❌ No web server available, falling back to CLI mode...")
+            print("No web server available, falling back to CLI mode...")
             start_cli_interface()
     except Exception as e:
-        print(f"❌ Failed to start web server: {e}")
-        print("💡 Make sure port is available and dependencies are installed")
-        print("🔧 Falling back to CLI mode...")
+        print(f"Failed to start web server: {e}")
+        print("Make sure port is available and dependencies are installed")
+        print("Falling back to CLI mode...")
         start_cli_interface()
 
 def start_cli_interface():
     """Start the command-line interface"""
-    print("💻 Starting SquashPlot CLI...")
+    print("Starting SquashPlot CLI...")
     print()
 
     try:

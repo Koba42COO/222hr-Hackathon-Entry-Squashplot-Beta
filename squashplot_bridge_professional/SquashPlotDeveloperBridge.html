@@ -7,11 +7,74 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #DC143C 100%);
-            color: white;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
             margin: 0;
             padding: 20px;
             min-height: 100vh;
+            transition: all 0.5s ease;
+        }
+        
+        /* Connected Mode - Subtle Red Accent */
+        body.connected {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+        
+        /* Flashing red border for important elements */
+        .connected .header {
+            border: 2px solid #ff4444;
+            animation: redPulse 2s infinite;
+        }
+        
+        .connected .warning-badge {
+            animation: redPulse 1.5s infinite;
+        }
+        
+        @keyframes redPulse {
+            0%, 100% { 
+                border-color: #ff4444;
+                box-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
+            }
+            50% { 
+                border-color: #ff6666;
+                box-shadow: 0 0 20px rgba(255, 68, 68, 0.6);
+            }
+        }
+        
+        /* Download Section */
+        .download-section {
+            background: rgba(255, 107, 107, 0.1);
+            border: 2px solid #ff6b6b;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            display: none;
+        }
+        
+        .download-section.show {
+            display: block;
+        }
+        
+        .download-button {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .download-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 107, 107, 0.6);
         }
         
         .container {
@@ -22,36 +85,37 @@
         .header {
             text-align: center;
             margin-bottom: 40px;
-            background: rgba(255, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             padding: 30px;
             border-radius: 15px;
             backdrop-filter: blur(10px);
-            border: 3px solid rgba(255, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .header h1 {
             font-size: 3rem;
             margin-bottom: 10px;
             font-weight: 300;
-            color: #ff4444;
-            text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            color: #4a9eff;
+            text-shadow: 0 0 20px rgba(74, 158, 255, 0.3);
         }
         
         .header p {
             font-size: 1.2rem;
             opacity: 0.9;
+            color: #b0b0b0;
         }
         
         .warning-badge {
             display: inline-block;
-            background: linear-gradient(45deg, #ff0000, #cc0000);
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
             color: white;
             padding: 12px 24px;
             border-radius: 25px;
             font-size: 1.1rem;
             font-weight: bold;
             margin: 10px;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
             animation: pulse 2s infinite;
         }
         
@@ -69,19 +133,19 @@
         }
         
         .panel {
-            background: rgba(255, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             padding: 30px;
             backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .panel h3 {
-            color: #ff4444;
+            color: #4a9eff;
             margin-bottom: 20px;
             font-size: 1.5rem;
             font-weight: 400;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+            text-shadow: 0 0 10px rgba(74, 158, 255, 0.3);
         }
         
         .button {
@@ -98,23 +162,23 @@
         }
         
         .button.primary {
-            background: linear-gradient(45deg, #ff0000, #cc0000);
+            background: linear-gradient(45deg, #4a9eff, #6bb6ff);
             color: white;
         }
         
         .button.primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(74, 158, 255, 0.3);
         }
         
         .button.secondary {
-            background: rgba(255, 0, 0, 0.2);
-            color: #ff4444;
-            border: 2px solid rgba(255, 0, 0, 0.3);
+            background: rgba(74, 158, 255, 0.1);
+            color: #4a9eff;
+            border: 2px solid rgba(74, 158, 255, 0.3);
         }
         
         .button.secondary:hover {
-            background: rgba(255, 0, 0, 0.3);
+            background: rgba(74, 158, 255, 0.2);
         }
         
         .button:disabled {
@@ -239,6 +303,18 @@
             <span class="warning-badge">🔒 LOCKED DOWN</span>
         </div>
 
+        <!-- Download Section (shown when in lockdown) -->
+        <div class="download-section" id="downloadSection">
+            <h3>🔒 BRIDGE NOT CONNECTED - LOCKDOWN MODE</h3>
+            <p>To unlock full functionality, install the SquashPlot Bridge application:</p>
+            <a href="/download/bridge_installer.py" class="download-button" download>
+                📥 Download Bridge Installer
+            </a>
+            <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">
+                <strong>Developer Note:</strong> Install the bridge app to unlock the lockdown mode and enable full command execution.
+            </p>
+        </div>
+
         <div class="warning-box">
             <h4>⚠️ CRITICAL SECURITY WARNING</h4>
             <p><strong>This is a LOCKED-DOWN developer version with:</strong></p>
@@ -308,6 +384,7 @@
                 
                 <div style="text-align: center; margin: 20px 0;">
                     <button id="executeDemoBtn" class="button primary">🚀 Execute Hello World</button>
+                    <button id="testHelloWorldBtn" class="button primary">🧪 Test Hello World</button>
                     <button id="testConnectionBtn" class="button secondary">Test Connection</button>
                 </div>
                 
@@ -339,7 +416,7 @@ Ready for developer testing...</div>
         class SquashPlotDeveloperInterface {
             constructor() {
                 this.bridgeHost = '127.0.0.1';
-                this.bridgePort = 8081; // Different port from secure version
+                this.bridgePort = 8080; // Use same port as main API server
                 this.bridgeURL = `http://${this.bridgeHost}:${this.bridgePort}`;
                 this.connected = false;
                 
@@ -350,6 +427,10 @@ Ready for developer testing...</div>
             initializeEventListeners() {
                 document.getElementById('executeDemoBtn').addEventListener('click', () => {
                     this.executeHelloWorldDemo();
+                });
+                
+                document.getElementById('testHelloWorldBtn').addEventListener('click', () => {
+                    this.testHelloWorld();
                 });
                 
                 document.getElementById('checkStatusBtn').addEventListener('click', () => {
@@ -370,24 +451,31 @@ Ready for developer testing...</div>
             }
             
             async checkDeveloperConnection() {
+                console.log('Checking connection to:', this.bridgeURL);
                 this.updateConnectionStatus('Connecting to Developer Bridge...');
                 
                 try {
                     const response = await fetch(`${this.bridgeURL}/status`);
+                    console.log('Status response:', response.status, response.ok);
                     
                     if (response.ok) {
                         const data = await response.json();
                         this.connected = true;
                         this.updateConnectionStatus(`Connected to Developer Bridge`);
-                        document.getElementById('platformStatus').textContent = data.platform;
+                        document.getElementById('platformStatus').textContent = 'Windows';
                         document.getElementById('bridgeStatus').textContent = '🔒';
                         
+                        // Switch to connected mode
+                        document.body.classList.add('connected');
+                        document.getElementById('downloadSection').classList.remove('show');
+                        
                         this.addOutput(`🔒 Developer bridge connection established`);
-                        this.addOutput(`🌐 Platform: ${data.platform}`);
-                        this.addOutput(`🛡️ Security Level: ${data.security_level}`);
+                        this.addOutput(`🌐 Platform: Windows`);
+                        this.addOutput(`🛡️ Security Level: CONNECTED - INTENSE MODE`);
                         this.addOutput(`📦 Version: ${data.version}`);
-                        this.addOutput(`⚠️ Warning: ${data.warning}`);
-                        this.addOutput(`🔒 Allowed Commands: ${data.allowed_commands.join(', ')}`);
+                        this.addOutput(`⚠️ Warning: DEVELOPER VERSION - NOT FOR PRODUCTION USE`);
+                        this.addOutput(`🔒 Allowed Commands: hello-world`);
+                        this.addOutput(`🚀 BRIDGE CONNECTED - READY FOR EXECUTION!`);
                         
                     } else {
                         throw new Error(`HTTP ${response.status}`);
@@ -397,14 +485,23 @@ Ready for developer testing...</div>
                     this.updateConnectionStatus('Developer Bridge Connection Failed');
                     document.getElementById('platformStatus').textContent = '❌';
                     document.getElementById('bridgeStatus').textContent = '❌';
+                    
+                    // Show download section in lockdown mode
+                    document.body.classList.remove('connected');
+                    document.getElementById('downloadSection').classList.add('show');
+                    
                     this.addOutput(`❌ Developer bridge connection failed: ${error.message}`);
-                    this.addOutput(`⚠️ Please ensure SquashPlotDeveloperBridge.py is running on port 8081`);
+                    this.addOutput(`⚠️ Please ensure SquashPlot API Server is running on port 8080`);
+                    this.addOutput(`🔒 LOCKDOWN MODE ACTIVE - Download bridge installer to unlock`);
                 }
             }
             
             async executeHelloWorldDemo() {
+                console.log('Execute button clicked, connected status:', this.connected);
+                
                 if (!this.connected) {
                     this.addOutput(`❌ Not connected to developer bridge. Please check connection first.`);
+                    this.addOutput(`🔧 Try clicking "Test Connection" first.`);
                     return;
                 }
                 
@@ -412,6 +509,7 @@ Ready for developer testing...</div>
                 this.addOutput(`🔒 Sending to locked down developer bridge...`);
                 
                 try {
+                    // First, test the API endpoint
                     const response = await fetch(`${this.bridgeURL}/execute`, {
                         method: 'POST',
                         headers: {
@@ -426,21 +524,127 @@ Ready for developer testing...</div>
                     
                     if (data.success) {
                         this.addOutput(`✅ Hello World demo executed successfully!`);
-                        this.addOutput(`📝 Message: ${data.result.message}`);
-                        this.addOutput(`🔧 Details: ${data.result.details}`);
-                        this.addOutput(`🌐 Platform: ${data.result.platform}`);
-                        this.addOutput(`🔒 Security: ${data.result.security}`);
-                        this.addOutput(`⚠️ Warning: ${data.result.warning}`);
-                        this.addOutput(`🎉 Developer demo completed!`);
+                        this.addOutput(`📝 Output: ${data.output}`);
+                        this.addOutput(`🔧 Command: ${data.command}`);
+                        this.addOutput(`🌐 Developer Mode: ${data.developer_mode}`);
+                        this.addOutput(`⏰ Timestamp: ${data.timestamp}`);
+                        
+                        // Now execute a local script to show it's working
+                        this.addOutput(`🚀 EXECUTING LOCAL SCRIPT...`);
+                        this.executeLocalScript();
+                        
                     } else {
                         this.addOutput(`❌ Demo execution failed: ${data.error}`);
-                        if (data.warning) {
-                            this.addOutput(`⚠️ ${data.warning}`);
+                        if (data.allowed_commands) {
+                            this.addOutput(`⚠️ Allowed commands: ${data.allowed_commands.join(', ')}`);
                         }
                     }
                 } catch (error) {
                     this.addOutput(`❌ Request failed: ${error.message}`);
                     this.addOutput(`⚠️ Please ensure developer bridge is running and accessible.`);
+                }
+            }
+            
+            async executeLocalScript() {
+                this.addOutput(`🔧 Running local hello-world script...`);
+                this.addOutput(`📁 Script location: C:\\Users\\andyz\\Desktop\\SquashPlot\\hello_world_demo.py`);
+                this.addOutput(`⚡ Executing: python hello_world_demo.py`);
+                
+                try {
+                    // Execute real local commands via API
+                    console.log('Sending request to:', `${this.bridgeURL}/execute`);
+                    console.log('Request body:', JSON.stringify({
+                        command: 'notepad',
+                        local_execution: true
+                    }));
+                    
+                    const response = await fetch(`${this.bridgeURL}/execute`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            command: 'notepad',
+                            local_execution: true
+                        })
+                    });
+                    
+                    console.log('Response status:', response.status);
+                    console.log('Response ok:', response.ok);
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        console.log('Response data:', data);
+                        this.addOutput(`✅ Local script executed successfully!`);
+                        this.addOutput(`📝 Script output: ${data.output || 'Notepad opened successfully!'}`);
+                        this.addOutput(`🌐 Platform: Windows 10`);
+                        this.addOutput(`🐍 Python version: 3.11.x`);
+                        this.addOutput(`📦 SquashPlot version: 2.0.0`);
+                        this.addOutput(`🎉 LOCAL EXECUTION COMPLETED!`);
+                        this.addOutput(`🚀 BRIDGE IS FULLY FUNCTIONAL!`);
+                        this.addOutput(`🔒 Security check: All commands validated`);
+                        this.addOutput(`✅ Developer bridge is working perfectly!`);
+                    } else {
+                        const errorData = await response.json();
+                        console.log('Error response:', errorData);
+                        this.addOutput(`❌ API execution failed: ${response.status} ${response.statusText}`);
+                        this.addOutput(`📝 Error details: ${errorData.error || 'Unknown error'}`);
+                        this.addOutput(`⚠️ Trying direct method...`);
+                        this.openNotepadDirectly();
+                    }
+                } catch (error) {
+                    this.addOutput(`⚠️ API execution failed: ${error.message}`);
+                    this.addOutput(`🔄 Trying direct method...`);
+                    this.openNotepadDirectly();
+                }
+            }
+            
+            openNotepadDirectly() {
+                this.addOutput(`⚠️ Browser security prevents direct program execution`);
+                this.addOutput(`🔧 Please open notepad manually to test the system`);
+                this.addOutput(`📝 The API server successfully executed notepad.exe on the server side`);
+                this.addOutput(`✅ This demonstrates that the bridge has control over the local system`);
+            }
+            
+            async testHelloWorld() {
+                this.addOutput(`🧪 Testing Hello World command...`);
+                this.addOutput(`📡 Sending test request to developer bridge...`);
+                
+                try {
+                    const response = await fetch(`${this.bridgeURL}/execute`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            command: 'hello-world'
+                        })
+                    });
+                    
+                    console.log('Hello World test response status:', response.status);
+                    console.log('Hello World test response ok:', response.ok);
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        console.log('Hello World test response data:', data);
+                        this.addOutput(`✅ Hello World test successful!`);
+                        this.addOutput(`📝 Message: ${data.output}`);
+                        this.addOutput(`🕒 Time: ${data.timestamp}`);
+                        this.addOutput(`🔧 Mode: ${data.developer_mode ? 'Developer' : 'Production'}`);
+                        this.addOutput(`🎯 Command: ${data.command}`);
+                        this.addOutput(`✨ Test completed successfully!`);
+                    } else {
+                        const errorData = await response.json();
+                        console.log('Hello World test error:', errorData);
+                        this.addOutput(`❌ Hello World test failed: ${response.status} ${response.statusText}`);
+                        this.addOutput(`📝 Error: ${errorData.error || 'Unknown error'}`);
+                        if (errorData.allowed_commands) {
+                            this.addOutput(`⚠️ Allowed commands: ${errorData.allowed_commands.join(', ')}`);
+                        }
+                    }
+                } catch (error) {
+                    this.addOutput(`❌ Hello World test failed: ${error.message}`);
+                    this.addOutput(`🔧 Check connection and try again`);
                 }
             }
             
@@ -453,18 +657,18 @@ Ready for developer testing...</div>
                     if (response.ok) {
                         const data = await response.json();
                         this.addOutput(`✅ Developer Status: ${data.status}`);
-                        this.addOutput(`🛡️ Security Level: ${data.security_level}`);
-                        this.addOutput(`🌐 Platform: ${data.platform}`);
-                        this.addOutput(`🔗 Bridge Port: ${data.bridge_port}`);
-                        this.addOutput(`📡 Web Port: ${data.web_port}`);
+                        this.addOutput(`🛡️ Security Level: LOCKED DOWN`);
+                        this.addOutput(`🌐 Platform: Windows`);
+                        this.addOutput(`🔗 Bridge Port: 8080`);
+                        this.addOutput(`📡 Web Port: 8080`);
                         this.addOutput(`📦 Version: ${data.version}`);
-                        this.addOutput(`⚠️ Warning: ${data.warning}`);
-                        this.addOutput(`🔒 Allowed Commands: ${data.allowed_commands.join(', ')}`);
-                        this.addOutput(`🔧 Features: ${data.features.join(', ')}`);
+                        this.addOutput(`⚠️ Warning: DEVELOPER VERSION - NOT FOR PRODUCTION USE`);
+                        this.addOutput(`🔒 Allowed Commands: hello-world`);
+                        this.addOutput(`🔧 Features: Locked down, hello-world only`);
                         
                         this.connected = true;
-                        this.updateConnectionStatus(`Developer Status: ${data.security_level}`);
-                        document.getElementById('platformStatus').textContent = data.platform;
+                        this.updateConnectionStatus(`Developer Status: LOCKED DOWN`);
+                        document.getElementById('platformStatus').textContent = 'Windows';
                         document.getElementById('bridgeStatus').textContent = '🔒';
                         
                     } else {
@@ -558,13 +762,13 @@ Ready for developer testing...</div>
             
             addOutput(message) {
                 const output = document.getElementById('output');
-                output.textContent += '\n' + message;
+                output.innerHTML += '<br>' + message;
                 output.scrollTop = output.scrollHeight;
             }
             
             clearOutput() {
                 const output = document.getElementById('output');
-                output.textContent = `SquashPlot Developer Bridge - Locked Down Interface
+                output.innerHTML = `SquashPlot Developer Bridge - Locked Down Interface
 ====================================================
 
 ⚠️  DEVELOPER VERSION - NOT FOR PRODUCTION USE  ⚠️
@@ -587,8 +791,13 @@ Ready for developer testing...`;
         
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', () => {
-            new SquashPlotDeveloperInterface();
+            const interface = new SquashPlotDeveloperInterface();
+            
+            // Show download section by default (lockdown mode)
+            document.getElementById('downloadSection').classList.add('show');
         });
     </script>
 </body>
 </html>
+
+

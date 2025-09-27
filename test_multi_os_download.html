@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Multi-OS Download System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0a0a0a;
+            color: white;
+            padding: 20px;
+        }
+        .test-section {
+            background: rgba(13, 13, 13, 0.85);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .test-button {
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            font-weight: 600;
+        }
+        .test-button:hover {
+            transform: translateY(-2px);
+        }
+        .os-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .os-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .os-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .download-btn {
+            background: #0078d4;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .download-btn:hover {
+            background: #106ebe;
+        }
+        .log {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            max-height: 300px;
+            overflow-y: auto;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Multi-OS Installer Download Test</h1>
+    
+    <div class="test-section">
+        <h2>API Endpoint Tests</h2>
+        <button class="test-button" onclick="testInstallerInfo()">Test Installer Info Endpoint</button>
+        <button class="test-button" onclick="testSecureDownload()">Test Secure Download Endpoint</button>
+        <button class="test-button" onclick="clearLog()">Clear Log</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>OS Installer Cards</h2>
+        <div class="os-grid" id="osGrid">
+            <!-- OS cards will be populated here -->
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Log Output</h2>
+        <div class="log" id="logOutput">
+            <div>Log output will appear here...</div>
+        </div>
+    </div>
+    
+    <script>
+        function log(message) {
+            const logDiv = document.getElementById('logOutput');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.innerHTML = `[${timestamp}] ${message}`;
+            logDiv.appendChild(logEntry);
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+        
+        async function testInstallerInfo() {
+            try {
+                log('Testing installer info endpoint...');
+                const response = await fetch('/download/installers');
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    log(`✅ Installer info loaded: ${JSON.stringify(data, null, 2)}`);
+                    populateOSCards(data);
+                } else {
+                    log(`❌ Installer info failed: ${response.status} ${response.statusText}`);
+                }
+            } catch (error) {
+                log(`❌ Installer info error: ${error.message}`);
+            }
+        }
+        
+        async function testSecureDownload() {
+            try {
+                log('Testing secure download endpoint...');
+                const response = await fetch('/secure-download/windows/SquashPlotBridgeInstaller.exe', {
+                    method: 'HEAD'
+                });
+                
+                if (response.ok) {
+                    log(`✅ Secure download endpoint available: ${response.status}`);
+                    log(`Content-Type: ${response.headers.get('Content-Type')}`);
+                    log(`X-Download-Signature: ${response.headers.get('X-Download-Signature')}`);
+                } else {
+                    log(`❌ Secure download failed: ${response.status} ${response.statusText}`);
+                }
+            } catch (error) {
+                log(`❌ Secure download error: ${error.message}`);
+            }
+        }
+        
+        function populateOSCards(installerInfo) {
+            const osGrid = document.getElementById('osGrid');
+            osGrid.innerHTML = '';
+            
+            if (installerInfo.installers) {
+                Object.keys(installerInfo.installers).forEach(platform => {
+                    const installer = installerInfo.installers[platform];
+                    const card = createOSCard(platform, installer);
+                    osGrid.appendChild(card);
+                });
+            }
+        }
+        
+        function createOSCard(platform, installer) {
+            const card = document.createElement('div');
+            card.className = 'os-card';
+            
+            const icons = {
+                windows: '🪟',
+                macos: '🍎',
+                linux: '🐧'
+            };
+            
+            const sizeInMB = (installer.size / (1024 * 1024)).toFixed(1);
+            
+            card.innerHTML = `
+                <div class="os-icon">${icons[platform]}</div>
+                <h3>${installer.platform}</h3>
+                <p>${installer.architecture}</p>
+                <p>${sizeInMB} MB</p>
+                <p style="font-size: 0.8rem; color: #aaa;">${installer.description}</p>
+                <button class="download-btn" onclick="downloadInstaller('${platform}', '${installer.filename}')">
+                    Download
+                </button>
+            `;
+            
+            return card;
+        }
+        
+        async function downloadInstaller(platform, filename) {
+            try {
+                log(`Starting download for ${platform}: ${filename}`);
+                
+                const response = await fetch(`/secure-download/${platform}/${filename}`);
+                
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(url);
+                    
+                    log(`✅ Download completed: ${filename}`);
+                } else {
+                    log(`❌ Download failed: ${response.status} ${response.statusText}`);
+                }
+            } catch (error) {
+                log(`❌ Download error: ${error.message}`);
+            }
+        }
+        
+        function clearLog() {
+            document.getElementById('logOutput').innerHTML = '<div>Log cleared...</div>';
+        }
+        
+        // Auto-test on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            log('Page loaded - testing multi-OS download system...');
+            testInstallerInfo();
+        });
+    </script>
+</body>
+</html>
+
+
+

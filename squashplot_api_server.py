@@ -36,20 +36,20 @@ from starlette.responses import FileResponse
 try:
     from squashplot import SquashPlotCompressor
     SQUASHPLOT_AVAILABLE = True
-    print("✅ SquashPlot core compression engine loaded")
+    print("SquashPlot core compression engine loaded")
 except (ImportError, NameError) as e:
     SQUASHPLOT_AVAILABLE = False
-    print(f"⚠️ SquashPlot compression engine not available: {e}")
-    print("🔄 Running in demo mode with CLI integration")
+    print(f"SquashPlot compression engine not available: {e}")
+    print("Running in demo mode with CLI integration")
 
 # Andy's check_server utility
 try:
     from check_server import check_server
     CHECK_SERVER_AVAILABLE = True
-    print("✅ Andy's check_server utility loaded")
+    print("Andy's check_server utility loaded")
 except ImportError:
     CHECK_SERVER_AVAILABLE = False
-    print("⚠️ check_server utility not available - using fallback")
+    print("check_server utility not available - using fallback")
 
 # Configuration
 class Config:
@@ -95,6 +95,291 @@ app.add_middleware(
 
 # Static files
 app.mount("/static", StaticFiles(directory="static", html=True), name="static")
+
+# Root route - serve the enhanced dashboard
+@app.get("/")
+async def root():
+    """Serve the enhanced SquashPlot dashboard"""
+    try:
+        dashboard_path = Path("squashplot_dashboard_enhanced.html")
+        if dashboard_path.exists():
+            return FileResponse(dashboard_path)
+        else:
+            # Fallback to basic dashboard
+            basic_dashboard = Path("squashplot_dashboard.html")
+            if basic_dashboard.exists():
+                return FileResponse(basic_dashboard)
+            else:
+                return HTMLResponse("""
+                <html>
+                    <head><title>SquashPlot Dashboard</title></head>
+                    <body>
+                        <h1>SquashPlot Dashboard</h1>
+                        <p>Dashboard files not found. Please ensure the HTML files are in the correct location.</p>
+                        <p><a href="/docs">API Documentation</a></p>
+                    </body>
+                </html>
+                """)
+    except Exception as e:
+        return HTMLResponse(f"<html><body><h1>Error</h1><p>{str(e)}</p></body></html>")
+
+# Bridge endpoint for CLI command execution
+@app.post("/api/bridge")
+async def bridge_endpoint(request: dict):
+    """Bridge endpoint for CLI command execution - works across all platforms"""
+    try:
+        command = request.get("command", "").strip()
+        
+        if command == "PING":
+            return {"status": "success", "response": "PONG"}
+        elif command == "STATUS":
+            return {
+                "status": "success", 
+                "response": {
+                    "server": "online",
+                    "platform": "api_server",
+                    "timestamp": datetime.now().isoformat()
+                }
+            }
+        elif command == "STOP":
+            # This would stop the bridge, but we'll just return success
+            return {"status": "success", "response": "STOPPED"}
+        else:
+            return {"status": "error", "response": "Unknown command"}
+            
+    except Exception as e:
+        return {"status": "error", "response": str(e)}
+
+# Multi-OS Installer Download endpoints
+@app.get("/download/installers")
+async def get_installer_info():
+    """Get information about available installers for all platforms"""
+    try:
+        import json
+        checksums_path = Path("installers/checksums/checksums.json")
+        
+        if checksums_path.exists():
+            with open(checksums_path, 'r') as f:
+                installer_info = json.load(f)
+            return installer_info
+        else:
+            # Fallback if checksums file doesn't exist
+            return {
+                "error": "Installer information not available",
+                "message": "Please contact support for installer downloads"
+            }
+    except Exception as e:
+        return JSONResponse(
+            status_code=500,
+            content={"error": f"Failed to get installer info: {str(e)}"}
+        )
+
+@app.get("/secure-download/{platform}/{filename}")
+@app.head("/secure-download/{platform}/{filename}")
+async def secure_download(platform: str, filename: str):
+    """Secure download endpoint with integrity verification"""
+    try:
+        # Security checks
+        if platform not in ["windows", "macos", "linux"]:
+            raise HTTPException(status_code=400, detail="Invalid platform")
+        
+        # Load checksums
+        import json
+        import hashlib
+        checksums_path = Path("installers/checksums/checksums.json")
+        
+        if not checksums_path.exists():
+            raise HTTPException(status_code=404, detail="Installer information not found")
+        
+        with open(checksums_path, 'r') as f:
+            installer_info = json.load(f)
+        
+        # Verify file exists and matches expected checksum
+        installer_path = Path(f"installers/{platform}/{filename}")
+        if not installer_path.exists():
+            raise HTTPException(status_code=404, detail="Installer file not found")
+        
+        # Verify file integrity
+        expected_checksum = installer_info["installers"][platform]["sha256"]
+        actual_checksum = calculate_file_checksum(installer_path)
+        
+        if actual_checksum != expected_checksum:
+            raise HTTPException(status_code=500, detail="File integrity check failed")
+        
+        # Return file with security headers
+        response = FileResponse(
+            path=installer_path,
+            filename=filename,
+            media_type="application/octet-stream"
+        )
+        
+        # Add security headers
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame-Options"] = "DENY"
+        response.headers["X-XSS-Protection"] = "1; mode=block"
+        response.headers["Content-Security-Policy"] = "default-src 'none'"
+        response.headers["X-Download-Signature"] = expected_checksum
+        
+        return response
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Download failed: {str(e)}")
+
+def calculate_file_checksum(file_path: Path) -> str:
+    """Calculate SHA256 checksum of a file"""
+    sha256_hash = hashlib.sha256()
+    with open(file_path, "rb") as f:
+        for chunk in iter(lambda: f.read(4096), b""):
+            sha256_hash.update(chunk)
+    return sha256_hash.hexdigest()
+
+# Legacy endpoint for backward compatibility
+@app.get("/download/exe-installer")
+async def download_exe_installer():
+    """Download the SquashPlot EXE installer"""
+    try:
+        # Look for EXE installer files
+        exe_files = [
+            "squashplot_bridge_professional/SquashPlotBridgeEXEInstaller.py",
+            "squashplot_bridge_professional/SquashPlotBridgeInstaller.py",
+            "bridge_installer.py"
+        ]
+        
+        installer_found = None
+        for exe_file in exe_files:
+            if os.path.exists(exe_file):
+                installer_found = exe_file
+                break
+        
+        if installer_found:
+            # Return the installer file
+            return FileResponse(
+                path=installer_found,
+                filename=f"SquashPlotInstaller_{datetime.now().strftime('%Y%m%d')}.py",
+                media_type="application/octet-stream"
+            )
+        else:
+            # Create a simple installer script if none found
+            installer_content = '''#!/usr/bin/env python3
+"""
+SquashPlot Bridge Installer
+===========================
+Simple installer script for SquashPlot Bridge
+"""
+
+import os
+import sys
+import subprocess
+import platform
+
+def install_bridge():
+    """Install SquashPlot Bridge"""
+    print("SquashPlot Bridge Installer")
+    print("=" * 40)
+    
+    system = platform.system().lower()
+    print(f"Detected system: {system}")
+    
+    if system == "windows":
+        print("Installing for Windows...")
+        # Windows-specific installation
+        install_windows()
+    elif system == "linux":
+        print("Installing for Linux...")
+        # Linux-specific installation
+        install_linux()
+    elif system == "darwin":
+        print("Installing for macOS...")
+        # macOS-specific installation
+        install_macos()
+    else:
+        print(f"Unsupported system: {system}")
+        return False
+    
+    print("Installation completed!")
+    return True
+
+def install_windows():
+    """Install for Windows"""
+    try:
+        # Install Python dependencies
+        subprocess.run([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"], check=True)
+        print("Dependencies installed successfully")
+        
+        # Create desktop shortcut (if possible)
+        create_desktop_shortcut()
+        
+    except subprocess.CalledProcessError as e:
+        print(f"Installation failed: {e}")
+        return False
+
+def install_linux():
+    """Install for Linux"""
+    try:
+        subprocess.run([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"], check=True)
+        print("Dependencies installed successfully")
+    except subprocess.CalledProcessError as e:
+        print(f"Installation failed: {e}")
+        return False
+
+def install_macos():
+    """Install for macOS"""
+    try:
+        subprocess.run([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"], check=True)
+        print("Dependencies installed successfully")
+    except subprocess.CalledProcessError as e:
+        print(f"Installation failed: {e}")
+        return False
+
+def create_desktop_shortcut():
+    """Create desktop shortcut (Windows only)"""
+    try:
+        import winshell
+        from win32com.client import Dispatch
+        
+        desktop = winshell.desktop()
+        path = os.path.join(desktop, "SquashPlot Bridge.lnk")
+        target = os.path.join(os.getcwd(), "universal_bridge.py")
+        
+        shell = Dispatch('WScript.Shell')
+        shortcut = shell.CreateShortCut(path)
+        shortcut.Targetpath = sys.executable
+        shortcut.Arguments = f'"{target}"'
+        shortcut.WorkingDirectory = os.getcwd()
+        shortcut.save()
+        
+        print("Desktop shortcut created")
+    except ImportError:
+        print("Shortcut creation skipped (required packages not available)")
+    except Exception as e:
+        print(f"Shortcut creation failed: {e}")
+
+if __name__ == "__main__":
+    success = install_bridge()
+    if success:
+        print("\\nBridge installed successfully!")
+        print("You can now run: python universal_bridge.py")
+    else:
+        print("\\nInstallation failed. Please check the error messages above.")
+    
+    input("Press Enter to exit...")
+'''
+            
+            # Return the generated installer
+            return HTMLResponse(
+                content=installer_content,
+                headers={
+                    "Content-Disposition": f"attachment; filename=SquashPlotInstaller_{datetime.now().strftime('%Y%m%d')}.py"
+                }
+            )
+            
+    except Exception as e:
+        return JSONResponse(
+            status_code=500,
+            content={"error": f"Failed to prepare installer: {str(e)}"}
+        )
 
 # WebSocket manager for real-time updates
 class ConnectionManager:
@@ -222,12 +507,12 @@ async def root():
     </head>
     <body>
         <div class="container">
-            <h1>🧠 SquashPlot</h1>
+            <h1>SquashPlot</h1>
             <div class="subtitle">Advanced Chia Plot Compression with Andy's Enhancements</div>
 
             <div class="interface-grid">
                 <a href="/dashboard" class="interface-card">
-                    <div class="interface-title">🎨 Enhanced Dashboard</div>
+                    <div class="interface-title">Enhanced Dashboard</div>
                     <div class="interface-desc">
                         Andy's professional UI with real-time monitoring,
                         CLI integration, and modern design system
@@ -243,7 +528,7 @@ async def root():
                 </a>
 
                 <a href="/docs" class="interface-card">
-                    <div class="interface-title">📖 API Documentation</div>
+                    <div class="interface-title">API Documentation</div>
                     <div class="interface-desc">
                         Interactive API docs for developers and integrations
                         with FastAPI/Swagger UI
@@ -267,7 +552,7 @@ async def root():
                         </a>
 
                         <a href="/command-control" class="interface-card">
-                            <div class="interface-title">⚙️ Command Control</div>
+                            <div class="interface-title">Command Control</div>
                             <div class="interface-desc">
                                 Manage which commands are allowed on your system
                                 with user-friendly checkboxes and security controls
@@ -276,7 +561,7 @@ async def root():
             </div>
 
             <div class="status">
-                ✅ Server Online | 🔐 Authentication Ready | 🎯 CLI Integration Active
+                Server Online | Authentication Ready | CLI Integration Active
             </div>
         </div>
     </body>
@@ -420,6 +705,76 @@ async def api_status():
     """Simple API status for frontend checks"""
     return {"status": "online", "version": Config.VERSION, "timestamp": datetime.now().isoformat()}
 
+@app.get("/status")
+async def status():
+    """Status endpoint for developer bridge compatibility"""
+    return {
+        "status": "online", 
+        "version": Config.VERSION, 
+        "timestamp": datetime.now().isoformat(),
+        "developer_mode": True,
+        "allowed_commands": ["hello-world"]
+    }
+
+@app.post("/execute")
+async def execute_command(request: dict):
+    """Execute command endpoint for developer bridge"""
+    try:
+        import subprocess
+        import os
+        
+        command = request.get("command", "").strip()
+        local_execution = request.get("local_execution", False)
+        
+        # Developer bridge lockdown - only allow hello-world and notepad when connected
+        if command == "hello-world":
+            return {
+                "success": True,
+                "output": "Hello World! SquashPlot Developer Bridge is working correctly.",
+                "command": command,
+                "timestamp": datetime.now().isoformat(),
+                "developer_mode": True
+            }
+        elif command == "notepad" and local_execution:
+            # Actually execute notepad
+            try:
+                subprocess.Popen(["notepad.exe"], shell=True)
+                return {
+                    "success": True,
+                    "output": "Notepad opened successfully!",
+                    "command": command,
+                    "timestamp": datetime.now().isoformat(),
+                    "developer_mode": True,
+                    "local_execution": True
+                }
+            except Exception as e:
+                return {
+                    "success": False,
+                    "error": f"Failed to open notepad: {str(e)}",
+                    "command": command,
+                    "timestamp": datetime.now().isoformat(),
+                    "developer_mode": True
+                }
+        else:
+            return JSONResponse(
+                status_code=403,
+                content={
+                    "success": False,
+                    "error": f"Command '{command}' not allowed in developer mode. Only 'hello-world' and 'notepad' (when connected) are permitted.",
+                    "allowed_commands": ["hello-world", "notepad"],
+                    "timestamp": datetime.now().isoformat(),
+                    "developer_mode": True
+                }
+            )
+            
+    except Exception as e:
+        return {
+            "success": False,
+            "error": str(e),
+            "timestamp": datetime.now().isoformat(),
+            "developer_mode": True
+        }, 500
+
 @app.get("/dashboard", response_class=HTMLResponse)
 async def dashboard():
     """Serve the enhanced SquashPlot dashboard"""
@@ -480,7 +835,7 @@ async def eula():
             </head>
             <body>
                 <div class="warning">
-                    <strong>⚠️ IMPORTANT:</strong> This is a legal document. Please read carefully before using the software.
+                    <strong>IMPORTANT:</strong> This is a legal document. Please read carefully before using the software.
                 </div>
                 <pre style="white-space: pre-wrap; font-family: Arial, sans-serif;">{content}</pre>
             </body>
@@ -575,18 +930,31 @@ async def download_uninstaller():
             except Exception as e:
                 raise HTTPException(status_code=500, detail=f"Error serving system scanner: {str(e)}")
 
-        @app.get("/command-control", response_class=HTMLResponse)
-        async def command_control():
-            """Serve the user command control interface"""
-            try:
-                with open("user_command_control.html", "r", encoding="utf-8") as f:
-                    return f.read()
-            except FileNotFoundError:
-                return HTMLResponse("""
-                <h1>Command Control Not Available</h1>
-                <p>The command control interface is not available.</p>
-                <a href="/">Back to main interface</a>
-                """)
+@app.get("/command-control", response_class=HTMLResponse)
+async def command_control():
+    """Serve the user command control interface"""
+    try:
+        with open("user_command_control.html", "r", encoding="utf-8") as f:
+            return f.read()
+    except FileNotFoundError:
+        return HTMLResponse("""
+        <h1>Command Control Not Available</h1>
+        <p>The command control interface is not available.</p>
+        <a href="/">Back to main interface</a>
+        """)
+
+@app.get("/squashplot_bridge_professional/SquashPlotDeveloperBridge.html", response_class=HTMLResponse)
+async def developer_bridge():
+    """Serve the SquashPlot Developer Bridge interface"""
+    try:
+        with open("squashplot_bridge_professional/SquashPlotDeveloperBridge.html", "r", encoding="utf-8") as f:
+            return f.read()
+    except FileNotFoundError:
+        return HTMLResponse("""
+        <h1>Developer Bridge Not Available</h1>
+        <p>The SquashPlot Developer Bridge interface is not available.</p>
+        <a href="/">Back to main interface</a>
+        """)
 
         @app.get("/api/command-preferences")
         async def get_command_preferences():
@@ -628,16 +996,16 @@ async def download_uninstaller():
 
 # Replit-specific optimizations
 if Config.REPLIT_MODE:
-    print("🔧 Running in Replit mode - optimizing for Replit environment")
+    print("Running in Replit mode - optimizing for Replit environment")
 
 # Startup event
 @app.on_event("startup")
 async def startup_event():
     """Application startup tasks"""
-    print("🚀 SquashPlot API Server starting up...")
-    print(f"📡 Server will be available at: https://your-replit-url.replit.dev")
-    print(f"🔗 Local access at: http://localhost:{Config.PORT}")
-    print("📖 API documentation at: /docs")
+    print("SquashPlot API Server starting up...")
+    print(f"Server will be available at: https://your-replit-url.replit.dev")
+    print(f"Local access at: http://localhost:{Config.PORT}")
+    print("API documentation at: /docs")
     # Broadcast startup message
     await manager.broadcast(json.dumps({
         "type": "startup",
@@ -647,9 +1015,9 @@ async def startup_event():
     }))
 
 if __name__ == "__main__":
-    print("🧠 Starting SquashPlot API Server...")
-    print(f"📡 Port: {Config.PORT}")
-    print(f"🌐 Replit Mode: {Config.REPLIT_MODE}")
+    print("Starting SquashPlot API Server...")
+    print(f"Port: {Config.PORT}")
+    print(f"Replit Mode: {Config.REPLIT_MODE}")
 
     uvicorn.run(
         "squashplot_api_server:app",

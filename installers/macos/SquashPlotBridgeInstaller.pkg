@@ -1,0 +1,16 @@
+# This would be a macOS installer package
+# For now, this is a placeholder file that would contain the actual macOS installer
+# In production, this would be built using pkgbuild, productbuild, or create-dmg
+
+# macOS Installer Features:
+# - Native macOS package format (.pkg)
+# - Application bundle installation
+# - LaunchDaemon registration
+# - Code signing with Apple Developer ID
+# - Notarization for macOS Gatekeeper
+# - Automatic dependency resolution
+# - Clean uninstall capability
+# - System integration
+
+
+

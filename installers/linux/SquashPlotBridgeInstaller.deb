@@ -1,0 +1,16 @@
+# This would be a Debian/Ubuntu package
+# For now, this is a placeholder file that would contain the actual Linux installer
+# In production, this would be built using dpkg-deb, checkinstall, or fpm
+
+# Linux Installer Features:
+# - Native .deb package format
+# - Automatic dependency resolution
+# - Systemd service integration
+# - Desktop entry creation
+# - Package manager integration
+# - GPG signature verification
+# - Repository compatibility
+# - Clean removal via apt/dpkg
+
+
+

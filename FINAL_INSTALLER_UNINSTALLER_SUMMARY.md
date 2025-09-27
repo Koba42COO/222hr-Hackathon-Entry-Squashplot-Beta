@@ -176,3 +176,6 @@ Library/Application Support/SquashPlot/Bridge/  # macOS
 **Status**: Complete and Ready for Distribution  
 **Version**: 2.0.0-Professional  
 **Last Updated**: September 26, 2025
+
+
+

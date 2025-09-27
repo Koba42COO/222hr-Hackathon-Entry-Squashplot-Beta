@@ -191,3 +191,6 @@ Your SquashPlot Bridge includes these security features automatically:
 **Version**: 2.0.0-Secure  
 **Last Updated**: September 26, 2025  
 **For Users**: No technical knowledge required
+
+
+

@@ -165,6 +165,221 @@
             color: #ffa502;
         }
 
+        .control-btn.download-btn {
+            color: #00d4ff;
+        }
+
+        .control-btn.download-btn:hover {
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+        }
+
+        /* Installer Modal Styles */
+        .installer-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .installer-modal-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            margin: 5% auto;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .installer-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .installer-modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .installer-modal-close {
+            background: none;
+            border: none;
+            color: #b0b0b0;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .installer-modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .os-selection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .os-installer-card {
+            background: rgba(13, 13, 13, 0.85);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .os-installer-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .os-installer-card.windows:hover {
+            border-color: rgba(0, 120, 215, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 120, 215, 0.2);
+        }
+
+        .os-installer-card.macos:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .os-installer-card.linux:hover {
+            border-color: rgba(255, 165, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 165, 0, 0.2);
+        }
+
+        .os-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .os-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .os-architecture {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .os-description {
+            font-size: 0.85rem;
+            color: #aaa;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .os-download-btn {
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        .os-download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .os-download-btn:disabled {
+            background: #444;
+            color: #888;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .installer-info {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .security-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .download-progress {
+            display: none;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 8px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
         /* Header with Andy's Server Status - Black Glass Theme */
         .dashboard-header {
             background: var(--glass-bg);
@@ -794,6 +1009,9 @@
                             <button class="control-btn troubleshoot-btn" onclick="troubleshootBridge()" title="Troubleshoot bridge connection">
                                 🔧
                             </button>
+                            <button class="control-btn download-btn" onclick="showInstallerModal()" title="Download Installers">
+                                📥
+                            </button>
                         </div>
                     </div>
 
@@ -971,6 +1189,39 @@
         </div>
     </div>
 
+    <!-- Installer Download Modal -->
+    <div id="installerModal" class="installer-modal">
+        <div class="installer-modal-content">
+            <div class="installer-modal-header">
+                <h2 class="installer-modal-title">Download SquashPlot Bridge</h2>
+                <button class="installer-modal-close" onclick="closeInstallerModal()">&times;</button>
+            </div>
+            
+            <div id="installerContent">
+                <div class="os-selection-grid" id="osSelectionGrid">
+                    <!-- OS installer cards will be populated here -->
+                </div>
+                
+                <div class="installer-info">
+                    <h4>Security & Verification</h4>
+                    <p>All installers are digitally signed and verified for security. Each download includes SHA256 checksums for integrity verification.</p>
+                    <div class="security-badge">
+                        <span>🔒</span>
+                        <span>Secure Download</span>
+                    </div>
+                </div>
+                
+                <div id="downloadProgress" class="download-progress">
+                    <h4>Downloading...</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p id="progressText">Preparing download...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Andy's Server Status Integration
         let serverCheckInterval = null;
@@ -1132,7 +1383,7 @@
             }
         }
 
-        // Check bridge connection status
+        // Check bridge connection status using server's bridge endpoint
         async function checkBridgeStatus() {
             const bridgeIndicator = document.getElementById('bridgeIndicator');
             const bridgeStatusText = document.getElementById('bridgeStatusText');
@@ -1143,24 +1394,33 @@
                 bridgeIndicator.className = 'status-indicator checking';
                 bridgeStatusText.textContent = 'Checking bridge...';
 
-                // Try to connect to the bridge app using ping
-                const response = await fetch('http://127.0.0.1:8443', {
+                // Use the server's bridge endpoint (works on all platforms)
+                const response = await fetch('/api/bridge', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'text/plain' },
-                    body: 'PING',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ command: 'PING' }),
                     signal: AbortSignal.timeout(3000)
                 });
 
                 if (response.ok) {
-                    bridgeIndicator.className = 'status-indicator online';
-                    bridgeStatusText.textContent = '🔒 Bridge Connected';
-                    bridgeWidget.classList.add('connected');
-                    bridgeWidget.classList.remove('disconnected');
+                    const data = await response.json();
+                    console.log(`Bridge response:`, data);
                     
-                    // Show stop button when connected
-                    document.getElementById('stopBridgeBtn').style.display = 'inline-flex';
+                    if (data.status === 'success' && data.response === 'PONG') {
+                        bridgeIndicator.className = 'status-indicator online';
+                        bridgeStatusText.textContent = '🔒 Bridge Connected';
+                        bridgeWidget.classList.add('connected');
+                        bridgeWidget.classList.remove('disconnected');
+                        
+                        // Show stop button when connected
+                        document.getElementById('stopBridgeBtn').style.display = 'inline-flex';
+                        
+                        console.log('✅ Bridge connected via server endpoint');
+                    } else {
+                        throw new Error(`Bridge error: ${data.response}`);
+                    }
                 } else {
-                    throw new Error(`Bridge error: ${response.status}`);
+                    throw new Error(`HTTP error: ${response.status}`);
                 }
             } catch (error) {
                 bridgeIndicator.className = 'status-indicator';
@@ -1186,20 +1446,25 @@
                 bridgeWidget.classList.add('loading');
                 bridgeStatusText.textContent = 'Stopping bridge...';
                 
-                // Send stop command to bridge
-                const response = await fetch('http://127.0.0.1:8443', {
+                // Use the server's bridge endpoint
+                const response = await fetch('/api/bridge', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'text/plain' },
-                    body: 'STOP',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ command: 'STOP' }),
                     signal: AbortSignal.timeout(5000)
                 });
                 
                 if (response.ok) {
-                    showNotification('Bridge app stopped successfully', 'success');
-                    // Update status after stopping
-                    setTimeout(() => {
-                        checkBridgeStatus();
-                    }, 1000);
+                    const data = await response.json();
+                    if (data.status === 'success') {
+                        showNotification('Bridge app stopped successfully', 'success');
+                        // Update status after stopping
+                        setTimeout(() => {
+                            checkBridgeStatus();
+                        }, 1000);
+                    } else {
+                        throw new Error('Failed to stop bridge');
+                    }
                 } else {
                     throw new Error('Failed to stop bridge');
                 }
@@ -1450,6 +1715,190 @@
             document.body.appendChild(modal);
         }
 
+        // Show installer download modal
+        async function showInstallerModal() {
+            const modal = document.getElementById('installerModal');
+            const osGrid = document.getElementById('osSelectionGrid');
+            
+            try {
+                // Fetch installer information
+                const response = await fetch('/download/installers');
+                const installerInfo = await response.json();
+                
+                if (installerInfo.error) {
+                    throw new Error(installerInfo.message || installerInfo.error);
+                }
+                
+                // Clear existing content
+                osGrid.innerHTML = '';
+                
+                // Create OS installer cards
+                const platforms = ['windows', 'macos', 'linux'];
+                platforms.forEach(platform => {
+                    if (installerInfo.installers && installerInfo.installers[platform]) {
+                        const installer = installerInfo.installers[platform];
+                        const card = createOSInstallerCard(platform, installer);
+                        osGrid.appendChild(card);
+                    }
+                });
+                
+                // Show modal
+                modal.style.display = 'block';
+                
+            } catch (error) {
+                showNotification(`Failed to load installer info: ${error.message}`, 'error');
+                console.error('Installer modal error:', error);
+            }
+        }
+        
+        // Create OS installer card
+        function createOSInstallerCard(platform, installer) {
+            const card = document.createElement('div');
+            card.className = `os-installer-card ${platform}`;
+            
+            const icons = {
+                windows: '🪟',
+                macos: '🍎',
+                linux: '🐧'
+            };
+            
+            const sizeInMB = (installer.size / (1024 * 1024)).toFixed(1);
+            
+            card.innerHTML = `
+                <div class="os-icon">${icons[platform]}</div>
+                <div class="os-name">${installer.platform}</div>
+                <div class="os-architecture">${installer.architecture} • ${sizeInMB} MB</div>
+                <div class="os-description">${installer.description}</div>
+                <button class="os-download-btn" onclick="downloadOSInstaller('${platform}', '${installer.filename}')">
+                    Download ${installer.platform} Installer
+                </button>
+            `;
+            
+            return card;
+        }
+        
+        // Download OS-specific installer
+        async function downloadOSInstaller(platform, filename) {
+            const progressDiv = document.getElementById('downloadProgress');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            
+            try {
+                // Show progress
+                progressDiv.style.display = 'block';
+                progressText.textContent = 'Preparing download...';
+                progressFill.style.width = '10%';
+                
+                // Disable all download buttons
+                const downloadBtns = document.querySelectorAll('.os-download-btn');
+                downloadBtns.forEach(btn => btn.disabled = true);
+                
+                progressText.textContent = 'Verifying installer integrity...';
+                progressFill.style.width = '30%';
+                
+                // Download with progress tracking
+                const response = await fetch(`/secure-download/${platform}/${filename}`, {
+                    method: 'GET',
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Download failed: ${response.status} ${response.statusText}`);
+                }
+                
+                progressText.textContent = 'Downloading installer...';
+                progressFill.style.width = '60%';
+                
+                // Get filename from Content-Disposition header
+                const contentDisposition = response.headers.get('Content-Disposition');
+                let downloadFilename = filename;
+                
+                if (contentDisposition) {
+                    const filenameMatch = contentDisposition.match(/filename="(.+)"/);
+                    if (filenameMatch) {
+                        downloadFilename = filenameMatch[1];
+                    }
+                }
+                
+                // Get file size for progress calculation
+                const contentLength = response.headers.get('Content-Length');
+                const total = contentLength ? parseInt(contentLength) : 0;
+                let loaded = 0;
+                
+                // Create blob with progress tracking
+                const reader = response.body.getReader();
+                const chunks = [];
+                
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+                    
+                    chunks.push(value);
+                    loaded += value.length;
+                    
+                    if (total > 0) {
+                        const progress = Math.round((loaded / total) * 30) + 60; // 60-90%
+                        progressFill.style.width = `${progress}%`;
+                        progressText.textContent = `Downloading... ${Math.round((loaded / total) * 100)}%`;
+                    }
+                }
+                
+                progressText.textContent = 'Finalizing download...';
+                progressFill.style.width = '100%';
+                
+                // Create blob and download
+                const blob = new Blob(chunks);
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = downloadFilename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+                
+                // Success
+                progressText.textContent = 'Download completed successfully!';
+                showNotification(`${platform} installer downloaded successfully!`, 'success');
+                
+                // Hide progress after delay
+                setTimeout(() => {
+                    progressDiv.style.display = 'none';
+                    progressFill.style.width = '0%';
+                }, 2000);
+                
+            } catch (error) {
+                progressText.textContent = `Download failed: ${error.message}`;
+                showNotification(`Download failed: ${error.message}`, 'error');
+                console.error('Download error:', error);
+                
+                // Hide progress after delay
+                setTimeout(() => {
+                    progressDiv.style.display = 'none';
+                }, 3000);
+            } finally {
+                // Re-enable download buttons
+                const downloadBtns = document.querySelectorAll('.os-download-btn');
+                downloadBtns.forEach(btn => btn.disabled = false);
+            }
+        }
+        
+        // Close installer modal
+        function closeInstallerModal() {
+            const modal = document.getElementById('installerModal');
+            const progressDiv = document.getElementById('downloadProgress');
+            
+            modal.style.display = 'none';
+            progressDiv.style.display = 'none';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('installerModal');
+            if (event.target === modal) {
+                closeInstallerModal();
+            }
+        }
+
         // Show bridge instructions
         function showBridgeInstructions() {
             const instructions = `
@@ -1527,6 +1976,9 @@ python secure_bridge_app.py --daemon
                         </button>
                         <button class="action-button success" onclick="executeCommand('${commandKey}')">
                             ▶️ Execute
+                        </button>
+                        <button class="action-button" onclick="openDeveloperTest()" style="background: linear-gradient(135deg, #ff6b6b, #ff8e8e); border: 1px solid #ff6b6b;">
+                            🔧 Developer Test
                         </button>
                     </div>
                     
@@ -1642,6 +2094,16 @@ Always verify paths and keys before executing commands.
         async function validateCompression() {
             addRecentActivity('Validating compression integrity');
             selectCommand('validate', document.querySelector('.cli-command-item[onclick*="validate"]'));
+        }
+
+        // Open Developer Test Page
+        function openDeveloperTest() {
+            addRecentActivity('Opening Developer Test Page');
+            showNotification('🔧 Opening SquashPlot Developer Bridge...', 'info');
+            
+            // Open the developer bridge HTML in a new tab
+            const developerBridgeUrl = '/squashplot_bridge_professional/SquashPlotDeveloperBridge.html';
+            window.open(developerBridgeUrl, '_blank');
         }
 
         // Show notification

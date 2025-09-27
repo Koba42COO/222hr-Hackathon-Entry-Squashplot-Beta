@@ -23,7 +23,7 @@ class DeveloperBridgeConfig:
     
     # Security warnings
     SECURITY_WARNING = """
-    ⚠️  WARNING: DEVELOPER BRIDGE - NOT FOR PRODUCTION ⚠️
+    WARNING: DEVELOPER BRIDGE - NOT FOR PRODUCTION
     
     This is a LOCKED-DOWN developer version with:
     - ONLY ONE ALLOWED COMMAND: hello-world
@@ -468,3 +468,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
