@@ -1,16 +1,28 @@
 # SquashPlot Bridge - Professional Summary
 
+## ⚠️ CRITICAL SECURITY NOTICE
+
+**This is an OPEN-SOURCE project. Users can fork and modify the code.**
+
+### 🚨 SECURITY WARNINGS:
+- **ONLY use the SECURE versions in production**
+- **DEVELOPER version is NOT for production use**
+- **Always validate security before deployment**
+- **Test thoroughly before distributing**
+
 ## Overview
 
-SquashPlot Bridge is a professional-grade cross-platform secure bridge system that enables web-based command execution with enterprise-level security controls. The system provides a secure interface between web applications and local system execution, implementing whitelist-based command validation and cross-platform compatibility.
+SquashPlot Bridge is a professional-grade cross-platform secure bridge system that enables web-based command execution with enterprise-level security controls. The system provides a secure interface between web applications and local system execution, implementing quantum-safe cryptography, AI threat detection, and advanced security features.
 
 ## Architecture
 
 ### Core Components
 
-- **SquashPlotBridge.py**: Main server application providing HTTP API endpoints
-- **SquashPlotBridge.html**: Professional web interface for command execution
-- **Security Layer**: Whitelist-based command validation and execution control
+- **SquashPlotSecureBridge.py**: Maximum security server with quantum-safe cryptography
+- **SquashPlotDeveloperBridge.py**: Locked-down developer version (single command only)
+- **SquashPlotSecureBridge.html**: Enterprise-grade web interface with authentication
+- **SquashPlotDeveloperBridge.html**: Developer interface with security warnings
+- **Security Layers**: Multi-layer encryption, AI threat detection, behavioral biometrics
 
 ### System Flow
 

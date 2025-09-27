@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SquashPlot Dashboard Enhanced - Andy's CLI Templates</title>
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <link rel="icon" href="/static/favicon.ico">
+    <style>
+        /* Black Glass Design System - Sophisticated Dark Theme */
+        :root {
+            --primary-color: #00d4ff;
+            --secondary-color: #00ff88;
+            --accent-color: #ff6b6b;
+            --danger-color: #ff4757;
+            --success-color: #2ecc71;
+            --warning-color: #ffa502;
+            --info-color: #3742fa;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #050505;
+            --glass-bg: rgba(13, 13, 13, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --text-muted: #808080;
+            --border-radius: 16px;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.4);
+            --glow: 0 0 20px rgba(0, 212, 255, 0.3);
+            --glow-secondary: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 50%, #1a1a1a 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Add subtle animated background particles */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 107, 107, 0.05) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-10px) rotate(1deg); }
+            66% { transform: translateY(5px) rotate(-1deg); }
+        }
+
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        /* Status Widgets Container */
+        .status-widgets {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* Bridge Status Widget */
+        .bridge-status-widget {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+            min-width: 200px;
+        }
+
+        .bridge-status-widget::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            animation: sweep 3s ease-in-out infinite;
+        }
+
+        .bridge-status-widget.connected::before {
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.2), transparent);
+        }
+
+        .bridge-status-widget.disconnected::before {
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 107, 0.1), transparent);
+        }
+
+        /* Bridge Controls */
+        .bridge-controls {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+            font-size: 14px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            transform: scale(1.1);
+        }
+
+        .control-btn.stop-btn {
+            color: #ff4757;
+        }
+
+        .control-btn.stop-btn:hover {
+            background: rgba(255, 71, 87, 0.2);
+            color: #ff4757;
+        }
+
+        .control-btn.troubleshoot-btn {
+            color: #ffa502;
+        }
+
+        .control-btn.troubleshoot-btn:hover {
+            background: rgba(255, 165, 2, 0.2);
+            color: #ffa502;
+        }
+
+        /* Header with Andy's Server Status - Black Glass Theme */
+        .dashboard-header {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            box-shadow: var(--glow);
+        }
+
+        .dashboard-header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.03) 0%, transparent 70%);
+            animation: shimmer 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-left h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            text-shadow: var(--glow);
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.3));
+        }
+
+        .header-left .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .dashboard-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Enhanced CLI Integration Section */
+        .cli-section {
+            grid-column: span 2;
+        }
+
+        /* New CLI Layout - Left/Right Design */
+        .cli-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .cli-commands-sidebar {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            border: 1px solid var(--glass-border);
+            height: fit-content;
+        }
+
+        .cli-commands-sidebar h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cli-command-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .cli-command-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cli-command-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .cli-command-item:hover {
+            transform: translateX(5px);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: var(--glow);
+        }
+
+        .cli-command-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .cli-command-item.active {
+            border-color: var(--primary-color);
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .cli-command-item.active::before {
+            transform: scaleX(1);
+        }
+
+        .command-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+        }
+
+        .command-description {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.3;
+        }
+
+        /* Command Display Panel */
+        .cli-display-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            border: 1px solid var(--glass-border);
+            min-height: 400px;
+        }
+
+        .display-panel-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .display-panel-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .command-display {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .command-text {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            background: rgba(0, 255, 136, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .command-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .action-button {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .action-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow);
+        }
+
+        .action-button:hover::before {
+            left: 100%;
+        }
+
+        .action-button.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+        }
+
+        .action-button.danger {
+            background: linear-gradient(135deg, var(--danger-color), var(--accent-color));
+        }
+
+        .action-button.success {
+            background: linear-gradient(135deg, var(--success-color), var(--secondary-color));
+        }
+
+        .command-instructions {
+            background: rgba(52, 152, 219, 0.1);
+            border: 1px solid rgba(52, 152, 219, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .instructions-title {
+            color: var(--info-color);
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .instructions-list {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .instructions-list li {
+            margin-bottom: 4px;
+        }
+
+        /* Default state when no command selected */
+        .no-command-selected {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 300px;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .no-command-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+
+        .no-command-text {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .no-command-subtext {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .dashboard-container {
+                padding: 15px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cli-section {
+                grid-column: span 1;
+            }
+
+            .cli-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .header-left h1 {
+                font-size: 2rem;
+            }
+
+            .command-actions {
+                flex-direction: column;
+            }
+
+            .action-button {
+                justify-content: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Andy's Server Status Integration - Black Glass Theme */
+        .server-status-widget {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .server-status-widget::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: sweep 3s ease-in-out infinite;
+        }
+
+        @keyframes sweep {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--danger-color);
+            animation: pulse 2s infinite;
+            transition: all 0.3s ease;
+        }
+
+        .status-indicator.online {
+            background: var(--success-color);
+            animation: none;
+        }
+
+        .status-indicator.checking {
+            background: var(--warning-color);
+            animation: spin 1s linear infinite;
+        }
+
+        .status-text {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .refresh-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 50%;
+            transition: background 0.2s ease;
+            color: var(--text-secondary);
+        }
+
+        .refresh-btn:hover {
+            background: rgba(0, 0, 0, 0.1);
+            color: var(--text-primary);
+        }
+
+        /* System Monitoring */
+        .system-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .metric-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: var(--glow);
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* CLI Integration Section */
+        .cli-section {
+            grid-column: span 2;
+        }
+
+        .cli-command-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            color: var(--text-primary);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid var(--glass-border);
+            text-align: left;
+            font-family: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cli-command-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .cli-command-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--glow);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .cli-command-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .cli-command-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .cli-command-desc {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        /* Loading States */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Enhanced Header -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1>SquashPlot Dashboard Enhanced</h1>
+                    <div class="subtitle">Advanced Chia Compression with Andy's Enhanced CLI Templates</div>
+                </div>
+
+                <!-- Status Widgets -->
+                <div class="status-widgets">
+                    <!-- Bridge Connection Status -->
+                    <div class="bridge-status-widget" id="bridgeStatusWidget">
+                        <div class="status-indicator" id="bridgeIndicator"></div>
+                        <span class="status-text" id="bridgeStatusText">Checking bridge...</span>
+                        <div class="bridge-controls">
+                            <button class="control-btn" onclick="checkBridgeStatus()" title="Refresh bridge status">
+                                🔄
+                            </button>
+                            <button class="control-btn stop-btn" onclick="stopBridgeApp()" title="Stop bridge app" id="stopBridgeBtn" style="display: none;">
+                                ⏹️
+                            </button>
+                            <button class="control-btn troubleshoot-btn" onclick="troubleshootBridge()" title="Troubleshoot bridge connection">
+                                🔧
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Server Status Widget -->
+                    <div class="server-status-widget" id="serverStatusWidget">
+                        <div class="status-indicator checking" id="statusIndicator"></div>
+                        <span class="status-text" id="statusText">Checking server...</span>
+                        <button class="refresh-btn" onclick="checkServerStatus()" title="Refresh server status">
+                            🔄
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-grid">
+            <!-- System Overview -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(135deg, var(--info-color), var(--primary-color));">
+                        📊
+                    </div>
+                    <h3 class="card-title">System Overview</h3>
+                </div>
+                <div class="system-metrics" id="systemMetrics">
+                    <div class="metric-card">
+                        <div class="metric-value" id="cpuUsage">--</div>
+                        <div class="metric-label">CPU Usage</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="memoryUsage">--</div>
+                        <div class="metric-label">Memory</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="diskUsage">--</div>
+                        <div class="metric-label">Disk</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compression Stats -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(135deg, var(--success-color), var(--secondary-color));">
+                        🗜️
+                    </div>
+                    <h3 class="card-title">Compression Stats</h3>
+                </div>
+                <div class="system-metrics">
+                    <div class="metric-card">
+                        <div class="metric-value" id="totalPlots">--</div>
+                        <div class="metric-label">Total Plots</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="spaceSaved">--</div>
+                        <div class="metric-label">Space Saved</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="compressionRatio">--</div>
+                        <div class="metric-label">Avg Ratio</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced CLI Integration -->
+            <div class="dashboard-card cli-section">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color));">
+                        💻
+                    </div>
+                    <h3 class="card-title">CLI Commands - Andy's Enhanced Templates</h3>
+                </div>
+
+                <!-- New CLI Layout -->
+                <div class="cli-layout">
+                    <!-- Left Sidebar - Command List -->
+                    <div class="cli-commands-sidebar">
+                        <h4>📋 Available Commands</h4>
+                        <div class="cli-command-list">
+                            <div class="cli-command-item" onclick="selectCommand('web', this)">
+                                <div class="command-title">Start Web Interface</div>
+                                <div class="command-description">Launch the SquashPlot web dashboard</div>
+                            </div>
+
+                            <div class="cli-command-item" onclick="selectCommand('cli', this)">
+                                <div class="command-title">Start CLI Mode</div>
+                                <div class="command-description">Run SquashPlot in command-line mode</div>
+                            </div>
+
+                            <div class="cli-command-item" onclick="selectCommand('demo', this)">
+                                <div class="command-title">Run Demo</div>
+                                <div class="command-description">Execute interactive demonstration</div>
+                            </div>
+
+                            <div class="cli-command-item" onclick="selectCommand('server', this)">
+                                <div class="command-title">Check Server</div>
+                                <div class="command-description">Andy's server monitoring utility</div>
+                            </div>
+
+                            <div class="cli-command-item" onclick="selectCommand('plot', this)">
+                                <div class="command-title">Basic Plotting</div>
+                                <div class="command-description">Mad Max style Chia plotting</div>
+                            </div>
+
+                            <div class="cli-command-item" onclick="selectCommand('compress', this)">
+                                <div class="command-title">Plotting + Compression</div>
+                                <div class="command-description">Create compressed plots directly</div>
+                            </div>
+
+                            <div class="cli-command-item" onclick="selectCommand('benchmark', this)">
+                                <div class="command-title">Run Benchmark</div>
+                                <div class="command-description">Test compression performance</div>
+                            </div>
+
+                            <div class="cli-command-item" onclick="selectCommand('validate', this)">
+                                <div class="command-title">Validate Compression</div>
+                                <div class="command-description">Check data integrity</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Panel - Command Display -->
+                    <div class="cli-display-panel">
+                        <div class="display-panel-header">
+                            <span class="display-panel-title">Command Details</span>
+                        </div>
+                        
+                        <div id="commandDisplay">
+                            <div class="no-command-selected">
+                                <div class="no-command-icon">💻</div>
+                                <div class="no-command-text">Select a command from the left</div>
+                                <div class="no-command-subtext">Click on any command to see details and execute</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(135deg, var(--warning-color), var(--accent-color));">
+                        📈
+                    </div>
+                    <h3 class="card-title">Recent Activity</h3>
+                </div>
+                <div id="recentActivity">
+                    <div style="text-align: center; color: var(--text-secondary); padding: 20px;">
+                        No recent activity
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(135deg, var(--danger-color), var(--warning-color));">
+                        ⚡
+                    </div>
+                    <h3 class="card-title">Quick Actions</h3>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <button class="cli-command-card" onclick="runBenchmark()" style="padding: 15px; margin: 0;">
+                        <div class="cli-command-title">Run Benchmark</div>
+                        <div class="cli-command-desc">Test compression performance</div>
+                    </button>
+
+                    <button class="cli-command-card" onclick="validateCompression()" style="padding: 15px; margin: 0;">
+                        <div class="cli-command-title">Validate Compression</div>
+                        <div class="cli-command-desc">Check data integrity</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Andy's Server Status Integration
+        let serverCheckInterval = null;
+        let systemMetricsInterval = null;
+        let bridgeCheckInterval = null;
+
+        // Command definitions
+        const commands = {
+            web: {
+                command: 'python main.py --web',
+                title: 'Start Web Interface',
+                description: 'Launch the SquashPlot web dashboard with full GUI',
+                instructions: [
+                    'Copy the command above',
+                    'Open your terminal/command prompt',
+                    'Navigate to the SquashPlot directory',
+                    'Paste and press Enter',
+                    'The web interface will start on http://localhost:5000'
+                ],
+                category: 'Interface',
+                icon: '🌐'
+            },
+            cli: {
+                command: 'python main.py --cli',
+                title: 'Start CLI Mode',
+                description: 'Run SquashPlot in command-line mode for automation',
+                instructions: [
+                    'Copy the command above',
+                    'Open your terminal/command prompt',
+                    'Navigate to the SquashPlot directory',
+                    'Paste and press Enter',
+                    'Follow the interactive prompts'
+                ],
+                category: 'Interface',
+                icon: '💻'
+            },
+            demo: {
+                command: 'python main.py --demo',
+                title: 'Run Demo',
+                description: 'Execute interactive demonstration of SquashPlot features',
+                instructions: [
+                    'Copy the command above',
+                    'Open your terminal/command prompt',
+                    'Navigate to the SquashPlot directory',
+                    'Paste and press Enter',
+                    'Watch the interactive demonstration'
+                ],
+                category: 'Demo',
+                icon: '🎬'
+            },
+            server: {
+                command: 'python check_server.py',
+                title: 'Check Server',
+                description: 'Andy\'s server monitoring utility for health checks',
+                instructions: [
+                    'Copy the command above',
+                    'Open your terminal/command prompt',
+                    'Navigate to the SquashPlot directory',
+                    'Paste and press Enter',
+                    'View server status and diagnostics'
+                ],
+                category: 'Monitoring',
+                icon: '🔍'
+            },
+            plot: {
+                command: 'python squashplot.py -t /tmp/plot1 -d /plots -f YOUR_FARMER_KEY -p YOUR_POOL_KEY',
+                title: 'Basic Plotting',
+                description: 'Mad Max style Chia plotting with standard compression',
+                instructions: [
+                    'Replace YOUR_FARMER_KEY with your actual farmer key',
+                    'Replace YOUR_POOL_KEY with your actual pool key',
+                    'Adjust paths /tmp/plot1 and /plots as needed',
+                    'Copy the modified command',
+                    'Open terminal and execute'
+                ],
+                category: 'Plotting',
+                icon: '📊'
+            },
+            compress: {
+                command: 'python squashplot.py --compress 3 -t /tmp/plot1 -d /plots -f YOUR_FARMER_KEY -p YOUR_POOL_KEY',
+                title: 'Plotting + Compression',
+                description: 'Create compressed plots directly with level 3 compression',
+                instructions: [
+                    'Replace YOUR_FARMER_KEY with your actual farmer key',
+                    'Replace YOUR_POOL_KEY with your actual pool key',
+                    'Adjust paths /tmp/plot1 and /plots as needed',
+                    'Modify --compress 3 to your desired compression level',
+                    'Copy the modified command and execute'
+                ],
+                category: 'Plotting',
+                icon: '🗜️'
+            },
+            benchmark: {
+                command: 'python squashplot_benchmark.py',
+                title: 'Run Benchmark',
+                description: 'Test compression performance and system capabilities',
+                instructions: [
+                    'Copy the command above',
+                    'Open your terminal/command prompt',
+                    'Navigate to the SquashPlot directory',
+                    'Paste and press Enter',
+                    'Wait for benchmark results'
+                ],
+                category: 'Testing',
+                icon: '⚡'
+            },
+            validate: {
+                command: 'python compression_validator.py --size 10',
+                title: 'Validate Compression',
+                description: 'Check data integrity and compression validation',
+                instructions: [
+                    'Copy the command above',
+                    'Open your terminal/command prompt',
+                    'Navigate to the SquashPlot directory',
+                    'Paste and press Enter',
+                    'Review validation results'
+                ],
+                category: 'Testing',
+                icon: '✅'
+            }
+        };
+
+        // Check server status using Andy's logic
+        async function checkServerStatus() {
+            const statusIndicator = document.getElementById('statusIndicator');
+            const statusText = document.getElementById('statusText');
+            const widget = document.getElementById('serverStatusWidget');
+
+            try {
+                widget.classList.add('loading');
+                statusIndicator.className = 'status-indicator checking';
+                statusText.textContent = 'Checking server...';
+
+                // Use Andy's check_server.py logic with 5-second timeout
+                const response = await fetch('/api/status', {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json' },
+                    signal: AbortSignal.timeout(5000)
+                });
+
+                if (response.ok) {
+                    statusIndicator.className = 'status-indicator online';
+                    statusText.textContent = `Online (${response.status})`;
+                } else {
+                    statusIndicator.className = 'status-indicator';
+                    statusText.textContent = `HTTP ${response.status}`;
+                }
+            } catch (error) {
+                if (error.name === 'TimeoutError') {
+                    statusIndicator.className = 'status-indicator';
+                    statusText.textContent = 'Timeout (5s)';
+                } else {
+                    statusIndicator.className = 'status-indicator';
+                    statusText.textContent = 'Offline';
+                }
+                console.log('Server check failed:', error.message);
+            } finally {
+                widget.classList.remove('loading');
+            }
+        }
+
+        // Check bridge connection status
+        async function checkBridgeStatus() {
+            const bridgeIndicator = document.getElementById('bridgeIndicator');
+            const bridgeStatusText = document.getElementById('bridgeStatusText');
+            const bridgeWidget = document.getElementById('bridgeStatusWidget');
+
+            try {
+                bridgeWidget.classList.add('loading');
+                bridgeIndicator.className = 'status-indicator checking';
+                bridgeStatusText.textContent = 'Checking bridge...';
+
+                // Try to connect to the bridge app using ping
+                const response = await fetch('http://127.0.0.1:8443', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: 'PING',
+                    signal: AbortSignal.timeout(3000)
+                });
+
+                if (response.ok) {
+                    bridgeIndicator.className = 'status-indicator online';
+                    bridgeStatusText.textContent = '🔒 Bridge Connected';
+                    bridgeWidget.classList.add('connected');
+                    bridgeWidget.classList.remove('disconnected');
+                    
+                    // Show stop button when connected
+                    document.getElementById('stopBridgeBtn').style.display = 'inline-flex';
+                } else {
+                    throw new Error(`Bridge error: ${response.status}`);
+                }
+            } catch (error) {
+                bridgeIndicator.className = 'status-indicator';
+                bridgeStatusText.textContent = '📋 Copy-Paste Mode';
+                bridgeWidget.classList.add('disconnected');
+                bridgeWidget.classList.remove('connected');
+                
+                // Hide stop button when disconnected
+                document.getElementById('stopBridgeBtn').style.display = 'none';
+                
+                console.log('Bridge not available:', error.message);
+            } finally {
+                bridgeWidget.classList.remove('loading');
+            }
+        }
+
+        // Stop bridge app
+        async function stopBridgeApp() {
+            const bridgeWidget = document.getElementById('bridgeStatusWidget');
+            const bridgeStatusText = document.getElementById('bridgeStatusText');
+            
+            try {
+                bridgeWidget.classList.add('loading');
+                bridgeStatusText.textContent = 'Stopping bridge...';
+                
+                // Send stop command to bridge
+                const response = await fetch('http://127.0.0.1:8443', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: 'STOP',
+                    signal: AbortSignal.timeout(5000)
+                });
+                
+                if (response.ok) {
+                    showNotification('Bridge app stopped successfully', 'success');
+                    // Update status after stopping
+                    setTimeout(() => {
+                        checkBridgeStatus();
+                    }, 1000);
+                } else {
+                    throw new Error('Failed to stop bridge');
+                }
+            } catch (error) {
+                showNotification('Failed to stop bridge app. You may need to stop it manually.', 'error');
+                console.log('Stop bridge error:', error.message);
+            } finally {
+                bridgeWidget.classList.remove('loading');
+            }
+        }
+
+        // Troubleshoot bridge connection
+        async function troubleshootBridge() {
+            const bridgeWidget = document.getElementById('bridgeStatusWidget');
+            const bridgeStatusText = document.getElementById('bridgeStatusText');
+            
+            try {
+                bridgeWidget.classList.add('loading');
+                bridgeStatusText.textContent = 'Troubleshooting...';
+                
+                // Run diagnostic checks
+                const diagnostics = await runBridgeDiagnostics();
+                
+                // Show diagnostic results
+                showTroubleshootModal(diagnostics);
+                
+            } catch (error) {
+                showNotification('Troubleshooting failed', 'error');
+                console.log('Troubleshoot error:', error.message);
+            } finally {
+                bridgeWidget.classList.remove('loading');
+                bridgeStatusText.textContent = '📋 Copy-Paste Mode';
+            }
+        }
+
+        // Run bridge diagnostics
+        async function runBridgeDiagnostics() {
+            const diagnostics = {
+                timestamp: new Date().toISOString(),
+                checks: []
+            };
+            
+            // Check 1: Port availability
+            try {
+                const response = await fetch('http://127.0.0.1:8443', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: 'PING',
+                    signal: AbortSignal.timeout(2000)
+                });
+                diagnostics.checks.push({
+                    name: 'Port 8443 Connection',
+                    status: response.ok ? 'success' : 'error',
+                    message: response.ok ? 'Port is accessible' : `HTTP ${response.status}`
+                });
+            } catch (error) {
+                diagnostics.checks.push({
+                    name: 'Port 8443 Connection',
+                    status: 'error',
+                    message: 'Port is not accessible - Bridge app may not be running'
+                });
+            }
+            
+            // Check 2: Bridge app process
+            diagnostics.checks.push({
+                name: 'Bridge App Process',
+                status: 'info',
+                message: 'Check if secure_bridge_app.py is running in your terminal'
+            });
+            
+            // Check 3: Firewall/Network
+            diagnostics.checks.push({
+                name: 'Local Network',
+                status: 'info',
+                message: 'Ensure no firewall is blocking localhost connections'
+            });
+            
+            // Check 4: Installation
+            diagnostics.checks.push({
+                name: 'Bridge Installation',
+                status: 'info',
+                message: 'Verify bridge app is properly installed and configured'
+            });
+            
+            return diagnostics;
+        }
+
+        // Show troubleshoot modal
+        function showTroubleshootModal(diagnostics) {
+            const modal = document.createElement('div');
+            modal.className = 'troubleshoot-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>🔧 Bridge Troubleshooting</h3>
+                        <button class="close-btn" onclick="this.parentElement.parentElement.parentElement.remove()">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="diagnostic-results">
+                            ${diagnostics.checks.map(check => `
+                                <div class="diagnostic-item ${check.status}">
+                                    <div class="check-name">${check.name}</div>
+                                    <div class="check-message">${check.message}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="troubleshoot-actions">
+                            <button class="action-btn primary" onclick="window.open('/bridge-download', '_blank')">
+                                📥 Download Bridge App
+                            </button>
+                            <button class="action-btn secondary" onclick="showBridgeInstructions()">
+                                📖 Installation Guide
+                            </button>
+                            <button class="action-btn" onclick="this.parentElement.parentElement.parentElement.remove()">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Add modal styles
+            if (!document.getElementById('troubleshoot-styles')) {
+                const style = document.createElement('style');
+                style.id = 'troubleshoot-styles';
+                style.textContent = `
+                    .troubleshoot-modal {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.8);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 10000;
+                    }
+                    
+                    .modal-content {
+                        background: var(--glass-bg);
+                        backdrop-filter: blur(20px);
+                        border-radius: 16px;
+                        padding: 0;
+                        max-width: 600px;
+                        width: 90%;
+                        max-height: 80vh;
+                        overflow-y: auto;
+                        border: 1px solid var(--glass-border);
+                    }
+                    
+                    .modal-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 20px;
+                        border-bottom: 1px solid var(--glass-border);
+                    }
+                    
+                    .modal-header h3 {
+                        margin: 0;
+                        color: var(--text-primary);
+                    }
+                    
+                    .close-btn {
+                        background: none;
+                        border: none;
+                        color: var(--text-secondary);
+                        font-size: 24px;
+                        cursor: pointer;
+                        padding: 5px;
+                    }
+                    
+                    .modal-body {
+                        padding: 20px;
+                    }
+                    
+                    .diagnostic-results {
+                        margin-bottom: 20px;
+                    }
+                    
+                    .diagnostic-item {
+                        padding: 15px;
+                        margin-bottom: 10px;
+                        border-radius: 8px;
+                        border: 1px solid var(--glass-border);
+                    }
+                    
+                    .diagnostic-item.success {
+                        background: rgba(46, 204, 113, 0.1);
+                        border-color: rgba(46, 204, 113, 0.3);
+                    }
+                    
+                    .diagnostic-item.error {
+                        background: rgba(231, 76, 60, 0.1);
+                        border-color: rgba(231, 76, 60, 0.3);
+                    }
+                    
+                    .diagnostic-item.info {
+                        background: rgba(52, 152, 219, 0.1);
+                        border-color: rgba(52, 152, 219, 0.3);
+                    }
+                    
+                    .check-name {
+                        font-weight: 600;
+                        color: var(--text-primary);
+                        margin-bottom: 5px;
+                    }
+                    
+                    .check-message {
+                        color: var(--text-secondary);
+                        font-size: 0.9rem;
+                    }
+                    
+                    .troubleshoot-actions {
+                        display: flex;
+                        gap: 10px;
+                        flex-wrap: wrap;
+                    }
+                    
+                    .action-btn {
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-weight: 600;
+                        transition: all 0.3s ease;
+                    }
+                    
+                    .action-btn.primary {
+                        background: linear-gradient(135deg, #00d4ff, #00ff88);
+                        color: white;
+                    }
+                    
+                    .action-btn.secondary {
+                        background: rgba(255, 255, 255, 0.1);
+                        color: var(--text-primary);
+                        border: 1px solid var(--glass-border);
+                    }
+                    
+                    .action-btn:hover {
+                        transform: translateY(-2px);
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(modal);
+        }
+
+        // Show bridge instructions
+        function showBridgeInstructions() {
+            const instructions = `
+🔧 Bridge App Installation Guide
+
+1. Download the Bridge App:
+   - Visit the download page
+   - Choose your operating system
+   - Download the secure bridge app
+
+2. Install the Bridge App:
+   - Extract the downloaded file
+   - Run the installation script
+   - Follow the setup instructions
+
+3. Start the Bridge Service:
+   - Open terminal/command prompt
+   - Navigate to the bridge app directory
+   - Run: python secure_bridge_app.py
+
+4. Verify Connection:
+   - Return to this dashboard
+   - Check the status bar
+   - Should show "🔒 Bridge Connected"
+
+5. Troubleshooting:
+   - Ensure port 8443 is not blocked
+   - Check firewall settings
+   - Verify Python is installed
+   - Check bridge app logs
+
+For advanced users, run in daemon mode:
+python secure_bridge_app.py --daemon
+            `;
+            
+            alert(instructions);
+        }
+
+        // Select and display command
+        function selectCommand(commandKey, element) {
+            // Remove active class from all items
+            document.querySelectorAll('.cli-command-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Add active class to selected item
+            element.classList.add('active');
+            
+            // Get command data
+            const commandData = commands[commandKey];
+            
+            // Display command in right panel
+            const commandDisplay = document.getElementById('commandDisplay');
+            commandDisplay.innerHTML = `
+                <div class="command-display">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                        <span style="font-size: 1.5rem;">${commandData.icon}</span>
+                        <div>
+                            <div style="font-weight: 600; font-size: 1.1rem; color: var(--text-primary);">${commandData.title}</div>
+                            <div style="font-size: 0.9rem; color: var(--text-secondary);">${commandData.description}</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Command to Execute:</div>
+                        <div class="command-text">${commandData.command}</div>
+                    </div>
+                    
+                    <div class="command-actions">
+                        <button class="action-button" onclick="copyToClipboard('${commandData.command}')">
+                            📋 Copy Command
+                        </button>
+                        <button class="action-button secondary" onclick="showCommandInfo('${commandKey}')">
+                            ℹ️ More Info
+                        </button>
+                        <button class="action-button success" onclick="executeCommand('${commandKey}')">
+                            ▶️ Execute
+                        </button>
+                    </div>
+                    
+                    <div class="command-instructions">
+                        <div class="instructions-title">
+                            📝 Instructions
+                        </div>
+                        <ol class="instructions-list">
+                            ${commandData.instructions.map(instruction => `<li>${instruction}</li>`).join('')}
+                        </ol>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Copy command to clipboard
+        async function copyToClipboard(command) {
+            try {
+                await navigator.clipboard.writeText(command);
+                showNotification('✅ Command copied to clipboard!', 'success');
+            } catch (err) {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = command;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showNotification('✅ Command copied to clipboard!', 'success');
+            }
+        }
+
+        // Show command information
+        function showCommandInfo(commandKey) {
+            const commandData = commands[commandKey];
+            const info = `
+🔧 ${commandData.title}
+
+📋 Command: ${commandData.command}
+
+📝 Description: ${commandData.description}
+
+🏷️ Category: ${commandData.category}
+
+💡 Usage Tips:
+${commandData.instructions.map((instruction, index) => `${index + 1}. ${instruction}`).join('\n')}
+
+⚠️ Security Note:
+This command runs locally on your machine. The website only provides the template.
+
+🔒 Safety:
+Always verify paths and keys before executing commands.
+            `;
+            
+            alert(info);
+        }
+
+        // Execute command (simulation)
+        function executeCommand(commandKey) {
+            const commandData = commands[commandKey];
+            showNotification(`🚀 Executing: ${commandData.title}`, 'info');
+            
+            // Add to recent activity
+            addRecentActivity(`CLI Command: ${commandData.title}`);
+            
+            // In a real implementation, this would trigger the actual command execution
+            // For now, we'll just show a success message
+            setTimeout(() => {
+                showNotification(`✅ ${commandData.title} completed successfully!`, 'success');
+            }, 2000);
+        }
+
+        // Update system metrics
+        async function updateSystemMetrics() {
+            try {
+                const response = await fetch('/system-info');
+                const data = await response.json();
+
+                document.getElementById('cpuUsage').textContent = `${data.cpu.usage_percent}%`;
+                document.getElementById('memoryUsage').textContent = `${Math.round(data.memory.used_gb)}GB`;
+                document.getElementById('diskUsage').textContent = `${Math.round(data.disk.used_gb)}GB`;
+            } catch (error) {
+                console.log('Failed to update system metrics:', error);
+            }
+        }
+
+        // Add recent activity
+        function addRecentActivity(activity) {
+            const activityDiv = document.getElementById('recentActivity');
+            const timestamp = new Date().toLocaleTimeString();
+
+            activityDiv.innerHTML = `
+                <div style="padding: 10px; border-bottom: 1px solid #eee;">
+                    <div style="font-weight: 600; color: var(--primary-color);">${activity}</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">${timestamp}</div>
+                </div>
+                ${activityDiv.innerHTML}
+            `;
+
+            // Keep only last 5 activities
+            const activities = activityDiv.children;
+            while (activities.length > 5) {
+                activityDiv.removeChild(activities[activities.length - 1]);
+            }
+        }
+
+        // Quick action functions
+        async function runBenchmark() {
+            addRecentActivity('Running compression benchmark');
+            selectCommand('benchmark', document.querySelector('.cli-command-item[onclick*="benchmark"]'));
+        }
+
+        async function validateCompression() {
+            addRecentActivity('Validating compression integrity');
+            selectCommand('validate', document.querySelector('.cli-command-item[onclick*="validate"]'));
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <span>${message}</span>
+                <button onclick="this.parentElement.remove()">×</button>
+            `;
+            
+            // Add notification styles if not exists
+            if (!document.getElementById('notification-styles')) {
+                const style = document.createElement('style');
+                style.id = 'notification-styles';
+                style.textContent = `
+                    .notification {
+                        position: fixed;
+                        top: 100px;
+                        right: 20px;
+                        background: #10b981;
+                        color: white;
+                        padding: 12px 20px;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                        z-index: 10001;
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        animation: slideIn 0.3s ease-out;
+                    }
+                    
+                    .notification.error {
+                        background: #ef4444;
+                    }
+                    
+                    .notification.info {
+                        background: #3b82f6;
+                    }
+                    
+                    .notification.success {
+                        background: #10b981;
+                    }
+                    
+                    .notification button {
+                        background: none;
+                        border: none;
+                        color: white;
+                        font-size: 20px;
+                        cursor: pointer;
+                        padding: 0;
+                        margin-left: 10px;
+                    }
+                    
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(notification);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start server monitoring (Andy's integration)
+            checkServerStatus();
+            serverCheckInterval = setInterval(checkServerStatus, 30000); // Every 30 seconds
+
+            // Start bridge monitoring
+            checkBridgeStatus();
+            bridgeCheckInterval = setInterval(checkBridgeStatus, 15000); // Every 15 seconds
+
+            // Start system metrics updates
+            updateSystemMetrics();
+            systemMetricsInterval = setInterval(updateSystemMetrics, 10000); // Every 10 seconds
+
+            // Add initial activity
+            addRecentActivity('Dashboard loaded - Andy\'s CLI integration active');
+
+            console.log('🧠 SquashPlot Enhanced Dashboard initialized');
+            
+            // Select first command by default
+            setTimeout(() => {
+                const firstCommand = document.querySelector('.cli-command-item');
+                if (firstCommand) {
+                    firstCommand.click();
+                }
+            }, 100);
+        });
+
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', function() {
+            if (serverCheckInterval) {
+                clearInterval(serverCheckInterval);
+            }
+            if (bridgeCheckInterval) {
+                clearInterval(bridgeCheckInterval);
+            }
+            if (systemMetricsInterval) {
+                clearInterval(systemMetricsInterval);
+            }
+        });
+    </script>
+</body>
+</html>

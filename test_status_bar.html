@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Status Bar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0a0a0a;
+            color: white;
+            padding: 20px;
+        }
+        .status-widget {
+            background: rgba(13, 13, 13, 0.85);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 10px 0;
+            max-width: 400px;
+        }
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ff4757;
+            animation: pulse 2s infinite;
+        }
+        .status-indicator.online {
+            background: #2ecc71;
+            animation: none;
+        }
+        .status-indicator.checking {
+            background: #ffa502;
+            animation: spin 1s linear infinite;
+        }
+        .status-text {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .test-button {
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            font-weight: 600;
+        }
+        .test-button:hover {
+            transform: translateY(-2px);
+        }
+        .log {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bridge Status Bar Test</h1>
+    <p>This page tests the bridge status bar functionality from the enhanced dashboard.</p>
+    
+    <!-- Bridge Status Widget -->
+    <div class="status-widget" id="bridgeStatusWidget">
+        <div class="status-indicator" id="bridgeIndicator"></div>
+        <span class="status-text" id="bridgeStatusText">Checking bridge...</span>
+    </div>
+    
+    <div>
+        <button class="test-button" onclick="checkBridgeStatus()">Test Bridge Connection</button>
+        <button class="test-button" onclick="sendPing()">Send PING</button>
+        <button class="test-button" onclick="sendStop()">Send STOP</button>
+        <button class="test-button" onclick="clearLog()">Clear Log</button>
+    </div>
+    
+    <div class="log" id="logOutput">
+        <div>Log output will appear here...</div>
+    </div>
+    
+    <script>
+        function log(message) {
+            const logDiv = document.getElementById('logOutput');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.innerHTML = `[${timestamp}] ${message}`;
+            logDiv.appendChild(logEntry);
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+        
+        async function checkBridgeStatus() {
+            const bridgeIndicator = document.getElementById('bridgeIndicator');
+            const bridgeStatusText = document.getElementById('bridgeStatusText');
+            const bridgeWidget = document.getElementById('bridgeStatusWidget');
+
+            try {
+                log('Checking bridge status...');
+                bridgeIndicator.className = 'status-indicator checking';
+                bridgeStatusText.textContent = 'Checking bridge...';
+
+                // Try to connect to the bridge app using ping
+                const response = await fetch('http://127.0.0.1:8443', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: 'PING',
+                    signal: AbortSignal.timeout(3000)
+                });
+
+                if (response.ok) {
+                    const responseText = await response.text();
+                    log(`Bridge response: ${responseText}`);
+                    bridgeIndicator.className = 'status-indicator online';
+                    bridgeStatusText.textContent = '🔒 Bridge Connected';
+                    bridgeWidget.classList.add('connected');
+                    bridgeWidget.classList.remove('disconnected');
+                    log('✅ Bridge is connected and responding');
+                } else {
+                    throw new Error(`Bridge error: ${response.status}`);
+                }
+            } catch (error) {
+                log(`❌ Bridge connection failed: ${error.message}`);
+                bridgeIndicator.className = 'status-indicator';
+                bridgeStatusText.textContent = '📋 Copy-Paste Mode';
+                bridgeWidget.classList.add('disconnected');
+                bridgeWidget.classList.remove('connected');
+            }
+        }
+        
+        async function sendPing() {
+            try {
+                log('Sending PING to bridge...');
+                const response = await fetch('http://127.0.0.1:8443', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: 'PING',
+                    signal: AbortSignal.timeout(3000)
+                });
+                
+                if (response.ok) {
+                    const responseText = await response.text();
+                    log(`✅ PING successful: ${responseText}`);
+                } else {
+                    log(`❌ PING failed: ${response.status}`);
+                }
+            } catch (error) {
+                log(`❌ PING error: ${error.message}`);
+            }
+        }
+        
+        async function sendStop() {
+            try {
+                log('Sending STOP to bridge...');
+                const response = await fetch('http://127.0.0.1:8443', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: 'STOP',
+                    signal: AbortSignal.timeout(3000)
+                });
+                
+                if (response.ok) {
+                    const responseText = await response.text();
+                    log(`✅ STOP successful: ${responseText}`);
+                    // Update status after stopping
+                    setTimeout(() => {
+                        checkBridgeStatus();
+                    }, 1000);
+                } else {
+                    log(`❌ STOP failed: ${response.status}`);
+                }
+            } catch (error) {
+                log(`❌ STOP error: ${error.message}`);
+            }
+        }
+        
+        function clearLog() {
+            document.getElementById('logOutput').innerHTML = '<div>Log cleared...</div>';
+        }
+        
+        // Auto-check bridge status on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            log('Page loaded - testing bridge connection...');
+            checkBridgeStatus();
+        });
+    </script>
+</body>
+</html>

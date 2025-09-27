@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SquashPlot Bridge - Uninstaller</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+            color: white;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .warning-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .panel {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 20px;
+        }
+        
+        .button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .button.danger {
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+            color: white;
+        }
+        
+        .button.danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+        }
+        
+        .button.secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .button.download {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+        }
+        
+        .button.download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        .output {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 200px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            overflow-y: auto;
+            max-height: 400px;
+            white-space: pre-wrap;
+        }
+        
+        .status {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        .status.installed {
+            background: rgba(255, 165, 0, 0.3);
+            border: 2px solid rgba(255, 165, 0, 0.5);
+        }
+        
+        .status.not-installed {
+            background: rgba(0, 255, 0, 0.3);
+            border: 2px solid rgba(0, 255, 0, 0.5);
+        }
+        
+        .instructions {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .instructions h4 {
+            color: #ffa500;
+            margin-bottom: 15px;
+        }
+        
+        .instructions ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin: 8px 0;
+        }
+        
+        .download-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗑️ SquashPlot Bridge Uninstaller</h1>
+            <p>Remove SquashPlot Bridge from your system</p>
+            <span class="warning-badge">⚠️ PERMANENT REMOVAL</span>
+        </div>
+
+        <div class="panel">
+            <h3>🔍 Installation Status</h3>
+            <div id="status" class="status">
+                Checking if SquashPlot Bridge is installed...
+            </div>
+            <button id="checkStatusBtn" class="button secondary">Check Status</button>
+        </div>
+
+        <div class="panel">
+            <h3>🗑️ Uninstall SquashPlot Bridge</h3>
+            
+            <div class="instructions">
+                <h4>📋 Uninstall Instructions:</h4>
+                <ol>
+                    <li><strong>Download Uninstaller:</strong> Click the download button below</li>
+                    <li><strong>Run Uninstaller:</strong> Double-click the downloaded file</li>
+                    <li><strong>Follow Prompts:</strong> The uninstaller will guide you through the process</li>
+                    <li><strong>Restart Computer:</strong> Restart to complete the uninstall</li>
+                </ol>
+            </div>
+            
+            <div class="download-section">
+                <button id="downloadUninstallerBtn" class="button download">📥 Download Uninstaller</button>
+                <button id="runLocalUninstallerBtn" class="button danger" style="display: none;">🗑️ Run Local Uninstaller</button>
+            </div>
+            
+            <div id="output" class="output">SquashPlot Bridge Website Uninstaller
+========================================
+
+This page helps you uninstall SquashPlot Bridge from your system.
+
+Click "Check Status" to see if SquashPlot Bridge is installed.
+Then download and run the uninstaller to remove it completely.
+
+⚠️  WARNING: Uninstalling will permanently remove SquashPlot Bridge!  ⚠️</div>
+        </div>
+    </div>
+
+    <script>
+        class WebsiteUninstaller {
+            constructor() {
+                this.initializeEventListeners();
+                this.checkStatus();
+            }
+            
+            initializeEventListeners() {
+                document.getElementById('checkStatusBtn').addEventListener('click', () => {
+                    this.checkStatus();
+                });
+                
+                document.getElementById('downloadUninstallerBtn').addEventListener('click', () => {
+                    this.downloadUninstaller();
+                });
+                
+                document.getElementById('runLocalUninstallerBtn').addEventListener('click', () => {
+                    this.runLocalUninstaller();
+                });
+            }
+            
+            async checkStatus() {
+                this.updateStatus('Checking installation status...', '');
+                
+                try {
+                    // Try to connect to local uninstaller server
+                    const response = await fetch('http://127.0.0.1:8082/status');
+                    const data = await response.json();
+                    
+                    if (data.installed) {
+                        this.updateStatus('SquashPlot Bridge is INSTALLED', 'installed');
+                        document.getElementById('runLocalUninstallerBtn').style.display = 'inline-block';
+                        
+                        this.addOutput('✅ SquashPlot Bridge found!');
+                        this.addOutput(`📁 Install Directory: ${data.install_directory}`);
+                        this.addOutput(`💻 System: ${data.system}`);
+                        if (data.config) {
+                            this.addOutput(`📅 Installed: ${data.config.installation_date}`);
+                            this.addOutput(`📦 Version: ${data.config.version}`);
+                        }
+                        this.addOutput('🎯 You can use the local uninstaller or download the standalone version');
+                        
+                    } else {
+                        this.updateStatus('SquashPlot Bridge is NOT INSTALLED', 'not-installed');
+                        document.getElementById('runLocalUninstallerBtn').style.display = 'none';
+                        
+                        this.addOutput('ℹ️ SquashPlot Bridge is not installed on this system.');
+                        this.addOutput('No uninstall action needed.');
+                    }
+                    
+                } catch (error) {
+                    // Local uninstaller not running, check for installation manually
+                    this.updateStatus('SquashPlot Bridge status unknown', '');
+                    
+                    this.addOutput('⚠️ Could not connect to local uninstaller server.');
+                    this.addOutput('This could mean:');
+                    this.addOutput('  - SquashPlot Bridge is not installed');
+                    this.addOutput('  - Local uninstaller server is not running');
+                    this.addOutput('');
+                    this.addOutput('💡 You can still download the standalone uninstaller below.');
+                }
+            }
+            
+            downloadUninstaller() {
+                this.addOutput('📥 Downloading SquashPlot Bridge Uninstaller...');
+                
+                // Create uninstaller script content
+                const uninstallerContent = this.getUninstallerScript();
+                
+                // Create and download file
+                const blob = new Blob([uninstallerContent], { type: 'text/python' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'squashplot_bridge_uninstaller.py';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                this.addOutput('✅ Uninstaller downloaded successfully!');
+                this.addOutput('📋 Next steps:');
+                this.addOutput('  1. Double-click the downloaded file');
+                this.addOutput('  2. Follow the uninstall prompts');
+                this.addOutput('  3. Restart your computer when complete');
+            }
+            
+            async runLocalUninstaller() {
+                if (!confirm('Are you sure you want to uninstall SquashPlot Bridge?\\n\\nThis action cannot be undone!')) {
+                    return;
+                }
+                
+                this.addOutput('🗑️ Starting local uninstall process...');
+                
+                try {
+                    const response = await fetch('http://127.0.0.1:8082/uninstall', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.addOutput('✅ Uninstall completed successfully!');
+                        this.addOutput(`📝 Message: ${data.message}`);
+                        this.addOutput('\\n📋 Uninstall Log:');
+                        data.log.forEach(logEntry => {
+                            this.addOutput(`   ${logEntry}`);
+                        });
+                        
+                        this.updateStatus('SquashPlot Bridge UNINSTALLED', 'not-installed');
+                        document.getElementById('runLocalUninstallerBtn').style.display = 'none';
+                        
+                    } else {
+                        this.addOutput('❌ Uninstall failed!');
+                        this.addOutput(`📝 Error: ${data.message}`);
+                        this.addOutput('\\n📋 Error Log:');
+                        data.log.forEach(logEntry => {
+                            this.addOutput(`   ${logEntry}`);
+                        });
+                    }
+                    
+                } catch (error) {
+                    this.addOutput(`❌ Uninstall request failed: ${error.message}`);
+                    this.addOutput('💡 Try downloading the standalone uninstaller instead.');
+                }
+            }
+            
+            getUninstallerScript() {
+                return `#!/usr/bin/env python3
+"""
+SquashPlot Bridge Standalone Uninstaller
+Downloaded from SquashPlot website
+"""
+
+import os
+import sys
+import shutil
+import subprocess
+import platform
+from pathlib import Path
+
+def uninstall_squashplot_bridge():
+    """Uninstall SquashPlot Bridge completely"""
+    print("SquashPlot Bridge Standalone Uninstaller")
+    print("=" * 50)
+    
+    system = platform.system().lower()
+    
+    # Get installation directory
+    if system == "windows":
+        install_dir = Path.home() / "AppData" / "Local" / "SquashPlot" / "Bridge"
+        startup_dir = Path.home() / "AppData" / "Roaming" / "Microsoft" / "Windows" / "Start Menu" / "Programs" / "Startup"
+    elif system == "darwin":  # macOS
+        install_dir = Path.home() / "Library" / "Application Support" / "SquashPlot" / "Bridge"
+        startup_dir = Path.home() / "Library" / "LaunchAgents"
+    else:  # Linux
+        install_dir = Path.home() / ".local" / "share" / "squashplot" / "bridge"
+        startup_dir = Path.home() / ".config" / "autostart"
+    
+    print(f"Installation directory: {install_dir}")
+    
+    # Check if installed
+    if not install_dir.exists():
+        print("ℹ️ SquashPlot Bridge is not installed on this system.")
+        input("Press Enter to exit...")
+        return
+    
+    # Stop any running bridge processes
+    print("Stopping bridge processes...")
+    try:
+        if system == "windows":
+            subprocess.run(["taskkill", "/f", "/im", "python.exe", "/fi", "WINDOWTITLE eq SquashPlot*"], 
+                         capture_output=True)
+        else:
+            subprocess.run(["pkill", "-f", "SquashPlot.*Bridge"], capture_output=True)
+        print("✓ Bridge processes stopped")
+    except:
+        print("⚠ Could not stop bridge processes (may not be running)")
+    
+    # Remove startup scripts
+    print("Removing startup integration...")
+    startup_files = [
+        "SquashPlotBridge.bat",  # Windows
+        "com.squashplot.bridge.plist",  # macOS
+        "squashplot-bridge.desktop"  # Linux
+    ]
+    
+    for startup_file in startup_files:
+        startup_path = startup_dir / startup_file
+        if startup_path.exists():
+            try:
+                startup_path.unlink()
+                print(f"✓ Removed {startup_file}")
+            except Exception as e:
+                print(f"⚠ Could not remove {startup_file}: {e}")
+    
+    # Remove installation directory
+    print("Removing installation files...")
+    if install_dir.exists():
+        try:
+            shutil.rmtree(install_dir)
+            print(f"✓ Removed installation directory")
+        except Exception as e:
+            print(f"⚠ Could not remove installation directory: {e}")
+    
+    # Remove parent directories if empty
+    try:
+        parent_dir = install_dir.parent
+        if parent_dir.exists() and not any(parent_dir.iterdir()):
+            shutil.rmtree(parent_dir)
+            print(f"✓ Removed parent directory")
+    except:
+        pass
+    
+    print("=" * 50)
+    print("✓ SquashPlot Bridge uninstalled successfully!")
+    print("All files and startup integration have been removed.")
+    print("Please restart your computer to complete the uninstall.")
+    
+    input("Press Enter to exit...")
+
+if __name__ == "__main__":
+    uninstall_squashplot_bridge()`;
+            }
+            
+            updateStatus(message, className) {
+                const statusElement = document.getElementById('status');
+                statusElement.textContent = message;
+                statusElement.className = 'status ' + className;
+            }
+            
+            addOutput(message) {
+                const output = document.getElementById('output');
+                output.textContent += '\\n' + message;
+                output.scrollTop = output.scrollHeight;
+            }
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new WebsiteUninstaller();
+        });
+    </script>
+</body>
+</html>
