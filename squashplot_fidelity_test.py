@@ -22,9 +22,12 @@ import numpy as np
 from typing import Dict, List, Any, Optional, Tuple
 from dataclasses import dataclass
 import logging
+from pathlib import Path
 
 # Add paths to access all systems
-sys.path.append('/Users/coo-koba42/dev')
+# Use dynamic path resolution to avoid hardcoded personal paths
+project_root = Path(__file__).parent
+sys.path.insert(0, str(project_root))
 
 # Import advanced systems for fidelity testing
 try:

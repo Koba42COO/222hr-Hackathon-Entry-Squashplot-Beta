@@ -25,6 +25,7 @@ from typing import Dict, List, Any, Optional, Callable, Set
 from dataclasses import dataclass, field
 from enum import Enum
 import threading
+from pathlib import Path
 import random
 import logging
 
@@ -556,7 +557,7 @@ class BlockchainKnowledgeMarketplace:
         analytics = self.get_marketplace_analytics()
 
         # Save to file for persistence
-        with open("/Users/coo-koba42/dev/marketplace_analytics.json", "w") as f:
+        with open("marketplace_analytics.json", "w") as f:
             json.dump({
                 "timestamp": datetime.now().isoformat(),
                 "analytics": analytics
